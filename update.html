@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <link rel="stylesheet" type="text/css" href="main.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  </head>
+  <body>
+		<div id="header"><h1> アップデート手順 </h1></div>
+    <div id="main">
+			mruby/cのファームウェアアップデートおよびファームウェアが破壊された場合に行う手順です。
+			<h2>準備</h2>
+			<ul>
+				<li><a href="https://www.microchip.com/mplab/mplab-x-ide">MPLAB X(またはMPLAB X IPE)</a>をインストール</li>
+				<li><a href="https://www.microchip.com/mplab/compilers">XC32</a>をインストール(MPLAB Xを使用する場合)</li>
+				<li><a href="https://github.com/YoshihiroOgura/pic32mx170_mrubyc/releases">hexファイル</a>をダウンロード(MPLAB X IPEを使用する場合)</li>
+				<li><a href="http://akizukidenshi.com/catalog/g/gM-03608/">pickit3</a>または<a href="http://akizukidenshi.com/catalog/g/gM-13337/">pickit4</a>を購入</li>
+				互換機を使用して書き込む場合はUSBケーブルから電源を供給する。
+			</ul>
+			<h2>「MPLAB X IDE」を使用した手順</h2>
+			<ol>
+				<li>MPLAB Xを起動</li>
+				<li>Team → git → clone</li>
+				<li>Repogitory URL:<span style="color:rgb(0, 38, 255)">https://github.com/YoshihiroOgura/-pic32mx170_mrubyc.git</span></li>
+				<li>DIPの場合は<a href="https://qiita.com/aikawa_YO/items/68b12689f30ecd67a754">こちら</a>の回路、または<a href="http://akizukidenshi.com/catalog/g/gK-05355/">キット</a>を使用、表面実装の場合は「J3」に直接pickitを接続。</li>
+				<img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/195542/e3a018ae-2315-0d9e-4f4b-674600e4cb9c.png">
+				<li>書き込みを実行</li>
+				<img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/195542/61fc508c-5cff-6cff-6868-38432416f67c.png">
+			</ol>
+			<h2>「MPLAB X IPE」を使用した手順</h2>
+			<ol>
+				<li>「MPLAB X IPE」を起動</li>
+				<li>項目の設定</li>
+				Family：32-bit MCUs (PIC32)<br>
+				Device：PIC32MX170F256B
+				<li>「Apply」ボタンを押下</li>
+				<li>PCとpickit3またはpickit4を接続<br></li>
+				しばらくすると「Tool」の項目がPICKIT3に切り替わる。
+				<li>「Setting」-> 「Advanced Mode」を選択。下のような画面が表示される。</li>
+				「Password」に[microchip]と入力し、「Log in」を押下<br>
+				<img src="https://user-images.githubusercontent.com/24926574/88021756-07bc3180-cb69-11ea-92f5-af5af76df934.png">
+				<li>画面が変わり左側に項目が表示される。</li>
+				「Power」を選択
+				<li>「Power target circuit from PICkit3」にチェックを入れる。</li>
+				「Operate」を選択し、元の画面へ戻る。
+				<li>「Connect」ボタンを押下</li>
+				<li>「Hex File」に「pic32_170.production.hex」のpathを指定</li>
+				<li>PICkit3へボードを接続</li>
+				<li>「Program」をクリックし書き込み開始</li>
+				<li>「Output」に「Programming complete」と表示されれば書き込み完了</li>
+			</ol>
+		</div>
+
+		<div id="submenu">
+      <div id="submenu_header">もくじ</div>
+      <ul id="submenu_body">
+        <li>プログラム書き込み</li>
+        <ul id="subuul">
+          <li><a href="./ide_install.html">mruby/c IDEインストール</a></li>
+          <li><a href="./write_program.html">PG書き込み</a></li>
+        </ul>
+        <li>ファームウェアアップデート</li>
+        <ul id="subuul">
+          <li><a href="./update.html">アップデート手順</a></li>
+        </ul>
+        <li>ボードの電気的仕様</li>
+        <ul id="subuul">
+          <li><a href="https://github.com/YoshihiroOgura/pic32mx170_mrubyc/wiki/ピン配置等">ピン配置等</a></li>
+        </ul>
+        <li>RBoardにおける各クラス</li>
+        <ul id="subuul">
+          <li><a href="https://github.com/YoshihiroOgura/pic32mx170_mrubyc/wiki/各クラス">各クラス</a></li>
+        </ul>
+        <li>サンプルプログラム</li>
+        <ul id="subuul">
+        <li><a href="https://github.com/YoshihiroOgura/pic32mx170_mrubyc/wiki/ADCサンプル">ADCサンプル</a></li>
+        <li><a href="https://github.com/YoshihiroOgura/pic32mx170_mrubyc/wiki/I2Cサンプル">I2Cサンプル</a></li>
+        <li><a href="https://github.com/YoshihiroOgura/pic32mx170_mrubyc/wiki/PWMサンプル">PWMサンプル</a></li>
+        <li><a href="https://github.com/YoshihiroOgura/pic32mx170_mrubyc/wiki/UARTサンプル">UARTサンプル</a></li>
+        <li><a href="https://github.com/YoshihiroOgura/pic32mx170_mrubyc/wiki/その他サンプル">その他サンプル</a></li>
+        </ul>
+      </ul>
+    </div>
+	</body>
+</html>
