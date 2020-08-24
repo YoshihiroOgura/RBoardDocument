@@ -3,27 +3,55 @@
   <head>
     <link rel="stylesheet" type="text/css" href="main.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/a11y-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
   </head>
   <body>
-    <div id="header"><h1> IDEインストール </h1></div>
+    <div id="header"><h1> ADCサンプル </h1></div>
     <div id="main">
-			<ul>
-				<li><a href="https://www.s-itoc.jp/activity/research/mrubyc/mrubyc_download/">mruby/c IDE</a>をダウンロード後、解凍</li>
-				<li>mruby/c IDEの解凍したフォルダのmrubyc_ide.exeを起動</li>
-				<li>上部タブの「File -> Settings...」をクリック</li>
-				<img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/195542/bbf4a521-6254-bb97-98ee-9ded21d28cbe.png">
-				<li>「Build and Deploy -> Cmpiler」の「mrbc」項目にmrubyコンパイラ1.4を解凍したフォルダ内にある「mrbc.exe」のpathを指定</li>
-				<img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/195542/ae9435e3-cb8d-7523-0e81-9d570d34eb6b.png">
-				<li>「Build and Deploy -> Writer」の「mrbwrite」項目にmruby/c IDEを解凍したフォルダ内にある「mrbwrite.exe」のpathを指定</li>
-				<li>「Build and Deploy -> Writer」の「Options」項目に「-s 19200」と書き込み、「Apply」、「OK」をクリック</li>
-				<img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/195542/265319b6-b071-03f4-2647-22c9e93bc958.png">
-			</ul>
+			<h3>サーミスタ温度センサ</h3>
+      温度センサ：<a href="http://wiki.seeedstudio.com/Grove-Temperature_Sensor_V1.2/">http://wiki.seeedstudio.com/Grove-Temperature_Sensor_V1.2/</a><br>
+      <pre><code  class="ruby">
+adc = ADC.new()
+adc.ch(7)
+temp = 0
+while true
+    adc.start
+    a = adc.read_v
+    adc.stop
+    a = (3.3 / a)-1
+    temp = 1.0/(Math.log(a)/4275+1/298.15)-273.15
+    sleep(1)
+    puts("ans:" + temp.to_s)
+end
+      </code></pre>
+
+			<h3>ボリューム制御</h3>
+			ボリュームを使用したLEDの明るさ制御<br>
+			LED:<a href="https://www.switch-science.com/catalog/1251/">https://www.switch-science.com/catalog/1251/</a><br>
+			ボリューム：<a href="https://www.switch-science.com/catalog/805/">https://www.switch-science.com/catalog/805/</a><br>
+			<pre><code  class="ruby">
+adc = ADC.new()
+adc.ch(7)
+PWM.new()
+PWM.pin(16)
+PWM.start(2)
+PWM.cycle(0x95A,4)
+while true
+    adc.start
+    a = adc.read_v
+    adc.stop
+    # adc値 × 100％ ÷ adcの最大値
+    a = (a*100/3.3).to_i
+    PWM.rate(a,2)
+end
+      </code></pre>
 		</div>
-
-
+		
 		<div id="submenu">
-			<div id="submenu_header">もくじ</div>
-			<a href="./index.html">HOME</a>
+      <div id="submenu_header">もくじ</div>
+      <a href="./index.html">HOME</a>
       <ul id="submenu_body">
         <li>プログラム書き込み</li>
         <ul id="subuul">
@@ -51,6 +79,6 @@
         <li><a href="https://github.com/YoshihiroOgura/pic32mx170_mrubyc/wiki/その他サンプル">その他サンプル</a></li>
         </ul>
       </ul>
-		</div>
-	</body>
+    </div>
+  </body>
 </html>
