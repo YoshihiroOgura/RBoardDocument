@@ -35,7 +35,8 @@ div#submenu {
 	width: 25%;			/*幅の指定*/
 	margin:10px 10px 10px 0px;
 	display:inline;
-    float:right;
+	float:right;
+	background-color:#e6e6e6;
 }
 
 /*サブメニューのヘッダ部分（余白調整・背景画像・背景色・文字サイズなど）*/
@@ -51,7 +52,6 @@ ul#submenu_body {
 	padding-bottom:6px;
 	padding-left:25px;
 	background-repeat:no-repeat; background-position:bottom;
-	background-color:#e6e6e6;
 }
 ul#submenu_body li a:hover {
 	background-color:#ffffff;	/*リンクにマウスが乗ったら色を変える*/
