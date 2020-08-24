@@ -67,3 +67,7 @@ div#main {
 	width:60%; margin-right:5px; padding-top:10px; /*幅の指定と位置調整*/
 	float:left;					/*カラムを左寄せにする*/
 }
+
+code {
+	max-height: 350px;
+}
