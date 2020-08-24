@@ -1,0 +1,69 @@
+/*============================================
+全般的なスタイル
+============================================*/
+* {
+	margin:0; padding:0; 	/*全要素のマージン・パディングをリセット*/
+	line-height:1.5;	/*全要素の行の高さを1.5倍にする*/
+	color:#333333;		/*文字色*/
+
+} 
+body {
+	text-align:center;
+}
+div#pagebody {
+	width:796px; margin:0 auto;	/*内容全体をセンタリング*/
+	text-align:left;	/*テキストの配置を左揃えにする*/
+	background-color:#ffffff;		/*内容全体の背景色*/
+}
+
+/*============================================
+ヘッダ
+============================================*/
+div#header {
+	height:77px;
+	background-color:#cccccc;		/*ヘッダ部分の背景色*/
+}
+h1 {
+	padding:20px 0px 0px 30px;		/*見出し内容の位置調整*/
+	font-family:Arial, Helvetica, sans-serif;	/*フォントの種類*/
+}
+
+/*============================================
+サブメニュー（左カラム）
+============================================*/
+div#submenu {
+	width: 25%;			/*幅の指定*/
+	margin:10px 10px 10px 0px;
+	display:inline;
+    float:right;
+}
+
+/*サブメニューのヘッダ部分（余白調整・背景画像・背景色・文字サイズなど）*/
+div#submenu_header {
+	height:26px; padding:4px 0px 0px 0px;
+	background-repeat:no-repeat; background-position:top;
+	background-color:#cccccc;
+	font-size:90%; font-weight:bold; text-align:center;
+}
+
+/*サブメニューのボディ部分（余白調整・背景画像・背景色）*/
+ul#submenu_body {
+	padding-bottom:6px;
+	padding-left:25px;
+	background-repeat:no-repeat; background-position:bottom;
+	background-color:#e6e6e6;
+}
+ul#submenu_body li a:hover {
+	background-color:#ffffff;	/*リンクにマウスが乗ったら色を変える*/
+}
+ul#subuul {
+	padding-left:25px;
+}
+/*============================================
+メイン（中央カラム）
+============================================*/
+div#main {
+	padding:25px;
+	width:60%; margin-right:5px; padding-top:10px; /*幅の指定と位置調整*/
+	float:left;					/*カラムを左寄せにする*/
+}

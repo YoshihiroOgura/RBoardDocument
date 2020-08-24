@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <link rel="stylesheet" type="text/css" href="main.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  </head>
+  <body>
+    <div id="header"><h1> PG書き込み </h1></div>
+    <div id="main">
+    事前準備として<a href="./ide_install.html">IDEインストール</a>を実施してください。<br>
+    <br>
+    <ul>
+      <li>「File -> New -> Project」をクリック</li>
+      <img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/195542/358d4af8-1d2d-bada-71ad-28cc6ab3d55f.png">
+      <li>プロジェクト名を入力し「OK」をクリック (ここでは『test』)</li>
+      <img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/195542/813921bc-d729-1fbe-c682-9168448dfc02.png">
+      <li>作成したプロジェクトのフォルダを右クリック後、「Add New...」をクリック</li>
+      <img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/195542/270d4fe4-45d0-41f9-dc4a-5eabf2b2d68d.png">
+      <li>追加するRubyファイル名を指定後、「OK」をクリック　(ここでは『test.rb』)</li>
+      <img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/195542/783d4f52-a727-9dec-7470-e21a309f8bb8.png">
+      <li>USBケーブルを使用し、ボードとPCを接続</li>
+      <img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/195542/fcee4b49-8d99-7b9e-3dc1-b0cfbe622210.png">
+      <li>適当なプログラムを記述後「Write」ボタンをクリック。（Start connection....）</li>
+      <li>ボード上のリセットスイッチを押す。(表面実装の場合「RS」,DIPの場合は「SW1」)</li>
+      <li>「<span style="color:LightSeaGreen">The process "Write" exited normally.</span>」と表示されれば完了。</li>
+      <img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/195542/82d04005-70db-d4ad-c640-e3d7bd92665d.png" width="700">
+    </ul>
+    ※プログラムの書き込みが実行されない場合、他でCOMポートを使用している。(ターミナルソフト等)<br>
+　  または書き込み先のCOMポートが異なる場合がある(「Build and Deploy -> Writer」のportを変更)。<br>
+    <img src="https://user-images.githubusercontent.com/24926574/79931711-96e07d00-8486-11ea-8413-b82b60aeccbd.png">
+    </div>
+
+    <div id="submenu">
+      <div id="submenu_header">もくじ</div>
+      <ul id="submenu_body">
+        <li>プログラム書き込み</li>
+        <ul id="subuul">
+          <li><a href="./ide_install.html">mruby/c IDEインストール</a></li>
+          <li><a href="./write_program.html">PG書き込み</a></li>
+        </ul>
+        <li>ファームウェアアップデート</li>
+        <ul id="subuul">
+          <li><a href="https://github.com/YoshihiroOgura/pic32mx170_mrubyc/wiki/アップデート手順">アップデート手順</a></li>
+        </ul>
+        <li>ボードの電気的仕様</li>
+        <ul id="subuul">
+          <li><a href="https://github.com/YoshihiroOgura/pic32mx170_mrubyc/wiki/ピン配置等">ピン配置等</a></li>
+        </ul>
+        <li>RBoardにおける各クラス</li>
+        <ul id="subuul">
+          <li><a href="https://github.com/YoshihiroOgura/pic32mx170_mrubyc/wiki/各クラス">各クラス</a></li>
+        </ul>
+        <li>サンプルプログラム</li>
+        <ul id="subuul">
+        <li><a href="https://github.com/YoshihiroOgura/pic32mx170_mrubyc/wiki/ADCサンプル">ADCサンプル</a></li>
+        <li><a href="https://github.com/YoshihiroOgura/pic32mx170_mrubyc/wiki/I2Cサンプル">I2Cサンプル</a></li>
+        <li><a href="https://github.com/YoshihiroOgura/pic32mx170_mrubyc/wiki/PWMサンプル">PWMサンプル</a></li>
+        <li><a href="https://github.com/YoshihiroOgura/pic32mx170_mrubyc/wiki/UARTサンプル">UARTサンプル</a></li>
+        <li><a href="https://github.com/YoshihiroOgura/pic32mx170_mrubyc/wiki/その他サンプル">その他サンプル</a></li>
+        </ul>
+      </ul>
+    </div>
+  </body>
+</html>

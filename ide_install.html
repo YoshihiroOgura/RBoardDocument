@@ -5,37 +5,23 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
   </head>
   <body>
-    <div id="header"><h1> RBoard </h1></div>
+    <div id="header"><h1> IDEインストール </h1></div>
     <div id="main">
-      <h2> RBoard with PIC32 & mruby/c</h2>
-      <img src = "https://user-images.githubusercontent.com/24926574/88000650-24407580-cb39-11ea-9103-4f8c30e71b3f.png">
-      <h2>はじめに</h2>
-      Welcome to the world of mruby/c<br>
-      mruby/cはCRubyやmrubyと比べ非常にコンパクトなマイコン向け言語です。<br>
-      <br>
-      RBoardはRuby(mruby/c)をマイコンで使ってみたい！という人のための入門ボードです。<br>
-      できる限り低レイヤー的実装をしており様々なセンサーに対応できます。<br>
-      <br>
-      mruby/cを標準で搭載しているためMPLABX等専用IDEを使用する必要なくmruby/cIDEによる開発が可能です。<br>
-      <br>
-      また、GROVEポートを搭載しているためはんだ付け無しでも様々なセンサ・アクチュエータを使用できます。<br>
-      <br>
-      ※マルチタスクは3ファイルまで<br>
-  　　 →最新バージョンにて複数ファイル対応済み<br>
-      ※最新バージョンではmruby/c2.0にも対応済み<br>
-      <br>
-      各バージョンに関する情報はリリースページへ=><br>
-      <a href="https://github.com/YoshihiroOgura/pic32mx170_mrubyc/releases">リリースページ</a><br>
-      <br>
-      <h2>回路図等基板データ</h2>
-      <b>License</b>：CC-BY-NC-SA 3.0<br>
-      <a href="https://easyeda.com/YoshihiroOgura/rboard">https://easyeda.com/YoshihiroOgura/rboard</a><br>
-      <br>
-      <h2>その他</h2>
-      ご質問等はIssuesにておねがいいたします。
-    </div>
+			<ul>
+				<li><a href="https://www.s-itoc.jp/activity/research/mrubyc/mrubyc_download/">mruby/c IDE</a>をダウンロード後、解凍</li>
+				<li>mruby/c IDEの解凍したフォルダのmrubyc_ide.exeを起動</li>
+				<li>上部タブの「File -> Settings...」をクリック</li>
+				<img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/195542/bbf4a521-6254-bb97-98ee-9ded21d28cbe.png">
+				<li>「Build and Deploy -> Cmpiler」の「mrbc」項目にmrubyコンパイラ1.4を解凍したフォルダ内にある「mrbc.exe」のpathを指定</li>
+				<img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/195542/ae9435e3-cb8d-7523-0e81-9d570d34eb6b.png">
+				<li>「Build and Deploy -> Writer」の「mrbwrite」項目にmruby/c IDEを解凍したフォルダ内にある「mrbwrite.exe」のpathを指定</li>
+				<li>「Build and Deploy -> Writer」の「Options」項目に「-s 19200」と書き込み、「Apply」、「OK」をクリック</li>
+				<img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/195542/265319b6-b071-03f4-2647-22c9e93bc958.png">
+			</ul>
+		</div>
 
-    <div id="submenu">
+
+		<div id="submenu">
       <div id="submenu_header">もくじ</div>
       <ul id="submenu_body">
         <li>プログラム書き込み</li>
@@ -64,7 +50,6 @@
         <li><a href="https://github.com/YoshihiroOgura/pic32mx170_mrubyc/wiki/その他サンプル">その他サンプル</a></li>
         </ul>
       </ul>
-    </div>
-
-  </body>
+		</div>
+	</body>
 </html>
