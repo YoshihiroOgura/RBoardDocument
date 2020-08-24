@@ -5,37 +5,35 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
   </head>
   <body>
-    <div id="header"><h1> RBoard </h1></div>
+	<div id="header"><h1> ピン配置等 </h1></div>
     <div id="main">
-      <h2> RBoard with PIC32 & mruby/c</h2>
-      <img src = "https://user-images.githubusercontent.com/24926574/88000650-24407580-cb39-11ea-9103-4f8c30e71b3f.png">
-      <h2>はじめに</h2>
-      Welcome to the world of mruby/c<br>
-      mruby/cはCRubyやmrubyと比べ非常にコンパクトなマイコン向け言語です。<br>
-      <br>
-      RBoardはRuby(mruby/c)をマイコンで使ってみたい！という人のための入門ボードです。<br>
-      できる限り低レイヤー的実装をしており様々なセンサーに対応できます。<br>
-      <br>
-      mruby/cを標準で搭載しているためMPLABX等専用IDEを使用する必要なくmruby/cIDEによる開発が可能です。<br>
-      <br>
-      また、GROVEポートを搭載しているためはんだ付け無しでも様々なセンサ・アクチュエータを使用できます。<br>
-      <br>
-      ※マルチタスクは3ファイルまで<br>
-  　　 →最新バージョンにて複数ファイル対応済み<br>
-      ※最新バージョンではmruby/c2.0にも対応済み<br>
-      <br>
-      各バージョンに関する情報はリリースページへ=><br>
-      <a href="https://github.com/YoshihiroOgura/pic32mx170_mrubyc/releases">リリースページ</a><br>
-      <br>
-      <h2>回路図等基板データ</h2>
-      <b>License</b>：CC-BY-NC-SA 3.0<br>
-      <a href="https://easyeda.com/YoshihiroOgura/rboard">https://easyeda.com/YoshihiroOgura/rboard</a><br>
-      <br>
-      <h2>その他</h2>
-      ご質問等はIssuesにておねがいいたします。
-    </div>
-
-    <div id="submenu">
+			<h2>表面実装</h2>
+			<img width="100%" src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/195542/b17839d6-f5c1-8958-d505-549622740da7.png">
+			<hr>
+			<h2>DIP、表面実装(旧)</h2>
+			<img width="100%" src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/195542/18e36ce0-0160-a78c-4440-7ecdf699063e.png">
+			PWM：pin2、pin12、pin16、pin18<br>
+			デジタル信号のGROVEセンサ・モジュールはADC・UARTのポートでもご使用いただけます。<br>
+			<span style="color:rgb(255, 0, 0)">※I2CピンはDigitalIOとして使用できない</span>
+			GROVEコネクタからSparkFunのQwiicを使用することもできます。<br>
+			<a href="https://www.switch-science.com/catalog/5327/">GROVE=>Qwiic変換ケーブル</a><br>
+			ピン配置確認用シールデータ(A4サイズ)：<a href="https://drive.google.com/file/d/14RqoCmJ6SMTae6Wt1eQ4h4W8mfWR998x/view?usp=sharing">ダウンロード</a><br>
+			レッド：3.3V<br>
+			ブラック：GND<br>
+			ホワイト：NC<br>
+			スカイブルー：ピン<br>
+			オレンジ：ADC<br>
+			ブラウン：PWM<br>
+			ブルー：UART<br>
+			グリーン：I2C<br>
+			グレー：オンボードLED<br>
+			ピンク：オンボードスイッチ<br>
+			<h2>電気的仕様</h2>
+			入力電圧：3.3V~12V(USB)<br>
+			動作電圧：3.3V<br>
+		</div>
+		
+		<div id="submenu">
       <div id="submenu_header">もくじ</div>
       <ul id="submenu_body">
         <li>プログラム書き込み</li>
@@ -65,6 +63,5 @@
         </ul>
       </ul>
     </div>
-
   </body>
 </html>
