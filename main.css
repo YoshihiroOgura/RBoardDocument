@@ -15,28 +15,38 @@ div#pagebody {
 	text-align:left;	/*テキストの配置を左揃えにする*/
 	background-color:#ffffff;		/*内容全体の背景色*/
 }
+h3 {
+	color: rgb(0, 7, 104);					/*カラムを左寄せにする*/
+}
+
+code {
+	max-height: 350px;
+}
 
 /*============================================
 ヘッダ
 ============================================*/
 div#header {
 	height:77px;
-	background-color:#cccccc;		/*ヘッダ部分の背景色*/
+	width: 100%;
+	position: fixed;
+	background-color:#51d6ff8f;		/*ヘッダ部分の背景色*/
 }
 h1 {
 	padding:20px 0px 0px 30px;		/*見出し内容の位置調整*/
 	font-family:Arial, Helvetica, sans-serif;	/*フォントの種類*/
 }
-
 /*============================================
-サブメニュー（左カラム）
+サブメニュー
 ============================================*/
 div#submenu {
 	width: 25%;			/*幅の指定*/
 	margin:10px 10px 10px 0px;
 	display:inline;
-	float:right;
+	top:80px;
+	right:20px;
 	background-color:#e6e6e6;
+	position: fixed;
 }
 
 /*サブメニューのヘッダ部分（余白調整・背景画像・背景色・文字サイズなど）*/
@@ -63,14 +73,9 @@ ul#subuul {
 メイン（中央カラム）
 ============================================*/
 div#main {
+	position:relative;
+	top: 100px;
 	padding:25px;
 	width:60%; margin-right:5px; padding-top:10px; /*幅の指定と位置調整*/
 	float:left;					/*カラムを左寄せにする*/
-}
-h3 {
-	color: rgb(0, 7, 104);					/*カラムを左寄せにする*/
-}
-
-code {
-	max-height: 350px;
 }

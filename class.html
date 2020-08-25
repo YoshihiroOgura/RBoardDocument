@@ -10,12 +10,12 @@
   <body>
     <div id="header"><h1> Class </h1></div>
     <div id="main">
-			<h2>Ruby</h2>
+			<h2 id="Ruby">Ruby</h2>
 			mruby/cにて対応しているRubyのクラスについては下記公式URLをご参照ください。<br>
 			<a href="https://www.s-itoc.jp/activity/research/mrubyc/mrubyc_docs/library">
 			https://www.s-itoc.jp/activity/research/mrubyc/mrubyc_docs/library</a>
 			<hr>
-			<h2>ADC</h2>
+			<h2 id="ADC">ADC</h2>
 			<h3>start</h3>
 			ADCスタート<br>
 			<h3>stop</h3>
@@ -31,7 +31,7 @@
 			channel：0～7<br>
 
 			<hr>
-			<h2>I2C</h2>
+			<h2 id="I2C">I2C</h2>
 			<h3>write(sl_addr, addr, data1, data2,,,,)</h3>
 			i2c書き込み<br>
 			sl_addr：スレーブのアドレス<br>
@@ -44,11 +44,17 @@
 			size：読み込むデータのサイズ<br>
 
 			<hr>
-			<h2>PWM</h2>
+			<h2 id="PWM">PWM</h2>
 			<h3>new</h3>
 			<h3>cycle(time,double)</h3>
 			周期設定<br>
 			time：1～65535‬(1=0.1us)<br>
+      <form oninput="opt1.value = 1 / a1.valueAsNumber * 1000000">
+        1(s)÷
+        <input type="number" name="a1" value="0"size="10"placeholder="周波数">
+        (Hz)×10000000=
+        <output name="opt1"></output>us
+      </form>
 			double：倍率(0～7)<br>
 			<table border="1">
 				<tr>
@@ -128,7 +134,7 @@
 			</table>
 
 			<hr>
-			<h2>Timer</h2>
+			<h2 id="Timer">Timer</h2>
 			<h3>start</h3>
 			<h3>stop</h3>
 			<h3>set(time,double)</h3>
@@ -178,7 +184,7 @@
 			戻り値：0～255
 
 			<hr>
-			<h2>UART</h2>
+			<h2 id="UART">UART</h2>
 			<h3>new(baud)</h3>
 			19200を基準としているため、これ以上の値を設定するとかなりデータが欠損する。<br>
 			baud：ボーレート値（例：19200）<br>
@@ -192,12 +198,12 @@
 			受信文字列のバッファ初期化(mruby/c2.0)
 
 			<hr>
-			<h2>Math</h2>
+			<h2 id="Math">Math</h2>
 			<a href="https://github.com/YoshihiroOgura/pic32mx170_mrubyc/blob/a0542f4fb76b2f3e1ba6e5078c9e3fc3a7164865/src/c_math.c#L240">
 			https://github.com/YoshihiroOgura/pic32mx170_mrubyc/blob/a0542f4fb76b2f3e1ba6e5078c9e3fc3a7164865/src/c_math.c#L240</a>
 
 			<hr>
-			<h2>その他</h2>
+			<h2 id="ETC">その他</h2>
 			<h3>leds_write(bit)</h3>
 			led制御<br>
 			bit : 整数<br>
@@ -293,7 +299,18 @@
 				<ul id="subuul">
           <li><a href="./console.html">ターミナルソフトの設定</a></li>
         </ul>
-      </ul>
+			</ul>
+			<div id="submenu_header">Class</div>
+			<ul id="submenu_body">
+				<li><a href="#Ruby">Ruby</a></li>
+				<li><a href="#ADC">ADC</a></li>
+				<li><a href="#I2C">I2C</a></li>
+				<li><a href="#PWM">PWM</a></li>
+				<li><a href="#Timer">Timer</a></li>
+				<li><a href="#UART">UART</a></li>
+				<li><a href="#Math">Math</a></li>
+				<li><a href="#ETC">その他</a></li>
+			</ul>
     </div>
 	</body>
 </html>

@@ -10,8 +10,6 @@
   <body>
     <div id="header"><h1> I2Cサンプル </h1></div>
     <div id="main">
-      周波数から0.1us単位へ変換する式<br>
-      us = 1(s)/周波数(Hz)*10000000
 			<h3>PWM(外部LED)</h3>
 			<pre><code  class="ruby">
 PWM.new()
@@ -51,7 +49,7 @@ while true
 end
 			</code></pre>
 			<h3>簡易mml再生</h3>
-			<pre><code  class="ruby">
+			<pre><code  class="ruby"><![CDATA[
 TBL_FREQ = [0x95A, 0x84D, 0x76A, 0x6EF, 0x639, 0x58C, 0x4F3,
             0x4AB, 0x428, 0x3B4, 0x37F, 0x31D, 0x2BF, 0x278]
 TBL_LENGTH = {1=>2000, 2=>1000, 4=>500, 8=>250}
@@ -130,7 +128,7 @@ end
 ​
 mml3 = "<C8DE4>C8DE4<C8DE4>C8DE4<C8DE4>C8DE4<E8FG4EDC A8AAFDDEFGGGEC4R8 EF4>A<C8>BAB<C2"
 ​
-play mml3
+play mml3]]>
 			</code></pre>
 			<h3>SG90(サーボモータ)</h3>
 			http://akizukidenshi.com/catalog/g/gM-08761/
@@ -148,42 +146,43 @@ while true
   sleep 1
 end
 			</code></pre>
-        </div>
+      </div>
         
-        <div id="submenu">
-			<div id="submenu_header">もくじ</div>
-			<a href="./index.html">HOME</a>
-      <ul id="submenu_body">
-        <li>プログラム書き込み</li>
-        <ul id="subuul">
-          <li><a href="./ide_install.html">mruby/c IDEインストール</a></li>
-          <li><a href="./write_program.html">PG書き込み</a></li>
+      <div id="submenu">
+        <div id="submenu_header">もくじ</div>
+        <a href="./index.html">HOME</a>
+        <ul id="submenu_body">
+          <li>プログラム書き込み</li>
+          <ul id="subuul">
+            <li><a href="./ide_install.html">mruby/c IDEインストール</a></li>
+            <li><a href="./write_program.html">PG書き込み</a></li>
+          </ul>
+          <li>ファームウェアアップデート</li>
+          <ul id="subuul">
+            <li><a href="./update.html">アップデート手順</a></li>
+          </ul>
+          <li>ボードの電気的仕様</li>
+          <ul id="subuul">
+            <li><a href="./pin.html">ピン配置等</a></li>
+          </ul>
+          <li>RBoardにおける各クラス</li>
+          <ul id="subuul">
+            <li><a href="./class.html">各クラス</a></li>
+          </ul>
+          <li>サンプルプログラム</li>
+          <ul id="subuul">
+            <li><a href="./adc.html">ADCサンプル</a></li>
+            <li><a href="./i2c.html">I2Cサンプル</a></li>
+            <li><a href="./pwm.html">PWMサンプル</a></li>
+            <li><a href="./uart.html">UARTサンプル</a></li>
+            <li><a href="./etc.html">その他サンプル</a></li>
+          </ul>
+          <li>その他</li>
+          <ul id="subuul">
+            <li><a href="./console.html">ターミナルソフトの設定</a></li>
+          </ul>
         </ul>
-        <li>ファームウェアアップデート</li>
-        <ul id="subuul">
-          <li><a href="./update.html">アップデート手順</a></li>
-        </ul>
-        <li>ボードの電気的仕様</li>
-        <ul id="subuul">
-          <li><a href="./pin.html">ピン配置等</a></li>
-        </ul>
-        <li>RBoardにおける各クラス</li>
-        <ul id="subuul">
-          <li><a href="./class.html">各クラス</a></li>
-        </ul>
-        <li>サンプルプログラム</li>
-        <ul id="subuul">
-        <li><a href="./adc.html">ADCサンプル</a></li>
-        <li><a href="./i2c.html">I2Cサンプル</a></li>
-        <li><a href="./pwm.html">PWMサンプル</a></li>
-        <li><a href="./uart.html">UARTサンプル</a></li>
-        <li><a href="./etc.html">その他サンプル</a></li>
-        </ul>
-        <li>その他</li>
-				<ul id="subuul">
-          <li><a href="./console.html">ターミナルソフトの設定</a></li>
-        </ul>
-      </ul>
+      </div>
     </div>
 	</body>
 </html>
