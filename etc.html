@@ -8,50 +8,63 @@
     <script type="text/javascript" src="./style.js"></script>
   </head>
   <body>
-    <div id="header"><h1> ADCサンプル </h1></div>
+    <div id="header"><h1> その他サンプル </h1></div>
     <div id="main">
-			<h3>サーミスタ温度センサ</h3>
-      温度センサ：<a href="http://wiki.seeedstudio.com/Grove-Temperature_Sensor_V1.2/">http://wiki.seeedstudio.com/Grove-Temperature_Sensor_V1.2/</a><br>
-      <pre><code  class="ruby">
-adc = ADC.new()
-adc.ch(7)
-temp = 0
-while true
-    adc.start
-    a = adc.read_v
-    adc.stop
-    a = (3.3 / a)-1
-    temp = 1.0/(Math.log(a)/4275+1/298.15)-273.15
-    sleep(1)
-    puts("ans:" + temp.to_s)
-end
-      </code></pre>
-
-			<h3>ボリューム制御</h3>
-			ボリュームを使用したLEDの明るさ制御<br>
-			LED:<a href="https://www.switch-science.com/catalog/1251/">https://www.switch-science.com/catalog/1251/</a><br>
-			ボリューム：<a href="https://www.switch-science.com/catalog/805/">https://www.switch-science.com/catalog/805/</a><br>
+			<h3>Lチカ(オンボードLED)</h3>
 			<pre><code  class="ruby">
-adc = ADC.new()
-adc.ch(7)
-PWM.new()
-PWM.pin(16)
-PWM.start(2)
-PWM.cycle(0x95A,4)
 while true
-    adc.start
-    a = adc.read_v
-    adc.stop
-    # adc値 × 100％ ÷ adcの最大値
-    a = (a*100/3.3).to_i
-    PWM.rate(a,2)
+  leds_write(1)
+  sleep(1)
+  leds_write(0)
+  sleep(1)
 end
-      </code></pre>
-		</div>
-		
-		<div id="submenu">
-      <div id="submenu_header">もくじ</div>
-      <a href="./index.html">HOME</a>
+			</code></pre>
+			<pre><code  class="ruby">
+pinMode(0,0)
+while true
+  digitalWrite(0,1)
+  sleep 1
+  digitalWrite(0,0)
+  sleep 1
+end
+			</code></pre>
+			<h3>Lチカ(外部LED)</h3>
+			<pre><code  class="ruby">
+pinMode(20,0)
+while true
+  digitalWrite(20,1)
+  sleep 1
+  digitalWrite(20,0)
+  sleep 1
+end
+			</code></pre>
+			<h3>外部入力(DigitalGROVE)</h3>
+			http://wiki.seeedstudio.com/Grove-Button/
+			<pre><code  class="ruby">
+pinMode(0,0)
+pinMode(16,1)
+while true
+  leds_write(digitalRead(16))
+end
+			</code></pre>
+			<h3>7セグメントLED</h3>
+			74HC4511を使用するとleds_write(0,1,5,6pin)から簡単に出力できる。
+			<pre><code  class="ruby">
+j = 0
+while true
+  leds_write(j)
+  j = j + 1
+  if(j==10)
+    j = 0
+  end
+  sleep(1)
+end
+			</code></pre>
+        </div>
+        
+      <div id="submenu">
+			<div id="submenu_header">もくじ</div>
+			<a href="./index.html">HOME</a>
       <ul id="submenu_body">
         <li>プログラム書き込み</li>
         <ul id="subuul">
@@ -80,5 +93,5 @@ end
         </ul>
       </ul>
     </div>
-  </body>
+	</body>
 </html>
