@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <link rel="stylesheet" type="text/css" href="main.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/a11y-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/highlight.min.js"></script>
+    <script type="text/javascript" src="./style.js"></script>
+  </head>
+  <body>
+    <div id="header"><h1> Class </h1></div>
+    <div id="main">
+			<h2>Ruby</h2>
+			mruby/cにて対応しているRubyのクラスについては下記公式URLをご参照ください。<br>
+			<a href="https://www.s-itoc.jp/activity/research/mrubyc/mrubyc_docs/library">
+			https://www.s-itoc.jp/activity/research/mrubyc/mrubyc_docs/library</a>
+			<hr>
+			<h2>ADC</h2>
+			<h3>start</h3>
+			ADCスタート<br>
+			<h3>stop</h3>
+			ADCストップ<br>
+			<h3>read</h3>
+			取得値整数出力<br>
+			戻り値：0～1023(0~3.3V)<br>
+			<h3>read_v</h3>
+			取得値電圧出力<br>
+			戻り値：0～3.3<br>
+			<h3>ch(channel)</h3>
+			使用するポート指定<br>
+			channel：0～7<br>
+
+			<hr>
+			<h2>I2C</h2>
+			<h3>write(sl_addr, addr, data1, data2,,,,)</h3>
+			i2c書き込み<br>
+			sl_addr：スレーブのアドレス<br>
+			addr：書き込み対象のアドレス<br>
+			data：書き込むデータ<br>
+			<h3>read(sl_addr, addr, size)</h3>
+			i2c読み込み<br>
+			sl_addr：スレーブのアドレス<br>
+			addr：読み込み対象のアドレス<br>
+			size：読み込むデータのサイズ<br>
+
+			<hr>
+			<h2>PWM</h2>
+			<h3>new</h3>
+			<h3>cycle(time,double)</h3>
+			周期設定<br>
+			time：1～65535‬(1=0.1us)<br>
+			double：倍率(0～7)<br>
+			<table border="1">
+				<tr>
+					<th>整数</th>
+					<th>倍率</th>
+				</tr>
+				<tr>
+					<td>0</td>
+					<td>1</td>
+				</tr>
+				<tr>
+					<td>1</td>
+					<td>2</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>4</td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>8</td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td>16</td>
+				</tr>
+				<tr>
+					<td>5</td>
+					<td>32</td>
+				</tr>
+				<tr>
+					<td>6</td>
+					<td>64</td>
+				</tr>
+				<tr>
+					<td>7</td>
+					<td>256</td>
+				</tr>
+			</table>
+			<h3>rate(p,ch)</h3>
+			p：パーセント<br>
+			ch：使用チャンネル(1～5)<br>
+			<h3>start(ch)</h3>
+			PWMスタート<br>
+			ch：使用チャンネル(1～5)<br>
+			<h3>stop(ch)</h3>
+			PWMストップ<br>
+			ch：使用チャンネル(1～5)<br>
+			<h3>pin(pin)</h3>
+			使用するPWMpinの指定<br>
+			pin(2,12,16,18)<br>
+			<table border="1">
+				<tr>
+					<th>ch</th>
+					<th>pin</th>
+				</tr>
+				<tr>
+					<td>1</td>
+					<td>12</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>16</td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td>18</td>
+				</tr>
+				<tr>
+					<td>5</td>
+					<td>2</td>
+				</tr>
+			</table>
+
+			<hr>
+			<h2>Timer</h2>
+			<h3>start</h3>
+			<h3>stop</h3>
+			<h3>set(time,double)</h3>
+			time：1～65535‬(1=0.1us)<br>
+			double：整数(倍率)<br>
+			<table border="1">
+				<tr>
+					<th>整数</th>
+					<th>倍率</th>
+				</tr>
+				<tr>
+					<td>0</td>
+					<td>1</td>
+				</tr>
+				<tr>
+					<td>1</td>
+					<td>2</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>4</td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>8</td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td>16</td>
+				</tr>
+				<tr>
+					<td>5</td>
+					<td>32</td>
+				</tr>
+				<tr>
+					<td>6</td>
+					<td>64</td>
+				</tr>
+				<tr>
+					<td>7</td>
+					<td>256</td>
+				</tr>
+			</table>
+
+			<h3>count_clear</h3>
+			<h3>count_get</h3>
+			戻り値：0～255
+
+			<hr>
+			<h2>UART</h2>
+			<h3>new(baud)</h3>
+			19200を基準としているため、これ以上の値を設定するとかなりデータが欠損する。<br>
+			baud：ボーレート値（例：19200）<br>
+			<h3>gets</h3>
+			文字列受信<br>
+			<h3>puts(text)</h3>
+			文字列送信<br>
+			text：文字列
+
+			<h3>clear_buffer</h3>
+			受信文字列のバッファ初期化(mruby/c2.0)
+
+			<hr>
+			<h2>Math</h2>
+			<a href="https://github.com/YoshihiroOgura/pic32mx170_mrubyc/blob/a0542f4fb76b2f3e1ba6e5078c9e3fc3a7164865/src/c_math.c#L240">
+			https://github.com/YoshihiroOgura/pic32mx170_mrubyc/blob/a0542f4fb76b2f3e1ba6e5078c9e3fc3a7164865/src/c_math.c#L240</a>
+
+			<hr>
+			<h2>その他</h2>
+			<h3>leds_write(bit)</h3>
+			led制御<br>
+			bit : 整数<br>
+			<table border="1">
+				<tr>
+					<th>led</th>
+					<th>10進数</th>
+					<th>2進数</th>
+				</tr>
+				<tr>
+					<td>1</td>
+					<td>1</td>
+					<td>0b0001</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>2</td>
+					<td>0b0010</td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>4</td>
+					<td>0b0100</td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td>8</td>
+					<td>0b1000</td>
+				</tr>
+			</table>
+
+			<h3>sw()</h3>
+			スイッチの状態読み込み<br>
+			戻り値：0 or 1<br>
+
+			<h3>pinMode(pin,mode)</h3>
+			pin：0～20<br>
+			mode：0(出力) or 1(入力)<br>
+
+			<h3>pinPull(pin,mode)</h3>
+			内部抵抗選択(mruby/c2.0)<br>
+			pin：0～20<br>
+			mode：-1(pull down) or 0(pull無し) or 1(pull up)<br>
+
+			<h3>pinInit</h3>
+			すべてのピン設定を初期状態へ戻す。
+
+			<h3>digitalWrite(pin,mode)</h3>
+			pin：0～20<br>
+			mode：0(OFF) or 1(ON)<br>
+
+			<h3>digitalRead(pin)</h3>
+			指定ピンの状態読み込み<br>
+			pin：0～20<br>
+			戻り値：0(OFF) or 1(ON)<br>
+
+			<h3>puts(txt)</h3>
+			文字列出力<br>
+			ターミナルソフトの設定については<a href="https://github.com/YoshihiroOgura/pic32mx170_mrubyc/wiki/ターミナルソフトの設定(puts)">こちら</a>
+			txt：文字列
+		</div>
+
+		<div id="submenu">
+			<div id="submenu_header">もくじ</div>
+			<a href="./index.html">HOME</a>
+      <ul id="submenu_body">
+        <li>プログラム書き込み</li>
+        <ul id="subuul">
+          <li><a href="./ide_install.html">mruby/c IDEインストール</a></li>
+          <li><a href="./write_program.html">PG書き込み</a></li>
+        </ul>
+        <li>ファームウェアアップデート</li>
+        <ul id="subuul">
+          <li><a href="./update.html">アップデート手順</a></li>
+        </ul>
+        <li>ボードの電気的仕様</li>
+        <ul id="subuul">
+          <li><a href="./pin.html">ピン配置等</a></li>
+        </ul>
+        <li>RBoardにおける各クラス</li>
+        <ul id="subuul">
+          <li><a href="./class.html">各クラス</a></li>
+        </ul>
+        <li>サンプルプログラム</li>
+        <ul id="subuul">
+        <li><a href="./adc.html">ADCサンプル</a></li>
+        <li><a href="./i2c.html">I2Cサンプル</a></li>
+        <li><a href="./pwm.html">PWMサンプル</a></li>
+        <li><a href="./uart.html">UARTサンプル</a></li>
+        <li><a href="./etc.html">その他サンプル</a></li>
+        </ul>
+      </ul>
+    </div>
+	</body>
+</html>
