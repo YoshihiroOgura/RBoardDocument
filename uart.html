@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <link rel="stylesheet" type="text/css" href="main.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/a11y-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/highlight.min.js"></script>
+    <script type="text/javascript" src="./style.js"></script>
+  </head>
+  <body>
+    <div id="header"><h1> UARTサンプル </h1></div>
+    <div id="main">
+			<h3>im920s</h3>
+			http://akizukidenshi.com/catalog/g/gM-13566/
+			<h4>文字列送信</h4>
+			<pre><code  class="ruby">
+UART.new(19200)
+while true
+  UART.puts("TXDA " + (23).to_s + "\r\n")
+  sleep(5)
+end
+			</code></pre>
+			<h4>文字列受信</h4>
+			<pre><code  class="ruby">
+UART.new(19200)
+while true
+  puts(UART.gets())
+  sleep(5)
+end
+			</code></pre>
+			<h3>wifiやBluetoothを使用してIOTしたい</h3>
+			今後検証予定(下記モジュールであれば技適取得済み)<br>
+			Wifi:
+			https://www.switch-science.com/catalog/5795/<br>
+			Bluetooth:
+			https://www.switch-science.com/catalog/5794/
+        </div>
+        
+        <div id="submenu">
+			<div id="submenu_header">もくじ</div>
+			<a href="./index.html">HOME</a>
+            <ul id="submenu_body">
+                <li>プログラム書き込み</li>
+                <ul id="subuul">
+                <li><a href="./ide_install.html">mruby/c IDEインストール</a></li>
+                <li><a href="./write_program.html">PG書き込み</a></li>
+                </ul>
+                <li>ファームウェアアップデート</li>
+                <ul id="subuul">
+                <li><a href="./update.html">アップデート手順</a></li>
+                </ul>
+                <li>ボードの電気的仕様</li>
+                <ul id="subuul">
+                <li><a href="./pin.html">ピン配置等</a></li>
+                </ul>
+                <li>RBoardにおける各クラス</li>
+                <ul id="subuul">
+                <li><a href="https://github.com/YoshihiroOgura/pic32mx170_mrubyc/wiki/各クラス">各クラス</a></li>
+                </ul>
+                <li>サンプルプログラム</li>
+                <ul id="subuul">
+                <li><a href="./adc.html">ADCサンプル</a></li>
+                <li><a href="./i2c.html">I2Cサンプル</a></li>
+                <li><a href="./pwm.html">PWMサンプル</a></li>
+                <li><a href="./uart.html">UARTサンプル</a></li>
+                <li><a href="https://github.com/YoshihiroOgura/pic32mx170_mrubyc/wiki/その他サンプル">その他サンプル</a></li>
+                </ul>
+            </ul>
+		</div>
+	</body>
+</html>
