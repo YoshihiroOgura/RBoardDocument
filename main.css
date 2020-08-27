@@ -34,7 +34,7 @@ div#header {
 }
 h1 {
 	padding:20px 0px 0px 30px;		/*見出し内容の位置調整*/
-	font-family:Arial, Helvetica, sans-serif;	/*フォントの種類*/
+	font-weight: bold;
 }
 /*============================================
 サブメニュー
