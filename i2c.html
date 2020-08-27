@@ -5,7 +5,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/a11y-dark.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/highlight.min.js"></script>
-    <script type="text/javascript" src="./style.js"></script>
+	<script type="text/javascript" src="./style.js"></script>
+	<link href="https://use.fontawesome.com/releases/v5.11.0/css/all.css" rel="stylesheet">
   </head>
   <body>
     <div id="header"><h1> I2Cサンプル </h1></div>
@@ -22,6 +23,7 @@ while true
 	sleep(5)
 end
 			</code></pre>
+			<hr id="first_boader">
 			<h3>モータードライバ(DRV8830)</h3>
 			https://www.switch-science.com/catalog/2510/
 			<pre><code class="ruby">
@@ -58,6 +60,7 @@ def control(speed,status)
 end
 end
 			</code></pre>
+			<hr id="first_boader">
 			<h3>サーボモータードライバ(PCA9685)</h3>
 			https://www.amazon.co.jp/dp/B01D1D0CX2
 			<pre><code class="ruby">
@@ -112,6 +115,7 @@ while true
 	sleep(2)
 end
 			</code></pre>
+			<hr id="first_boader">
 			<h3>OLED</h3>
 			https://www.switch-science.com/catalog/829/<br>
 			ASCIIコード<br>
@@ -286,8 +290,8 @@ oled.send(picture)
 		</div>
 		<div id="submenu">
 			<div id="submenu_header">もくじ</div>
-			<a href="./index.html">HOME</a>
 			<ul id="submenu_body">
+				<i class="fas fa-home"></i><a href="./index.html">HOME</a>
 				<li>プログラム書き込み</li>
 				<ul id="subuul">
 					<li><a href="./ide_install.html">mruby/c IDEインストール</a></li>

@@ -3,13 +3,14 @@
   <head>
     <link rel="stylesheet" type="text/css" href="main.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link href="https://use.fontawesome.com/releases/v5.11.0/css/all.css" rel="stylesheet">
   </head>
   <body>
     <div id="header"><h1> PG書き込み </h1></div>
     <div id="main">
     事前準備として<a href="./ide_install.html">IDEインストール</a>を実施してください。<br>
     <br>
-    <ul>
+    <ol>
       <li>「File -> New -> Project」をクリック</li>
       <img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/195542/358d4af8-1d2d-bada-71ad-28cc6ab3d55f.png">
       <li>プロジェクト名を入力し「OK」をクリック (ここでは『test』)</li>
@@ -24,7 +25,7 @@
       <li>ボード上のリセットスイッチを押す。(表面実装の場合「RS」,DIPの場合は「SW1」)</li>
       <li>「<span style="color:LightSeaGreen">The process "Write" exited normally.</span>」と表示されれば完了。</li>
       <img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/195542/82d04005-70db-d4ad-c640-e3d7bd92665d.png" width="700">
-    </ul>
+    </ol>
     ※プログラムの書き込みが実行されない場合、他でCOMポートを使用している。(ターミナルソフト等)<br>
 　  または書き込み先のCOMポートが異なる場合がある(「Build and Deploy -> Writer」のportを変更)。<br>
     <img src="https://user-images.githubusercontent.com/24926574/79931711-96e07d00-8486-11ea-8413-b82b60aeccbd.png">
@@ -32,8 +33,8 @@
 
     <div id="submenu">
       <div id="submenu_header">もくじ</div>
-      <a href="./index.html">HOME</a>
       <ul id="submenu_body">
+        <i class="fas fa-home"></i><a href="./index.html">HOME</a>
         <li>プログラム書き込み</li>
         <ul id="subuul">
           <li><a href="./ide_install.html">mruby/c IDEインストール</a></li>

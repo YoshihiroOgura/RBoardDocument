@@ -6,9 +6,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/a11y-dark.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/highlight.min.js"></script>
     <script type="text/javascript" src="./style.js"></script>
+    <link href="https://use.fontawesome.com/releases/v5.11.0/css/all.css" rel="stylesheet">
   </head>
   <body>
-    <div id="header"><h1> I2Cサンプル </h1></div>
+    <div id="header"><h1> PWMサンプル </h1></div>
     <div id="main">
 			<h3>PWM(外部LED)</h3>
 			<pre><code  class="ruby">
@@ -24,7 +25,8 @@ while true
   PWM.rate(20,2)
   sleep 1
 end
-			</code></pre>
+      </code></pre>
+      <hr id="first_boader">
 			<h3>圧電ブザー</h3>
 			http://wiki.seeedstudio.com/Grove-Buzzer/
 			<pre><code  class="ruby">
@@ -48,7 +50,7 @@ while true
   sleep 1
 end
 			</code></pre>
-			<h3>簡易mml再生</h3>
+			<h4>簡易mml再生</h4>
 			<pre><code  class="ruby"><![CDATA[
 TBL_FREQ = [0x95A, 0x84D, 0x76A, 0x6EF, 0x639, 0x58C, 0x4F3,
             0x4AB, 0x428, 0x3B4, 0x37F, 0x31D, 0x2BF, 0x278]
@@ -129,7 +131,8 @@ end
 mml3 = "<C8DE4>C8DE4<C8DE4>C8DE4<C8DE4>C8DE4<E8FG4EDC A8AAFDDEFGGGEC4R8 EF4>A<C8>BAB<C2"
 ​
 play mml3]]>
-			</code></pre>
+      </code></pre>
+      <hr id="first_boader">
 			<h3>SG90(サーボモータ)</h3>
 			http://akizukidenshi.com/catalog/g/gM-08761/
 			<pre><code  class="ruby">
@@ -150,8 +153,8 @@ end
         
       <div id="submenu">
         <div id="submenu_header">もくじ</div>
-        <a href="./index.html">HOME</a>
         <ul id="submenu_body">
+          <i class="fas fa-home"></i><a href="./index.html">HOME</a>
           <li>プログラム書き込み</li>
           <ul id="subuul">
             <li><a href="./ide_install.html">mruby/c IDEインストール</a></li>

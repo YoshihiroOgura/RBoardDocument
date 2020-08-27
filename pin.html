@@ -3,13 +3,14 @@
   <head>
     <link rel="stylesheet" type="text/css" href="main.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link href="https://use.fontawesome.com/releases/v5.11.0/css/all.css" rel="stylesheet">
   </head>
   <body>
 	<div id="header"><h1> ピン配置等 </h1></div>
     <div id="main">
 			<h2>表面実装</h2>
 			<img width="100%" src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/195542/b17839d6-f5c1-8958-d505-549622740da7.png">
-			<hr>
+			<hr id="second_boader">
 			<h2>DIP、表面実装(旧)</h2>
 			<img width="100%" src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/195542/18e36ce0-0160-a78c-4440-7ecdf699063e.png">
 			PWM：pin2、pin12、pin16、pin18<br>
@@ -27,7 +28,8 @@
 			ブルー：UART<br>
 			グリーン：I2C<br>
 			グレー：オンボードLED<br>
-			ピンク：オンボードスイッチ<br>
+      ピンク：オンボードスイッチ<br>
+      <hr id="first_boader">
 			<h2>電気的仕様</h2>
 			入力電圧：3.3V~12V(USB)<br>
 			動作電圧：3.3V<br>
@@ -35,8 +37,8 @@
 		
 		<div id="submenu">
 			<div id="submenu_header">もくじ</div>
-			<a href="./index.html">HOME</a>
       <ul id="submenu_body">
+        <i class="fas fa-home"></i><a href="./index.html">HOME</a>
         <li>プログラム書き込み</li>
         <ul id="subuul">
           <li><a href="./ide_install.html">mruby/c IDEインストール</a></li>

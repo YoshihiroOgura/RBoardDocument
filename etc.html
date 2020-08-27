@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/a11y-dark.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/highlight.min.js"></script>
     <script type="text/javascript" src="./style.js"></script>
+    <link href="https://use.fontawesome.com/releases/v5.11.0/css/all.css" rel="stylesheet">
   </head>
   <body>
     <div id="header"><h1> その他サンプル </h1></div>
@@ -27,7 +28,8 @@ while true
   digitalWrite(0,0)
   sleep 1
 end
-			</code></pre>
+      </code></pre>
+      <hr id="first_boader">
 			<h3>Lチカ(外部LED)</h3>
 			<pre><code  class="ruby">
 pinMode(20,0)
@@ -37,7 +39,8 @@ while true
   digitalWrite(20,0)
   sleep 1
 end
-			</code></pre>
+      </code></pre>
+      <hr id="first_boader">
 			<h3>外部入力(DigitalGROVE)</h3>
 			http://wiki.seeedstudio.com/Grove-Button/
 			<pre><code  class="ruby">
@@ -46,7 +49,8 @@ pinMode(16,1)
 while true
   leds_write(digitalRead(16))
 end
-			</code></pre>
+      </code></pre>
+      <hr id="first_boader">
 			<h3>7セグメントLED</h3>
 			74HC4511を使用するとleds_write(0,1,5,6pin)から簡単に出力できる。
 			<pre><code  class="ruby">
@@ -64,8 +68,8 @@ end
         
       <div id="submenu">
 			<div id="submenu_header">もくじ</div>
-			<a href="./index.html">HOME</a>
       <ul id="submenu_body">
+        <i class="fas fa-home"></i><a href="./index.html">HOME</a>
         <li>プログラム書き込み</li>
         <ul id="subuul">
           <li><a href="./ide_install.html">mruby/c IDEインストール</a></li>

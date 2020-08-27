@@ -30,7 +30,7 @@ div#header {
 	height:77px;
 	width: 100%;
 	position: fixed;
-	background-color:#51d6ff8f;		/*ヘッダ部分の背景色*/
+	background-color:#95e6ff;		/*ヘッダ部分の背景色*/
 }
 h1 {
 	padding:20px 0px 0px 30px;		/*見出し内容の位置調整*/
@@ -45,20 +45,21 @@ div#submenu {
 	display:inline;
 	top:80px;
 	right:20px;
-	background-color:#e6e6e6;
+	background-color:#caf3ff;
 	position: fixed;
 }
 
 /*サブメニューのヘッダ部分（余白調整・背景画像・背景色・文字サイズなど）*/
 div#submenu_header {
+	color: cornsilk;
 	height:26px; padding:4px 0px 0px 0px;
 	background-repeat:no-repeat; background-position:top;
-	background-color:#cccccc;
+	background-color:#0074aa;
 	font-size:90%; font-weight:bold; text-align:center;
 }
 
 /*サブメニューのボディ部分（余白調整・背景画像・背景色）*/
-ul#submenu_body {
+ul#submenu_body,ul#ruby_class {
 	padding-bottom:6px;
 	padding-left:25px;
 	background-repeat:no-repeat; background-position:bottom;
@@ -66,16 +67,59 @@ ul#submenu_body {
 ul#submenu_body li a:hover {
 	background-color:#ffffff;	/*リンクにマウスが乗ったら色を変える*/
 }
+
+ul#submenu_body i {
+	color: darkblue;
+}
+
 ul#subuul {
 	padding-left:25px;
 }
+
+ul li {
+	list-style-type: none!important;
+}
+
+ul#ruby_class li:before {
+	font-family:"Font Awesome 5 Free";
+	font-weight: 900;
+	content: '\f3a5';
+	color: #ff0123;
+}
+
+ul#submenu_body li:before {
+	font-family:"Font Awesome 5 Free";
+	font-weight: 900;
+	content: '\f105';
+	color: #21b384;
+}
+ul#subuul li:before {
+	font-family:"Font Awesome 5 Free";
+	font-weight: 900;
+	content: '\f101';
+	color: #21b384;
+}
+
 /*============================================
 メイン（中央カラム）
 ============================================*/
 div#main {
 	position:relative;
-	top: 100px;
+	margin-top:100px;
 	padding:25px;
+	left: 70px;
 	width:60%; margin-right:5px; padding-top:10px; /*幅の指定と位置調整*/
 	float:left;					/*カラムを左寄せにする*/
 }
+
+#Ruby,#ADC,#I2C,#PWM,#Timer,#UART,#Math,#ETC {
+	margin-top:-100px;
+	padding-top:100px;
+ }
+
+ hr#first_boader{
+	border-top: 3px double blue;
+ }
+ hr#second_boader{
+	border-top: 1px dashed rgb(176, 176, 253);
+ }
