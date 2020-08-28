@@ -31,22 +31,27 @@ div#header {
 	width: 100%;
 	position: fixed;
 	background-color:#95e6ff;		/*ヘッダ部分の背景色*/
+	z-index: 2;
+	top: 0;
 }
 h1 {
 	padding:20px 0px 0px 30px;		/*見出し内容の位置調整*/
-	font-weight: bold;
+	font-family:Arial, Helvetica, sans-serif;	/*フォントの種類*/
 }
 /*============================================
 サブメニュー
 ============================================*/
 div#submenu {
 	width: 25%;			/*幅の指定*/
+	height: auto;
+	max-height: 80%;
 	margin:10px 10px 10px 0px;
 	display:inline;
 	top:80px;
-	right:20px;
+	left:20px;
 	background-color:#caf3ff;
 	position: fixed;
+	overflow: auto;
 }
 
 /*サブメニューのヘッダ部分（余白調整・背景画像・背景色・文字サイズなど）*/
@@ -59,7 +64,7 @@ div#submenu_header {
 }
 
 /*サブメニューのボディ部分（余白調整・背景画像・背景色）*/
-ul#submenu_body,ul#ruby_class {
+ul#submenu_body,div#ruby_class {
 	padding-bottom:6px;
 	padding-left:25px;
 	background-repeat:no-repeat; background-position:bottom;
@@ -104,15 +109,21 @@ ul#subuul li:before {
 メイン（中央カラム）
 ============================================*/
 div#main {
-	position:relative;
+	position:absolute;
 	margin-top:100px;
 	padding:25px;
-	left: 70px;
-	width:60%; margin-right:5px; padding-top:10px; /*幅の指定と位置調整*/
-	float:left;					/*カラムを左寄せにする*/
+	right: 70px;
+	width:60%; margin-right:5px; padding-top:10px;
+	left:30%;
 }
 
-#Ruby,#ADC,#I2C,#PWM,#Timer,#UART,#Math,#ETC {
+#Ruby,#ADC,#I2C,#PWM,#Timer,#UART,#Math,#ETC,
+#ADC_start,#ADC_stop,#ADC_read,#ADC_read_v,#ADC_ch,
+#I2C_write,#I2C_read,
+#PWM_new,#PWM_cycle,#PWM_rate,#PWM_start,#PWM_stop,#PWM_pin,
+#Timer_start,#Timer_stop,#Timer_set,#Timer_count_clear,#Timer_count_get,
+#UART_new,#UART_gets,#UART_puts,#UART_clear_buffer,
+#leds_write,#sw,#pinMode,#pinPull,#pinInit,#digitalWrite {
 	margin-top:-100px;
 	padding-top:100px;
  }
@@ -123,3 +134,15 @@ div#main {
  hr#second_boader{
 	border-top: 1px dashed rgb(176, 176, 253);
  }
+
+ #top_page{
+	width: 100%;
+	height: 120%;
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+  }
+

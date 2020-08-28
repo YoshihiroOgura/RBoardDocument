@@ -17,33 +17,33 @@
 			https://www.s-itoc.jp/activity/research/mrubyc/mrubyc_docs/library</a>
 			<hr id="first_boader">
 			<h2 id="ADC">ADC</h2>
-			<h3>start</h3>
+			<h3 id="ADC_start">start</h3>
 			ADCスタート<br>
 			<hr id="second_boader">
-			<h3>stop</h3>
+			<h3 id="ADC_stop">stop</h3>
 			ADCストップ<br>
 			<hr id="second_boader">
-			<h3>read</h3>
+			<h3 id="ADC_read">read</h3>
 			取得値整数出力<br>
 			戻り値：0～1023(0~3.3V)<br>
 			<hr id="second_boader">
-			<h3>read_v</h3>
+			<h3 id="ADC_read_v">read_v</h3>
 			取得値電圧出力<br>
 			戻り値：0～3.3<br>
 			<hr id="second_boader">
-			<h3>ch(channel)</h3>
+			<h3 id="ADC_ch">ch(channel)</h3>
 			使用するポート指定<br>
 			channel：0～7<br>
 
 			<hr id="first_boader">
 			<h2 id="I2C">I2C</h2>
-			<h3>write(sl_addr, addr, data1, data2,,,,)</h3>
+			<h3 id="I2C_write">write(sl_addr, addr, data1, data2,,,,)</h3>
 			i2c書き込み<br>
 			sl_addr：スレーブのアドレス<br>
 			addr：書き込み対象のアドレス<br>
 			data：書き込むデータ<br>
 			<hr id="second_boader">
-			<h3>read(sl_addr, addr, size)</h3>
+			<h3 id="I2C_read">read(sl_addr, addr, size)</h3>
 			i2c読み込み<br>
 			sl_addr：スレーブのアドレス<br>
 			addr：読み込み対象のアドレス<br>
@@ -51,9 +51,9 @@
 
 			<hr id="first_boader">
 			<h2 id="PWM">PWM</h2>
-			<h3>new</h3>
+			<h3 id="PWM_new">new</h3>
 			<hr id="second_boader">
-			<h3>cycle(time,double)</h3>
+			<h3 id="PWM_cycle">cycle(time,double)</h3>
 			周期設定<br>
 			time：1～65535‬(1=0.1us)<br>
       <form oninput="opt1.value = 1 / a1.valueAsNumber * 1000000">
@@ -104,19 +104,19 @@
 				</tr>
 			</table>
 			<hr id="second_boader">
-			<h3>rate(p,ch)</h3>
+			<h3 id="PWM_rate">rate(p,ch)</h3>
 			p：パーセント<br>
 			ch：使用チャンネル(1～5)<br>
 			<hr id="second_boader">
-			<h3>start(ch)</h3>
+			<h3 id="PWM_start">start(ch)</h3>
 			PWMスタート<br>
 			ch：使用チャンネル(1～5)<br>
 			<hr id="second_boader">
-			<h3>stop(ch)</h3>
+			<h3 id="PWM_stop">stop(ch)</h3>
 			PWMストップ<br>
 			ch：使用チャンネル(1～5)<br>
 			<hr id="second_boader">
-			<h3>pin(pin)</h3>
+			<h3 id="PWM_pin">pin(pin)</h3>
 			使用するPWMpinの指定<br>
 			pin(2,12,16,18)<br>
 			<table border="1" class="table">
@@ -150,11 +150,11 @@
 
 			<hr id="first_boader">
 			<h2 id="Timer">Timer</h2>
-			<h3>start</h3>
+			<h3 id="Timer_start">start</h3>
 			<hr id="second_boader">
-			<h3>stop</h3>
+			<h3 id="Timer_stop">stop</h3>
 			<hr id="second_boader">
-			<h3>set(time,double)</h3>
+			<h3 id="Timer_set">set(time,double)</h3>
 			time：1～65535‬(1=0.1us)<br>
 			double：整数(倍率)<br>
 			<table border="1" class="table">
@@ -199,26 +199,26 @@
 			</table>
 
 			<hr id="second_boader">
-			<h3>count_clear</h3>
+			<h3 id="Timer_count_clear">count_clear</h3>
 			<hr id="second_boader">
-			<h3>count_get</h3>
+			<h3 id="Timer_count_get">count_get</h3>
 			戻り値：0～255
 
 			<hr id="first_boader">
 			<h2 id="UART">UART</h2>
-			<h3>new(baud)</h3>
+			<h3 id="UART_new">new(baud)</h3>
 			19200を基準としているため、これ以上の値を設定するとかなりデータが欠損する。<br>
 			baud：ボーレート値（例：19200）<br>
 			<hr id="second_boader">
-			<h3>gets</h3>
+			<h3 id="UART_gets">gets</h3>
 			文字列受信<br>
 			<hr id="second_boader">
-			<h3>puts(text)</h3>
+			<h3 id="UART_puts">puts(text)</h3>
 			文字列送信<br>
 			text：文字列
 
 			<hr id="second_boader">
-			<h3>clear_buffer</h3>
+			<h3 id="UART_clear_buffer">clear_buffer</h3>
 			受信文字列のバッファ初期化(mruby/c2.0)
 
 			<hr id="first_boader">
@@ -228,7 +228,7 @@
 
 			<hr id="first_boader">
 			<h2 id="ETC">その他</h2>
-			<h3>leds_write(bit)</h3>
+			<h3 id="leds_write">leds_write(bit)</h3>
 			led制御<br>
 			bit : 整数<br>
 			<table border="1" class="table">
@@ -262,38 +262,38 @@
 			</table>
 
 			<hr id="second_boader">
-			<h3>sw()</h3>
+			<h3 id="sw">sw()</h3>
 			スイッチの状態読み込み<br>
 			戻り値：0 or 1<br>
 
 			<hr id="second_boader">
-			<h3>pinMode(pin,mode)</h3>
+			<h3 id="pinMode">pinMode(pin,mode)</h3>
 			pin：0～20<br>
 			mode：0(出力) or 1(入力)<br>
 
 			<hr id="second_boader">
-			<h3>pinPull(pin,mode)</h3>
+			<h3 id="pinPull">pinPull(pin,mode)</h3>
 			内部抵抗選択(mruby/c2.0)<br>
 			pin：0～20<br>
 			mode：-1(pull down) or 0(pull無し) or 1(pull up)<br>
 
 			<hr id="second_boader">
-			<h3>pinInit</h3>
+			<h3 id="pinInit">pinInit</h3>
 			すべてのピン設定を初期状態へ戻す。
 
 			<hr id="second_boader">
-			<h3>digitalWrite(pin,mode)</h3>
+			<h3 id="digitalWrite">digitalWrite(pin,mode)</h3>
 			pin：0～20<br>
 			mode：0(OFF) or 1(ON)<br>
 
 			<hr id="second_boader">
-			<h3>digitalRead(pin)</h3>
+			<h3 id="digitalRead">digitalRead(pin)</h3>
 			指定ピンの状態読み込み<br>
 			pin：0～20<br>
 			戻り値：0(OFF) or 1(ON)<br>
 
 			<hr id="second_boader">
-			<h3>puts(txt)</h3>
+			<h3 id="puts">puts(txt)</h3>
 			文字列出力<br>
 			ターミナルソフトの設定については<a href="./console.html">こちら</a>
 			txt：文字列
@@ -334,16 +334,75 @@
         </ul>
 			</ul>
 			<div id="submenu_header">Class</div>
-			<ul id="ruby_class">
-				<li><a href="#Ruby">Ruby</a></li>
-				<li><a href="#ADC">ADC</a></li>
-				<li><a href="#I2C">I2C</a></li>
-				<li><a href="#PWM">PWM</a></li>
-				<li><a href="#Timer">Timer</a></li>
-				<li><a href="#UART">UART</a></li>
-				<li><a href="#Math">Math</a></li>
-				<li><a href="#ETC">その他</a></li>
-			</ul>
+			<div id="ruby_class">
+			<details>
+				<summary><a href="#Ruby">Ruby</a></summary>
+			</details>
+			<details>
+				<summary><a href="#ADC">ADC</a></summary>
+				<ul>
+					<li><a href="#ADC_start">start</a></li>
+					<li><a href="#ADC_stop">stop</a></li>
+					<li><a href="#ADC_read">read</a></li>
+					<li><a href="#ADC_read_v">read_v</a></li>
+					<li><a href="#ADC_ch">ch</a></li>
+				</ul>
+			</details>
+			</details>
+			<details>
+				<summary><a href="#I2C">I2C</a></summary>
+				<ul>
+					<li><a href="#I2C_write">write</a></li>
+					<li><a href="#I2C_read">read</a></li>
+				</ul>
+			</details>
+			<details>
+				<summary><a href="#PWM">PWM</a></summary>
+				<ul>
+					<li><a href="#PWM_new">new</a></li>
+					<li><a href="#PWM_cycle">cycle</a></li>
+					<li><a href="#PWM_rate">rate</a></li>
+					<li><a href="#PWM_start">start</a></li>
+					<li><a href="#PWM_stop">stop</a></li>
+					<li><a href="#PWM_pin">pin</a></li>
+				</ul>
+			</details>
+			<details>
+				<summary><a href="#Timer">Timer</a></summary>
+				<ul>
+					<li><a href="#Timer_start">start</a></li>
+					<li><a href="#Timer_stop">stop</a></li>
+					<li><a href="#Timer_set">set</a></li>
+					<li><a href="#Timer_count_clear">count_clear</a></li>
+					<li><a href="#Timer_count_get">count_get</a></li>
+				</ul>
+			</details>
+			<details>
+				<summary><a href="#UART">UART</a></summary>
+				<ul>
+					<li><a href="#UART_new">new</a></li>
+					<li><a href="#UART_gets">gets</a></li>
+					<li><a href="#UART_puts">puts</a></li>
+					<li><a href="#UART_clear_buffer">clear_buffer</a></li>
+				</ul>
+			</details>
+			<details>
+				<summary><a href="#Math">Math</a></summary>
+			</details>
+			<details>
+				<summary><a href="#ETC">その他</a></summary>
+				<ul>
+					<li><a href="#leds_write">leds_write</a></li>
+					<li><a href="#sw">sw</a></li>
+					<li><a href="#pinMode">pinMode</a></li>
+					<li><a href="#pinPull">pinPull</a></li>
+					<li><a href="#pinInit">pinInit</a></li>
+					<li><a href="#digitalWrite">digitalWrite</a></li>
+					<li><a href="#digitalRead">digitalRead</a></li>
+					<li><a href="#puts">puts</a></li>
+				</ul>
+			</details>
+		</div>
     </div>
 	</body>
 </html>
