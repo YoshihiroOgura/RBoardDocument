@@ -31,7 +31,7 @@ particlesJS('top_page',{
         }
       },
       "size":{
-        "value":1,
+        "value":2,
         "random":true,
         "anim":{
           "enable":false
@@ -63,7 +63,7 @@ particlesJS('top_page',{
           "distance":100,
           "opacity":8,
           "duration":2,
-          "speed":3
+          "speed":1
         }
       }
     },
