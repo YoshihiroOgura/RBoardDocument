@@ -128,6 +128,13 @@ div#main {
 	padding-top:100px;
  }
 
+div#main img{
+	width: 70%;
+}
+div#main video{
+	width: 70%;
+}
+
  hr#first_boader{
 	border-top: 3px double blue;
  }
