@@ -9,7 +9,7 @@ particlesJS('top_page',{
       "shape":{
         "type":"image",
         "image":{
-            "src":"./image/mrubyc_logo_01.png",
+            "src":"https://drive.google.com/uc?export=view&id=1m8s6PplUpo17UEuXdwr0qPkIYzts6Ich",
             "wide":50,
         },
         "stroke":{
