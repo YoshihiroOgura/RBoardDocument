@@ -128,9 +128,10 @@ div#main {
 	padding-top:100px;
  }
 
-div#main img{
+div#main img.expansion{
 	width: 70%;
 }
+
 div#main video{
 	width: 70%;
 }
