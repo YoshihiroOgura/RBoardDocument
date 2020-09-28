@@ -59,6 +59,27 @@ while true
     PWM.rate(a,2)
 end
       </code></pre>
+
+      <hr id="first_boader">
+      <h3>ジョイスティック</h3>
+			ジョイスティック:<a href="https://www.switch-science.com/catalog/884/">https://www.switch-science.com/catalog/884/</a><br>
+			<pre><code  class="ruby">
+adc = ADC.new()
+adc.ch(7)
+while true
+  adc.ch(7)
+  adc.start
+  a = adc.read_v
+  adc.stop
+  adc.ch(6)
+  adc.start
+  b = adc.read_v
+  adc.stop
+  puts("x:"+a.to_s)
+  puts("y:"+b.to_s)
+  sleep_ms(300)
+end
+    </code></pre>
 		</div>
 		
 		<div id="submenu">
