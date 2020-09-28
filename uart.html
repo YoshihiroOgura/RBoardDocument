@@ -21,6 +21,9 @@
   <body>
     <div id="header"><h1> UARTサンプル </h1></div>
     <div id="main">
+			UARTのGROVEポートはtxピンとrxピンが逆であることが今更判明。<br>
+			UARTのGROVEモジュールを使用する際には<a href="https://www.switch-science.com/catalog/6245/">スイッチサイエンス</a>や<a href="https://www.marutsu.co.jp/pc/i/829489/">マルツ</a>にて販売しているジャンパ線を使用して、<br>
+			黒：GND、赤：3.3V、白：Pin14、黄：Pin13へ接続してください。<br><br>
 			<h3>im920s</h3>
 			http://akizukidenshi.com/catalog/g/gM-13566/
 			<h4>文字列送信</h4>
@@ -40,6 +43,22 @@ while true
 end
 			</code></pre>
 			<hr id="first_boader">
+			<h3>Bluetooth</h3>
+			https://www.switch-science.com/catalog/5794/<br>
+			Bluetooth5に対応したAndroidスマホを準備します。<br>
+			スマホアプリ「Serial Bluethooth Terminal」をインストール。<br>
+			モジュールの電源を入れる。（RBoardに接続するなど）<br>
+			スマホの設定→機器接続→新しい機器とペア設定する　からモジュールを登録。<br>
+			「Serial Bluethooth Terminal」を起動し、Devices→Bluetooth LE→モジュールの項目を長押しします。<br>
+			Edit→Custam→3つのUUIDをそれぞれ選択。<br>
+			右上の✓を押したら接続できるはずです。<br>
+			<pre><code  class="ruby">
+UART.new(19200)
+while true
+	UART.puts("aaaa\r\n")
+	sleep(5)
+end
+			</code></pre>
 			<h3>wifiやBluetoothを使用してIOTしたい</h3>
 			今後検証予定(下記モジュールであれば技適取得済み)<br>
 			Wifi:
