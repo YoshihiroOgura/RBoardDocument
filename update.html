@@ -20,15 +20,16 @@
     <div id="main">
 			mruby/cのファームウェアアップデートおよびファームウェアが破壊された場合に行う手順です。
 			<h2>準備</h2>
-			<ul>
+			<ul id="normal_li">
 				<li><a href="https://www.microchip.com/mplab/mplab-x-ide">MPLAB X(またはMPLAB X IPE)</a>をインストール</li>
 				<li><a href="https://www.microchip.com/mplab/compilers">XC32</a>をインストール(MPLAB Xを使用する場合)</li>
 				<li><a href="https://github.com/YoshihiroOgura/pic32mx170_mrubyc/releases">hexファイル</a>をダウンロード(MPLAB X IPEを使用する場合)</li>
 				　⇒最新のhexファイルは<a href="https://github.com/YoshihiroOgura/pic32mx170_mrubyc">ソースコード</a>のpic32mx170_mrubyc/dist/default/production/ic32mx170_mrubyc_21.production.hexです。<br>
 				　　githubにてzip形式でダウンロードするなどしてご使用ください。
 				<li><a href="http://akizukidenshi.com/catalog/g/gM-03608/">pickit3</a>、<a href="http://akizukidenshi.com/catalog/g/gM-13337/">pickit4</a>、<a href="https://akizukidenshi.com/catalog/g/gM-13854/">MPLAB Snap</a>のいずれかを購入</li>
-				　⇒pickit3の互換機を使用して書き込む場合はUSBケーブルから電源を供給してください。
+				　⇒<a href="https://www.amazon.co.jp/dp/B01K26W8FQ/">pickit3の互換機</a>を使用して書き込む場合はUSBケーブルから電源を供給してください。
 			</ul>
+			<hr id="first_boader">
 			<h2>「MPLAB X IDE」を使用した手順</h2>
 			<ol>
 				<li>MPLAB Xを起動</li>
@@ -39,6 +40,7 @@
 				<li>書き込みを実行</li>
 				<img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/195542/61fc508c-5cff-6cff-6868-38432416f67c.png">
 			</ol>
+			<hr id="first_boader">
 			<h2>「MPLAB X IPE」を使用した手順</h2>
 			<ol>
 				<li>「MPLAB X IPE」を起動</li>

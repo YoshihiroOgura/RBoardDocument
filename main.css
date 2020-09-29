@@ -160,5 +160,12 @@ div#main img.window_img{
 	left: 0;
 	right: 0;
 	bottom: 0;
-  }
+}
+ul#normal_li li:before {
+	font-family:"Font Awesome 5 Free";
+	font-weight: 900;
+	content: '\f111';
+	color: #2c2c2c;
+}
+
 
