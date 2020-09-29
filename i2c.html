@@ -21,6 +21,8 @@
   <body>
     <div id="header"><h1> I2Cサンプル </h1></div>
     <div id="main">
+			I2Cが上手く動作しない場合はファームウェアをアップデートしてください。
+			<a href="https://github.com/YoshihiroOgura/pic32mx170_mrubyc/blob/master/dist/default/production/pic32mx170_mrubyc_21.production.hex">こちらのhexファイル</a>
 			<h3>温湿度センサ(MCP9808)</h3>
 			温度センサ：<a href="https://www.switch-science.com/catalog/3986/">https://www.switch-science.com/catalog/3986/</a>
 			<pre><code  class="ruby">
@@ -296,6 +298,21 @@ oled = OLED.new
 oled.init()
 # oled.send(画像配列8×16×8)
 oled.send(picture)
+			</code></pre>
+			<hr id="first_boader">
+			<h3>Qwiic</h3>
+			Qwiicとは<br>
+			SparkFunから販売されているI2Cにて制御するモジュール。<br>
+			<a href="https://www.sparkfun.com/qwiic">https://www.sparkfun.com/qwiic</a>
+			<h4>赤色LEDボタン</h4>
+			ボタンを押したときにLEDを点灯する。
+			<pre><code class="ruby">
+led = I2C.new
+while true
+	l = led.read(0x6F,0x03,1)
+	s = (l[0]&0x04)>>2
+	led.write(0x6F,0x19,s * 0xFF)
+end
 			</code></pre>
 		</div>
 		<div id="submenu">
