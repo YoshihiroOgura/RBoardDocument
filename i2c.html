@@ -300,6 +300,38 @@ oled.init()
 oled.send(picture)
 			</code></pre>
 			<hr id="first_boader">
+			<h3>LCD</h3>
+			LCD：<a href="https://www.switch-science.com/catalog/1629/">https://www.switch-science.com/catalog/1629/</a>
+			<pre><code class="ruby">
+$lcd = I2C.new
+sleep(1)
+def rgb(r,g,b)
+	$lcd.write(0x62,0x00,0x00)
+	$lcd.write(0x62,0x08,0xFF)
+	$lcd.write(0x62,0x01,0x20)
+	$lcd.write(0x62,0x04,r)
+	$lcd.write(0x62,0x03,g)
+	$lcd.write(0x62,0x02,b)
+end
+def send_txt(txt)
+	$lcd.write(0x3E,0x80,0x02)
+	sleep_ms(5)
+	$lcd.write(0x3E,0x80,0x0C)
+	sleep_ms(5)
+	cnt = txt.size
+	i = 0
+	while(i < cnt)
+	if(i == 15)
+		$lcd.write(0x3E,0x80,0xC0)
+	end
+	$lcd.write(0x3E,0x40,(txt[i]).ord)
+	i = i+1
+	end
+end
+rgb(255,255,255)
+send_txt("YoshihiroOgura")
+			</code></pre>
+			<hr id="first_boader">
 			<h3>Qwiic</h3>
 			Qwiicとは<br>
 			SparkFunから販売されているI2Cにて制御するモジュール。<br>
