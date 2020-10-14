@@ -59,12 +59,20 @@ while true
 	sleep(5)
 end
 			</code></pre>
-			<h3>wifiやBluetoothを使用してIOTしたい</h3>
-			今後検証予定(下記モジュールであれば技適取得済み)<br>
-			Wifi:
+			<h3>wifi</h3>
 			https://www.switch-science.com/catalog/5795/<br>
-			Bluetooth:
-			https://www.switch-science.com/catalog/5794/
+			<pre><code  class="ruby">
+cmd = "hge https://script.google.com/macros/s/xxxxxxxxxxxxxxxxxxx/exec?data1="
+wifi = UART.new(19200)
+wifi.puts("\r\n")
+sleep(5)
+while true
+	wifi.puts(cmd + (1.to_s) + "\r\n")
+	sleep(10)
+	wifi.puts("stream_close 0\r\n")
+	sleep(10)
+end
+			</code></pre>
     </div>
         
     <div id="submenu">
@@ -87,6 +95,7 @@ end
 				<li>RBoardにおける各クラス</li>
 				<ul id="subuul">
 					<li><a href="./class.html">各クラス</a></li>
+					<li><a href="./mrubyc_class.html">mruby/c IO 各クラス</a></li>
 				</ul>
 				<li>サンプルプログラム</li>
 				<ul id="subuul">
@@ -100,7 +109,8 @@ end
 				<ul id="subuul">
           <li><a href="./console.html">ターミナルソフトの設定</a></li>
         </ul>
-      </ul>
+	  </ul>
+	  <a href="https://www.rubyworld-conf.org/" target="_blank"><img src="rwc2020_banner_a02.png"></a>
 		</div>
 	</body>
 </html>
