@@ -18,7 +18,8 @@
   <body>
 		<div id="header"><h1> アップデート手順 </h1></div>
     <div id="main">
-			mruby/cのファームウェアアップデートおよびファームウェアが破壊された場合に行う手順です。
+			mruby/cのファームウェアアップデートおよびファームウェアが破壊された場合に行う手順です。<br>
+			別途手順書もございます。<a href="https://drive.google.com/file/d/1O62rVQrN4xbb8cWmzLj_xok-11Rifnxv/view">https://drive.google.com/file/d/1O62rVQrN4xbb8cWmzLj_xok-11Rifnxv/view</a>
 			<h2>準備</h2>
 			<ul id="normal_li">
 				<li><a href="https://www.microchip.com/mplab/mplab-x-ide">MPLAB X(またはMPLAB X IPE)</a>をインストール</li>
@@ -27,7 +28,7 @@
 				　⇒最新のhexファイルは<a href="https://github.com/YoshihiroOgura/pic32mx170_mrubyc">ソースコード</a>のpic32mx170_mrubyc/dist/default/production/ic32mx170_mrubyc_21.production.hexです。<br>
 				　　githubにてzip形式でダウンロードするなどしてご使用ください。
 				<li><a href="http://akizukidenshi.com/catalog/g/gM-03608/">pickit3</a>、<a href="http://akizukidenshi.com/catalog/g/gM-13337/">pickit4</a>、<a href="https://akizukidenshi.com/catalog/g/gM-13854/">MPLAB Snap</a>のいずれかを購入</li>
-				　⇒<a href="https://www.amazon.co.jp/dp/B01K26W8FQ/">pickit3の互換機</a>を使用して書き込む場合はUSBケーブルから電源を供給してください。
+				　⇒<a href="https://www.amazon.co.jp/dp/B01K26W8FQ/">pickit3の互換機,Snap</a>を使用して書き込む場合はUSBケーブルから電源を供給してください。
 			</ul>
 			<hr id="first_boader">
 			<h2>「MPLAB X IDE」を使用した手順</h2>
@@ -37,14 +38,17 @@
 				<li>Repogitory URL:<span style="color:rgb(0, 38, 255)">https://github.com/YoshihiroOgura/-pic32mx170_mrubyc.git</span></li>
 				<li>DIPの場合は<a href="https://qiita.com/aikawa_YO/items/68b12689f30ecd67a754">こちら</a>の回路、または<a href="http://akizukidenshi.com/catalog/g/gK-05355/">キット</a>を使用、表面実装の場合は「J3」に直接pickitを接続。</li>
 				<img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/195542/e3a018ae-2315-0d9e-4f4b-674600e4cb9c.png">
+				<li>書き込みを実行</li>
+				<img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/195542/61fc508c-5cff-6cff-6868-38432416f67c.png">
+				<hr id="second_boader">
+				<h3>上手くいかない場合はusbケーブルを接続して電源供給するか下記のような手順を実行</h3>
 				<li>Production → Set Project Configration → Custamize...</li>
 				<li>Conf:[default] → Hadware Tool　から使用するライタを選択(pickit3など)</li>
 				<img src="https://drive.google.com/uc?export=view&id=19O7kXjEhsFVKn32QJcrdqfxa6nT1-9hG">
+				<li>Apply</li>
 				<li>Conf:[default] → PICkit3など → Power でチェックを入れる。</li>
 				<img src="https://drive.google.com/uc?export=view&id=1dLH9rFUTRP7n66P6U1vi6Ot83yG078tf">
 				<li>Apply → OK</li>
-				<li>書き込みを実行</li>
-				<img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/195542/61fc508c-5cff-6cff-6868-38432416f67c.png">
 			</ol>
 			<hr id="first_boader">
 			<h2>「MPLAB X IPE」を使用した手順</h2>
