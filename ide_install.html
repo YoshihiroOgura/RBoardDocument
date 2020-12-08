@@ -22,6 +22,7 @@
   <body>
     <div id="header"><h1> IDEインストール </h1></div>
     <div id="main">
+      <h2 class="txt-border"> Windows10 </h2>
 			<ol>
 				<li><a href="https://www.s-itoc.jp/activity/research/mrubyc/mrubyc_download/">mruby/c IDE</a>をダウンロード後、解凍</li>
 				<li>mruby/c IDEの解凍したフォルダのmrubyc_ide.exeを起動</li>
@@ -38,6 +39,44 @@
 				<a data-lightbox="ide" href="./image/ide3.png">
           <img src="./image/ide3.png" class="expansion">
         </a>
+      </ol>
+      <br><br><br>
+      <h2 class="txt-border"> MAC </h2>
+      <ol>
+				<li><a href="https://www.s-itoc.jp/activity/research/mrubyc/mrubyc_download/">mruby/c IDE</a>をダウンロード後、解凍</li>
+        <li>展開したディレクトリ内の「mrubyc_ide」をダブルクリックしてIDEを起動します。</li>
+        <small>その際に以下のメッセージが表示される場合があります。この場合は「キャンセル」をクリックして、メッセージを閉じます。</small><br>
+        <a data-lightbox="ide" href="./image/不明な提供元.png">
+          <img src="./image/不明な提供元.png" class="expansion">
+        </a><br>
+        <small>続けて「システム環境設定」を起動し「セキュリティとプライバシー」を開きます。</small><br>
+        <a data-lightbox="ide" href="./image/セキュリティとプライバシー.png">
+          <img src="./image/セキュリティとプライバシー.png" class="expansion">
+        </a><br>
+        <small>「このまま開く」をクリックします。</small><br>
+        <small>以下のメッセージが表示された場合は「開く」をクリックしてIDEを起動します。</small><br>
+        <a data-lightbox="ide" href="./image/開発元.png">
+          <img src="./image/開発元.png" class="expansion">
+        </a><br>
+        <li>メニューバーの「mrubyc_ide」＞「Preferences（環境設定）」をクリックします。</li>
+        <a data-lightbox="ide" href="./image/Preferences.png">
+          <img src="./image/Preferences.png" class="expansion">
+        </a>
+				<li>設定画面の左側「Build and Deploy」を選択して「Compiler」画面に切り替えます。Local Compilerにチェックを入れた状態で「mrbc」欄にIDEと同じディレクトリ内のmrbcファイルを指定します。</li>
+				<a data-lightbox="ide" href="./image/compiler.png">
+          <img src="./image/compiler.png" class="expansion">
+        </a><br>
+        指定した後に画面左下の「Apply」をクリックします。
+				<li>続いて、画面上部の「Writer」タブを選択して「Writer」画面に切り替えます。「mrbwrite」欄　IDEと同じディレクトリ内のmrbwriteファイルを指定します。「Options」欄　 -s 19200　と入力します。</li>
+				<a data-lightbox="ide" href="./image/mrbwrite.png">
+          <img src="./image/mrbwrite.png" class="expansion">
+        </a><br>
+        指定した後に画面左下の「Apply」をクリックします。最後はOKをクリックします。<br>
+        <small>Port欄はRBoardを接続した状態で設定します。RBoardを接続して「Update」をクリックし、リスト内の「USB-I2C/UART」と記載のいずれかのポートを選択します。</small><br>
+        <a data-lightbox="ide" href="./image/port.png">
+          <img src="./image/port.png" class="expansion">
+        </a><br>
+        <small>指定した後に画面左下の「Apply」をクリックします。最後はOKをクリックします。</small>
       </ol>
 		</div>
 

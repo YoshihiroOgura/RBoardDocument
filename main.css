@@ -168,4 +168,26 @@ ul#normal_li li:before {
 	color: #2c2c2c;
 }
 
+.txt-border {
+    display: flex;
+    align-items: center;
+}
+
+.txt-border:before,
+.txt-border:after {
+    content: "";
+    height: 5px;
+    flex-grow: 1;
+}
+
+.txt-border:before {
+	background: linear-gradient(-90deg, rgb(192, 41, 41), transparent);
+    margin-right: 1rem;rgb(204, 26, 26)
+}
+
+.txt-border:after {
+	background: linear-gradient(90deg, rgb(192, 41, 41), transparent);
+    margin-left: 1rem;
+}
+
 
