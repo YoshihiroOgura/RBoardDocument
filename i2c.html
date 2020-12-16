@@ -347,6 +347,22 @@ while true
 	led.write(0x6F,0x19,s * 0xFF)
 end
 			</code></pre>
+			<h3>ToF測距センサ</h3>
+			VL53L0Xを搭載したレーザーの距離センサー<br>
+			<a href="https://www.switch-science.com/catalog/5219/">https://www.switch-science.com/catalog/5219/</a>
+			<pre><code class="ruby">
+while true
+  status = 0
+  I2C.write(0x29,0x00,0x01)
+  while((status & 0x01) == 1)
+    data = I2C.read(0x29,0x14,1)
+    status = data[0]
+  end
+  data = I2C.read(0x29,0x14,12)
+  puts(data[11] + (data[10]<<8))
+  sleep_ms(100)
+end
+			</code></pre>
 		</div>
 		<div id="submenu">
 			<div id="submenu_header">もくじ</div>
