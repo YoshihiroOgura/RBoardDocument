@@ -81,7 +81,7 @@ ul#submenu_body i {
 	color: darkblue;
 }
 
-ul#subuul {
+ul#subuul, ul#class_ul {
 	padding-left:25px;
 }
 
@@ -89,24 +89,16 @@ ul li {
 	list-style-type: none!important;
 }
 
-ul#ruby_class li:before {
-	font-family:"Font Awesome 5 Free";
-	font-weight: 900;
-	content: '\f3a5';
-	color: #ff0123;
-}
-
-ul#submenu_body li:before {
-	font-family:"Font Awesome 5 Free";
-	font-weight: 900;
-	content: '\f105';
-	color: #21b384;
-}
 ul#subuul li:before {
 	font-family:"Font Awesome 5 Free";
+	content: '\f005';
+	color: #ff9e9e;
+}
+ul#class_ul li:before {
+	font-family:"Font Awesome 5 Free";
+	content: '\f02e';
 	font-weight: 900;
-	content: '\f101';
-	color: #21b384;
+	color: #41b137;
 }
 
 ul#content li:before {
@@ -114,6 +106,42 @@ ul#content li:before {
 	font-weight: 900;
 	content: '\f0a4';
 	color: #ff0000;
+}
+
+details summary {
+	list-style: none;
+}
+
+details summary::-webkit-details-marker {
+	display: none;
+}
+
+details summary::before {
+	font-family:"Font Awesome 5 Free";
+	font-weight: 900;
+	color: #ff006a;
+	content: '\f138';
+}
+
+details[open] summary::before {
+	font-family:"Font Awesome 5 Free";
+	font-weight: 900;
+	color: #ff006a;
+	content: '\f13a';
+}
+
+div#ruby_class > details > summary::before {
+	font-family:"Font Awesome 5 Free";
+	font-weight: 900;
+	color: #0ea700;
+	content: '\f152';
+}
+
+div#ruby_class > details[open] summary::before {
+	font-family:"Font Awesome 5 Free";
+	font-weight: 900;
+	color: #0ea700;
+	content: '\f150';
 }
 
 /*============================================
@@ -127,17 +155,6 @@ div#main {
 	width:60%; margin-right:5px; padding-top:10px;
 	left:30%;
 }
-
-#Ruby,#ADC,#I2C,#PWM,#Timer,#UART,#Math,#ETC,
-#ADC_start,#ADC_stop,#ADC_read,#ADC_read_v,#ADC_ch,
-#I2C_write,#I2C_read,
-#PWM_new,#PWM_cycle,#PWM_rate,#PWM_start,#PWM_stop,#PWM_pin,
-#Timer_start,#Timer_stop,#Timer_set,#Timer_count_clear,#Timer_count_get,
-#UART_new,#UART_gets,#UART_puts,#UART_clear_buffer,
-#leds_write,#sw,#pinMode,#pinPull,#pinInit,#digitalWrite {
-	margin-top:-100px;
-	padding-top:100px;
- }
 
 div#main img.expansion{
 	width: 70%;

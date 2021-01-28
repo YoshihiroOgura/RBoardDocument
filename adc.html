@@ -5,11 +5,11 @@
     <link rel="shortcut icon" href="./image/bug.ico">
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-176702602-1"></script>
     <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-    gtag('config', 'UA-176702602-1');
+      gtag('config', 'UA-176702602-1');
     </script>
     <link rel="stylesheet" type="text/css" href="main.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
@@ -86,36 +86,48 @@ end
       <div id="submenu_header">もくじ</div>
       <ul id="submenu_body">
         <i class="fas fa-home"></i><a href="./index.html">HOME</a>
-        <li>プログラム書き込み</li>
-        <ul id="subuul">
-          <li><a href="./ide_install.html">mruby/c IDEインストール</a></li>
-          <li><a href="./write_program.html">PG書き込み</a></li>
-        </ul>
-        <li>ファームウェアアップデート</li>
-        <ul id="subuul">
-          <li><a href="./update.html">アップデート手順</a></li>
-        </ul>
-        <li>ボードの電気的仕様</li>
-        <ul id="subuul">
+        <li><details>
+          <summary>プログラム書き込み</summary>
+          <ul id="subuul">
+            <li><a href="./ide_install.html">mruby/c IDEインストール</a></li>
+            <li><a href="./write_program.html">PG書き込み</a></li>
+          </ul>
+        </details></li>
+        <li><details>
+          <summary>ファームウェアアップデート</summary>
+          <ul id="subuul">
+            <li><a href="./update.html">アップデート手順</a></li>
+          </ul>
+        </details></li>
+        <li><details>
+          <summary>ボードの電気的仕様</summary>
+          <ul id="subuul">
           <li><a href="./pin.html">ピン配置等</a></li>
-        </ul>
-        <li>RBoardにおける各クラス</li>
-        <ul id="subuul">
-          <li><a href="./class.html">各クラス</a></li>
-          <li><a href="./mrubyc_class.html">mruby/c IO 各クラス</a></li>
-        </ul>
-        <li>サンプルプログラム</li>
-        <ul id="subuul">
-        <li><a href="./adc.html">ADCサンプル</a></li>
-        <li><a href="./i2c.html">I2Cサンプル</a></li>
-        <li><a href="./pwm.html">PWMサンプル</a></li>
-        <li><a href="./uart.html">UARTサンプル</a></li>
-        <li><a href="./etc.html">その他サンプル</a></li>
-        </ul>
-        <li>その他</li>
-				<ul id="subuul">
-          <li><a href="./console.html">ターミナルソフトの設定</a></li>
-        </ul>
+          </ul>
+        </details></li>
+        <li><details>
+          <summary>RBoardにおける各クラス</summary>
+          <ul id="subuul">
+            <li><a href="./class.html">各クラス</a></li>
+            <li><a href="./mrubyc_class.html">mruby/c IO 各クラス</a></li>
+          </ul>
+        </details></li>
+        <li><details>
+          <summary>サンプルプログラム</summary>
+          <ul id="subuul">
+            <li><a href="./adc.html">ADCサンプル</a></li>
+            <li><a href="./i2c.html">I2Cサンプル</a></li>
+            <li><a href="./pwm.html">PWMサンプル</a></li>
+            <li><a href="./uart.html">UARTサンプル</a></li>
+            <li><a href="./etc.html">その他サンプル</a></li>
+          </ul>
+        </details></li>
+        <li><details>
+          <summary>その他</summary>
+          <ul id="subuul">
+            <li><a href="./console.html">ターミナルソフトの設定</a></li>
+          </ul>
+        </details></li>
       </ul>
       <a href="https://www.rubyworld-conf.org/" target="_blank"><img src="rwc2020_banner_a02.png"></a>
     </div>
