@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+	<title>チュートリアル - RBoardDocument</title>
+    <link rel="shortcut icon" href="./image/bug.ico">
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-176702602-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-176702602-1');
+    </script>
+    <link rel="stylesheet" type="text/css" href="main.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/a11y-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/highlight.min.js"></script>
+	<script type="text/javascript" src="./style.js"></script>
+	<link href="https://use.fontawesome.com/releases/v5.11.0/css/all.css" rel="stylesheet">
+  </head>
+  <body>
+    <div id="header"><h1>チュートリアル - Lチカする</h1></div>
+    <div id="main">
+      <h3>まずはIDEのインストール！</h3>
+      <a href="./ide_install.html">mruby/cIDEインスール</a>のぺージを参考にしてください。
+      <hr id="first_boader">
+      <h3>プログラムを書いていく</h3>
+      <ul id="content">
+        <li>何はともあれmruby/cIDEを起動(mrubyc_ide.exe)</li>
+        <li>「File -> New… -> Project」を選択</li>
+        <li>すると「Setup New Project」というタブが出てくる。</li>
+        <li>Project Nameを入力しなければならないので入力する(ledという名前にしておく)</li>
+        <li>OKボタンをクリックして閉じる</li>
+        <li>「File -> New… -> File」を選択</li>
+        <li>すると「Setup Add New File」というタブが出てくる。</li>
+        <li>File Nameを入力しなければならないので入力する。</li>
+          拡張子には必ず[.rb]を付ける。(main.rbという名前にしておく)
+        <img src="./image/ide_led.png">
+        <li>プログラムを記述していく。1秒間隔でLEDのON,OFFを繰り返す。</li>
+        <pre><code  class="ruby">
+while  true # 無限ループ
+  digitalWrite(0, 1) # LED1をON
+  sleep(1) # 1秒スリープ
+  digitalWrite(0, 0) # LED1をOFF
+  sleep(1) # 1秒スリープ
+end
+        </code></pre>
+        digitalWrite(ピン番号, 出力値)となっていて、ピン番号に関しては<a href="./pin.html">ピン配置等</a>の表面実装に記載されているPin0~Pin20(0~20)を指定する。<br>
+        led4つはPin0,Pin1,Pin5,Pin6へ接続されている。<br>
+        第二引数の出力値は1の場合ON(3.3V)、0の場合はOFF(0V)を第一引数のピン番号にて指定したピンから出力する。
+        <hr id="first_boader">
+        <h3>プログラムをRBoardへ書き込む</h3>
+        <li>書き終わったらRBoardをパソコンへ接続する(USB-microUSBケーブルを使用)</li>
+        <span style="color:rgb(255, 0, 0)">※USBケーブルにはデータ転送用ケーブルを使用する。(充電用の場合は下記ポートが認識されない)</span>
+        <li>「File -> Settings…」を選択</li>
+        <li>「Build and Deploy -> Writer」のPortがRBoardポートになっているか確認</li>
+        ↓の場合COM12,COM19があり、COM12がRBoard
+        <img src="./image/write_port.png">
+        <li>OKボタンをクリックして閉じる</li>
+        <li>IDEのWriteボタンを押して書き込みを開始する。</li>
+        <img src="./image/write_button.png">
+        <li>「Start connection.」と表示された直後にRBoard上のRSボタンを押す。</li>
+        またはRBoardとPCをつないでいるUSBケーブルを抜き差しする。(実はこちらの方が確実)
+        <img src="./image/led_pg_write.png">
+        ちなみに失敗した場合のログ<br>
+        上手く書き込めなかった場合。USBケーブルを抜き差ししたりすると良い。
+        <pre><code  class="text">
+Start connection.
+..........
+                  
+Can't connect target device.
+        </code></pre>
+        RBoardがつながっているCOMポートが異なる場合。「Build and Deploy -> Writer」のPortを確認。
+        <pre><code  class="text">
+Start connection.
+Can't open serial port line.
+        </code></pre>
+        <li>LED1(D1)が点滅を始めたら完了。</li>
+      </ul>
+    </div>
+        
+    <div id="submenu">
+			<div id="submenu_header">もくじ</div>
+			<ul id="submenu_body">
+				<i class="fas fa-home"></i><a href="./index.html">HOME</a>
+				<li>プログラム書き込み</li>
+				<ul id="subuul">
+					<li><a href="./ide_install.html">mruby/c IDEインストール</a></li>
+					<li><a href="./write_program.html">PG書き込み</a></li>
+				</ul>
+				<li>ファームウェアアップデート</li>
+				<ul id="subuul">
+					<li><a href="./update.html">アップデート手順</a></li>
+				</ul>
+				<li>ボードの電気的仕様</li>
+				<ul id="subuul">
+					<li><a href="./pin.html">ピン配置等</a></li>
+				</ul>
+				<li>RBoardにおける各クラス</li>
+				<ul id="subuul">
+					<li><a href="./class.html">各クラス</a></li>
+					<li><a href="./mrubyc_class.html">mruby/c IO 各クラス</a></li>
+				</ul>
+				<li>サンプルプログラム</li>
+				<ul id="subuul">
+					<li><a href="./adc.html">ADCサンプル</a></li>
+					<li><a href="./i2c.html">I2Cサンプル</a></li>
+					<li><a href="./pwm.html">PWMサンプル</a></li>
+					<li><a href="./uart.html">UARTサンプル</a></li>
+					<li><a href="./etc.html">その他サンプル</a></li>
+				</ul>
+				<li>その他</li>
+				<ul id="subuul">
+          <li><a href="./console.html">ターミナルソフトの設定</a></li>
+        </ul>
+	  </ul>
+	  <a href="https://www.rubyworld-conf.org/" target="_blank"><img src="rwc2020_banner_a02.png"></a>
+		</div>
+	</body>
+</html>

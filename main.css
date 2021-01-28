@@ -109,6 +109,13 @@ ul#subuul li:before {
 	color: #21b384;
 }
 
+ul#content li:before {
+	font-family:"Font Awesome 5 Free";
+	font-weight: 900;
+	content: '\f0a4';
+	color: #ff0000;
+}
+
 /*============================================
 メイン（中央カラム）
 ============================================*/
