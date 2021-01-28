@@ -81,11 +81,11 @@ ul#submenu_body i {
 	color: darkblue;
 }
 
-ul#subuul, ul#class_ul {
+ul#subuul, ul#class_ul, ol#subuol {
 	padding-left:25px;
 }
 
-ul li {
+ul > li {
 	list-style-type: none!important;
 }
 
