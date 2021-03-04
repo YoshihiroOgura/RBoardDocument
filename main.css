@@ -214,4 +214,33 @@ ul#normal_li li:before {
     margin-left: 1rem;
 }
 
+.answer_box .answer_show {
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: 0.8s;
+}
+
+/*クリックで中身表示*/
+.answer_box input:checked ~ .answer_show {
+    padding: 10px 0;
+    height: auto;
+    opacity: 1;
+}
+.answer_box label {
+    padding: 5px;
+    background: #ff8585;
+    border-radius: 5px;
+}
+
+/*ボタンホバー時*/
+.answer_box label:hover {
+    background: rgb(255, 0, 0);
+}
+
+/*チェックは見えなくする*/
+.answer_box input {
+    display: none;
+}
 

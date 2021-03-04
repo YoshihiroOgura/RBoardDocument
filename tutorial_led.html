@@ -61,7 +61,7 @@ end
         <img src="./image/write_button.png" class="expansion">
         <li>「Start connection.」と表示された直後にRBoard上のRSボタンを押す。</li>
         またはRBoardとPCをつないでいるUSBケーブルを抜き差しする。(実はこちらの方が確実)
-        <img src="./image/led_pg_write.png" class="expansion">
+        <img src="./image/led_pg_write.png" class="expansion"><br>
         ちなみに失敗した場合のログ<br>
         上手く書き込めなかった場合。USBケーブルを抜き差ししたりすると良い。
         <pre><code  class="text">
@@ -77,6 +77,60 @@ Can't open serial port line.
         </code></pre>
         <li>LED1(D1)が点滅を始めたら完了。</li>
       </ul>
+      <hr id="first_boader">
+      <h3>例題：</h3>
+      <ul>
+        <li>LEDの点滅速度を変えてみる</li>
+        <div class="answer_box">
+          <label for="led_ans1">answer ➡</label>
+          <input type="checkbox" id="led_ans1"/>
+          <div class="answer_show">  
+            <pre><code  class="ruby">
+while  true # 無限ループ
+  digitalWrite(0, 1) # LED1をON
+  sleep(0.1) # 1秒スリープ
+  digitalWrite(0, 0) # LED1をOFF
+  sleep(0.1) # 1秒スリープ
+end
+            </code></pre>
+          </div>
+        </div>
+        <li>2つのLEDを交互に点滅させてみる</li>
+        <div class="answer_box">
+          <label for="led_ans2">answer ➡</label>
+          <input type="checkbox" id="led_ans2"/>
+          <div class="answer_show">  
+            <pre><code  class="ruby">
+while  true # 無限ループ
+  digitalWrite(0, 1) # LED1をON
+  sleep(1) # 1秒スリープ
+  digitalWrite(1, 1) # LED2をON
+  digitalWrite(0, 0) # LED1をOFF
+  sleep(1) # 1秒スリープ
+  digitalWrite(1, 0) # LED2をOFF
+end
+            </code></pre>
+          </div>
+        </div>
+        <li>4つのLEDを順に点滅させてみる</li>
+        <div class="answer_box">
+          <label for="led_ans3">answer ➡</label>
+          <input type="checkbox" id="led_ans3"/>
+          <div class="answer_show">  
+            <pre><code  class="ruby">
+leds = [0, 1, 5, 6]
+while  true
+  leds.each do |i|
+    digitalWrite(i,1)
+    sleep(1)
+    digitalWrite(i,0)
+  end
+end
+            </code></pre>
+          </div>
+        </div>
+      </ul>
+    </div>
     </div>
         
     <div id="submenu">
@@ -125,14 +179,14 @@ Can't open serial port line.
             <li><a href="./console.html">ターミナルソフトの設定</a></li>
           </ul>
         </details></li>
-        <li><details>
-          <summary>チュートリアル</summary>
-          <ol>
-            <li><a href="./tutorial_mrubyc.html">mruby/cとは？</a></li>
-            <li><a href="./tutorial_led.html">LEDを制御する</a></li>
-          </ol>
-        </details></li>
       </ul>
+      <div id="submenu_header">チュートリアル</div>
+      <div id="ruby_class">
+        <ol>
+          <li><a href="./tutorial_mrubyc.html">mruby/cとは？</a></li>
+          <li><a href="./tutorial_led.html">LEDを制御する</a></li>
+        </ol>
+      </div>
 	    <a href="https://www.rubyworld-conf.org/" target="_blank"><img src="rwc2020_banner_a02.png"></a>
 		</div>
 	</body>

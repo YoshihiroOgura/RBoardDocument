@@ -40,7 +40,7 @@
       およそ300個のライブラリ<br>
       <a href="http://mruby.org/libraries/">http://mruby.org/libraries/</a>
       <h3>mruby/c</h3>
-      mrubyが苦手とする小型マイコンの開発
+      mrubyが苦手とする小型マイコンの開発もできるよう更に小型化されています。
       <ul id="content">
           <li>mrubyよりも更に省メモリ</li>
           <li>Rubyのように開発しやすい</li>
@@ -48,19 +48,6 @@
       </ul>
       機能を選択・制限することでより小型化されます。
       <img src="./image/各種Ruby.png" class="expansion">
-      <h3>mrubyとmruby/cの違い</h3>
-      個人的主観。
-      <a href="https://github.com/mrubyc/mrubyc">mruby/cのgit</a>を見るとメモリーがmruby/cは40kb必要である事に対して、mrubyは400kb必要らしい。
-      ここで言われているメモリーはRAMの話だと思う。<br>
-      その事から言いたいのは、「400kbのRAMを持つマイコンは少ないのでは？」と。<br>
-      mrubyの開発段階では今後はマイコンのメモリ容量も増えていくはずという目論みだったという事を聞いた気がする。<br>
-      400kb以上のメモリを持っていて安いマイコンだとESP32がよく使われていて、実際にmrubyでESP32を動作させることが可能である。もちろんmruby/cをESP32で動作させることも可能である。<br>
-      逆にmruby/cにできてmrubyにできない部分の代表例は16bitマイコンでの動作だと思う。例えば<a href="https://www.microchip.com/wwwproducts/en/PIC24EP512GP202">PIC24EP512GP202</a>など。<br>
-      こちらに関してはmruby/cを実際に動作させてみた。<a href="https://qiita.com/aikawa_YO/items/68b12689f30ecd67a754">link</a>
-      <br><br>
-      mruby/cの方がデバイスの適応範囲が広いため、一見するとmruby/cの方がいいような気がする。
-      ただ、mruby/cは機能がかなり制限されており、マイコンの制御に必要な程度の機能しか持ち合わせていない。逆に言えばその他の機能はマイコンにとってあまり必要は無い。
-      mruby/cにおける<a href="https://www.s-itoc.jp/activity/research/mrubyc/mrubyc_docs/library">クラス・ライブラリ一覧</a>を見るとかなり機能が制限されていることがわかる。
     </div>
         
     <div id="submenu">
@@ -109,14 +96,14 @@
             <li><a href="./console.html">ターミナルソフトの設定</a></li>
           </ul>
         </details></li>
-        <li><details>
-          <summary>チュートリアル</summary>
-          <ol id="subuol">
-            <li><a href="./tutorial_mrubyc.html">mruby/cとは？</a></li>
-            <li><a href="./tutorial_led.html">LEDを制御する</a></li>
-          </ol>
-        </details></li>
       </ul>
+      <div id="submenu_header">チュートリアル</div>
+      <div id="ruby_class">
+        <ol>
+          <li><a href="./tutorial_mrubyc.html">mruby/cとは？</a></li>
+          <li><a href="./tutorial_led.html">LEDを制御する</a></li>
+        </ol>
+      </div>
       <a href="https://www.rubyworld-conf.org/" target="_blank"><img src="rwc2020_banner_a02.png"></a>
 		</div>
 	</body>
