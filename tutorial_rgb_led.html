@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+	  <title>チュートリアル - RBoardDocument</title>
+    <link rel="shortcut icon" href="./image/bug.ico">
+	  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-176702602-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-176702602-1');
+    </script>
+    <link rel="stylesheet" type="text/css" href="main.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/a11y-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/highlight.min.js"></script>
+	  <script type="text/javascript" src="./style.js"></script>
+	  <link href="https://use.fontawesome.com/releases/v5.11.0/css/all.css" rel="stylesheet">
+  </head>
+  <body>
+    <div id="header"><h1>チュートリアル - フルカラーLED</h1></div>
+    <div id="main">
+      <h3>必要部品一覧</h3>
+      <ul>
+        <li><a href="https://akizukidenshi.com/catalog/g/gP-05294/">ブレッドボード</a></li>
+        <li><a href="https://akizukidenshi.com/catalog/g/gC-05159/">ジャンパーワイヤ</a></li>
+        <li><a href="https://akizukidenshi.com/catalog/g/gI-02476/">RGBLED</a>(カソードコモン)</li>
+        <li><a href="https://akizukidenshi.com/catalog/g/gI-02476/">抵抗</a>(57Ω)</li>
+      </ul>
+      <hr id="first_boader">
+      <h3>RGBLEDについて</h3>
+      <ul id="content">
+        赤、緑、青色のLEDを1つにまとめたLEDです。<br>
+        種類としてアノードコモンとカソードコモンがあり、今回はカソードコモンを使用する。
+        カソードコモンは下記図の様に3つのLEDのカソード(-)が一つの端子にまとめられた部品である。<br>
+        <img src="https://drive.google.com/uc?export=view&id=1g9tjcfzNxL0wycUSKQ2bnrcoThjuqw_g" class="expansion"><br>
+        RGBの3色から様々な色を表現できるようになっている。<br>「<strong>光の三原色</strong>」<br>
+        <img src="https://drive.google.com/uc?export=view&id=1Mww_I-7mGhegY3gnoI6Ju5SNvdilGQ_E" class="expansion"><br>
+      </ul>
+      <hr id="first_boader">
+      <h3>RGBLED電子回路</h3>
+        データシートで確認すると、G,BのVFの値が3.6Vなのに対しRだけVFの値は2Vとなっている。
+        実測値で抵抗をつけなかった場合G,Bの電流値が10mA、Rは27mAでした。
+        Rへの電流値を10mAにするためオームの法則によって<br>
+        <strong>R = V / I = (3.3 - 2) / 0.01 = 130Ω</strong><br>
+        130Ωとなるが、実際はVFに幅がありドキュメントでもIF20mAの時VFは2~2.5Vと記載されていてかなりアバウトなので抵抗値もおよそそのあたりの値であれば問題は無い。
+        色々記載したが、今回は57Ωを使用する。<br>
+        回路図<br>
+        <img src="https://drive.google.com/uc?export=view&id=1ERIwAxl8M5ur_9ZP8TThI83vbEuG06DW" class="expansion"><br>
+        ブレッドボード回路<br>
+        <img src="https://drive.google.com/uc?export=view&id=1jDaetC3eXgLhARSV5cl1Vr0K-epI4FJX" class="expansion"><br>
+      <hr id="first_boader">
+      <h3>プログラム</h3>
+      1秒間隔で赤⇒紫(マゼンタ)⇒青を繰り返すプログラム
+        <pre><code  class="ruby">
+LEDR = 15
+LEDG = 16
+LEDB = 17
+pinMode(LEDR, 0)
+pinMode(LEDG, 0)
+pinMode(LEDB, 0)
+while  true
+  digitalWrite(LEDR, 1)
+  sleep(1)
+  digitalWrite(LEDB, 1)
+  sleep(1)
+  digitalWrite(LEDR, 0)
+  sleep(1)
+  digitalWrite(LEDB, 0)
+end
+        </code></pre>
+      <hr id="first_boader">
+      <h3>例題：</h3>
+      <ul>
+        <li>「緑色→黄色→赤色」の順に点灯させる</li>
+        <div class="answer_box">
+          <label for="led_ans1">answer ➡</label>
+          <input type="checkbox" id="led_ans1"/>
+          <div class="answer_show">  
+            <pre><code  class="ruby">
+LEDR = 15
+LEDG = 16
+LEDB = 17
+pinMode(LEDR, 0)
+pinMode(LEDG, 0)
+pinMode(LEDB, 0)
+while  true
+  digitalWrite(LEDG, 1)
+  sleep(1)
+  digitalWrite(LEDR, 1)
+  sleep(1)
+  digitalWrite(LEDG, 0)
+  sleep(1)
+  digitalWrite(LEDR, 0)
+end
+            </code></pre>
+          </div>
+        </div>
+        <li>LEDの明るさを落とす</li>
+        <div class="answer_box">
+          <label for="led_ans2">answer ➡</label>
+          <input type="checkbox" id="led_ans2"/>
+          <div class="answer_show">  
+            <pre><code  class="ruby">
+LEDR = 15
+LEDG = 16
+LEDB = 17
+pinMode(LEDR, 0)
+pinMode(LEDG, 0)
+pinMode(LEDB, 0)
+while  true
+  digitalWrite(LEDR, 1)
+  sleep(0.001)
+  digitalWrite(LEDR, 0)
+  sleep(0.001)
+end
+            </code></pre>
+          </div>
+        </div>
+        <li>LEDの明るさが変化する(PWM)</li>
+        <div class="answer_box">
+          <label for="led_ans3">answer ➡</label>
+          <input type="checkbox" id="led_ans3"/>
+          <div class="answer_show">  
+            <pre><code  class="ruby">
+LEDG = 16
+pinMode(LEDG, 0)
+PWM.new()
+PWM.pin(LEDG)
+PWM.start(2)
+PWM.cycle(0x95A,4)
+while true
+  for i in 0..100 do
+    PWM.rate(i,2)
+    sleep(0.03)
+  end
+end
+            </code></pre>
+          </div>
+        </div>
+      </ul>
+    </div>
+    </div>
+        
+    <div id="submenu">
+			<div id="submenu_header">もくじ</div>
+      <ul id="submenu_body">
+        <i class="fas fa-home"></i><a href="./index.html">HOME</a>
+        <li><details>
+          <summary>プログラム書き込み</summary>
+          <ul id="subuul">
+            <li><a href="./ide_install.html">mruby/c IDEインストール</a></li>
+            <li><a href="./write_program.html">PG書き込み</a></li>
+          </ul>
+        </details></li>
+        <li><details>
+          <summary>ファームウェアアップデート</summary>
+          <ul id="subuul">
+            <li><a href="./update.html">アップデート手順</a></li>
+          </ul>
+        </details></li>
+        <li><details>
+          <summary>ボードの電気的仕様</summary>
+          <ul id="subuul">
+          <li><a href="./pin.html">ピン配置等</a></li>
+          </ul>
+        </details></li>
+        <li><details>
+          <summary>RBoardにおける各クラス</summary>
+          <ul id="subuul">
+            <li><a href="./class.html">各クラス</a></li>
+            <li><a href="./mrubyc_class.html">mruby/c IO 各クラス</a></li>
+          </ul>
+        </details></li>
+        <li><details>
+          <summary>サンプルプログラム</summary>
+          <ul id="subuul">
+            <li><a href="./adc.html">ADCサンプル</a></li>
+            <li><a href="./i2c.html">I2Cサンプル</a></li>
+            <li><a href="./pwm.html">PWMサンプル</a></li>
+            <li><a href="./uart.html">UARTサンプル</a></li>
+            <li><a href="./etc.html">その他サンプル</a></li>
+          </ul>
+        </details></li>
+        <li><details>
+          <summary>その他</summary>
+          <ul id="subuul">
+            <li><a href="./console.html">ターミナルソフトの設定</a></li>
+          </ul>
+        </details></li>
+      </ul>
+      <div id="submenu_header">チュートリアル</div>
+      <div id="ruby_class">
+        <ol>
+          <li><a href="./tutorial_mrubyc.html">mruby/cとは？</a></li>
+          <li><a href="./tutorial_led.html">LEDを制御する</a></li>
+          <li><a href="./tutorial_rgb_led.html">フルカラーLED</a></li>
+        </ol>
+      </div>
+	    <a href="https://www.rubyworld-conf.org/" target="_blank"><img src="rwc2020_banner_a02.png"></a>
+		</div>
+	</body>
+</html>
