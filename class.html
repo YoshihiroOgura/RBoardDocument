@@ -67,11 +67,11 @@
 			<h3 id="PWM_cycle">cycle(time,double)</h3>
 			周期設定<br>
 			time：1～65535‬(1=0.1us)<br>
-			<form oninput="opt1.value = 1 / a1.valueAsNumber * 1000000">
+			<form oninput="opt1.value = Math.round(1 / Number(a1.value) * 10000000)">
 			1(s)÷
 			<input type="number" name="a1" value="0"size="10"placeholder="周波数">
 			(Hz)×10000000=
-			<output name="opt1"></output>us
+			<output name="opt1">0</output>
 			</form>
 			double：倍率(0～7)<br>
 			<table border="1" class="table">
