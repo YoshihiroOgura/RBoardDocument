@@ -29,9 +29,7 @@
       <h3>圧電ブザーについて</h3>
       圧電ブザーに電圧を加える<br>
       ↓<br>
-      内部にある素子は体積が変わり、変形する<br>
-      ↓<br>
-      周囲の空気の体積が変化する<br>
+      内部にある素子が変形する<br>
       ↓<br>
       音(空気の振動)となる<br>
       動作を繰り返す。<br>
@@ -51,28 +49,28 @@ digitalWrite(BUZZER, 1)
       音階:<a href="https://tomari.org/main/java/oto.html">https://tomari.org/main/java/oto.html</a>
       <pre><code  class="ruby">
 BUZZER = 16
-PWM.new()
-PWM.pin(BUZZER)
+pwm = PWM.new()
+pwm.pin(BUZZER)
 # 開始するチャンネル番号を指定
-PWM.start(2)
+pwm.start(2)
 while true
   # 周期を設定する。
   # ド:261Hz, 倍数16(4)
   # 1 ÷ 261 × 10000000 = 38314
   # 38314 ÷ 16 = 2394(0x95A)
-  PWM.cycle(0x95A,4)
+  pwm.cycle(0x95A,4)
   sleep 1
-  PWM.cycle(0x84D,4)
+  pwm.cycle(0x84D,4)
   sleep 1
-  PWM.cycle(0x76A,4)
+  pwm.cycle(0x76A,4)
   sleep 1
-  PWM.cycle(0x6EF,4)
+  pwm.cycle(0x6EF,4)
   sleep 1
-  PWM.cycle(0x639,4)
+  pwm.cycle(0x639,4)
   sleep 1
-  PWM.cycle(0x58C,4)
+  pwm.cycle(0x58C,4)
   sleep 1
-  PWM.cycle(0x4F3,4)
+  pwm.cycle(0x4F3,4)
   sleep 1
 end
       </code></pre>
