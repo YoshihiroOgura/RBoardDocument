@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+	  <title>チュートリアル - RBoardDocument</title>
+    <link rel="shortcut icon" href="./image/bug.ico">
+	  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-176702602-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-176702602-1');
+    </script>
+    <link rel="stylesheet" type="text/css" href="main.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/a11y-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/highlight.min.js"></script>
+	  <script type="text/javascript" src="./style.js"></script>
+	  <link href="https://use.fontawesome.com/releases/v5.11.0/css/all.css" rel="stylesheet">
+  </head>
+  <body>
+    <div id="header"><h1>チュートリアル - 温度センサ</h1></div>
+    <div id="main">
+      <h3>必要部品一覧</h3>
+      <ul>
+        <li><a href="https://akizukidenshi.com/catalog/g/gI-11160/">温度センサ(LM61CIZ)</a></li>
+      </ul>
+      <hr id="first_boader">
+      <h3>温度センサについて</h3>
+      温度センサとして<a href="https://akizukidenshi.com/catalog/g/gP-07258/">サーミスタ</a>を用いられることがある。<br>
+      サーミスタは安価で入手しやすい反面、温度への変換式が複雑である。<br>
+      今回はサーミスタより高価ではあるが、計算式が至って単純なIC(LM61CIZ)を使用する。<br>
+      LM61CIZは温度が0度の時に600mVを出力するようになっている。 <br>
+      これはマイナスの温度になった場合でもマイナスの電圧にならないようにするためである。<br>
+      LM61CIZでは1度あたり10mVの変化がある。<br>
+      +25度の場合：600 + 250 = 850mV<br>
+      -25度の場合：600 - 250 = 350mV<br>
+
+      また、このセンサーでは分圧抵抗を使用しなくても良く、電源を接続するだけで使用できる。<br>
+      電源も2.7～10Vと幅広く対応しており、電源の電圧が変わっても出力される電圧は0度の時600mVのままである。
+
+      <hr id="first_boader">
+      <h3>電子回路</h3>
+      回路図<br>
+      <img src="https://drive.google.com/uc?export=view&id=1y_4sdLnZq4lrD_ynT7dBOmcX2O5sWeYj" class="expansion"><br>
+      ブレッドボード回路図<br>
+      <img src="https://drive.google.com/uc?export=view&id=1nI4adAyFA5ZppZnnji6QIuwcGbgSK3nQ" class="expansion"><br>
+      <hr id="first_boader">
+      <h3>プログラム</h3>
+      温度を計測するプログラム
+      <pre><code  class="ruby">
+TEMP_ADC = 6
+adc = ADC.new()
+adc.ch(TEMP_ADC)
+temp = 0
+while true
+  adc.start
+  v = adc.read_v
+  adc.stop
+  temp = (v-0.6)*1000/10
+  puts("temp:" + temp.to_s)
+end
+      </code></pre>
+      <hr id="first_boader">
+      <h3>例題：</h3>
+    </div>
+    </div>
+        
+    <div id="submenu">
+			<div id="submenu_header">もくじ</div>
+      <ul id="submenu_body">
+        <i class="fas fa-home"></i><a href="./index.html">HOME</a>
+        <li><details>
+          <summary>プログラム書き込み</summary>
+          <ul id="subuul">
+            <li><a href="./ide_install.html">mruby/c IDEインストール</a></li>
+            <li><a href="./write_program.html">PG書き込み</a></li>
+          </ul>
+        </details></li>
+        <li><details>
+          <summary>ファームウェアアップデート</summary>
+          <ul id="subuul">
+            <li><a href="./update.html">アップデート手順</a></li>
+          </ul>
+        </details></li>
+        <li><details>
+          <summary>ボードの電気的仕様</summary>
+          <ul id="subuul">
+          <li><a href="./pin.html">ピン配置等</a></li>
+          </ul>
+        </details></li>
+        <li><details>
+          <summary>RBoardにおける各クラス</summary>
+          <ul id="subuul">
+            <li><a href="./class.html">各クラス</a></li>
+            <li><a href="./mrubyc_class.html">mruby/c IO 各クラス</a></li>
+          </ul>
+        </details></li>
+        <li><details>
+          <summary>サンプルプログラム</summary>
+          <ul id="subuul">
+            <li><a href="./adc.html">ADCサンプル</a></li>
+            <li><a href="./i2c.html">I2Cサンプル</a></li>
+            <li><a href="./pwm.html">PWMサンプル</a></li>
+            <li><a href="./uart.html">UARTサンプル</a></li>
+            <li><a href="./etc.html">その他サンプル</a></li>
+          </ul>
+        </details></li>
+        <li><details>
+          <summary>その他</summary>
+          <ul id="subuul">
+            <li><a href="./console.html">ターミナルソフトの設定</a></li>
+          </ul>
+        </details></li>
+      </ul>
+      <div id="submenu_header">チュートリアル</div>
+      <div id="ruby_class">
+        <ol>
+          <li><a href="./tutorial_mrubyc.html">mruby/cとは？</a></li>
+          <li><a href="./tutorial_led.html">LEDを制御する</a></li>
+          <li><a href="./tutorial_rgb_led.html">フルカラーLED</a></li>
+        </ol>
+      </div>
+	    <a href="https://www.rubyworld-conf.org/" target="_blank"><img src="rwc2020_banner_a02.png"></a>
+		</div>
+	</body>
+</html>
