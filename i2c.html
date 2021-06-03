@@ -28,8 +28,8 @@
 			<pre><code  class="ruby">
 while true
 	I2C.write(0x18, 0x08, 0x03)
-	ans = I2C.read(0x18,0x05,2)
-	a = ans[1] | ((ans[0] & 0x1f)<<8)
+	ans = I2C.read(0x18,2,0x05)
+	a = ans[1].ord | ((ans[0].ord & 0x1f)<<8)
 	a = (a.to_f)* 0.0625
 	puts("ans:"+a.to_s+"\r\n")
 	sleep(5)
@@ -265,10 +265,10 @@ class OLED
 		end
 	end
 	def send(a)
-		$oled.write(0x3C,0x00,0xB0+i,0x21,0x00,0x7F)
 		c = 0
 		while(c<7)
 			j = 0
+			$oled.write(0x3C,0x00,0xB0+c,0x21,0x00,0x7F)
 			while(j<16)
 				b = j
 				$oled.write(0x3C,0x40,a[c][b][0],a[c][b][1],a[c][b][2],a[c][b][3],a[c][b][4],a[c][b][5],a[c][b][6],a[c][b][7])
@@ -342,8 +342,8 @@ send_txt("YoshihiroOgura")
 			<pre><code class="ruby">
 led = I2C.new
 while true
-	l = led.read(0x6F,0x03,1)
-	s = (l[0]&0x04)>>2
+	l = led.read(0x6F,1,0x03)
+	s = (l[0].ord&0x04)>>2
 	led.write(0x6F,0x19,s * 0xFF)
 end
 			</code></pre>
@@ -355,11 +355,11 @@ while true
   status = 0
   I2C.write(0x29,0x00,0x01)
   while((status & 0x01) == 1)
-    data = I2C.read(0x29,0x14,1)
-    status = data[0]
+    data = I2C.read(0x29,1,0x14)
+    status = data[0].ord
   end
-  data = I2C.read(0x29,0x14,12)
-  puts(data[11] + (data[10]<<8))
+  data = I2C.read(0x29,12,0x14)
+  puts(data[11].ord + (data[10].ord<<8))
   sleep_ms(100)
 end
 			</code></pre>
