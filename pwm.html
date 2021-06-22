@@ -23,16 +23,14 @@
     <div id="main">
 			<h3>PWM(外部LED)</h3>
 			<pre><code  class="ruby">
-PWM.new()
-PWM.pin(16)
-PWM.start(2)
-PWM.cycle(0x95A,4)
+pwm = PWM.new(16)
+pwm.period_us(100)
 while true
-  PWM.rate(80,2)
+  pwm.duty_us(80)
   sleep 1
-  PWM.rate(40,2)
+  pwm.duty_us(40)
   sleep 1
-  PWM.rate(20,2)
+  pwm.duty_us(20)
   sleep 1
 end
       </code></pre>
@@ -40,43 +38,33 @@ end
 			<h3>圧電ブザー</h3>
 			http://wiki.seeedstudio.com/Grove-Buzzer/
 			<pre><code  class="ruby">
-PWM.new()
-PWM.pin(16)
-PWM.start(2)
+pwm = PWM.new(16, 4)
+scale = [261,293,329,349,391,440,493]
+i = 0
 while true
-  PWM.cycle(0x95A,4)
+  pwm.frequency(scale[i])
   sleep 1
-  PWM.cycle(0x84D,4)
-  sleep 1
-  PWM.cycle(0x76A,4)
-  sleep 1
-  PWM.cycle(0x6EF,4)
-  sleep 1
-  PWM.cycle(0x639,4)
-  sleep 1
-  PWM.cycle(0x58C,4)
-  sleep 1
-  PWM.cycle(0x4F3,4)
-  sleep 1
+  i = i + 1
+  if(i == 7)
+    i = 0
+  end
 end
 			</code></pre>
 			<h4>簡易mml再生</h4>
 			<pre><code  class="ruby">
-TBL_FREQ = [0x95A, 0x84D, 0x76A, 0x6EF, 0x639, 0x58C, 0x4F3,
-            0x4AB, 0x428, 0x3B4, 0x37F, 0x31D, 0x2BF, 0x278]
+        TBL_FREQ = [261,293,329,349,391,440,493,
+        523,587,659,698,783,880,987]
 TBL_LENGTH = {1=>2000, 2=>1000, 4=>500, 8=>250}
 
-PWM.new()
-PWM.pin(16)
-PWM.start(2)
+$pwm = PWM.new(16, 4)
 
 def tone( freq )
   if freq == 0
-    PWM.cycle(0,4)
+    $pwm.period_us(0)
     return
   end
 ​
-  PWM.cycle(freq ,4)
+  $pwm.frequency(freq)
 end
 ​
 ​
@@ -129,13 +117,11 @@ def play_sub( mnote, octabe, mlength )
     idx = octabe * 7 + idx
     if TBL_FREQ[idx]
       tone( TBL_FREQ[idx] )
-      #display( idx )
       sleep_ms( TBL_LENGTH[mlength] || 1 )
-      tone( 0 )
+      #tone( 0 )
     end
     return
   end
-​
 end
 ​
 mml3 = "&lt;C8DE4&gt;C8DE4&lt;C8DE4&gt;C8DE4&lt;C8DE4&gt;C8DE4&lt;E8FG4EDC A8AAFDDEFGGGEC4R8 EF4&gt;A&lt;C8&gt;BAB&lt;C2"
@@ -146,17 +132,15 @@ play mml3
 			<h3>SG90(サーボモータ)</h3>
 			http://akizukidenshi.com/catalog/g/gM-08761/
 			<pre><code  class="ruby">
-PWM.new()
-PWM.pin(18)
-PWM.start(4)
-PWM.cycle(0xC35,6)
+pwm = PWM.new(16,6)
+pwm.frequency(50)
 while true
-  PWM.rate(3,4)
-  sleep 1
-  PWM.rate(6,4)
-  sleep 1
-  PWM.rate(12,4)
-  sleep 1
+  pwm.duty_us(600)
+  sleep(1)
+  pwm.duty_us(850)
+  sleep(1)
+  pwm.duty_us(2300)
+  sleep(1)
 end
 			</code></pre>
       </div>

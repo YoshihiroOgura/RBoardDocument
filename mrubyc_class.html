@@ -97,20 +97,44 @@
 
 			<hr id="first_boader">
 			<h2 id="PWM">PWM</h2>
-			<h3 id="PWM_new">new(pin)</h3>
+			パルス幅変調（PWM）疑似的アナログ出力としても使用する。<br>
+			使用例：LEDの明るさを調整、圧電ブザー等の発振、サーボモーター制御など<br>
+			周期⇔周波数計算
+			<form oninput="opt1.value = Math.round(1 / Number(a1.value) * 1000000)">
+				<input type="number" name="a1" value="0"size="10"placeholder="周波数">
+				[Hz]=
+				<output name="opt1">0</output>
+				[us]
+			</form><br>
+			<form oninput="opt1.value = Math.round(1 / Number(a1.value) * 1000000)">
+				<input type="number" name="a1" value="0"size="10"placeholder="周波数">
+				[us]=
+				<output name="opt1">0</output>
+				[Hz]
+			</form>
+			<hr id="second_boader">
+			<h3 id="PWM_new">new(pin,tckps)</h3>
 			コンストラクタ<br>
+			指定したピンをPWMとして使用します。<br>
+			第二引数(tckps)にて倍率を指定します。(指定なしの場合は0)<br>
+			　⇒ 周波数が低い場合に変更してみてください。<br>
 			pin：0～20<br>
+			tckps:0～6<br>
 			<hr id="second_boader">
 			<h3 id="PWM_frequency">frequency(n)</h3>
 			周波数設定。0を指定すると出力を停止します。<br>
 			n:整数(Hz)<br>
+			<hr id="second_boader">
+			<h3 id="PWM_period_us">period_us(n)</h3>
+			周波数設定。マイクロ秒単位で指定します。0を指定すると出力を停止します。<br>
+			n:整数(us)<br>
 			<hr id="second_boader">
 			<h3 id="PWM_duty">duty(n)</h3>
 			デューティー比を、0（全オフ）から1023（全オン）までで指定します。<br>
 			n:0~1023<br>
 			<hr id="second_boader">
 			<h3 id="PWM_period_us">period_us(n)</h3>
-			デューティー比を、0（全オフ）から1023（全オン）までで指定します。<br>
+			パルス幅を、マイクロ秒単位で指定します。<br>
 			n:整数(us)<br>
 
 			<hr id="first_boader">
