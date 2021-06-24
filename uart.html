@@ -53,22 +53,36 @@ end
 			Edit→Custam→3つのUUIDをそれぞれ選択。<br>
 			右上の✓を押したら接続できるはずです。<br>
 			<pre><code  class="ruby">
-UART.new(19200)
+# スマホから入力された数値をLEDで表示する。
+bluetooth = UART.new(115200)
 while true
-	UART.puts("aaaa\r\n")
-	sleep(5)
+	txt = bluetooth.gets()
+	if(txt != nil)
+		led = txt[0,2].to_i
+		leds_write(led)
+		bluetooth.puts("led" + led.to_s + "\r\n")
+	end
 end
 			</code></pre>
 			<h3>wifi</h3>
 			https://www.switch-science.com/catalog/5795/<br>
+			上記モジュールのコマンドリスト。
+			https://docs.zentri.com/zentrios/wl/latest/cmd/commands<br>
+			SSIDの設定　　　：set wlan.ssid<br>
+			パスワードの設定：set wlan.passkey<br>
+			setコマンドで設定できるパラメーター<br>
+			https://docs.zentri.com/zentrios/wl/latest/update-and-recovery#safe-mode<br>
 			<pre><code  class="ruby">
+# hgeはHTTP(S) のGETリクエストを指定URLへ送信します。
 cmd = "hge https://script.google.com/macros/s/xxxxxxxxxxxxxxxxxxx/exec?data1="
-wifi = UART.new(19200)
+wifi = UART.new(115200)
 wifi.puts("\r\n")
 sleep(5)
 while true
+　# 送信します
 	wifi.puts(cmd + (1.to_s) + "\r\n")
 	sleep(10)
+	# 接続している通信データを閉じます。
 	wifi.puts("stream_close 0\r\n")
 	sleep(10)
 end

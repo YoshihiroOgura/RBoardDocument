@@ -139,8 +139,12 @@
 
 			<hr id="first_boader">
 			<h2 id="UART">UART</h2>
-			<h3 id="UART_new">new(baud)</h3>
-			19200を基準としているため、これ以上の値を設定するとかなりデータが欠損する。<br>
+			各デバイスとシリアル通信を行う。<br>
+			例：Bluetoothモジュール、Wifiモジュール、GPSモジュール、PCなど
+			<h3 id="UART_new">new(port, baud)</h3>
+			port1はputsと同じUSB出力とデバッグ用UARTポートにて通信します。
+			port2はGROVEとGPIO(Pin14,13)です。
+			port：1 or 2(指定なしの場合は2)<br>
 			baud：ボーレート値（例：19200）<br>
 			<hr id="second_boader">
 			<h3 id="UART_gets">gets</h3>
@@ -150,12 +154,23 @@
 			文字列送信<br>
 			text：文字列
 			<hr id="second_boader">
+			<h3 id="UART_write">puts(text)</h3>
+			writeと同様です。
+			<hr id="second_boader">
 			<h3 id="UART_read">read(n)</h3>
 			文字列受信、指定した文字数を受信します。<br>
 			指定されたバイト数のデータが到着していない場合、nilを返します。<br>
 			n：文字数
 			<hr id="second_boader">
-			<h3 id="UART_clear_buffer">clear_buffer</h3>
+			<h3 id="UART_read_nonblock">read_nonblock(n)</h3>
+			文字列受信、指定した文字数を受信します。<br>
+			指定されたバイト数のデータが到着していない場合、到着しているデータを返します。<br>
+			n：文字数
+			<hr id="second_boader">
+			<h3 id="UART_clear_tx_buffer">clear_tx_buffer</h3>
+			送信文字列のバッファ初期化(RBoardにおいては無意味です)
+			<hr id="second_boader">
+			<h3 id="UART_clear_rx_buffer">clear_rx_buffer</h3>
 			受信文字列のバッファ初期化
 
 			<hr id="first_boader">
@@ -319,9 +334,12 @@
 					<ul id="class_ul">
 						<li><a href="#UART_new">new</a></li>
 						<li><a href="#UART_gets">gets</a></li>
-											<li><a href="#UART_write">write</a></li>
-											<li><a href="#UART_read">read</a></li>
-						<li><a href="#UART_clear_buffer">clear_buffer</a></li>
+						<li><a href="#UART_read">read</a></li>
+						<li><a href="#UART_write">write</a></li>
+						<li><a href="#UART_puts">puts</a></li>
+						<li><a href="#UART_read_nonblock">read_nonblock</a></li>
+						<li><a href="#UART_clear_tx_buffer">clear_tx_buffer</a></li>
+						<li><a href="#UART_clear_rx_buffer">clear_rx_buffer</a></li>
 					</ul>
 				</details>
 				<details>
