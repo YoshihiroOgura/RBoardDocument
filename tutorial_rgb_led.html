@@ -58,17 +58,20 @@
 LEDR = 15
 LEDG = 16
 LEDB = 17
-pinMode(LEDR, 0)
-pinMode(LEDG, 0)
-pinMode(LEDB, 0)
+r = GPIO.new(LEDR)
+g = GPIO.new(LEDG)
+b = GPIO.new(LEDB)
+r.setmode(0)
+g.setmode(0)
+b.setmode(0)
 while  true
-  digitalWrite(LEDR, 1)
+  r.write(1)
   sleep(1)
-  digitalWrite(LEDB, 1)
+  b.write(1)
   sleep(1)
-  digitalWrite(LEDR, 0)
+  r.write(0)
   sleep(1)
-  digitalWrite(LEDB, 0)
+  b.write(0)
 end
         </code></pre>
         ピンの動作を設定するため<span style="background-color:rgb(206, 205, 205)">pinMode(ピン番号, 設定値)</span>を使用する。
@@ -85,17 +88,20 @@ end
 LEDR = 15
 LEDG = 16
 LEDB = 17
-pinMode(LEDR, 0)
-pinMode(LEDG, 0)
-pinMode(LEDB, 0)
+r = GPIO.new(LEDR)
+g = GPIO.new(LEDG)
+b = GPIO.new(LEDB)
+r.setmode(0)
+g.setmode(0)
+b.setmode(0)
 while  true
-  digitalWrite(LEDG, 1)
+  g.write(1)
   sleep(1)
-  digitalWrite(LEDR, 1)
+  r.write(1)
   sleep(1)
-  digitalWrite(LEDG, 0)
+  g.write(0)
   sleep(1)
-  digitalWrite(LEDR, 0)
+  r.write(0)
 end
             </code></pre>
           </div>
@@ -109,13 +115,16 @@ end
 LEDR = 15
 LEDG = 16
 LEDB = 17
-pinMode(LEDR, 0)
-pinMode(LEDG, 0)
-pinMode(LEDB, 0)
+r = GPIO.new(LEDR)
+g = GPIO.new(LEDG)
+b = GPIO.new(LEDB)
+r.setmode(0)
+g.setmode(0)
+b.setmode(0)
 while  true
-  digitalWrite(LEDR, 1)
+  r.write(1)
   sleep(0.001)
-  digitalWrite(LEDR, 0)
+  r.write(0)
   sleep(0.001)
 end
             </code></pre>
@@ -128,15 +137,11 @@ end
           <div class="answer_show">  
             <pre><code  class="ruby">
 LEDG = 16
-pinMode(LEDG, 0)
-PWM.new()
-PWM.pin(LEDG)
-PWM.start(2)
-PWM.cycle(0x95A,4)
+g = PWM.new(LEDG)
 while true
-  for i in 0..100 do
-    PWM.rate(i,2)
-    sleep(0.03)
+  for i in 0..1023 do
+    g.duty(i)
+    sleep(0.001)
   end
 end
             </code></pre>
