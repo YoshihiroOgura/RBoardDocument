@@ -58,16 +58,16 @@
       <h3>プログラム</h3>
       ドアが開いているときLEDを点灯させるプログラム
         <pre><code  class="ruby">
-REED_SW = 18
-pinMode(REED_SW, 1)
-pinPull(REED_SW, 1)
+reed_sw = GPIO.new(18)
+reed_sw.setmode(1)
+reed_sw.pull(1)
 while  true
-  status = digitalRead(REED_SW)
+  status = reed_sw.read()
   # プルアップしているのでドアが閉じている場合にstatusは0となる
   if(status == 1)
-    digitalWrite(0, 1)
+    leds_write(1)
   else
-    digitalWrite(0, 0)
+    leds_write(0)
   end
 end
         </code></pre>
@@ -84,20 +84,19 @@ end
           <input type="checkbox" id="led_ans1"/>
           <div class="answer_show">  
             <pre><code  class="ruby">
-REED_SW = 18
-LED1 = 0
-pinMode(REED_SW, 1)
-pinPull(REED_SW, 1)
+reed_sw = GPIO.new(18)
+reed_sw.setmode(1)
+reed_sw.pull(1)
 cnt = 0
 while  true
-  status = digitalRead(REED_SW)
+  status = reed_sw.read()
   if(status == 1)
     if(cnt > 5)
-      digitalWrite(LED1, 1)
+      leds_write(1)
     end
     cnt += 1
   else
-    digitalWrite(LED1, 0)
+    leds_write(0)
     cnt = 0
   end
   sleep(1)
