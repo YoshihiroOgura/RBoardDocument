@@ -38,10 +38,11 @@
         <img src="./image/ide_led.png" class="expansion">
         <li>プログラムを記述していく。1秒間隔でLEDのON,OFFを繰り返す。</li>
         <pre><code  class="ruby">
+led = GPIO.new(0)
 while  true # 無限ループ
-  digitalWrite(0, 1) # LED1をON
+  led.write(1) # LED1をON
   sleep(1) # 1秒スリープ
-  digitalWrite(0, 0) # LED1をOFF
+  led.write(0) # LED1をOFF
   sleep(1) # 1秒スリープ
 end
         </code></pre>
@@ -86,11 +87,12 @@ Can't open serial port line.
           <input type="checkbox" id="led_ans1"/>
           <div class="answer_show">  
             <pre><code  class="ruby">
+led = GPIO.new(0)
 while  true # 無限ループ
-  digitalWrite(0, 1) # LED1をON
-  sleep(0.1) # 1秒スリープ
-  digitalWrite(0, 0) # LED1をOFF
-  sleep(0.1) # 1秒スリープ
+  led.write(1) # LED1をON
+  sleep(0.1) # 0.1秒スリープ
+  led.write(0) # LED1をOFF
+  sleep(0.1) # 0.1秒スリープ
 end
             </code></pre>
           </div>
@@ -101,13 +103,15 @@ end
           <input type="checkbox" id="led_ans2"/>
           <div class="answer_show">  
             <pre><code  class="ruby">
+led_one = GPIO.new(0)
+led_two = GPIO.new(1)
 while  true # 無限ループ
-  digitalWrite(0, 1) # LED1をON
+  led_one.write(1) # LED1をON
   sleep(1) # 1秒スリープ
-  digitalWrite(1, 1) # LED2をON
-  digitalWrite(0, 0) # LED1をOFF
+  led_two.write(1) # LED2をON
+  led_one.write(0) # LED1をOFF
   sleep(1) # 1秒スリープ
-  digitalWrite(1, 0) # LED2をOFF
+  led_two.write(0) # LED2をOFF
 end
             </code></pre>
           </div>
@@ -118,12 +122,16 @@ end
           <input type="checkbox" id="led_ans3"/>
           <div class="answer_show">  
             <pre><code  class="ruby">
-leds = [0, 1, 5, 6]
+led1 = GPIO.new(0)
+led2 = GPIO.new(1)
+led3 = GPIO.new(5)
+led4 = GPIO.new(6)
+leds = [led1, led2, led3, led4]
 while  true
-  leds.each do |i|
-    digitalWrite(i,1)
+  leds.each do |led|
+    led.write(1)
     sleep(1)
-    digitalWrite(i,0)
+    led.write(0)
   end
 end
             </code></pre>
