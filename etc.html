@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja">
   <head>
-    <title>その他サンプル - RBoardDocument</title>
+    <title>GPIO,その他サンプル - RBoardDocument</title>
     <link rel="shortcut icon" href="./image/bug.ico">
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-176702602-1"></script>
     <script>
@@ -19,7 +19,7 @@
     <link href="https://use.fontawesome.com/releases/v5.11.0/css/all.css" rel="stylesheet">
   </head>
   <body>
-    <div id="header"><h1> その他サンプル </h1></div>
+    <div id="header"><h1> GPIO,その他サンプル </h1></div>
     <div id="main">
 			<h3>Lチカ(オンボードLED)</h3>
 			<pre><code  class="ruby">
@@ -31,33 +31,43 @@ while true
 end
 			</code></pre>
 			<pre><code  class="ruby">
-pinMode(0,0)
+led = GPIO.new(0)
 while true
-  digitalWrite(0,1)
+  led.write(1)
   sleep 1
-  digitalWrite(0,0)
+  led.write(0)
   sleep 1
 end
       </code></pre>
       <hr id="first_boader">
 			<h3>Lチカ(外部LED)</h3>
+      20番ピンにLEDを接続した場合。
 			<pre><code  class="ruby">
-pinMode(20,0)
+led = GPIO.new(20)
 while true
-  digitalWrite(20,1)
+  led.write(1)
   sleep 1
-  digitalWrite(20,0)
+  led.write(0)
   sleep 1
+end
+      </code></pre>
+      <hr id="first_boader">
+      <h3>スイッチ入力(オンボードスイッチ)</h3>
+			<pre><code  class="ruby">
+while true
+  status = sw()
+  leds_write(status)
 end
       </code></pre>
       <hr id="first_boader">
 			<h3>外部入力(DigitalGROVE)</h3>
 			http://wiki.seeedstudio.com/Grove-Button/
 			<pre><code  class="ruby">
-pinMode(0,0)
-pinMode(16,1)
+btn = GPIO.new(16)
+btn.setmode(1)
 while true
-  leds_write(digitalRead(16))
+  status = btn.read()
+  leds_write(status)
 end
       </code></pre>
       <hr id="first_boader">
@@ -78,14 +88,14 @@ end
       <h3>リレー</h3>
       リレー：<a href="https://www.switch-science.com/catalog/807/">https://www.switch-science.com/catalog/807/</a>
       <pre><code  class="ruby">
-  pinMode(0,0)
-  pinMode(16,1)
-  while true
-    digitalWrite(16,1)
-    sleep(1)
-    digitalWrite(16,0)
-    sleep(1)
-  end
+relay = GPIO.new(16)
+relay.setmode(0)
+while true
+  relay.write(1)
+  sleep(1)
+  relay.write(0)
+  sleep(1)
+end
       </code></pre>
     </div>
         
@@ -126,7 +136,7 @@ end
             <li><a href="./i2c.html">I2Cサンプル</a></li>
             <li><a href="./pwm.html">PWMサンプル</a></li>
             <li><a href="./uart.html">UARTサンプル</a></li>
-            <li><a href="./etc.html">その他サンプル</a></li>
+            <li><a href="./etc.html">GPIO,その他サンプル</a></li>
           </ul>
         </details></li>
         <li><details>
