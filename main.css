@@ -243,4 +243,15 @@ ul#normal_li li:before {
 .answer_box input {
     display: none;
 }
-
+#GPIO,#GPIO_new,#GPIO_setmode,#GPIO_write,#GPIO_read,
+#ADC,#ADC_new,#ADC_read,#ADC_read_v,
+#I2C,#I2C_write,#I2C_read,
+#SPI,#SPI_write#SPI_read,
+#PWM,#PWM_new,#PWM_frequency,#PWM_duty,#PWM_period_us,
+#UART,#UART_new,#UART_gets,#UART_read,#UART_write,#UART_puts,#UART_read_nonblock,
+#UART_clear_tx_buffer,#UART_clear_rx_buffer,
+#Math,
+#ETC,#leds_write,#sw,#pinInit,#puts{
+	margin-top:-100px;
+ padding-top:100px;
+}
