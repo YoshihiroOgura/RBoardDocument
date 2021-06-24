@@ -50,16 +50,13 @@
       <h3>プログラム</h3>
       温度を計測するプログラム
       <pre><code  class="ruby">
-TEMP_ADC = 6
-adc = ADC.new()
-adc.ch(TEMP_ADC)
+adc = ADC.new(19)
 temp = 0
 while true
-  adc.start
   v = adc.read_v
-  adc.stop
   temp = (v-0.6)*1000/10
   puts("temp:" + temp.to_s)
+  sleep(5)
 end
       </code></pre>
       <hr id="first_boader">
