@@ -43,6 +43,7 @@ document.write('\
     <summary>その他</summary>\
     <ul id="subuul">\
       <li><a href="./console.html">ターミナルソフトの設定</a></li>\
+      <li><a href="./c_program.html">Cでプログラミング</a></li>\
     </ul>\
   </details></li>\
   <li><details>\
