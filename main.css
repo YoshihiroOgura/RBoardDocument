@@ -243,6 +243,8 @@ ul#normal_li li:before {
 .answer_box input {
     display: none;
 }
+
+#windows,#mac,#ubuntu,
 #GPIO,#GPIO_new,#GPIO_setmode,#GPIO_write,#GPIO_read,
 #ADC,#ADC_new,#ADC_read,#ADC_read_v,
 #I2C,#I2C_write,#I2C_read,
@@ -253,5 +255,5 @@ ul#normal_li li:before {
 #Math,
 #ETC,#leds_write,#sw,#pinInit,#puts{
 	margin-top:-100px;
- padding-top:100px;
+	padding-top:100px;
 }
