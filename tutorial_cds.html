@@ -54,18 +54,13 @@
       <h3>プログラム</h3>
       暗くなった場合にLED1を点灯させる
       <pre><code  class="ruby">
-LED1 = 0
-ADC1 = 7
-adc = ADC.new()
-adc.ch(ADC1)
+adc = ADC.new(20)
 while true
-  adc.start
   v = adc.read_v
-  adc.stop
   if(v < 1.7)
-    digitalWrite(LED1, 1)
+    leds_write(1)
   else
-    digitalWrite(LED1, 0)
+    leds_write(0)
   end
 end
       </code></pre>
