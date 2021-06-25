@@ -56,6 +56,7 @@ div#submenu {
 	background-color:#caf3ff;
 	position: fixed;
 	overflow: auto;
+	border-radius: 10px;
 }
 
 /*サブメニューのヘッダ部分（余白調整・背景画像・背景色・文字サイズなど）*/
