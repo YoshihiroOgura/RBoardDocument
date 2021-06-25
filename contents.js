@@ -60,5 +60,4 @@ document.write('\
     </ol>\
   </details></li>\
 </ul>\
-<a href="https://www.rubyworld-conf.org/" target="_blank"><img src="rwc2020_banner_a02.png"></a>\
 ');
