@@ -2,7 +2,7 @@
 document.write('\
 <div id="submenu_header">もくじ</div>\
 <ul id="submenu_body">\
-  <i class="fas fa-home"></i><a href="./index.html">HOME</a>\
+  <i class="fas fa-home faa-wrench animated-hover"></i><a href="./index.html">HOME</a>\
   <li><details>\
     <summary>プログラム書き込み</summary>\
     <ul id="subuul">\
