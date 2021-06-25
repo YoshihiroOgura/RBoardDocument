@@ -1,7 +1,7 @@
 particlesJS('top_page',{
     "particles":{
       "number":{
-        "value":1500,
+        "value":50,
         "density":{
           "enable":false
         }
@@ -10,7 +10,7 @@ particlesJS('top_page',{
         "type":"image",
         "image":{
             "src":"https://drive.google.com/uc?export=view&id=1m8s6PplUpo17UEuXdwr0qPkIYzts6Ich",
-            "wide":50,
+            "wide":500,
         },
         "stroke":{
           "width":1,
@@ -31,7 +31,7 @@ particlesJS('top_page',{
         }
       },
       "size":{
-        "value":2,
+        "value":5,
         "random":true,
         "anim":{
           "enable":false
@@ -60,7 +60,7 @@ particlesJS('top_page',{
       },
       "modes":{
         "bubble":{
-          "distance":100,
+          "distance":50,
           "opacity":8,
           "duration":2,
           "speed":1
