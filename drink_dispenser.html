@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <title>ドリンクディスペンサー - RBoardDocument</title>
+    <link rel="shortcut icon" href="./image/bug.ico">
+    <meta charset="utf-8"/>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-176702602-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-176702602-1');
+    </script>
+    <link rel="stylesheet" type="text/css" href="main.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/a11y-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/highlight.min.js"></script>
+    <script type="text/javascript" src="./style.js"></script>
+    <link href="https://use.fontawesome.com/releases/v5.11.0/css/all.css" rel="stylesheet">
+  </head>
+  <body>
+    <div id="header"><h1> ドリンクディスペンサー </h1></div>
+    <div id="main">
+      ハンズオンにて実施した内容です。
+      <hr id="first_boader">
+			<h3>使用部品</h3>
+      RBoard×１<br>
+      <a href="https://www.switch-science.com/catalog/807/">GROVE-リレー</a>×１<br>
+      <a href="https://www.switch-science.com/catalog/3990/">GROVE-赤外線センサ</a>×１<br>
+      <a href="https://www.amazon.co.jp/dp/B07CDDZQRZ">モーターポンプ</a>×１<br>
+      <a href="https://akizukidenshi.com/catalog/g/gB-03257/">9Vアルカリ乾電池</a>×１<br>
+      <a href="https://akizukidenshi.com/catalog/g/gC-08916/">ミノムシクリップ-ジャンパ線</a>×１<br>
+      <a href="https://akizukidenshi.com/catalog/g/gC-04352/">ミノムシクリップ-ミノムシクリップ</a>×１<br>
+      <a href="https://www.monotaro.com/p/4533/3942/">シリコンチューブ</a>×１<br>
+      <a href="https://www.monotaro.com/p/6835/7817/">穴あきゴム栓</a>×１<br>
+      <a href="https://www.amazon.co.jp/dp/B00ZRHB5NW">エアーバルブ</a>×1<br>
+      <a href="https://www.amazon.co.jp/dp/B08HHH6BD6">Y型チューブコネクタ</a>×１<br>
+      =====================================================<br>
+      ネジ(ホームセンターで購入したほうが良い？)：<br>
+      <a href="https://www.monotaro.com/p/0550/6943/">M2ネジ</a><br>
+      <a href="https://www.monotaro.com/p/2344/2642/">M2ナット</a><br>
+      =====================================================<br>
+      工具：<br>
+      <a href="https://www.monotaro.com/p/1000/6184/">マイナスドライバー</a><br>
+      <br>
+      <span style="color:rgb(255, 0, 0)">ハンズオンでは超音波センサーも使用しましたが、Cのプログラム変更も必要であるため今回は使用しません。</span>
+			<hr id="first_boader">
+      <h3>組み立て</h3>
+      <h4>モーター用の回路</h4><br>
+      リレー・電池・モーターを繋げてモーター駆動用の回路を作ります。<br>
+      この駆動回路を作る理由ですが、LEDの場合はRBoardへ直接接続して制御する場合が殆どです。<br>
+      ですが、モーターの場合はそうはいきません。<br>
+      LED(LED電球などを除く)の場合は2.1～5V程度与えると動作するものが多いですが、<br>
+      DCモーター(電子工作程度)の場合12Vや24Vで動作するモーターもあります。<br>
+      RBardから給電できる電圧は3.3Vですので、LEDを制御できてもモーターを制御するには電圧が足りません。<br>
+      そこでモーター用の電源は別で用意し、ONOFF信号をRBoardから送信することによりモーターの回転を制御することとします。<br>
+      その際に必要になるのがリレーです。<br>
+      今回使用するのはメカニカルリレーと呼ばれるもので、信号を送ると電磁石が磁気を帯び、リレー内部の金属板同士が重なることにより通電します。<br>
+      実際に信号を送ると、カチカチと金属がぶつかり合う音がします。<br>
+      他にもソリッドステートリレーが存在しますが、メカニカルリレーと比べて扱いが難しいため今回は使用しません。<br>
+      <a href="https://www.marutsu.co.jp/pc/i/31380690/">GROVE-ソリッドステートリレー</a><br>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/rDqMP4ot8yo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <hr id="second_boader">
+      <h4>空気圧チューブの配管</h4><br>
+      液体を移動させる場合は水圧用ポンプ(モーター)を使用すると思いますが衛生上ポンプ内部を飲料水が通るのは良くない。<br>
+      そのため今回は空気圧用のポンプ(モーター)を使用して水を押し出します。<br>
+      モーターから出た空気がペットボトル内部にたまり、空気圧によって別のチューブから内部の液体が押し出されます。<br>
+      <img src="https://drive.google.com/uc?export=view&id=1Ze0ZL0ZkllhezPTvk7Rv44bKz3zyx1JP" class="expansion"><br>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/KNBlGn99GPQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <hr id="second_boader">
+      <h4>土台</h4><br>
+      不要ですが一応。<br>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/DxpGOPZxF4I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <hr id="first_boader">
+      <h3>プログラム</h3>
+      <h4>ボタンを押している間、液体を出す</h4><br>
+      その名の通りRBoardに搭載されているSWを押している間液体が出ます。
+      <pre><code  class="ruby">
+relay = GPIO.new(16)
+relay.setmode(0)
+while true
+  status = sw()
+  if(status == 0)
+    relay.write(1)
+  else
+    relay.write(0)
+  end
+end
+      </code></pre>
+      <h4>ボタンを押した際に一定量の液体を出す</h4><br>
+      SWを押してから一定時間液体が出ます。
+      一定時間出すことにより一定量出ます。
+      <pre><code  class="ruby">
+relay = GPIO.new(16)
+relay.setmode(0)
+while true
+  status = sw()
+  if(status == 0)
+    relay.write(1)
+    sleep(3)
+  else
+    relay.write(0)
+  end
+end
+      </code></pre>
+      <h4>赤外線センサを使用したコップの検知</h4><br>
+      <pre><code  class="ruby">
+relay = GPIO.new(16)
+relay.setmode(0)
+# 赤外線センサーはGROVE-ADCへ接続
+sensor = GPIO.new(20)
+sensor.setmode(1)
+cnt = 0
+while true
+  status = sensor.read()
+  if(status == 0)
+    sleep(1)
+    cnt = cnt + 1
+    # コップを置いた直後に動作しないよう一定時間待機する
+    if(cnt > 5)
+      relay.write(1)
+      sleep(3)
+      relay.write(0)
+    end
+  else
+    relay.write(0)
+    cnt = 0
+  end
+end
+      </code></pre>
+		</div>
+    <div id="submenu">
+      <script src="contents.js"></script>
+    </div>
+  </body>
+</html>

@@ -53,6 +53,12 @@ document.write('\
       <li><a href="./tutorial_led.html">LEDを制御する</a></li>\
     </ol>\
   </details></li>\
+  <li><details>\
+    <summary>RBoard活用例</summary>\
+    <ol id="subuol">\
+      <li><a href="./drink_dispenser.html">ドリンクディスペンサー</a></li>\
+    </ol>\
+  </details></li>\
 </ul>\
 <a href="https://www.rubyworld-conf.org/" target="_blank"><img src="rwc2020_banner_a02.png"></a>\
 ');
