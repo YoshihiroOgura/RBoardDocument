@@ -95,11 +95,16 @@ ul#subuul li:before {
 	content: '\f005';
 	color: #ff9e9e;
 }
+
 ul#class_ul li:before {
 	font-family:"Font Awesome 5 Free";
 	content: '\f02e';
 	font-weight: 900;
 	color: #41b137;
+}
+
+ul#class_ul li:hover:before {
+	color: #ff401e;
 }
 
 ul#content li:before {
@@ -117,6 +122,14 @@ details summary::-webkit-details-marker {
 	display: none;
 }
 
+details summary:hover {
+	color: #ff401e;
+}
+
+details summary:hover::before {
+	color: #ff401e;
+}
+
 details summary::before {
 	font-family:"Font Awesome 5 Free";
 	font-weight: 900;
@@ -129,6 +142,10 @@ details[open] summary::before {
 	font-weight: 900;
 	color: #ff006a;
 	content: '\f13a';
+}
+
+div#ruby_class > details > summary:hover::before {
+	color: #ff401e;
 }
 
 div#ruby_class > details > summary::before {
@@ -155,6 +172,10 @@ div#main {
 	right: 70px;
 	width:60%; margin-right:5px; padding-top:10px;
 	left:30%;
+	border: solid;
+	border-color: #2c2c2c;
+	background-color: #ffffff;
+	border-radius: 10px;
 }
 
 div#main img.expansion{
