@@ -37,6 +37,45 @@ while true
 end
 			</code></pre>
 			<hr id="first_boader">
+			<h3>温度・気圧センサ(BMP280)</h3>
+			<pre><code  class="ruby">
+ADRS_BME280 = 0x77
+$i2c = I2C.new()
+$dig_T1 = 0
+$dig_T2 = 0
+$dig_T3 = 0
+class Barometer
+	def init()
+		$i2c.write( ADRS_BME280, 0xf5, 0xA0 )
+		$i2c.write( ADRS_BME280, 0xf2, 0x00 )
+		$i2c.write( ADRS_BME280, 0xf4, 0x25 )
+		c_data = $i2c.read( ADRS_BME280, 6, 0x88)
+		if c_data
+			$dig_T1 = (c_data[1].ord << 8) | c_data[0].ord
+			$dig_T2 = (c_data[3].ord << 8) | c_data[2].ord
+			$dig_T3 = (c_data[5].ord << 8) | c_data[4].ord
+		end
+	end
+	def read()
+		$i2c.write( ADRS_BME280, 0xf4, 0x25 )
+		s = $i2c.read( ADRS_BME280, 8, 0xFA )
+		$i2c.write( ADRS_BME280, 0xf4, 0x27 )
+		a = ((s[0].ord << 12) | (s[1].ord << 4) | (s[2].ord >> 4))
+		v1 = (a / 16384.0 - $dig_T1 / 1024.0) * $dig_T2
+		v2 = (a / 131072.0 - $dig_T1 / 8192.0) * (a / 131072.0 - $dig_T1 / 8192.0) * $dig_T3
+		t_fine = v1 + v2
+		temperature = t_fine / 5120.0
+		return temperature
+	end
+end
+
+Barometer.init()
+while true
+	puts(Barometer.read())
+	sleep(3)
+end
+			</code></pre>
+			<hr id="first_boader">
 			<h3>モータードライバ(DRV8830)</h3>
 			https://www.switch-science.com/catalog/2510/
 			<pre><code class="ruby">
