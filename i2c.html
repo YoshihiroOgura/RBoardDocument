@@ -373,6 +373,58 @@ rgb(255,255,255)
 send_txt("YoshihiroOgura")
 			</code></pre>
 			<hr id="first_boader">
+			<h3>3軸加速度センサー</h3>
+			3軸加速度センサー：<a href="https://wiki.seeedstudio.com/Grove-3-Axis-Digital-Accelerometer-LIS3DHTR/">https://wiki.seeedstudio.com/Grove-3-Axis-Digital-Accelerometer-LIS3DHTR/</a>
+			<pre><code class="ruby">
+UART.new(1,115200)
+$i2c = I2C.new()
+ADDR = 0x19
+
+def negative(param)
+	if(param >= 0x8000)
+		param = ((-param ^ 0xFFFF) + 1)
+	end
+	return param
+end
+
+def read_data()
+	data = $i2c.read(ADDR, 1, 0x27)
+	x = data[0].ord
+	puts("status:"+x.to_s)
+	data = $i2c.read(ADDR, 1, 0x28)
+	x = data[0].ord
+	data = $i2c.read(ADDR, 1, 0x29)
+	x += data[0].ord * 256
+	x = (negative(x)).to_f
+	x /= 1024
+	data = $i2c.read(ADDR, 1, 0x2A)
+	y = data[0].ord
+	data = $i2c.read(ADDR, 1, 0x2B)
+	y += data[0].ord * 256
+	y = (negative(y)).to_f
+	y /= 1024
+	data = $i2c.read(ADDR, 1, 0x2C)
+	z = data[0].ord
+	data = $i2c.read(ADDR, 1, 0x2D)
+	z += data[0].ord * 256
+	z = (negative(z)).to_f
+	z /= 1024.0
+	return [x,y,z]
+end
+
+$i2c.write(ADDR,0x20,0x27)
+$i2c.write(ADDR,0x23,0x08)
+sleep(2)
+
+while true
+	data_raw = read_data()
+	puts("x:"+data_raw[0].to_s)
+	puts("y:"+data_raw[1].to_s)
+	puts("z:"+data_raw[2].to_s)
+	sleep(1)
+end
+			</code></pre>
+			<hr id="first_boader">
 			<h3>Qwiic</h3>
 			Qwiicとは<br>
 			SparkFunから販売されているI2Cにて制御するモジュール。<br>
