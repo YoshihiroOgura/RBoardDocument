@@ -116,9 +116,22 @@
 
 			<hr id="first_boader">
 			<h2 id="UART">UART</h2>
-			<h3 id="UART_new">new(baud)</h3>
-			19200を基準としているため、これ以上の値を設定するとかなりデータが欠損する。<br>
+			<h3 id="UART_new">new( ch, baud )</h3>
+			ch  ：UARTチャンネル（1 or 2）<br>
+			　1=>USBにて使用しているチャンネル<br>
+			　2=>GROVEにて使用しているチャンネル<br>
 			baud：ボーレート値（例：19200）<br>
+			<hr id="second_boader">
+			<h3 id="UART_set_modem_params">set_modem_params("baud"=>baud,"parity"=>parity,"stop_bits"=>stop_bits,"txd"=>txd,"rxd"=>rxd)</h3>
+			baud：ボーレート値（例：19200）<br>
+			parity：パリティビット(0~2)<br>
+			stop_bits：ストップビット(1 or 2)<br>
+			txd：送信pin番号<br>
+			　チャンネル1->(0,8,9,12,20)<br>
+			　チャンネル2->(3,5,14,15,19)<br>
+			rxd：受信pin番号<br>
+			チャンネル1->(2,4,7,11,18)<br>
+			チャンネル2->(1,6,10,13,16)<br>
 			<hr id="second_boader">
 			<h3 id="UART_gets">gets</h3>
 				文字列受信、"\n" までのバイト列を返します。<br>
@@ -131,9 +144,19 @@
 			文字列受信、指定した文字数を受信します。<br>
 			指定されたバイト数のデータが到着していない場合、nilを返します。<br>
 			n：文字数
+			<h3 id="UART_read_nonblock">read_nonblock((n)</h3>
+			文字列受信、指定した文字数を受信します。<br>
+			指定されたバイト数のデータが到着していない場合、到着している分のデータを返します。<br>
+			n：文字数
 			<hr id="second_boader">
-			<h3 id="UART_clear_buffer">clear_buffer</h3>
+			<h3 id="UART_puts">puts(text)</h3>
+			文字列送信(writeと同様)<br>
+			text：文字列
+			<hr id="second_boader">
+			<h3 id="UART_clear_rx_buffer">clear_rx_buffer</h3>
 			受信文字列のバッファ初期化
+			<h3 id="UART_clear_tx_buffer">clear_tx_buffer</h3>
+			送信文字列のバッファ初期化
 
 			<hr id="first_boader">
 			<h2 id="Math">Math</h2>
@@ -295,10 +318,13 @@
 					<summary><a href="#UART">UART</a></summary>
 					<ul id="class_ul">
 						<li><a href="#UART_new">new</a></li>
+						<li><a href="#UART_set_modem_params">set_modem_params</a></li>
 						<li><a href="#UART_gets">gets</a></li>
-											<li><a href="#UART_write">write</a></li>
-											<li><a href="#UART_read">read</a></li>
-						<li><a href="#UART_clear_buffer">clear_buffer</a></li>
+						<li><a href="#UART_write">write</a></li>
+						<li><a href="#UART_read">read</a></li>
+						<li><a href="#UART_read_nonblock">read_nonblock</a></li>
+						<li><a href="#UART_clear_tx_buffer">clear_tx_buffer</a></li>
+						<li><a href="#UART_clear_rx_buffer">clear_rx_buffer</a></li>
 					</ul>
 				</details>
 				<details>
