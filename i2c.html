@@ -439,6 +439,7 @@ while true
 	led.write(0x6F,0x19,s * 0xFF)
 end
 			</code></pre>
+			<hr id="first_boader">
 			<h3>ToF測距センサ</h3>
 			VL53L0Xを搭載したレーザーの距離センサー<br>
 			<a href="https://www.switch-science.com/catalog/5219/">https://www.switch-science.com/catalog/5219/</a>
@@ -453,6 +454,46 @@ while true
   data = I2C.read(0x29,12,0x14)
   puts(data[11].ord + (data[10].ord<<8))
   sleep_ms(100)
+end
+			</code></pre>
+			<hr id="first_boader">
+			<h3>RTC</h3>
+			リアルタイムclock<br>
+			別途：CR1225ボタン電池またはCR1220ボタン電池<br>
+			<a href="https://www.switch-science.com/catalog/3134/">https://www.switch-science.com/catalog/3134/</a>
+			<pre><code class="ruby">
+rtc =  I2C.new
+
+# rtc begin
+ctrl_1 = rtc.read(0x51, 1, 0x00)
+ctrl_1 = (ctrl_1[0].ord & 0xFE) + 0x01
+rtc.write(0x51, 0x00, ctrl_1)
+
+# set time
+# 2022/4/18 9:53:00
+rtc.write(0x51, 0x04,
+	0x00, # second
+	0x53, # minute
+	0x09, # hour
+	0x18, # day
+	0x00, # week
+	0x04, # month
+	0x22  # year
+)
+
+# puts time
+while true
+	date = rtc.read(0x51, 7, 0x04)
+	s = (date[0].ord & 0x7F).to_s(16)
+	m = (date[1].ord).to_s(16)
+	h = (date[2].ord & 0x3F).to_s(16)
+	d = (date[3].ord).to_s(16)
+	month = (date[5].ord).to_s(16)
+	year = (date[6].ord).to_s(16)
+	txt = year + "/" + month + "/" + d + " "
+	txt = txt + h + ":" + m + ":" + s
+	puts txt
+	sleep(1)
 end
 			</code></pre>
 		</div>
