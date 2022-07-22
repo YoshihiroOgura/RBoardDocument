@@ -36,6 +36,120 @@ while true
 end
 			</code></pre>
 			<hr id="first_boader">
+			<h3>温度気圧センサ(BME280, BMP280)</h3>
+			温度センサ：<a href="https://www.switch-science.com/catalog/3373/">https://www.switch-science.com/catalog/3373/</a>
+			<pre><code  class="ruby">
+ADRS_BME280 = 0x77
+$i2c = I2C.new()
+##
+# 気圧計クラス(BME280, BMP280)
+#
+class Barometer
+	attr_reader :atm
+	attr_reader :temperature
+	attr_reader :dig_T1
+	attr_reader :dig_T2
+	attr_reader :dig_T3
+	attr_reader :dig_P1
+	attr_reader :dig_P2
+	attr_reader :dig_P3
+	attr_reader :dig_P4
+	attr_reader :dig_P5
+	attr_reader :dig_P6
+	attr_reader :dig_P7
+	attr_reader :dig_P8
+	attr_reader :dig_P9
+
+	##
+	# 初期化
+	#
+	def init()
+		$i2c.write( ADRS_BME280, 0xf5, 0xA0 )
+		$i2c.write( ADRS_BME280, 0xf2, 0x00 )
+		$i2c.write( ADRS_BME280, 0xf4, 0x25 )
+		datas = $i2c.read( ADRS_BME280, 0x88, 24)
+		if datas
+			@dig_T1 = (datas[1] << 8) | datas[0]
+			@dig_T2 = (datas[3] << 8) | datas[2]
+			@dig_T3 = (datas[5] << 8) | datas[4]
+			@dig_P1 = (datas[7] << 8) | datas[6]
+			@dig_P2 = (datas[9] << 8) | datas[8]
+			@dig_P2 = self.negative_num(@dig_P2)
+			@dig_P3 = (datas[11] << 8) | datas[10]
+			@dig_P4 = (datas[13] << 8) | datas[12]
+			@dig_P5 = (datas[15] << 8) | datas[14]
+			@dig_P5 = self.negative_num(@dig_P5)
+			@dig_P6 = (datas[17] << 8) | datas[16]
+			@dig_P6 = self.negative_num(@dig_P6)
+			@dig_P7 = (datas[19] << 8) | datas[18]
+			@dig_P8 = (datas[21] << 8) | datas[20]
+			@dig_P8 = self.negative_num(@dig_P8)
+			@dig_P9 = (datas[23] << 8) | datas[22]
+		end
+	end
+
+	def negative_num(param)
+		if(param >= 0x8000)
+			param = ((-param ^ 0xFFFF) + 1)
+		end
+		return param
+	end
+
+
+	##
+	# 測定開始トリガー
+	#
+	def trigger()
+		$i2c.write( ADRS_BME280, 0xf4, 0x25 )
+	end
+
+
+	##
+	# データ読み込み
+	#
+	def read()
+		# read pressure and temperature.
+		datas = $i2c.read( ADRS_BME280, 0xF7, 8 )
+		$i2c.write( ADRS_BME280, 0xf4, 0x27 )
+
+		a_para = ((datas[0] << 12) | (datas[1] << 4) | (datas[2] >> 4))
+		t_para = ((datas[3] << 12) | (datas[4] << 4) | (datas[5] >> 4))
+		p1 = (a_para / 16384.0 - @dig_T1 / 1024.0) * @dig_T2
+		p2 = (a_para / 131072.0 - @dig_T1 / 8192.0)
+		p2 = p2 * (a_para / 131072.0 - @dig_T1 / 8192.0) * @dig_T3
+		t_fine = p1 + p2
+		@temperature = t_fine / 5120.0
+		pressure = 0.0
+		p1 = (t_fine / 2.0) - 64000.0
+		p2 = (((p1 / 4.0) * (p1 / 4.0)) / 2048) * @dig_P6
+		p2 = p2 + ((p1 * @dig_P5) * 2.0)
+		p2 = (p2 / 4.0) + (@dig_P4 * 65536.0)
+		p1 = (((@dig_P3 * (((p1 / 4.0) * (p1 / 4.0)) / 8192)) / 8)
+		p1 = p1 + ((@dig_P2 * p1) / 2.0)) / 262144
+		p1 = ((32768 + p1) * @dig_P1) / 32768
+		pressure = ((1048576 - a_para) - (p2 / 4096)) * 3125
+		if pressure < 0x80000000
+			pressure = (pressure * 2.0) / p1
+		else
+			pressure = (pressure / p1) * 2
+		end
+		p1 = (@dig_P9 * (((pressure / 8.0) * (pressure / 8.0)) / 8192.0)) / 4096
+		p2 = ((pressure / 4.0) * @dig_P8) / 8192.0
+		@atm = (pressure + ((p1 + p2 + @dig_P7) / 16.0))/100
+		return @atm
+	end
+end
+
+$barometer = Barometer.new
+$barometer.init()
+while true
+	$barometer.trigger()
+	$barometer.read()
+	puts "ATM: #{$barometer.atm} hPa  TEMP: #{$barometer.temperature} deg"
+	sleep(1)
+end
+			</code></pre>
+			<hr id="first_boader">
 			<h3>モータードライバ(DRV8830)</h3>
 			https://www.switch-science.com/catalog/2510/
 			<pre><code class="ruby">
