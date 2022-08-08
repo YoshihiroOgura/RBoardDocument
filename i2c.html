@@ -447,6 +447,102 @@ rgb(255,255,255)
 send_txt("YoshihiroOgura")
 			</code></pre>
 			<hr id="first_boader">
+			<h3>3軸加速度センサ</h3>
+			LIS3DHTRを搭載した三軸加速度センサ<br>
+			<a href="https://akizukidenshi.com/catalog/g/gM-16771/">https://akizukidenshi.com/catalog/g/gM-16771/</a>
+			<pre><code class="ruby">
+$i2c = I2C.new()
+
+# ====================================================
+# @brief  符号付2バイトの数値の絶対値を出力
+#
+# @param param 数値(2バイト)
+#
+# @return  絶対値（整数値）
+# ====================================================
+def absolute(param)
+	if(param >= 0x8000)
+		param = ((-param ^ 0xFFFF) + 1)
+	end
+	return param
+end
+
+class Lis3dhtr
+
+	attr_reader :addr
+
+	# ====================================================
+	# @brief  LIS3DHTRの初期設定
+	#
+	# @param slave_addr 使用しているLIS3DHTRのアドレス
+	# ====================================================
+	def init(slave_addr)
+		@addr = slave_addr
+		# データレート:400Hz(0xF0-0x00)
+		# x,y,zのデータを取得(0x07-0x00)
+		$i2c.write(@addr,0x20,0x77)
+
+		# 継続的に値を更新(0x80-0x00)
+		# フルスケール±2g(0x06-0x00)
+		$i2c.write(@addr,0x23,0x00)
+	end
+
+	# ====================================================
+	# @brief  LIS3DHTRからX,Y,Zの加速度データを取得
+	#
+	# @return  x,y,zの加速度データ(配列[x,y,z])
+	# ====================================================
+	def read_data()
+		# output status
+		# data = $i2c.read(ADDR, 0x27, 1)
+		# x = data[0]
+		# puts("status:"+x.to_s)
+	
+		# x data read
+		data = $i2c.read(@addr, 0x28, 1)
+		x = data[0]
+		data = $i2c.read(@addr, 0x29, 1)
+		x += data[0] * 256
+		x = (absolute(x)).to_f
+		x /= 16000
+		x = (x*100).to_i
+		
+		# y data read
+		data = $i2c.read(@addr, 0x2A, 1)
+		y = data[0]
+		data = $i2c.read(@addr, 0x2B, 1)
+		y += data[0] * 256
+		y = (absolute(y)).to_f
+		y /= 16000
+		y = (y*100).to_i
+		
+		# z data read
+		data = $i2c.read(@addr, 0x2C, 1)
+		z = data[0]
+		data = $i2c.read(@addr, 0x2D, 1)
+		z += data[0] * 256
+		z = (absolute(z)).to_f
+		z /= 16000
+		z = (z*100).to_i
+		return [x,y,z]
+	end
+end
+
+
+# メインプログラム
+
+sensor = Lis3dhtr.new
+sensor.init(0x19)
+sleep(2)
+
+
+while true
+	data_raw = sensor.read_data()
+	puts("x:#{data_raw[0]},y:#{data_raw[1]}z:#{data_raw[2]}")
+	sleep_ms(50)
+end
+			</code></pre>
+			<hr id="first_boader">
 			<h3>Qwiic</h3>
 			Qwiicとは<br>
 			SparkFunから販売されているI2Cにて制御するモジュール。<br>
