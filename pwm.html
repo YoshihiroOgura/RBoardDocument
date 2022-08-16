@@ -21,7 +21,7 @@
   <body>
     <div id="header"><h1> PWMサンプル </h1></div>
     <div id="main">
-			<h3>PWM(外部LED)</h3>
+			<h3 class="link" id="pwm_out">PWM(外部LED)</h3>
 			<pre><code  class="ruby">
 PWM.new()
 PWM.pin(16)
@@ -37,7 +37,7 @@ while true
 end
       </code></pre>
       <hr id="first_boader">
-			<h3>圧電ブザー</h3>
+			<h3 class="link" id="pwm_buzzer">圧電ブザー</h3>
 			http://wiki.seeedstudio.com/Grove-Buzzer/
 			<pre><code  class="ruby">
 PWM.new()
@@ -204,6 +204,7 @@ end
           <li><details>
             <summary>その他</summary>
             <ul id="subuul">
+              <li><a href="./sensor_module.html">対応センサーモジュール</a></li>
               <li><a href="./console.html">ターミナルソフトの設定</a></li>
             </ul>
           </details></li>

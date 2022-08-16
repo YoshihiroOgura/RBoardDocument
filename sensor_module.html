@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <title>センサーモジュール対応表 - RBoardDocument</title>
+    <link rel="shortcut icon" href="./image/bug.ico">
+      <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-176702602-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-176702602-1');
+    </script>
+    <link rel="stylesheet" type="text/css" href="main.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link href="https://use.fontawesome.com/releases/v5.11.0/css/all.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js" type="text/javascript"></script>
+  </head>
+  <body>
+    <div id="header"><h1> センサーモジュール対応表 </h1></div>
+    <div id="main">
+      <h2>GROVEモジュール</h2>
+      <a href="https://wiki.seeedstudio.com/Grove/">GROVE公式ページ</a>
+      <div>
+        <h3>GROVEセンサーキット対応</h3>
+        Arduino Sensor Kit - Base<br>
+        Grove Beginner Kit for Arduino<br>
+        1.Grove - <a href="./etc.html#etc_output">LED</a><br>
+        2.Grove - <a href="./pwm.html#pwm_buzzer">Buzzer (圧電ブザー)</a><br>
+        3.Grove - <a href="./i2c.html#i2c_oled">OLED Display 0.96インチ (有機LED表示器)</a><br>
+        4.Grove - <a href="./etc.html#etc_button">Button (押しボタンスイッチ)</a><br>
+        5.Grove - <a href="./adc.html#adc_potentiometer">Rorary Potentiometer (可変抵抗器)</a><br>
+        6.Grove - <a href="./adc.html#adc_potentiometer">Light (明るさセンサ)</a><br>
+        7.Grove - Sound (サウンドセンサー)<br>
+        8.Grove - Temperature & Humidity Sensor (温湿度センサー)</a><br>
+        9.Grove - <a href="./i2c.html#i2c_bmp280">Air Pressure Sensor (気圧センサー)</a><br>
+        10.Grove - <a href="./i2c.html#i2c_axia">3-Axia Accelerator (3軸加速度センサー)</a><br>
+
+        <h3>センサー - 温度</h3>
+        <!--
+        Grove - AHT20 I2C Industrial Grade Temperature&Humidity Sensor<br>
+        Grove - CO2 & Temperature & Humidity Sensor (SCD41)<br>
+        Grove - CO2 & Temperature & Humidity Sensor (SCD30)<br>
+        Grove - Temp and Humi Sensor(SHT31)<br>
+        -->
+        Grove - I2C 高精度温湿度センサ（SHT35） : <a href="https://www.s-itoc.jp/support/technical-support/mrubyc/mrubyc-usecase/1178">サンプル</a>/<a href="https://www.switch-science.com/catalog/5337/">購入リンク</a><br>
+        Grove - 温度センサ : <a href="./adc.html#adc_temperature">サンプル</a>/<a href="https://www.switch-science.com/catalog/806/">購入リンク</a><br>
+        Grove - 温度センサ V1.2 : <a href="./adc.html#adc_temperature">サンプル</a><br>
+        <!--
+        Grove - Temperature&Humidity Sensor Pro(DHT22)<br>
+        Grove - Temperature&Humidity Sensor(DHT11)<br>
+        Grove - Temperature&Humidity Sensor(DHT20)<br>
+        Grove - Temperature&Humidity Sensor (HDC1000)<br>
+        Grove - Temperature&Humidity Sensor (High-Accuracy &Mini) v1.0<br>
+        Grove - Thermal Imaging Camera IR Array<br>
+        -->
+        Grove - MCP9808搭載 I2C高精度温度センサ : <a href="./i2c.html#i2c_mcp9808">サンプル</a>/<a href="https://www.switch-science.com/catalog/3986/">購入リンク</a><br>
+        <!--
+        Grove - Digital Infrared Temperature Sensor<br>
+        Grove - Infrared Temperature Sensor<br>
+        Grove - Infrared Temperature Sensor Array(AMG8833)<br>
+        Grove - Thermal Imaging Camera IR-Array MLX90641<br>
+        Grove - Temperature Humidity Pressure Gas Sensor(BME680)<br>
+        Grove - High Temperature Sensor<br>
+        Grove - 1-Wire Thermocouple Amplifier(MAX31850K)<br>
+        Grove - I2C Thermocouple Amplifier (MCP9600)<br>
+        One Wire Temperature Sensor DS18B20<br>
+        Grove - Temperature & Humidity Sensor(SHT4x)<br>
+        -->
+
+        <h3>センサー - 距離</h3>
+        <!--
+        Grove - Ultrasonic Ranger
+        -->
+        Grove - 赤外線測距センサ v1.2 : <a href="./etc.html#etc_button">サンプル</a>/<a href="https://www.switch-science.com/catalog/3133/">購入リンク</a><br>
+        <!--
+        Grove - TF Mini LiDAR
+        Grove - Doppler Radar
+        -->
+        Grove - VL53L0X搭載 Time of Flight測距センサ : <a href="./i2c.html#i2c_vl53l0x">サンプル</a>/<a href="https://www.switch-science.com/catalog/3988/">購入リンク</a><br>
+        Grove - GP2Y0D805Z0F搭載 デジタル距離インタラプトセンサ : <a href="./etc.html#etc_button">サンプル</a>/<a href="https://www.switch-science.com/catalog/3990/">購入リンク</a><br>
+        Grove - Digital Distance Interrupter 0.5 to 5cm(GP2Y0D805Z0F)(P) : <a href="./etc.html#etc_button">サンプル</a><br>
+        <!--
+        Grove - 80cm Infrared Proximity Sensor
+        -->
+
+        <h3>センサー - ガス</h3>
+        <!--
+        Grove - Gas Sensor V2(Multichannel)<br>
+        Grove - Gas Sensor(MQ2)<br>
+        Grove - Gas Sensor(MQ3)<br>
+        Grove - Gas Sensor(MQ5)<br>
+        Grove - Gas Sensor(MQ9)<br>
+        Grove - Gas Sensor(O₂)<br>
+        Grove - Gas O₂ Sensor(MIX8410)<br>
+        Grove - Oxygen Sensor Pro(GGC2330-O2)<br>
+        Grove - Multichannel Gas Sensor<br>
+        Grove - VOC and eCO2 Gas Sensor(SGP30)<br>
+        Grove - Alcohol Sensor<br>
+        Grove - CO2 Sensor<br>
+        Grove - HCHO Sensor<br>
+        Grove - Air Quality Sensor v1.3<br>
+        -->
+
+        <h3>センサー - 気圧</h3>
+        <!--
+        Grove - Barometer (High-Accuracy)<br>
+        Grove - Barometer Sensor<br>
+        Grove - Barometer Sensor (BMP180)<br>
+        -->
+        Grove - Barometer Sensor (BMP280) : <a href="./i2c.html#i2c_bmp280">サンプル</a><br>
+        Grove - Barometer Sensor(BME280) : <a href="./i2c.html#i2c_bmp280">サンプル</a><br>
+        <!--
+        Grove - High Precision Barometric Pressure Sensor DPS310<br>
+        Grove - Integrated Pressure Sensor Kit<br>
+        -->
+
+        <h3>センサー - 加速度</h3>
+        <!--
+        Grove - 3 Axis Digital Accelerometer(±16g)
+        Grove - 3-Axis Analog Accelerometer
+        Grove - 3-Axis Compass V1.0
+        Grove - 3-Axis Digitial Compass v2.0
+        Grove - 3-Axis Digital Accelerometer(±1.5g)
+        Grove - 3-Axis Digital Accelerometer(±400g)
+        Grove - 3-Axis Analog Accelerometer 20g (ADXL356B)
+        -->
+        Grove - 3-Axis Digital Accelerometer (LIS3DHTR)<a href="./i2c.html#i2c_axia">サンプル</a>
+        <!--
+        Grove - 3-Axis Analog Accelerometer 40g (ADXL356C)
+        Grove - 3-Axis Digital Accelerometer 40g (ADXL357)
+        Grove - 3-Axis Digital Accelerometer 200g (ADXL372)
+        Grove - 3-Axis Digital Gyro
+        Grove - 3 Axis Digital Accelerometer±16g Ultra-low Power (BMA400)
+        Grove - 6-Axis Accelerometer&Compass V2.0
+        Grove - 6-Axis Accelerometer&Gyroscope
+        Grove - 6-Axis Accelerometer&Gyroscope(BMI088)
+        Grove - IMU 10DOF
+        Grove - IMU 10DOF v2.0
+        Grove - IMU 9DOF v2.0
+        Grove - IMU 9DOF(lcm20600+AK09918)
+        -->
+    
+        <h3>センサー - ライト</h3>
+        <!--
+        Grove - Digital Light Sensor
+        Grove - Heelight Sensor
+        -->
+        Grove - Light Sensor<a href="./adc.html#adc_potentiometer">サンプル</a>
+        <!--
+        Grove - Sunlight Sensor
+        Grove - UV Sensor
+        Grove - Light Gesture Color Proximity Sensor (TMG39931)
+        Grove - I2C UV Sensor (VEML6070)
+        Grove - Luminance Sensor
+        -->
+    
+        <h3>センサー - 生物医学</h3>
+        <!--
+        Grove - Finger-clip Heart Rate Sensor
+        Grove - Finger-clip Heart Rate Sensor with shell
+        Grove - EMG Detector
+        Grove - Ear-clip Heart Rate Sensor
+        Grove - Chest Strap Heart Rate Sensor
+        Grove - Capacitive Fingerprint Scanner/Sensor
+        Grove - Fingerprint Sensor
+        Grove - GSR Sensor
+        -->
+
+        <h3>センサー - 音</h3>
+        <!--
+        Grove - Sound Sensor
+        Grove - Loudness Sensor
+        Grove - Speech Recognizer
+        Grove - Sound Recorder
+        Grove - Analog Microphone
+        -->
+
+        <h3>センサー</h3>
+        <!--
+        Sensor - Others<br>
+        Grove - 4 Channel 16-bit ADC(ADS1115)<br>
+        Grove - 2 Channel Inductive Sensor (LDC1612)<br>
+        Grove - Digital PIR Sensor<br>
+        Grove - 2.5A DC Current Sensor(ACS70331)<br>
+        Grove - ±5A DC/AC Current Sensor (ACS70331)<br>
+        Grove - 10A DC Current Sensor (ACS725)<br>
+        Grove - Adjustable PIR Motion Sensor<br>
+        -->
+        Grove - Button : <a href="./etc.html#etc_button">サンプル</a><br>
+        Grove - Dual Button : <a href="./etc.html#etc_button">サンプル</a><br>
+        Grove - LED Button : <a href="./etc.html#etc_button">サンプル</a><br>
+        Grove - Collision Sensor : <a href="./etc.html#etc_button">サンプル</a><br>
+        Grove - Capacitive Moisture Sensor (Corrosion-Resistant) : <a href="./adc.html#adc_potentiometer">サンプル</a><br>
+        <!--
+        Grove - Differential Amplifier v1.0<br>
+        Grove - Dust Sensor<br>
+        Grove - Electricity Sensor<br>
+        Grove - Electromagnet<br>
+        Grove - FM Receiver<br>
+        Grove - Flame Sensor<br>
+        Grove - Formaldehyde Sensor<br>
+        Grove - Gesture V1.0<br>
+        -->
+        Grove - Hall Sensor : <a href="./etc.html#etc_button">サンプル</a><br>
+        <!--
+        Grove - Human Presence Sensor (AK9753)<br>
+        Grove - I2C Color Sensor<br>
+        Grove - I2C Touch Sensor<br>
+        Grove - 12 Key Capacitive I2C Touch Sensor V3(MPR121)<br>
+        Grove - 12 Key Capacitive I2C Touch Sensor V2(MPR121)<br>
+        Grove - Capacitive Touch Slide Sensor(CY8C4014LQI)<br>
+        Grove - Infrared Receiver<br>
+        -->
+        Grove - Infrared Reflective Sensor : <a href="./etc.html#etc_button">サンプル</a><br>
+        Grove - Line Finder : <a href="./etc.html#etc_button">サンプル</a><br>
+        <!--
+        Grove - Laser PM2.5 Sensor (HM3301)<br>
+        -->
+        Grove - Magnetic Switch : <a href="./etc.html#etc_button">サンプル</a><br>
+        <!--
+        Grove - Mini Track Ball<br>
+        -->
+        Grove - Moisture Sensor : <a href="./adc.html#adc_potentiometer">サンプル</a><br>
+        <!--
+        Grove - Mouse Encoder<br>
+        Grove - EC Sensor Kit<br>
+        Grove - ORP Sensor Kit (501Z)<br>
+        Grove - PH Sensor Kit (E-201C-Blue)<br>
+        Grove - PH Sensor<br>
+        -->
+        Grove - PIR Motion Sensor : <a href="./etc.html#etc_button">サンプル</a><br>
+        Grove - Piezo Vibration Sensor : <a href="./etc.html#etc_button">サンプル</a><br>
+        <!--
+        Grove - Q Touch Sensor<br>
+        Grove - DS1307 RTC (Real Time Clock) for Arduino<br>
+        -->
+        Grove - Rotary Angle Sensor : <a href="./adc.html#adc_potentiometer">サンプル</a><br>
+        <!--
+        Grove - RS232<br>
+        -->
+        Grove - RS485 : <a href="https://www.s-itoc.jp/support/technical-support/mrubyc/mrubyc-usecase/1144">サンプル</a><br>
+        <!--
+        Grove - Serial Camera Kit<br>
+        -->
+        Grove - Slide Potentiometer : <a href="./adc.html#adc_potentiometer">サンプル</a><br>
+        Grove - Switch(P) : <a href="./etc.html#etc_button">サンプル</a><br>
+        Grove - Mech Keycap : <a href="./etc.html#etc_button">サンプル</a><br>
+        <!--
+        Grove - 5-Way Switch<br>
+        Grove - 6-Position DIP Switch<br>
+        -->
+        Grove - Thumb Joystick : <a href="./adc.html#adc_joystick">サンプル</a><br>
+        Grove - Tilt Switch : <a href="./etc.html#etc_button">サンプル</a><br>
+        Grove - Touch Sensor : <a href="./etc.html#etc_button">サンプル</a><br>
+        <!--
+        Grove - Encoder<br>
+        Grove - Voltage Divider<br>
+        -->
+        Grove - Vibration Sensor(SW-420) : <a href="./etc.html#etc_button">サンプル</a><br>
+        <!--
+        Grove - Water Sensor<br>
+        Grove - Water Level Sensor<br>
+        Grove - XBee Carrier<br>
+        -->
+        Grove - Round Force Sensor FSR402 : <a href="./adc.html#adc_potentiometer">サンプル</a><br>
+        <!--
+        Grove - Optical Rotary Encoder(TCUT1600X01)<br>
+        Grove - Step Counter(BMA456)<br>
+        Grove - Coulomb Counter 3.3V to 5V (LTC2941)<br>
+        Grove - 12 Channel Capacitive Touch Keypad (ATtiny1616)<br>
+        Grove - 12 bit Magnetic Rotary Position Sensor(AS5600)<br>
+        Grove - Turbidity Sensor Meter for Arduino V1.0<br>
+        Grove - TDS Sensor<br>
+        Grove - Environmental Sensor Node SEN5X<br>
+        Grove - Vision AI Module<br>
+        -->
+
+        <h3>アクチュエータ</h3>
+        <!--
+        Grove - 2-Coil Latching Relay<br>
+        -->
+        Grove - Buzzer<a href="./pwm.html#pwm_buzzer">サンプル</a><br>
+        Grove - Passive Buzzer<a href="./pwm.html#pwm_buzzer">サンプル</a><br>
+        <!--
+        Grove - Chainable RGB LED<br>
+        Grove - Dry-Reed Relay<br>
+        -->
+        Grove - EL Driver<a href="./etc.html#etc_out">サンプル</a><br>
+        <!--
+        Grove - Haptic Motor<br>
+        -->
+        Grove - I2C Motor Driver V1.3<br>
+        Grove - I2C Motor Driver (L298P)<br>
+        <!--
+        Grove - Infrared Emitter<br>
+        Grove - LED Matrix Driver v1.0<br>
+        Grove - MP3 v2.0<br>
+        Grove - MP3 v3.0<br>
+        Grove - Mini Fan<br>
+        -->
+        Grove - Mini I2C Motor Driver v1.0<a href="./i2c.html#i2c_drv8830">サンプル</a><br>
+        <!--
+        Grove - Recorder<br>
+        Grove - Recorder V3<br>
+        -->
+        Grove - Relay<a href="./etc.html#etc_out">サンプル</a><br>
+        Grove - 4-Channel SPDT Relay<br>
+        Grove - 2-Channel SPDT Relay<a href="./etc.html#etc_out">サンプル</a><br>
+        Grove - Solid State Relay<a href="./etc.html#etc_out">サンプル</a><br>
+        <!--
+        Grove - Solid State Relay V2<br>
+        Grove - 2-Channel Solid State Relay<br>
+        Grove - 4-Channel Solid State Relay<br>
+        Grove - 8-Channel Solid State Relay<br>
+        -->
+        Grove - Optocoupler Relay (M281).md<a href="./etc.html#etc_out">サンプル</a><br>
+        <!--
+        Grove - Serial MP3 Player<br>
+        Grove - Servo<br>
+        Grove - Speaker<br>
+        Grove - Speaker Plus<br>
+        -->
+        Grove - Variable Color LED<a href="./pwm.html#pwm_out">サンプル</a><br>
+        Grove - Vibration Motor<a href="./etc.html#etc_out">サンプル</a><br>
+        <!--
+        Grove - Water Atomization<br>
+        -->
+        Grove - 16 Channel PWM Driver (PCA9685)<a href="./i2c.html#i2c_pca9685">サンプル</a><br>
+        Grove - I2C Motor Driver (TB6612FNG)<br>
+
+
+        <h3>ディスプレイ</h3>
+        <!--
+        Grove - 4-Digit Display
+        Grove - 0.54 inch Red Dual Alphanumeric Display
+        Grove - 0.54 inch Red Quad Alphanumeric Display
+        -->
+        Grove - 16x2 LCD<br>
+        <!--
+        Grove - Circular LED
+        Grove - LCD RGB Backlight
+        Grove - LED Bar
+        Grove - RGB LED Stick (10 - WS2813 Mini)
+        Grove - RGB LED Ring (20 - WS2813 Mini)
+        -->
+        Grove - LED Socket Kit<a href="./etc.html#etc_out">サンプル</a><br>
+        Grove - LED String Light<a href="./etc.html#etc_out">サンプル</a><br>
+        <!--
+        Grove - LED Strip Driver
+        Grove - OLED Display 0.66" (SSD1306)
+        -->
+        Grove - OLED Display 0.96 inch<a href="./i2c.html#i2c_oled">サンプル</a><br>
+        Grove - OLED Display 0.96" (SSD1315)<a href="./i2c.html#i2c_oled">サンプル</a><br>
+        Grove - OLED Yellow&Blue Display 0.96(SSD1315) - SPI/IIC -3.3V/5V<a href="./i2c.html#i2c_oled">サンプル</a><br>
+        <!--
+        Grove - OLED Display 1.12"
+        Grove - OLED Display 1.12 (SH1107) V3.0 - SPI/IIC -3.3V/5V
+        Grove - Red LED
+        I2C LCD
+        Grove - Red LED Matrix w/Driver
+        Grove - LED Matrix Driver (HT16K33)
+        Grove - RGB LED Matrix w/Driver
+        Grove - Triple Color E-Ink Display 2.13"
+        Grove - Triple Color E-Ink Display 1.54"
+        -->
+
+        <h3>コミュニケーション</h3>
+        <!--
+        GPS Modules Selection Guide<br>
+        Grove - 125KHz RFID Reader<br>
+        Grove - 315MHz RF Kit<br>
+        Grove - 433MHz Simple RF Link Kit<br>
+        Grove - BLE (dual model) v1.0<br>
+        Grove - Bee Socket<br>
+        Grove - DMX512<br>
+        Grove - GPS<br>
+        Grove - GPS (Air530)<br>
+        -->
+        Grove - High Precision RTC (Real Time Clock)<br>
+        <!--
+        Grove - I2C ADC<br>
+        Grove - I2C FM Receiver<br>
+        Grove - I2C FM Receiver v1.1<br>
+        Grove - Long Range 868MHz<br>
+        Grove - NFC<br>
+        Grove - NFC Tag<br>
+        -->
+        Grove - Protoshield<br>
+        <!--
+        Grove - RJ45 Adapter<br>
+        -->
+        Grove - Screw Terminal<br>
+        <!--
+        Grove - Serial Bluetooth v3.0<br>
+        Grove - Serial RF Pro<br>
+        Grove - UART Wi-Fi<br>
+        Grove - UART Wifi V2<br>
+        Grove BLE v1<br>
+        Grove - Wio-E5<br>
+        -->
+        Bluetooth：<a href="https://www.switch-science.com/catalog/5794/">購入リンク</a><br>
+        wifi：<a href="https://www.switch-science.com/catalog/5795/">購入リンク</a>
+      </div>
+      <h2>M5stackモジュール</h2>
+      一部GROVE互換コネクタを使用したセンサーを接続する事が可能です。<br>
+      センサー一覧ページ：<a href="https://shop.m5stack.com/collections/m5-sensor">m5-sensor</a>
+      <div>
+      <h2>Qwiicモジュール</h2>
+      <a href="https://www.switch-science.com/catalog/5327/">Qwiic - GROVE変換ケーブル</a>をRBoardのGROVE_I2Cポートへ接続する事により、Qwiicのセンサーモジュール類も使用できます。
+      <a href="https://www.sparkfun.com/qwiic">Qwiic公式ページ</a>
+      <div>
+      </div>
+      </div>
+      <h2>Arduinoシールド</h2>
+      <div>
+      </div>
+      <iframe width="auto" height="auto" src="adc.html"></iframe>
+    </div>
+
+
+		<div id="submenu">
+			<div id="submenu_header">もくじ</div>
+      <ul id="submenu_body">
+        <i class="fas fa-home"></i><a href="./index.html">HOME</a>
+        <li><details>
+          <summary>プログラム書き込み</summary>
+          <ul id="subuul">
+            <li><a href="./ide_install.html">mruby/c IDEインストール</a></li>
+            <li><a href="./write_program.html">PG書き込み</a></li>
+          </ul>
+        </details></li>
+        <li><details>
+          <summary>ファームウェアアップデート</summary>
+          <ul id="subuul">
+            <li><a href="./update.html">アップデート手順</a></li>
+          </ul>
+        </details></li>
+        <li><details>
+          <summary>ボードの電気的仕様</summary>
+          <ul id="subuul">
+          <li><a href="./pin.html">ピン配置等</a></li>
+          </ul>
+        </details></li>
+        <li><details>
+          <summary>RBoardにおける各クラス</summary>
+          <ul id="subuul">
+            <li><a href="./class.html">各クラス</a></li>
+            <li><a href="./mrubyc_class.html">mruby/c IO 各クラス</a></li>
+          </ul>
+        </details></li>
+        <li><details>
+          <summary>サンプルプログラム</summary>
+          <ul id="subuul">
+            <li><a href="./adc.html">ADCサンプル</a></li>
+            <li><a href="./i2c.html">I2Cサンプル</a></li>
+            <li><a href="./pwm.html">PWMサンプル</a></li>
+            <li><a href="./uart.html">UARTサンプル</a></li>
+            <li><a href="./etc.html">その他サンプル</a></li>
+          </ul>
+        </details></li>
+        <li><details>
+          <summary>その他</summary>
+          <ul id="subuul">
+            <li><a href="./sensor_module.html">対応センサーモジュール</a></li>
+            <li><a href="./console.html">ターミナルソフトの設定</a></li>
+          </ul>
+        </details></li>
+        <li><details>
+          <summary>チュートリアル</summary>
+          <ol id="subuol">
+            <li><a href="./tutorial_mrubyc.html">mruby/cとは？</a></li>
+            <li><a href="./tutorial_led.html">LEDを制御する</a></li>
+          </ol>
+        </details></li>
+      </ul>
+      <a href="https://www.rubyworld-conf.org/" target="_blank"><img src="rwc2020_banner_a02.png"></a>
+    </div>
+	</body>
+</html>

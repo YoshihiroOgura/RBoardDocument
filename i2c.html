@@ -23,7 +23,7 @@
     <div id="main">
 			I2Cが上手く動作しない場合はファームウェアをアップデートしてください。
 			<a href="https://github.com/YoshihiroOgura/pic32mx170_mrubyc/blob/master/dist/default/production/pic32mx170_mrubyc_21.production.hex">こちらのhexファイル</a>
-			<h3>温湿度センサ(MCP9808)</h3>
+			<h3 class="link" id="i2c_mcp9808">温湿度センサ(MCP9808)</h3>
 			温度センサ：<a href="https://www.switch-science.com/catalog/3986/">https://www.switch-science.com/catalog/3986/</a>
 			<pre><code  class="ruby">
 while true
@@ -36,7 +36,7 @@ while true
 end
 			</code></pre>
 			<hr id="first_boader">
-			<h3>温度気圧センサ(BME280, BMP280)</h3>
+			<h3 class="link" id="i2c_bmp280">温度気圧センサ(BME280, BMP280)</h3>
 			温度センサ：<a href="https://www.switch-science.com/catalog/3373/">https://www.switch-science.com/catalog/3373/</a>
 			<pre><code  class="ruby">
 ADRS_BME280 = 0x77
@@ -150,7 +150,7 @@ while true
 end
 			</code></pre>
 			<hr id="first_boader">
-			<h3>モータードライバ(DRV8830)</h3>
+			<h3 class="link" id="i2c_drv8830">モータードライバ(DRV8830)</h3>
 			https://www.switch-science.com/catalog/2510/
 			<pre><code class="ruby">
 class Moter
@@ -187,7 +187,7 @@ end
 end
 			</code></pre>
 			<hr id="first_boader">
-			<h3>サーボモータードライバ(PCA9685)</h3>
+			<h3 class="link" id="i2c_pca9685">サーボモータードライバ(PCA9685)</h3>
 			通常品:<a href="https://www.amazon.co.jp/dp/B01D1D0CX2">https://www.amazon.co.jp/dp/B01D1D0CX2</a><br>
 			GROVE:<a href="https://item.rakuten.co.jp/robotshopjapan/rb-see-679/">https://item.rakuten.co.jp/robotshopjapan/rb-see-679/</a>
 			<pre><code class="ruby">
@@ -243,7 +243,7 @@ while true
 end
 			</code></pre>
 			<hr id="first_boader">
-			<h3>OLED</h3>
+			<h3 class="link" id="i2c_oled">OLED</h3>
 			https://www.switch-science.com/catalog/829/<br>
 			ASCIIコード<br>
 			スペース(32)~Z(90)まで対応
@@ -447,7 +447,7 @@ rgb(255,255,255)
 send_txt("YoshihiroOgura")
 			</code></pre>
 			<hr id="first_boader">
-			<h3>3軸加速度センサ</h3>
+			<h3 class="link" id="i2c_axia">3軸加速度センサ</h3>
 			LIS3DHTRを搭載した三軸加速度センサ<br>
 			<a href="https://akizukidenshi.com/catalog/g/gM-16771/">https://akizukidenshi.com/catalog/g/gM-16771/</a>
 			<pre><code class="ruby">
@@ -557,7 +557,7 @@ while true
 	led.write(0x6F,0x19,s * 0xFF)
 end
 			</code></pre>
-			<h3>ToF測距センサ</h3>
+			<h3 class="link" id="i2c_vl53l0x">ToF測距センサ</h3>
 			VL53L0Xを搭載したレーザーの距離センサー<br>
 			<a href="https://www.switch-science.com/catalog/5219/">https://www.switch-science.com/catalog/5219/</a>
 			<pre><code class="ruby">
@@ -617,6 +617,7 @@ end
 				<li><details>
 					<summary>その他</summary>
 					<ul id="subuul">
+						<li><a href="./sensor_module.html">対応センサーモジュール</a></li>
 						<li><a href="./console.html">ターミナルソフトの設定</a></li>
 					</ul>
 				</details></li>

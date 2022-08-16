@@ -21,7 +21,7 @@
   <body>
     <div id="header"><h1> ADCサンプル </h1></div>
     <div id="main">
-			<h3>サーミスタ温度センサ</h3>
+			<h3 class="link" id="adc_temperature">サーミスタ温度センサ</h3>
       温度センサ：<a href="http://wiki.seeedstudio.com/Grove-Temperature_Sensor_V1.2/">http://wiki.seeedstudio.com/Grove-Temperature_Sensor_V1.2/</a><br>
       <pre><code  class="ruby">
 adc = ADC.new()
@@ -39,7 +39,7 @@ end
       </code></pre>
 
       <hr id="first_boader">
-			<h3>ボリューム制御</h3>
+			<h3 class="link" id="adc_potentiometer">ボリューム制御</h3>
 			ボリュームを使用したLEDの明るさ制御<br>
 			LED:<a href="https://www.switch-science.com/catalog/1251/">https://www.switch-science.com/catalog/1251/</a><br>
 			ボリューム：<a href="https://www.switch-science.com/catalog/805/">https://www.switch-science.com/catalog/805/</a><br>
@@ -61,7 +61,7 @@ end
       </code></pre>
 
       <hr id="first_boader">
-      <h3>ジョイスティック</h3>
+      <h3 class="link" id="adc_joystick">ジョイスティック</h3>
 			ジョイスティック:<a href="https://www.switch-science.com/catalog/884/">https://www.switch-science.com/catalog/884/</a><br>
 			<pre><code  class="ruby">
 adc = ADC.new()
@@ -83,7 +83,7 @@ end
 		</div>
 		
 		<div id="submenu">
-      <div id="submenu_header">もくじ</div>
+			<div id="submenu_header">もくじ</div>
       <ul id="submenu_body">
         <i class="fas fa-home"></i><a href="./index.html">HOME</a>
         <li><details>
@@ -125,6 +125,7 @@ end
         <li><details>
           <summary>その他</summary>
           <ul id="subuul">
+            <li><a href="./sensor_module.html">対応センサーモジュール</a></li>
             <li><a href="./console.html">ターミナルソフトの設定</a></li>
           </ul>
         </details></li>
@@ -136,7 +137,7 @@ end
           </ol>
         </details></li>
       </ul>
-      <a href="https://www.rubyworld-conf.org/" target="_blank"><img src="rwc2020_banner_a02.png"></a>
+	    <a href="https://www.rubyworld-conf.org/" target="_blank"><img src="rwc2020_banner_a02.png"></a>
     </div>
-  </body>
+	</body>
 </html>
