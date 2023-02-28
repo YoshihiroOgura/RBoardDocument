@@ -1,0 +1,47 @@
+@charset "utf-8";
+div#main{
+  top: 100px;
+  padding: 10px 0;
+  margin: 10px 0;
+}
+
+.grid{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 60px 2%;
+}
+
+.grid-item{
+  list-style: none;
+  margin: 5px 0;
+  width: 32%;
+}
+
+.grid-item figure{
+  position: relative;
+  overflow: hidden;
+  padding-top: 56.25%;
+}
+.grid-item figure img{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  height: 100%;
+  object-fit: cover;
+}
+
+
+.grid-item a p{
+  font-size: 1.2em;
+  font-weight: bold;
+  width: 100%;
+  display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+  overflow: hidden;
+
+  /*IE対策*/
+  line-height: 1.5em;
+  max-height: 4.5em;
+}
