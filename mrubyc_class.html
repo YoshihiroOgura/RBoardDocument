@@ -48,6 +48,11 @@
 			<h3 id="GPIO_read">read()</h3>
 			入力<br>
 			戻り値：0(OFF),1(ON)<br>
+			<hr id="second_boader">
+			<h3 id="GPIO_pull">pull(mode)</h3>
+			内部抵抗選択<br>
+			mode：-1~1<br>
+			-1(pull down) , 0(pull無し) , 1(pull up)<br>
 			
 			<hr id="first_boader">
 
@@ -79,8 +84,8 @@
 			<h3 id="I2C_read">read(sl_addr, size, addr)</h3>
 			i2c読み込み<br>
 			sl_addr：スレーブのアドレス<br>
-			addr：読み込み対象のアドレス<br>
 			size：読み込むデータのサイズ<br>
+			addr：読み込み対象のアドレス<br>
 
 			<hr id="first_boader">
 			<h2 id="SPI">SPI</h2>
@@ -110,9 +115,14 @@
 			デューティー比を、0（全オフ）から1023（全オン）までで指定します。<br>
 			n:0~1023<br>
 			<hr id="second_boader">
-			<h3 id="PWM_period_us">period_us(n)</h3>
-			デューティー比を、0（全オフ）から1023（全オン）までで指定します。<br>
-			n:整数(us)<br>
+			<h3 id="PWM_period_us">period_us(us)</h3>
+			周期をマイクロ秒単位で指定します。<br>
+			us:整数(マイクロ秒)<br>
+			<hr id="second_boader">
+			<h3 id="PWM_duty_us">duty_us(n)</h3>
+			デューティー比を、マイクロ秒単位で指定します。<br>
+			us:整数(マイクロ秒)<br>
+			period_usが100usの場合duty_usが50usだとon.offが1:1となります。<br>
 
 			<hr id="first_boader">
 			<h2 id="UART">UART</h2>
@@ -287,6 +297,7 @@
 						<li><a href="#GPIO_setmode">setmode</a></li>
 						<li><a href="#GPIO_write">write</a></li>
 						<li><a href="#GPIO_read">read</a></li>
+						<li><a href="#GPIO_pull">pull</a></li>
 					</ul>
 				</details>
 				<details>
@@ -318,6 +329,7 @@
 						<li><a href="#PWM_frequency">frequency</a></li>
 						<li><a href="#PWM_duty">duty</a></li>
 						<li><a href="#PWM_period_us">period_us</a></li>
+						<li><a href="#PWM_duty_us">duty_us</a></li>
 					</ul>
 				</details>
 				<details>
