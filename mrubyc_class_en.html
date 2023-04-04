@@ -24,7 +24,7 @@
     <div id="main">
 			language：<a href="./mrubyc_class_en.html">English</a>/<a href="./mrubyc_class.html">日本語</a><br>
 			<h2 id="Ruby">Ruby</h2>
-			mruby/cにて対応しているRubyのクラスについては下記公式URLをご参照ください。<br>
+			For Ruby classes supported by mruby/c, see the official URL below.<br>
 			<a href="https://www.s-itoc.jp/activity/research/mrubyc/mrubyc_docs/library">
 			https://www.s-itoc.jp/activity/research/mrubyc/mrubyc_docs/library</a>
             
@@ -32,139 +32,128 @@
 			
 			<h2 id="GPIO">GPIO</h2>
 			<h3 id="GPIO_new">new(pin)</h3>
-			コンストラクタ<br>
 			pin：0～20<br>
 			<hr id="second_boader">
 			<h3 id="GPIO_setmode">setmode(mode)</h3>
-			入出力方向設定<br>
-			mode：0(出力),1(入力)<br>
+			Configure pins to act as inputs or outputs. <br>
+			mode：0(output),1(input)<br>
 			<hr id="second_boader">
 			<h3 id="GPIO_write">write(value)</h3>
-			出力<br>
+			Write a 1 or a 0 value to a pin.<br>
+			3.3V for 1, 0V (ground) for 0.<br>
 			value：0(OFF),1(ON)<br>
 			<hr id="second_boader">
 			<h3 id="GPIO_read">read()</h3>
-			入力<br>
-			戻り値：0(OFF),1(ON)<br>
+			Reads the value from a specified pin, either 1 or 0.<br>
+			return value：0(OFF),1(ON)<br>
 			<hr id="second_boader">
 			<h3 id="GPIO_pull">pull(mode)</h3>
-			内部抵抗選択<br>
+			Internal resistance selection.<br>
 			mode：-1~1<br>
-			-1(pull down) , 0(pull無し) , 1(pull up)<br>
+			-1(pull down) , 0(not pull) , 1(pull up)<br>
 			
 			<hr id="first_boader">
 
 			<h2 id="ADC">ADC</h2>
 			<h3 id="ADC_new">new(pin)</h3>
-			コンストラクタ<br>
 			pin：0～20<br>
 			<hr id="second_boader">
 			<h3 id="ADC_read">read</h3>
-			取得値電圧出力<br>
-			戻り値：0～3.3<br>
+			Reads the value from the specified analog pin.<br>
+			It is output as a voltage value.(0V~3.3V)<br>
+			return value：0～3.3<br>
 			<hr id="second_boader">
 			<h3 id="ADC_read_v">read_v</h3>
-			<span style="color:rgb(255, 0, 0)">※readと同様</span><br>
-			取得値電圧出力<br>
-			戻り値：0～3.3<br>
+			<span style="color:rgb(255, 0, 0)">※same as [read]</span><br>
+			Reads the value from the specified analog pin.<br>
+			It is output as a voltage value.(0V~3.3V)<br>
+			return value：0～3.3<br>
 
 			<hr id="first_boader">
 			<h2 id="I2C">I2C</h2>
 			<h3 id="I2C_new">new()</h3>
-			コンストラクタ<br>
 			<hr id="second_boader">
 			<h3 id="I2C_write">write(sl_addr, addr, data1, data2,,,,)</h3>
-			i2c書き込み<br>
-			sl_addr：スレーブのアドレス<br>
-			addr：書き込み対象のアドレス<br>
-			data：書き込むデータ<br>
+			Write data to the slave device using I2C communication.<br>
+			sl_addr：slave address<br>
+			addr：data address<br>
+			data：data<br>
 			<hr id="second_boader">
 			<h3 id="I2C_read">read(sl_addr, size, addr)</h3>
-			i2c読み込み<br>
-			sl_addr：スレーブのアドレス<br>
-			size：読み込むデータのサイズ<br>
-			addr：読み込み対象のアドレス<br>
-
-			<hr id="first_boader">
-			<h2 id="SPI">SPI</h2>
-			<h3 id="SPI_new">new()</h3>
-			コンストラクタ<br>
-			<hr id="second_boader">
-			<h3 id="SPI_write">write(addr, data1, data2,,,,)</h3>
-			spi書き込み<br>
-			addr：書き込み対象のアドレス<br>
-			data：書き込むデータ<br>
-			<hr id="second_boader">
-			<h3 id="SPI_read">read(size)</h3>
-			spi読み込み<br>
-			size：読み込むデータのサイズ<br>
+			Read data from slave device using I2C communication.<br>
+			sl_addr：slave address<br>
+			size：read size<br>
+			addr：data address<br>
 
 			<hr id="first_boader">
 			<h2 id="PWM">PWM</h2>
 			<h3 id="PWM_new">new(pin)</h3>
-			コンストラクタ<br>
 			pin：0～20<br>
 			<hr id="second_boader">
 			<h3 id="PWM_frequency">frequency(n)</h3>
-			周波数設定。0を指定すると出力を停止します。<br>
-			n:整数(Hz)<br>
+			frequency setting. Specify 0 to stop output.<br>
+			n:integer(Hz)<br>
 			<hr id="second_boader">
 			<h3 id="PWM_duty">duty(n)</h3>
-			デューティー比を、0（全オフ）から1023（全オン）までで指定します。<br>
+			Specify the duty ratio from 0 (all off) to 1023 (all on).<br>
 			n:0~1023<br>
 			<hr id="second_boader">
 			<h3 id="PWM_period_us">period_us(us)</h3>
-			周期をマイクロ秒単位で指定します。<br>
-			us:整数(マイクロ秒)<br>
+			Specifies the cycle in microseconds.<br>
+			us:integer[microsecond]<br>
 			<hr id="second_boader">
-			<h3 id="PWM_duty_us">duty_us(n)</h3>
-			デューティー比を、マイクロ秒単位で指定します。<br>
-			us:整数(マイクロ秒)<br>
-			period_usが100usの場合duty_usが50usだとon.offが1:1となります。<br>
+			<h3 id="PWM_duty_us">duty_us(us)</h3>
+			Specifies the duty cycle in microseconds.<br>
+			us:integer[microsecond]<br>
+			If (period_us) is 100 microseconds and (duty_us) is 50 microseconds, on:off will be 1:1.<br>
 
 			<hr id="first_boader">
 			<h2 id="UART">UART</h2>
 			<h3 id="UART_new">new( ch, baud )</h3>
-			ch  ：UARTチャンネル（1 or 2）<br>
-			　1=>USBにて使用しているチャンネル<br>
-			　2=>GROVEにて使用しているチャンネル<br>
-			baud：ボーレート値（例：19200）<br>
+			ch  ：UART Channel（1 or 2）<br>
+			　1=>Channel used by USB<br>
+			　2=>Channel used by GROVE<br>
+			baud：baud rate value（sample value：19200）<br>
 			<hr id="second_boader">
 			<h3 id="UART_set_modem_params">set_modem_params("baud"=>baud,"parity"=>parity,"stop_bits"=>stop_bits,"txd"=>txd,"rxd"=>rxd)</h3>
-			baud：ボーレート値（例：19200）<br>
-			parity：パリティビット(0~2)<br>
-			stop_bits：ストップビット(1 or 2)<br>
-			txd：送信pin番号<br>
-			　チャンネル1->(0,8,9,12,20)<br>
-			　チャンネル2->(3,5,14,15,19)<br>
-			rxd：受信pin番号<br>
-			チャンネル1->(2,4,7,11,18)<br>
-			チャンネル2->(1,6,10,13,16)<br>
+			baud：baud rate value（sample value：19200）<br>
+			parity：parity bit(0~2)<br>
+			stop_bits：stop bit(1 or 2)<br>
+			txd：TX pin number<br>
+			　Channel 1->(0,8,9,12,20)<br>
+			　Channel 2->(3,5,14,15,19)<br>
+			rxd：RX pin number<br>
+			Channel 1->(2,4,7,11,18)<br>
+			Channel 2->(1,6,10,13,16)<br>
 			<hr id="second_boader">
 			<h3 id="UART_gets">gets</h3>
-				文字列受信、"\n" までのバイト列を返します。<br>
+			Receives a string. Returns bytes up to "\n".<br>
+			return value：String<br>
 			<hr id="second_boader">
 			<h3 id="UART_write">write(text)</h3>
-			文字列送信<br>
-			text：文字列
+			Send a string.<br>
+			text：String<br>
 			<hr id="second_boader">
 			<h3 id="UART_read">read(n)</h3>
-			文字列受信、指定した文字数を受信します。<br>
-			指定されたバイト数のデータが到着していない場合、nilを返します。<br>
-			n：文字数
-			<h3 id="UART_read_nonblock">read_nonblock((n)</h3>
-			文字列受信、指定した文字数を受信します。<br>
-			指定されたバイト数のデータが到着していない場合、到着している分のデータを返します。<br>
-			n：文字数
+			Receives a string. Receives only the specified number of characters.<br>
+			Returns nil if the specified number of bytes of data has not arrived.<br>
+			n：integer(word count)<br>
+			return value：String or nil<br>
+			<h3 id="UART_read_nonblock">read_nonblock(n)</h3>
+			Receives a string. Receives only the specified number of characters.<br>
+			If the specified number of bytes of data has not arrived, it returns the data that has arrived.<br>
+			n：integer(word count)<br>
+			return value：String<br>
 			<hr id="second_boader">
 			<h3 id="UART_puts">puts(text)</h3>
-			文字列送信(writeと同様)<br>
-			text：文字列
+			Send a string.<br>
+			<span style="color:rgb(255, 0, 0)">※same as [write]</span><br>
+			text：String<br>
 			<hr id="second_boader">
 			<h3 id="UART_clear_rx_buffer">clear_rx_buffer</h3>
-			受信文字列のバッファ初期化
+			Initialize received string buffer
 			<h3 id="UART_clear_tx_buffer">clear_tx_buffer</h3>
-			送信文字列のバッファ初期化
+			Initialize transmission string buffer
 
 			<hr id="first_boader">
 			<h2 id="Math">Math</h2>
@@ -172,16 +161,16 @@
 			https://github.com/YoshihiroOgura/pic32mx170_mrubyc/blob/a0542f4fb76b2f3e1ba6e5078c9e3fc3a7164865/src/c_math.c#L240</a>
 
 			<hr id="first_boader">
-			<h2 id="ETC">その他</h2>
-			<h3 id="leds_write">leds_write(bit)</h3>
-			led制御<br>
-			bit : 整数<br>
+			<h2 id="ETC">Additional features of RBoard</h2>
+			<h3 id="leds_write">leds_write(byte)</h3>
+			onboard led control.<br>
+			byte：integer<br>
 			<table border="1" class="table">
 				<thead class="thead-dark">
 					<tr>
 						<th>led</th>
-						<th>10進数</th>
-						<th>2進数</th>
+						<th>Decimal Number</th>
+						<th>binary</th>
 					</tr>
 				</thead>
 				<tr>
@@ -208,77 +197,68 @@
 
 			<hr id="second_boader">
 			<h3 id="sw">sw()</h3>
-			スイッチの状態読み込み<br>
-			戻り値：0 or 1<br>
+			Read state of onboard switch<br>
+			Switch with pull-up resistor<br>
+			return value：0(switch on) or 1(switch off)<br>
 
 			<hr id="second_boader">
 			<h3 id="pinInit">pinInit</h3>
-			すべてのピン設定を初期状態へ戻す。
+			Reset all pin settings to default.
 
 			<hr id="second_boader">
 			<h3 id="puts">puts(txt)</h3>
-			文字列出力<br>
-			ターミナルソフトの設定については<a href="./console.html">こちら</a>
-			txt：文字列
+			string output<br>
+			Terminal software settings:<a href="./console.html">link</a><br>
+			txt：string<br>
 		</div>
 
 		<div id="submenu">
-			<div id="submenu_header">もくじ</div>
+			<div id="submenu_header">Index</div>
       <ul id="submenu_body">
 				<i class="fas fa-home"></i><a href="./index.html">HOME</a>
 				<li><details>
-					<summary>プログラム書き込み</summary>
+					<summary>program</summary>
 					<ul id="subuul">
-						<li><a href="./ide_install.html">mruby/c IDEインストール</a></li>
-						<li><a href="./write_program.html">PG書き込み</a></li>
+						<li><a href="./ide_install.html">mruby/c IDE setup</a></li>
+						<li><a href="./write_program.html">program writing</a></li>
+						<li><a href="./update.html">Firmware update</a></li>
+						<li><a href="./class.html">old board class</a></li>
+						<li><a href="./mrubyc_class_en.html">board class</a></li>
 					</ul>
 				</details></li>
 				<li><details>
-					<summary>ファームウェアアップデート</summary>
-					<ul id="subuul">
-						<li><a href="./update.html">アップデート手順</a></li>
-					</ul>
-				</details></li>
-				<li><details>
-          <summary>ボード一覧</summary>
+          <summary>board list</summary>
           <ul id="subuul">
-          <li><a href="./board_list.html">ボード一覧</a></li>
+          <li><a href="./board_list.html">board list</a></li>
           </ul>
 				</details></li>
 				<li><details>
-					<summary>RBoardにおける各クラス</summary>
+					<summary>sensor sample program</summary>
 					<ul id="subuul">
-						<li><a href="./class.html">各クラス</a></li>
-						<li><a href="./mrubyc_class.html">mruby/c IO 各クラス</a></li>
+						<li><a href="./sensor_module.html">Compatible sensor module</a></li>
+						<li><a href="./adc.html">ADC sample</a></li>
+						<li><a href="./i2c.html">I2C sample</a></li>
+						<li><a href="./pwm.html">PWM sample</a></li>
+						<li><a href="./uart.html">UART sample</a></li>
+						<li><a href="./etc.html">others sample</a></li>
 					</ul>
 				</details></li>
 				<li><details>
-					<summary>サンプルプログラム</summary>
+					<summary>others</summary>
 					<ul id="subuul">
-						<li><a href="./adc.html">ADCサンプル</a></li>
-						<li><a href="./i2c.html">I2Cサンプル</a></li>
-						<li><a href="./pwm.html">PWMサンプル</a></li>
-						<li><a href="./uart.html">UARTサンプル</a></li>
-						<li><a href="./etc.html">その他サンプル</a></li>
+						<li><a href="./console.html">Terminal software settings</a></li>
 					</ul>
 				</details></li>
 				<li><details>
-					<summary>その他</summary>
-					<ul id="subuul">
-						<li><a href="./sensor_module.html">対応センサーモジュール</a></li>
-						<li><a href="./console.html">ターミナルソフトの設定</a></li>
-					</ul>
-				</details></li>
-				<li><details>
-          <summary>チュートリアル</summary>
+          <summary>tutorial</summary>
           <ol id="subuol">
-						<li><a href="./tutorial_mrubyc.html">mruby/cとは？</a></li>
-						<li><a href="./tutorial_led.html">LEDを制御する</a></li>
-						<li><a href="./tutorial_rgb_led.html">フルカラーLED</a></li>
-						<li><a href="./tutorial_reed_switch.html">ドア開閉センサ</a></li>
-						<li><a href="./tutorial_buzzer.html">圧電ブザー</a></li>
-						<li><a href="./tutorial_cds.html">光センサ</a></li>
-						<li><a href="./tutorial_temp.html">温度センサ</a></li>
+						<li><a href="./tutorial_mrubyc.html">What is mruby/c?</a></li>
+						<li><a href="./tutorial_led.html">control the LED</a></li>
+						<li><a href="./tutorial_rgb_led.html">full color LED</a></li>
+						<li><a href="./tutorial_reed_switch.html">door open/close sensor</a></li>
+						<li><a href="./tutorial_buzzer.html">Piezo Transducer</a></li>
+						<li><a href="./tutorial_cds.html">light sensor</a></li>
+						<li><a href="./tutorial_temp.html">temperature sensor</a></li>
           </ol>
         </details></li>
 			</ul>
@@ -347,7 +327,7 @@
 					<summary><a href="#Math">Math</a></summary>
 				</details>
 				<details>
-					<summary><a href="#ETC">その他</a></summary>
+					<summary><a href="#ETC">others</a></summary>
 					<ul id="class_ul">
 						<li><a href="#leds_write">leds_write</a></li>
 						<li><a href="#sw">sw</a></li>
