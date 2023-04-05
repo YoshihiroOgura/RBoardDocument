@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="ja">
   <head>
-    <title>mruby/cIDE install - RBoardDocument</title>
+    <title>プログラム書き込み - RBoardDocument</title>
     <link rel="shortcut icon" href="./image/bug.ico">
-      <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-176702602-1"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -15,39 +14,37 @@
     <link rel="stylesheet" type="text/css" href="main.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link href="https://use.fontawesome.com/releases/v5.11.0/css/all.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js" type="text/javascript"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js" type="text/javascript"></script>
   </head>
   <body>
-    <div id="header"><h1> IDE install </h1></div>
+    <div id="header"><h1> PG書き込み </h1></div>
     <div id="main">
-      language：<a href="./ide_install_en.html">English</a>/<a href="./ide_install.html">日本語</a><br>
-      <h2 class="txt-border"> Windows10 </h2>
-			<ol>
-				<li>Download the <a href="https://www.s-itoc.jp/activity/research/mrubyc/mrubyc_download/">mruby/c IDE</a>. extract from zip file.</li>
-				<li>Start mrubyc_ide.exe in the unzipped folder.</li>
-        <li>Click "File -> Settings..." on the menu bar.</li>
-        <a data-lightbox="ide" href="./image/ide1.png">
-          <img src="./image/ide1.png" class="expansion">
-        </a>
-				<li>Specify the file path of "mrbc.exe" in the unzipped folder to the "mrbc" item of "Build and Deploy -> Cmpiler".</li>
-				<a data-lightbox="ide" href="./image/ide2.png">
-          <img src="./image/ide2.png" class="expansion">
-        </a>
-				<li>Specify the path of "mrbwrite.exe" in the unzipped folder in the "mrbwrite" item of "Build and Deploy -> Writer".</li>
-				<li>Enter "-s 19200" in the "Options" item of "Build and Deploy -> Writer".</li>
-        <li>Click Apply and OK.</li>
-				<a data-lightbox="ide" href="./image/ide3.png">
-          <img src="./image/ide3.png" class="expansion">
-        </a>
-      </ol>
-      <h3 class="txt-border"> Install guide </h3>
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/rL1jSJoQMNo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-		</div>
+    language：<a href="./write_program_en.html">English</a>/<a href="./write_program.html">日本語</a><br>
+    Execute <a href="./ide_install_en.html">IDE install </a> as a preparation.<br>
+    <br>
+    <h2 class="txt-border"> Windows10 </h2>
+    <ol>
+      <li>Click "File -> New -> Project".</li>
+      <img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/195542/358d4af8-1d2d-bada-71ad-28cc6ab3d55f.png">
+      <li>Enter the project name and click "OK". (sample project name :『test』)</li>
+      <img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/195542/813921bc-d729-1fbe-c682-9168448dfc02.png">
+      <li>After right-clicking the created project folder, click "Add New...".</li>
+      <img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/195542/270d4fe4-45d0-41f9-dc4a-5eabf2b2d68d.png">
+      <li>After entering the name of the Ruby file to add, click "OK". (sample file name :『test.rb』)</li>
+      <img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/195542/783d4f52-a727-9dec-7470-e21a309f8bb8.png">
+      <li>Connect the board and PC using a USB cable.</li>
+      <img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/195542/fcee4b49-8d99-7b9e-3dc1-b0cfbe622210.png">
+      <li>After writing the program, click the "Write" button.（Start connection....）</li>
+      <li>Press the reset switch on the board.(labeled [RS])</li>
+      <li>「<span style="color:LightSeaGreen">The process "Write" exited normally.</span>」is displayed, it is completed.</li>
+      <img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/195542/82d04005-70db-d4ad-c640-e3d7bd92665d.png" width="700">
+    </ol>
+    ※If the program doesn't burn, something else is using the COM port. (terminal software, etc.)<br>
+    Try reinserting the USB.<br>
+    Alternatively, the COM port to write to may be different.(Check the port in "Build and Deploy -> Writer".)。<br>
+    <img src="https://user-images.githubusercontent.com/24926574/79931711-96e07d00-8486-11ea-8413-b82b60aeccbd.png">
+    </div>
 
-
-		<div id="submenu">
+    <div id="submenu">
 			<div id="submenu_header">Index</div>
       <ul id="submenu_body">
 				<i class="fas fa-home"></i><a href="./index.html">HOME</a>
@@ -98,5 +95,5 @@
         </details></li>
 			</ul>
 		</div>
-	</body>
+  </body>
 </html>
