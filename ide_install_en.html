@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="ja">
   <head>
-    <title>Terminal software settings - RBoardDocument</title>
+    <title>mruby/cIDE install - RBoardDocument</title>
     <link rel="shortcut icon" href="./image/bug.ico">
+      <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-176702602-1"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -13,31 +14,38 @@
     </script>
     <link rel="stylesheet" type="text/css" href="main.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/a11y-dark.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/highlight.min.js"></script>
-    <script type="text/javascript" src="./style.js"></script>
     <link href="https://use.fontawesome.com/releases/v5.11.0/css/all.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js" type="text/javascript"></script>
   </head>
   <body>
-    <div id="header"><h1> Terminal software settings </h1></div>
+    <div id="header"><h1> IDE install </h1></div>
     <div id="main">
-      language：<a href="./console_en.html">English</a>/<a href="./console.html">日本語</a><br>
-      Check Device Manager.<br>
-			Software setting of puts output destination (when com port of RBoard is com6)<br>
-			<img src="https://user-images.githubusercontent.com/24926574/87621425-bfada100-c75b-11ea-8cf6-70d842401cbe.png"><br>
-      The example below uses COM4<br>
-			<hr id="first_boader">
-			<h2>teraterm</h2>
-      software <a href="https://osdn.net/projects/ttssh2/releases/">link</a>
-      Click [teraterm-X.XXX.exe]<br>
-      After downloading, run the exe to install.<br>
-      Check Serial. -> Port:COM4 -> Click [OK]<br>
-			<img src="./image/tt1.png"><br>
-      menu bar:Setup -> Serial port... -> Speed:19200 -> Click [New setting]<br>
-			<img src="./image/tt2.png"><br>
-      menu bar:Setup -> Terminal -> Receive:LF , Transmit:LF -> Click [OK]<br>
-			<img src="./image/tt3.png"><br>
+      language：<a href="./ide_install_en.html">English</a>/<a href="./ide_install.html">日本語</a><br>
+      <h2 class="txt-border"> Windows10 </h2>
+			<ol>
+				<li>Download the <a href="https://www.s-itoc.jp/activity/research/mrubyc/mrubyc_download/">mruby/c IDE</a>. extract from zip file.</li>
+				<li>Start mrubyc_ide.exe in the unzipped folder.</li>
+        <li>Click "File -> Settings..." on the menu bar.</li>
+        <a data-lightbox="ide" href="./image/ide1.png">
+          <img src="./image/ide1.png" class="expansion">
+        </a>
+				<li>Specify the file path of "mrbc.exe" in the unzipped folder to the "mrbc" item of "Build and Deploy -> Cmpiler".</li>
+				<a data-lightbox="ide" href="./image/ide2.png">
+          <img src="./image/ide2.png" class="expansion">
+        </a>
+				<li>Specify the path of "mrbwrite.exe" in the unzipped folder in the "mrbwrite" item of "Build and Deploy -> Writer".</li>
+				<li>Enter "-s 19200" in the "Options" item of "Build and Deploy -> Writer".</li>
+        <li>Click Apply and OK.</li>
+				<a data-lightbox="ide" href="./image/ide3.png">
+          <img src="./image/ide3.png" class="expansion">
+        </a>
+      </ol>
+      <h3 class="txt-border"> Install guide </h3>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/rL1jSJoQMNo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 		</div>
+
 
 		<div id="submenu">
 			<div id="submenu_header">Index</div>
@@ -89,7 +97,6 @@
           </ol>
         </details></li>
 			</ul>
-    </div>
+		</div>
 	</body>
 </html>
-        
