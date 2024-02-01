@@ -9,7 +9,7 @@ particlesJS('top_page',{
       "shape":{
         "type":"image",
         "image":{
-            "src":"https://drive.google.com/uc?export=view&id=1m8s6PplUpo17UEuXdwr0qPkIYzts6Ich",
+            "src":"https://lh3.googleusercontent.com/d/1m8s6PplUpo17UEuXdwr0qPkIYzts6Ich",
             "wide":50,
         },
         "stroke":{
