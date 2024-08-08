@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <title>その他サンプル - RBoardDocument</title>
+    <link rel="shortcut icon" href="./image/bug.ico">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-176702602-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-176702602-1');
+    </script>
+    <link rel="stylesheet" type="text/css" href="main.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/a11y-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/highlight.min.js"></script>
+    <script type="text/javascript" src="./style.js"></script>
+    <link href="https://use.fontawesome.com/releases/v5.11.0/css/all.css" rel="stylesheet">
+  </head>
+  <body>
+    <div id="header"><h1> その他サンプル </h1></div>
+    <div id="main">
+			<h3>Lチカ(オンボードLED)</h3>
+      RBoardオリジナルメソッド<br>
+			<pre><code  class="ruby">
+while true
+  leds_write(1)
+  sleep(1)
+  leds_write(0)
+  sleep(1)
+end
+			</code></pre>
+      クラスメソッドを使用<br>
+			<pre><code  class="ruby">
+GPIO.setmode( 0, GPIO::OUT )
+while true
+  GPIO.write_at( 0, 1 )
+  sleep(1)
+  GPIO.write_at( 0, 0 )
+  sleep(1)
+end
+      </code></pre>
+      インスタンスメソッドを使用<br>
+			<pre><code  class="ruby">
+led1 = GPIO.new( 0, GPIO::OUT )
+while true
+  led1.write( 1 )
+  sleep(1)
+  led1.write( 0 )
+  sleep(1)
+end
+      </code></pre>
+      PICが好きな人向けピン設定<br>
+			<pre><code  class="ruby">
+led1 = GPIO.new( "A0", GPIO::OUT )
+while true
+  led1.write( 1 )
+  sleep(1)
+  led1.write( 0 )
+  sleep(1)
+end
+      </code></pre>
+      <hr id="first_boader">
+			<h3 class="link" id="etc_output">RBoard搭載スイッチ</h3>
+			<pre><code  class="ruby">
+while true
+  leds_write(sw())
+end
+      </code></pre>
+      <hr id="first_boader">
+			<h3 class="link" id="etc_output">Lチカ(外部LED)</h3>
+			<pre><code  class="ruby">
+led = GPIO.new( 20, GPIO::OUT )
+while true
+  led.write( 1 )
+  sleep(1)
+  led.write( 0 )
+  sleep(1)
+end
+      </code></pre>
+      <hr id="first_boader">
+			<h3 class="link" id="etc_button">外部入力(DigitalGROVE)</h3>
+			http://wiki.seeedstudio.com/Grove-Button/
+			<pre><code  class="ruby">
+sensor = GPIO.new( 15, GPIO::IN )
+while true
+  leds_write(sensor.read())
+end
+      </code></pre>
+      <hr id="first_boader">
+			<h3>7セグメントLED</h3>
+			74HC4511を使用するとleds_write(0,1,5,6pin)から簡単に出力できる。
+			<pre><code  class="ruby">
+while true
+  10.times do |j|
+    leds_write(j)
+    sleep(1)
+  end
+end
+      </code></pre>
+      <hr id="first_boader">
+      <h3 class="link" id="etc_out">外部出力(DigitalGROVE)</h3>
+      リレー：<a href="https://www.switch-science.com/catalog/807/">https://www.switch-science.com/catalog/807/</a>
+      <pre><code  class="ruby">
+relay = GPIO.new( 15, GPIO::OUT )
+while true
+  relay.write( 1 )
+  sleep(1)
+  relay.write( 0 )
+  sleep(1)
+end
+      </code></pre>
+    </div>
+        
+    <div id="submenu">
+      <div id="submenu_header">もくじ</div>
+      <ul id="submenu_body">
+        <i class="fas fa-home"></i><a href="./index.html">HOME</a>
+        <li><details>
+          <summary>プログラム書き込み</summary>
+          <ul id="subuul">
+            <li><a href="./ide_install.html">mruby/c IDEインストール</a></li>
+            <li><a href="./write_program.html">PG書き込み</a></li>
+          </ul>
+        </details></li>
+        <li><details>
+          <summary>ファームウェアアップデート</summary>
+          <ul id="subuul">
+            <li><a href="./update.html">アップデート手順</a></li>
+          </ul>
+        </details></li>
+        <li><details>
+          <summary>ボード一覧</summary>
+          <ul id="subuul">
+          <li><a href="./board_list.html">ボード一覧</a></li>
+          </ul>
+        </details></li>
+        <li><details>
+          <summary>RBoardにおける各クラス</summary>
+          <ul id="subuul">
+            <li><a href="./class.html">各クラス</a></li>
+            <li><a href="./mrubyc_class.html">mruby/c IO 各クラス</a></li>
+          </ul>
+        </details></li>
+        <li><details>
+          <summary>サンプルプログラム</summary>
+          <ul id="subuul">
+            <li><a href="./adc.html">ADCサンプル</a></li>
+            <li><a href="./i2c.html">I2Cサンプル</a></li>
+            <li><a href="./pwm.html">PWMサンプル</a></li>
+            <li><a href="./uart.html">UARTサンプル</a></li>
+            <li><a href="./etc.html">その他サンプル</a></li>
+          </ul>
+        </details></li>
+        <li><details>
+          <summary>その他</summary>
+          <ul id="subuul">
+            <li><a href="./sensor_module.html">対応センサーモジュール</a></li>
+            <li><a href="./console.html">ターミナルソフトの設定</a></li>
+          </ul>
+        </details></li>
+        <li><details>
+          <summary>チュートリアル</summary>
+          <ol id="subuol">
+            <li><a href="./tutorial_mrubyc.html">mruby/cとは？</a></li>
+            <li><a href="./tutorial_led.html">LEDを制御する</a></li>
+            <li><a href="./tutorial_rgb_led.html">フルカラーLED</a></li>
+            <li><a href="./tutorial_reed_switch.html">ドア開閉センサ</a></li>
+            <li><a href="./tutorial_buzzer.html">圧電ブザー</a></li>
+            <li><a href="./tutorial_cds.html">光センサ</a></li>
+            <li><a href="./tutorial_temp.html">温度センサ</a></li>
+          </ol>
+        </details></li>
+      </ul>
+      <a href="https://www.rubyworld-conf.org/" target="_blank"><img src="rwc2020_banner_a02.png"></a>
+    </div>
+	</body>
+</html>
