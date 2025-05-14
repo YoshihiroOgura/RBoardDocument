@@ -206,7 +206,7 @@ ul#normal_li li:before {
 
 .txt-border:before {
 	background: linear-gradient(-90deg, rgb(192, 41, 41), transparent);
-    margin-right: 1rem;rgb(204, 26, 26)
+	margin-right: 1rem;
 }
 
 .txt-border:after {
