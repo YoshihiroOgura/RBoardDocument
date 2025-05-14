@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Classes - RBoardDocument</title>
+    <link rel="shortcut icon" href="./image/bug.ico">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-176702602-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-176702602-1');
+    </script>
+    <link rel="stylesheet" type="text/css" href="main.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/a11y-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/highlight.min.js"></script>
+    <script type="text/javascript" src="./style.js"></script>
+    <link href="https://use.fontawesome.com/releases/v5.11.0/css/all.css" rel="stylesheet">
+  </head>
+  <body>
+    <div id="header"><h1> Class </h1></div>
+    <div id="main">
+      language：<a href="./class_common_en.html">English</a>/<a href="./class_common.html">日本語</a><br>
+      This content is based on a pre-release version (mruby/c3.3).<br>
+      - mruby/cIDE version:1.2<br>
+      - mrbwrite version:1.2<br>
+      - mrbc compiler version:3.0<br>
+      The corresponding firmware can be downloaded from <a href="https://github.com/YoshihiroOgura/pic32mx170_mrubyc/releases/tag/v3.3.1">here</a>.<br>
+      <h2 id="Ruby">Ruby</h2>
+      For Ruby classes supported by mruby/c, please refer to the official URL below.<br>
+      <a href="https://www.s-itoc.jp/activity/research/mrubyc/mrubyc_docs/library">
+      https://www.s-itoc.jp/activity/research/mrubyc/mrubyc_docs/library</a>
+
+      The implementation follows the standardization of the IO class in mruby/c.<br>
+      <a href="https://github.com/mruby/microcontroller-peripheral-interface-guide/blob/main/README.md">I/O API Guidelines</a><br>
+
+      The following explains the content based on the RBoard firmware.<br>
+      <hr id="first_boader">
+
+      <h2 id="GPIO">GPIO</h2>
+      <h3>Class method</h3>
+      <h3 id="GPIO_setmode">GPIO.setmode( pin, params ) -> nil</h3>
+      pin : 0~20 or Strings such as "B1", "A2"<br>
+      params : GPIO::IN GPIO::OUT etc..<br>
+      <pre><code class="ruby">
+# Set pin number 1 output.
+GPIO.setmode( 1, GPIO::OUT )
+
+# Set B1 pin to input, with internal pull-up.
+GPIO.setmode( "B1", GPIO::IN|GPIO::PULL_UP )
+			</code></pre>
+
+      <h3 id="GPIO_read_at">GPIO.read_at( pin ) -> Integer</h3>
+      pin : 0~20 or Strings such as "B1", "A2"<br>
+      Returns the value read from the specified pin as either 0 or 1.<br>
+      When reading from the pin set for output, if the hardware permits, the actual value should be read and returned instead of the set value.<br>
+
+      <pre><code class="ruby">
+GPIO.setmode( 1, GPIO::IN )
+v1 = GPIO.read_at( 1 )          # read from pin 1.
+      </code></pre>
+
+      <h3 id="GPIO_high_at?">GPIO.high_at?( pin ) -> bool</h3>
+      pin : 0~20 or Strings such as "B1", "A2"<br>
+      Return true If the value read from the specified pin is high (==1)<br>
+      <pre><code class="ruby">
+if GPIO.high_at?( 1 )
+      </code></pre>
+
+      <h3 id="GPIO_low_at?">GPIO.low_at?( pin ) -> bool</h3>
+      pin : 0~20 or Strings such as "B1", "A2"<br>
+      If the value loaded from the specified pin is low-level (== 0), return true.<br>
+
+      <pre><code class="ruby">
+if GPIO.low_at?( 1 )
+      </code></pre>
+
+      <h3 id="GPIO_write_at">GPIO.write_at( pin, integer_data )</h3>
+      pin : 0~20 or Strings such as "B1", "A2"<br>
+      Output a value to the specified pin.<br>
+      The value must be specified as either 0 or 1.<br>
+      If the data is out of range (i.e. not 0 or 1), a RangeError will occur.<br>
+
+      <pre><code class="ruby">
+GPIO.setmode( 1, GPIO::OUT )
+GPIO.write_at( 1, 0 )      # output zero to pin 1.
+      </code></pre>
+
+      <h2>Constructor</h2>
+      <h3 id="GPIO_new">GPIO.new( pin, params )</h3>
+      pin : 0~20 or Strings such as "B1", "A2"<br>
+      params : See Constants<br>
+      Specify the physical pin indicated by the pin and generate a GPIO object.<br>
+      At the same time, specify a param to indicate the mode, such as input/output direction.<br>
+      The pin is normally specified as an integer, but PIC-specific pin numbers such as "B1" can be specified as a string.<br>
+      Use the following constants for param and specify them connected by |.<br>
+      IN, OUT, or HIGH_Z instruction is mandatory, and an ArgumentError will occur if it is absent.<br>
+
+      Constants:<br>
+      <pre><code class="ruby">
+GPIO::IN            # Set as input
+GPIO::OUT           # Set as output
+GPIO::HIGH_Z        # Set as high impedance
+GPIO::PULL_UP       # Enable internal pull-up
+GPIO::PULL_DOWN     # Enable internal pull-down
+GPIO::OPEN_DRAIN    # Set to open-drain mode
+      </code></pre>
+
+      <pre><code class="ruby">
+# Set GPIO pin 1 as output.
+gpio1 = GPIO.new(1, GPIO::OUT)
+
+# Set B1 pin as input with internal pull-up.
+gpio1 = GPIO.new("B1", GPIO::IN|GPIO::PULL_UP)
+      </code></pre>
+
+
+      <hr id="second_boader">
+      <h2>Instance methods</h2>
+
+      <h3 id="GPIO_read">read() -> Integer</h3>
+      Return the loaded value as 0 or 1.<br>
+      <pre><code class="ruby">
+v1 = gpio1.read()
+      </code></pre>
+
+      <h4 id="GPIO_high?">high?() -> bool</h4>
+      If the loaded value is high level (==1), it returns true.<br>
+      <pre><code class="ruby">
+if gpio1.high?()
+      </code></pre>
+
+      <h4 id="GPIO_low?">low?() -> bool</h4>
+      If the loaded value is low-level (==0), return true.<br>
+      <pre><code class="ruby">
+if gpio1.low?()
+      </code></pre>
+
+      <h4 id="GPIO_write">write( integer_data )</h4>
+      integer_data : 0 or 1<br>
+      Specify the value to output to the pin as either 0 or 1.<br>
+      <pre><code class="ruby">
+gpio1.write( 1 )
+      </code></pre>
+
+      <h4 id="GPIO_setmode_Instance">setmode( param ) -> nil</h4>
+      params : GPIO::IN GPIO::OUTなど<br>
+      Change the GPIO mode at any timing.<br>
+      When IN, OUT, or HIGH_Z is specified while PULL_UP or other settings have already been set, the previous settings will be invalidated.<br>
+      <pre><code class="ruby">
+# Enable internal pullup.
+gpio1.setmode( GPIO::PULL_UP )
+
+# Switch to input and enable internal pullup.
+gpio1.setmode( GPIO::IN|GPIO::PULL_UP )
+      </code></pre>
+
+      <hr id="first_boader">
+
+      <h2 id="ADC">ADC</h2>
+      A class that supports Analog-to-Digital Conversion (ADC) functionality.<br>
+      Generally, it is capable of converting analog voltage values to digital values.<br>
+      <h3>Constructor</h3>
+      
+      <h3 id="ADC_new">ADC.new( pin )</h3>
+      Generate an ADC object by specifying the physical pin indicated by "pin."<br>
+      The pin is normally specified as an integer, but PIC-specific pin numbers such as "B1" can be specified as a string.<br>
+      If the pin is already used in GPIO, etc., switch to ADC.<br>
+      <pre><code class="ruby">
+adc1 = ADC.new( 1 )
+      </code></pre>
+
+      <hr id="second_boader">
+
+      <h3 id="ADC_read_voltage">read_voltage() -> Float</h3>
+      Reads the value and returns the voltage value (V).0 ~ 3.3V<br>
+      <pre><code class="ruby">
+v1 = adc1.read_voltage()
+      </code></pre>
+
+      <hr id="second_boader">
+
+      <h3 id="ADC_read">read() -> Float</h3>
+      Alias for read_voltage<br>
+
+      <hr id="second_boader">
+
+      <h3 id="ADC_read_raw">read_raw() -> Integer</h3>
+      Read a value and return the raw value (the value before conversion to voltage). 0 ~ 1023<br>
+      <pre><code class="ruby">
+v1 = adc1.read_raw()
+      </code></pre>
+
+      <hr id="first_boader">
+
+      <h2 id="I2C">I2C</h2>
+      A class that supports I2C bus.<br>
+      Supports master devices, 7-bit addresses only.<br>
+      <h3>Constructor</h3>
+      <h3 id="I2C_new">I2C.new( *params )</h3>
+      Optional Parameters<br>
+      <table border="1" class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th>params</th>
+            <th>type</th>
+            <th>description</th>
+          </tr>
+        </thead>
+        <tr>
+          <td>frequency</td>
+          <td>Integer</td>
+          <td>Frequency (default 100kHz)</td>
+        </tr>
+        <tr>
+          <td>freq</td>
+          <td>(Same as above)</td>
+          <td>(Same as above)</td>
+        </tr>
+        <tr>
+          <td>scl_pin</td>
+          <td>---</td>
+          <td>SCL pin specification</td>
+        </tr>
+        <tr>
+          <td>sda_pin</td>
+          <td>---</td>
+          <td>SDA pin specification</td>
+        </tr>
+      </table>
+
+      <pre><code class="ruby">
+# Generate an I2C object with the default settings.
+i2c = I2C.new()
+
+# Use an I2C device of unit 1 with a frequency of 400kHz.
+i2c = I2C.new(1, frequency:400_000 )   # 400kHz
+      </code></pre>
+
+      <h3>Instance Methods</h3>
+      <h3 id="I2C_read">read( i2c_adrs_7, read_bytes, *param ) -> String</h3>
+      Reads data of read_bytes bytes from the device with the address i2c_adrs_7.<br>
+      If the device returns NAK in the middle, a String of shorter length than read_bytes may be returned.<br>
+      If data is specified in the param, it will be output before the repeated start, and then reading will start.<br>
+
+      <pre><code class="ruby">
+s = i2c.read( 0x45, 3 )                 # case 1
+s = i2c.read( 0x45, 3, 0xf3, 0x2d )     # case 2
+      </code></pre>
+      <pre>
+(case 1) S -- adrs(45) R A -- data1 A -- data2 A -- data3 A|N -- P
+(case 2) S -- adrs(45) W A -- out1(f3) A -- out2(2d) A -- Sr -- adrs(45) R A -- data1 A -- data2 A -- data3 N -- P
+    S : Start condition
+    P : Stop condition
+    Sr: Repeated start condition
+    A : Ack
+    N : Nack
+    R : Read bit
+    W : Write bit
+      </pre>
+
+      <hr id="second_boader">
+
+      <h3 id="I2C_write">write( i2c_adrs_7 , *outputs ) -> Integer</h3>
+      Writes data specified in outputs to the device with the address i2c_adrs_7.<br>
+      The number of bytes successfully written is returned as the return value.<br>
+      outputs can be specified as an Integer, Array, or String.<br>
+
+
+      <pre><code class="ruby">
+i2c.write( 0x45, 0x61, 0x47 )
+i2c.write( 0x50, 0x00, 0x80, "aG" )  # useful for EEPROM
+i2c.write( 0x11, [0x61, 0x47] )
+      </code></pre>
+      <pre>
+S -- adrs W A -- data_1 A -- ... -- data_n N -- P
+    S : Start condition
+    P : Stop condition
+    A : Ack
+    N : Nack
+    W : Write bit
+      </pre>
+
+      <hr id="second_boader">
+
+      <h3 id="I2C_send_start">send_start()</h3>
+      <span style="color: red;">Low level method.</span><br>
+      Outputs a StartCondition to the I2C bus.<br>
+
+      <pre><code class="ruby">
+i2c.send_start
+      </code></pre>
+
+      <hr id="second_boader">
+
+      <h3 id="I2C_send_restart">send_restart()</h3>
+      <span style="color: red;">Low level method.</span><br>
+      Outputs a Restart (RepeatedStart) Condition to the I2C bus.。<br>
+
+      <pre><code class="ruby">
+i2c.send_restart
+      </code></pre>
+
+      <hr id="second_boader">
+
+      <h3 id="I2C_send_stop">send_stop()</h3>
+      <span style="color: red;">Low level method.</span><br>
+      Outputs a StopCondition to the I2C bus.<br>
+
+      <pre><code class="ruby">
+i2c.send_stop
+      </code></pre>
+
+      <hr id="second_boader">
+
+      <h3 id="I2C_raw_read">raw_read( read_bytes, ack_nack = false ) -> String</h3>
+      <span style="color: red;">Low level method.</span><br>
+      Reads read_bytes bytes from the I2C bus and returns them.<br>
+      ack_nack = true outputs ACK at the last byte reading, and false outputs NACK.<br>
+
+      <pre><code class="ruby">
+str = i2c.raw_read( 20 )
+      </code></pre>
+
+      <hr id="second_boader">
+
+      <h3 id="I2C_raw_write">raw_write( *outputs ) -> Integer</h3>
+      <span style="color: red;">Low level method.</span><br>
+      Writes data specified in outputs to the I2C bus.<br>
+      The number of bytes successfully written is returned as the return value.<br>
+      outputs can be specified as an Integer, Array, or String.<br>
+
+      <pre><code class="ruby">
+i2c.raw_write( 0x45, 0x30, 0xa2 )
+      </code></pre>
+
+      <hr id="first_boader">
+      <h2 id="SPI">SPI</h2>
+      A class that supports SPI bus.<br>
+      This specification defines only master devices and transfers in 8-bit units.<br>
+      Use the GPIO function for Chip Select(CS/SS).<br>
+
+      <h3>Constructor</h3>
+
+      <h3 id="SPI_new">SPI.new( id=nil, *params )</h3>
+      id : 1 or 2<br>
+      Generates an SPI object by specifying the physical unit indicated by "id."<br>
+      Optional Parameters<br>
+      <table border="1" class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th>params</th>
+            <th>type</th>
+            <th>description</th>
+          </tr>
+        </thead>
+        <tr>
+          <td>unit</td>
+          <td>---</td>
+          <td>Specification of the SPI unit</td>
+        </tr>
+        <tr>
+          <td>frequency</td>
+          <td>Integer</td>
+          <td>Frequency (default 1MHz)</td>
+        </tr>
+        <tr>
+          <td>mode</td>
+          <td>Integer</td>
+          <td>0 to 3 (default 0)</td>
+        </tr>
+        <tr>
+          <td>first_bit</td>
+          <td>Constant</td>
+          <td>SPI::MSB_FIRST or SPI::LSB_FIRST (default MSB_FIRST)</td>
+        </tr>
+      </table>
+
+      mode parameter<br>
+      <table border="1" class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th>mode</th>
+            <th>CPOL</th>
+            <th>CPHA</th>
+            <th>Idle state clock polarity</th>
+            <th>Sampling timing</th>
+          </tr>
+        </thead>
+        <tr>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>Low</td>
+          <td>Rising edge</td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>0</td>
+          <td>1</td>
+          <td>Low</td>
+          <td>Falling edge</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>1</td>
+          <td>0</td>
+          <td>High</td>
+          <td>Falling edge</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>1</td>
+          <td>1</td>
+          <td>High</td>
+          <td>Rising edge</td>
+        </tr>
+      </table>
+
+      <pre><code class="ruby">
+# デフォルトの設定で、spiオブジェクトを生成する。
+spi = SPI.new()
+
+# ユニット1 の SPI デバイスを、周波数 10MHz で使う。
+spi = SPI.new( unit:1, frequency:10_000_000 )
+      </code></pre>
+
+      <h3>Instance Methods</h3>
+      <h3 id="SPI_setmode">setmode( *params )</h3>
+      Changes the operating mode (parameters) of the SPI.<br>
+      The parameters are specified according to the constructor.<br>
+
+      <pre><code class="ruby">
+spi.setmode( mode:3 )
+      </code></pre>
+
+      <hr id="second_boader">
+
+      <h3 id="SPI_read">read( read_bytes ) -> String</h3>
+      Reads data of read_bytes bytes from the SPI bus.<br>
+      At the same time, data will be output as 0.<br>
+
+      <pre><code class="ruby">
+data = spi.read( 32 )
+      </code></pre>
+
+      <hr id="second_boader">
+
+      <h3 id="SPI_write">write( *outputs ) -> nil</h3>
+      Outputs data specified in outputs to the SPI bus.<br>
+      outputs can be specified as an Integer, Array, or String.<br>
+
+      <pre><code class="ruby">
+spi.write( 0x30, 0xa2 )
+spi.write( "\x30\xa2" )
+spi.write( 0x02, 0xee, 0xad, 0x00, data_string )  # useful for EEPROM
+      </code></pre>
+
+      <hr id="second_boader">
+
+      <h3 id="SPI_transfer">transfer( outputs, additional_read_bytes = 0 ) -> String</h3>
+      Outputs data specified in outputs to the SPI bus while simultaneously reading data (General-purpose transfer).<br>
+      outputs can be specified as an Integer, Array, or String.<br>
+      If additional_read_bytes is specified, it will output 0x00 after the outputs.<br>
+
+      <pre><code class="ruby">
+s = spi.transfer( 0b0000_0101, 1 )  # s will return a 2-byte String
+      </code></pre>
+
+      <hr id="first_boader">
+      <h2 id="PWM">PWM</h2>
+      A class that supports Pulse Width Modulation (PWM) functionality.<br>
+
+      <h3>Constructor</h3>
+      <h3 id="PWM_new">PWM.new( pin, *params )</h3>
+      pin : 0~20 or Strings such as "B1", "A2"<br>
+      Generate a PWM object by specifying the physical pin indicated by "pin."<br>
+      The pin is normally specified as an integer, but PIC-specific pin numbers such as "B1" can be specified as a string.<br>
+      When specifying the parameter frequency, the output starts with a duty cycle of 50%.<br>
+      If you want to start the output with a duty cycle other than 50%, specify the parameter duty simultaneously.<br>
+      Optional Parameters<br>
+      <table border="1" class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th>params</th>
+            <th>type</th>
+            <th>description</th>
+          </tr>
+        </thead>
+        <tr>
+          <td>frequency</td>
+          <td>Integer,Float</td>
+          <td>Specifies the frequency.</td>
+        </tr>
+        <tr>
+          <td>freq</td>
+          <td>(Same as above)</td>
+          <td>(Same as above)</td>
+        </tr>
+        <tr>
+          <td>duty</td>
+          <td>Integer,Float</td>
+          <td>Specifies the duty cycle.</td>
+        </tr>
+      </table>
+
+
+      <pre><code class="ruby">
+# Generate an object for PWM output on pin 1. Output is not started yet.
+pwm1 = PWM.new( 1 )
+
+# Generate an object for PWM output on pin 1 and start the output with a frequency of 440Hz and a duty cycle of 30%.
+pwm1 = PWM.new( 1, frequency:440, duty:30 )
+      </code></pre>
+
+      <h3>Instance Methods</h3>
+      <h3 id="PWM_frequency">frequency( freq )</h3>
+      Starts the output or changes the frequency by specifying the frequency.<br>
+      freq is specified as an Integer or Float.<br>
+      Specifying 0 stops the output.<br>
+      Changing the frequency does not affect the duty cycle.<br>
+
+      <pre><code class="ruby">
+pwm1.frequency( 440 )   #  Output at 440Hz
+      </code></pre>
+
+      <hr id="second_boader">
+      <h3 id="PWM_period_us">period_us( micro_sec )</h3>
+      Starts the output or changes the period by specifying the time of one cycle in microseconds.<br>
+      micro_sec is specified as an Integer.<br>
+      Specifying 0 stops the output.<br>
+      Changing the period does not affect the duty cycle.<br>
+
+      <pre><code class="ruby">
+pwm1.period_us( 2273 )   # 1/2273us = 440Hz
+      </code></pre>
+
+      <hr id="second_boader">
+      <h3 id="PWM_duty">duty( percent )</h3>
+      Changes the duty cycle by specifying a percentage from 0 to 100.<br>
+      percent is specified as an Integer or Float.<br>
+      
+      <pre><code class="ruby">
+pwm1.duty( 50 )
+      </code></pre>
+
+      <hr id="second_boader">
+      <h3 id="PWM_pulse_width_us">pulse_width_us( micro_sec )</h3>
+      Specifies the time in microseconds for which the output stays ON in one cycle.<br>
+      micro_sec is specified as an Integer.<br>
+      If a time longer than one cycle is specified, it will be set to the maximum value that can be ON without an error.<br>
+      
+      <pre><code class="ruby">
+pwm1.pulse_width_us( 1000 )
+      </code></pre>
+
+      <hr id="first_boader">
+      <h2 id="UART">UART</h2>
+      A class that supports asynchronous serial communication.<br>
+      <h3>Constructor</h3>
+      <h3 id="UART_new">UART.new( id=nil, *params )</h3>
+      id : 1 or 2(default is 2)<br>
+      Generates a UART object by specifying the physical unit indicated by "id."<br>
+      There are only 8 data bits.<br>
+      Since flow control is not implemented, RTSCTS cannot be specified.<br>
+      The default parameter. <br>
+      <ul>
+        <li>・Baud rate: 9600</li>
+        <li>・Data bits: 8 bits</li>
+        <li>・Stop bits: 1 bit</li>
+        <li>・Parity: None</li>
+        <li>・Flow control: None</li>
+      </ul>
+
+      Optional Parameters<br>
+      <table border="1" class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th>baudrate</th>
+            <th>Integer</th>
+            <th>Baud rate (default 9600)</th>
+          </tr>
+        </thead>
+        <tr>
+          <td>baud</td>
+          <td>(Same as above)</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>stop_bits</td>
+          <td>Integer</td>
+          <td>Stop bits (default 1)</td>
+        </tr>
+        <tr>
+          <td>parity</td>
+          <td>Const</td>
+          <td>Parity bit (default NONE)</td>
+        </tr>
+        <tr>
+          <td>txd_pin</td>
+          <td>---</td>
+          <td>Specifies the TxD pin</td>
+        </tr>
+        <tr>
+          <td>rxd_pin</td>
+          <td>---</td>
+          <td>Specifies the RxD pin</td>
+        </tr>
+      </table>
+      Parameter Constants<br>
+      <pre>
+UART::NONE
+UART::EVEN
+UART::ODD
+UART::RTSCTS
+      </pre>
+      
+      <pre><code class="ruby">
+# Use UART1 with all default parameters.
+uart1 = UART.new( 1 )
+
+# Use the serial device with the specified device node at 19200 bps, even parity.
+uart2 = UART.new("/dev/cu.usbserial1", baud:19200, parity:UART::EVEN )
+      </code></pre>
+      <h3>Instance Methods</h3>
+      <h3 id="UART_setmode">setmode( *params )</h3>
+      Changes the mode (parameters) of UART.<br>
+      The parameter specification follows that of the constructor.<br>
+      <pre><code class="ruby">
+uart1.setmode( baudrate:38400 )
+      </code></pre>
+
+      <hr id="second_boader">
+      <h3 id="UART_read">read( read_bytes ) -> String</h3>      
+      Reads data of the specified number of bytes, read_bytes.<br>
+      If the specified number of bytes has not arrived, it will block until they arrive.<br>
+
+      <pre><code class="ruby">
+val = uart1.read( 10 )
+      </code></pre>
+
+      <hr id="second_boader">
+      <h3 id="UART_write">write( string ) -> Integer</h3>
+      Sends data.<br>
+      Returns the number of bytes sent.<br>
+
+      <pre><code class="ruby">
+uart1.write("Output string\r\n")
+      </code></pre>
+
+      <hr id="second_boader">
+      <h3 id="UART_gets">gets() -> String</h3>
+      Reads a line of string. Internally, it returns the byte sequence until "\n" in the read buffer.<br>
+      If a complete line of data has not arrived, it will block until it arrives.<br>
+
+      <pre><code class="ruby">
+val = uart1.gets()
+      </code></pre>
+
+      <hr id="second_boader">
+      <h3 id="UART_puts">puts( string ) -> nil</h3>
+      Sends one line and sends a newline code at the end of the argument string.<br>
+      The newline code is LF only by default.<br>
+
+      <pre><code class="ruby">
+uart1.puts("Output string")
+      </code></pre>
+
+      <hr id="second_boader">
+      <h3 id="UART_bytes_available">bytes_available() -> Integer</h3>
+      Returns the number of readable bytes in the read buffer.<br>
+
+      <pre><code class="ruby">
+len = uart1.bytes_available()
+      </code></pre>
+
+      <hr id="second_boader">
+      <h3 id="UART_bytes_to_write">bytes_to_write() -> 0</h3>
+      Returns the number of bytes of data in the transmission buffer that have not been actually sent.<br>
+
+      <pre><code class="ruby">
+bytes = uart1.bytes_to_write()
+      </code></pre>
+
+      <hr id="second_boader">
+      <h3 id="UART_can_read_line">can_read_line() -> bool</h3>
+      Returns true if reading a line of data is possible.<br>
+
+      <pre><code class="ruby">
+flag = uart1.can_read_line()
+      </code></pre>
+
+      <hr id="second_boader">
+      <h3 id="UART_flush">flush()</h3>
+      Block until transmission of data accumulated in the transmission buffer is completed.<br>
+      There is no send buffer so it actually does nothing.<br>
+
+      <pre><code class="ruby">
+uart1.flush()
+      </code></pre>
+
+      <hr id="second_boader">
+      <h3 id="UART_clear_rx_buffer">clear_rx_buffer()</h3>
+      Clears the receive buffer.<br>
+
+      <pre><code class="ruby">
+uart1.clear_rx_buffer()
+      </code></pre>
+
+      <hr id="second_boader">
+      <h3 id="UART_clear_tx_buffer">clear_tx_buffer()</h3>
+      Clears the transmission buffer.<br>
+      There is no send buffer so it actually does nothing.<br>
+
+      <pre><code class="ruby">
+uart1.clear_tx_buffer()
+      </code></pre>
+
+      <hr id="second_boader">
+      <h3 id="UART_send_break">send_break( time )</h3>
+      Sends a break signal.<br>
+      The time is optional and specified in seconds.<br>
+
+      <pre><code class="ruby">
+uart1.send_break( 0.1 )
+      </code></pre>
+
+			<hr id="first_boader">
+			<h2 id="ETC">Unique Methods</h2>
+			<h3 id="leds_write">leds_write(bit)</h3>
+			on board LED control<br>
+			bit : Integer<br>
+			<table border="1" class="table">
+				<thead class="thead-dark">
+					<tr>
+						<th>led</th>
+						<th>Decimal</th>
+						<th>Binary number</th>
+					</tr>
+				</thead>
+				<tr>
+					<td>1</td>
+					<td>1</td>
+					<td>0b0001</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>2</td>
+					<td>0b0010</td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>4</td>
+					<td>0b0100</td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td>8</td>
+					<td>0b1000</td>
+				</tr>
+			</table>
+      <pre><code class="ruby">
+leds_write( 9 )    # LED1, LED4 ON
+leds_write( 0x06 ) # LED1, LED4 OFF / LED2, LED3 ON
+      </code></pre>
+
+			<hr id="second_boader">
+			<h3 id="sw">sw()</h3>
+			Read switch status<br>
+      Default pullup.(When pressed, 0 is output.)<br>
+			return：0 or 1<br>
+
+      <pre><code class="ruby">
+switch_status = sw()
+      </code></pre>
+
+			<hr id="second_boader">
+			<h3 id="puts">puts(txt)</h3>
+			Output string<br>
+			Click <a href="./console.html">here</a> for information on setting up the terminal software.<br>
+			txt：String<br>
+      <pre><code class="ruby">
+puts("Hello World")
+      </code></pre>
+		</div>
+
+		<div id="submenu">
+			<div id="submenu_header">Menu</div>
+      <ul id="submenu_body">
+				<i class="fas fa-home"></i><a href="./index.html">HOME</a>
+				<li><details>
+					<summary>program</summary>
+					<ul id="subuul">
+						<li><a href="./ide_install_en.html">mruby/c IDE setup</a></li>
+						<li><a href="./write_program_en.html">program writing</a></li>
+						<li><a href="./update.html">Firmware update</a></li>
+						<li><a href="./class.html">old board class(mruby/c1.4)</a></li>
+						<li><a href="./mrubyc_class_en.html">board class(mruby/c2.1)</a></li>
+						<li><a href="./class_common_en.html">board standard class(mruby/c3.3)</a></li>
+					</ul>
+				</details></li>
+				<li><details>
+          <summary>board list</summary>
+          <ul id="subuul">
+          <li><a href="./board_list.html">board list</a></li>
+          </ul>
+				</details></li>
+				<li><details>
+					<summary>sensor sample program</summary>
+					<ul id="subuul">
+						<li><a href="./sensor_module.html">Compatible sensor module</a></li>
+						<li><a href="./adc.html">ADC sample</a></li>
+						<li><a href="./i2c.html">I2C sample</a></li>
+						<li><a href="./pwm.html">PWM sample</a></li>
+						<li><a href="./uart.html">UART sample</a></li>
+						<li><a href="./etc.html">others sample</a></li>
+					</ul>
+				</details></li>
+				<li><details>
+					<summary>others</summary>
+					<ul id="subuul">
+						<li><a href="./console_en.html">Terminal software settings</a></li>
+					</ul>
+				</details></li>
+				<li><details>
+          <summary>tutorial</summary>
+          <ol id="subuol">
+						<li><a href="./tutorial_mrubyc.html">What is mruby/c?</a></li>
+						<li><a href="./tutorial_led.html">control the LED</a></li>
+						<li><a href="./tutorial_rgb_led.html">full color LED</a></li>
+						<li><a href="./tutorial_reed_switch.html">door open/close sensor</a></li>
+						<li><a href="./tutorial_buzzer.html">Piezo Transducer</a></li>
+						<li><a href="./tutorial_cds.html">light sensor</a></li>
+						<li><a href="./tutorial_temp.html">temperature sensor</a></li>
+          </ol>
+        </details></li>
+      </ul>
+
+			<div id="submenu_header">Class</div>
+			<div id="ruby_class">
+				<details>
+					<summary><a href="#Ruby">Ruby</a></summary>
+        </details>
+        <details>
+					<summary><a href="#GPIO">GPIO</a></summary>
+					<ul id="class_ul">
+            <li><a href="#GPIO_setmode">GPIO.setmode</a></li>
+            <li><a href="#GPIO_read_at">GPIO.read_at</a></li>
+            <li><a href="#GPIO_high_at?">GPIO.high_at?</a></li>
+            <li><a href="#GPIO_low_at?">GPIO.low_at</a></li>
+            <li><a href="#GPIO_write_at">GPIO.write_at</a></li>
+						<li><a href="#GPIO_new">GPIO.new</a></li>
+						<li><a href="#GPIO_read">read</a></li>
+						<li><a href="#GPIO_high?">high?</a></li>
+						<li><a href="#GPIO_low?">low?</a></li>
+						<li><a href="#GPIO_write">write</a></li>
+						<li><a href="#GPIO_setmode_Instance">setmode</a></li>
+					</ul>
+				</details>
+				<details>
+					<summary><a href="#ADC">ADC</a></summary>
+					<ul id="class_ul">
+						<li><a href="#ADC_new">ADC.new</a></li>
+						<li><a href="#ADC_read_voltage">read_voltage</a></li>
+						<li><a href="#ADC_read">read</a></li>
+						<li><a href="#ADC_read_raw">read_raw</a></li>
+					</ul>
+				</details>
+				<details>
+					<summary><a href="#I2C">I2C</a></summary>
+					<ul id="class_ul">
+						<li><a href="#I2C_new">I2C.new</a></li>
+						<li><a href="#I2C_read">read</a></li>
+						<li><a href="#I2C_send_start">send_start</a></li>
+						<li><a href="#I2C_send_restart">send_restart</a></li>
+						<li><a href="#I2C_send_stop">send_stop</a></li>
+						<li><a href="#I2C_raw_read">raw_read</a></li>
+						<li><a href="#I2C_raw_write">raw_write</a></li>
+					</ul>
+        </details>
+        <details>
+					<summary><a href="#SPI">SPI</a></summary>
+					<ul id="class_ul">
+						<li><a href="#SPI_new">SPI.new</a></li>
+						<li><a href="#SPI_setmode">setmode</a></li>
+						<li><a href="#SPI_read">read</a></li>
+						<li><a href="#SPI_write">write</a></li>
+						<li><a href="#SPI_transfer">transfer</a></li>
+					</ul>
+				</details>
+				<details>
+					<summary><a href="#PWM">PWM</a></summary>
+					<ul id="class_ul">
+						<li><a href="#PWM_new">PWM.new</a></li>
+						<li><a href="#PWM_frequency">frequency</a></li>
+						<li><a href="#PWM_period_us">period_us</a></li>
+						<li><a href="#PWM_duty">duty</a></li>
+						<li><a href="#PWM_pulse_width_us">pulse_width_us</a></li>
+					</ul>
+				</details>
+				<details>
+					<summary><a href="#UART">UART</a></summary>
+					<ul id="class_ul">
+						<li><a href="#UART_new">new</a></li>
+						<li><a href="#UART_setmode">setmode</a></li>
+						<li><a href="#UART_read">read</a></li>
+						<li><a href="#UART_write">write</a></li>
+						<li><a href="#UART_gets">gets</a></li>
+						<li><a href="#UART_puts">puts</a></li>
+						<li><a href="#UART_bytes_available">bytes_available</a></li>
+						<li><a href="#UART_bytes_to_write">bytes_to_write</a></li>
+						<li><a href="#UART_can_read_line">can_read_line</a></li>
+						<li><a href="#UART_bytes_to_write">bytes_to_write</a></li>
+						<li><a href="#UART_flush">flush</a></li>
+						<li><a href="#UART_clear_rx_buffer">clear_rx_buffer</a></li>
+						<li><a href="#UART_clear_tx_buffer">clear_tx_buffer</a></li>
+						<li><a href="#UART_send_break">send_break</a></li>
+					</ul>
+				</details>
+				<details>
+					<summary><a href="#ETC">Unique Methods</a></summary>
+					<ul id="class_ul">
+						<li><a href="#leds_write">leds_write</a></li>
+						<li><a href="#sw">sw</a></li>
+						<li><a href="#puts">puts</a></li>
+					</ul>
+				</details>
+			</div>
+			<a href="https://www.rubyworld-conf.org/" target="_blank"><img src="rwc2020_banner_a02.png"></a>
+    </div>
+	</body>
+</html>
