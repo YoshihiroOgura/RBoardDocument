@@ -1,78 +1,78 @@
 <!DOCTYPE html>
 <html lang="ja">
   <head>
-		<title>アップデート手順 - RBoardDocument</title>
+    <title>アップデート手順 - RBoardDocument</title>
     <link rel="shortcut icon" href="./image/bug.ico">
-		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-176702602-1"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-176702602-1"></script>
     <script>
-			window.dataLayer = window.dataLayer || [];
-			function gtag(){dataLayer.push(arguments);}
-			gtag('js', new Date());
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-			gtag('config', 'UA-176702602-1');
+      gtag('config', 'UA-176702602-1');
     </script>
     <link rel="stylesheet" type="text/css" href="main.css" />
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-		<link href="https://use.fontawesome.com/releases/v5.11.0/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link href="https://use.fontawesome.com/releases/v5.11.0/css/all.css" rel="stylesheet">
   </head>
   <body>
-		<div id="header"><h1> アップデート手順 </h1></div>
+    <div id="header"><h1> アップデート手順 </h1></div>
     <div id="main">
-			mruby/cのファームウェアアップデートおよびファームウェアが破壊された場合に行う手順です。<br>
-			別途手順書もございます。<a href="https://drive.google.com/file/d/1O62rVQrN4xbb8cWmzLj_xok-11Rifnxv/view">https://drive.google.com/file/d/1O62rVQrN4xbb8cWmzLj_xok-11Rifnxv/view</a>
-			<h2>準備</h2>
-			<ul id="normal_li">
-				<li><a href="https://www.microchip.com/mplab/mplab-x-ide">MPLAB X(またはMPLAB X IPE)</a>をインストール</li>
-				<li><a href="https://www.microchip.com/mplab/compilers">XC32</a>をインストール(MPLAB Xを使用する場合)</li>
-				<li><a href="https://github.com/YoshihiroOgura/pic32mx170_mrubyc/releases">hexファイル</a>をダウンロード(MPLAB X IPEを使用する場合)</li>
-				　⇒最新のhexファイルは<a href="https://github.com/YoshihiroOgura/pic32mx170_mrubyc/releases">リリースページ</a>のmruby/c2.1対応、pic32mx170_mrubyc.production.hexです。<br>
-				<li><a href="https://www.digikey.jp/product-detail/ja/microchip-technology/PG164130/PG164130-ND/2171224">pickit3</a>、<a href="http://akizukidenshi.com/catalog/g/gM-13337/">pickit4</a>、<a href="https://akizukidenshi.com/catalog/g/gM-13854/">MPLAB Snap</a>のいずれかを購入</li>
-				　⇒<a href="https://www.amazon.co.jp/dp/B01K26W8FQ/">pickit3の互換機,Snap</a>を使用して書き込む場合はUSBケーブルから電源を供給してください。
-			</ul>
-			<hr id="first_boader">
-			<h2>「MPLAB X IDE」を使用した手順</h2>
-			<ol>
-				<li>MPLAB Xを起動</li>
-				<li>Team → git → clone</li>
-				<li>Repogitory URL:<span style="color:rgb(0, 38, 255)">https://github.com/YoshihiroOgura/-pic32mx170_mrubyc.git</span></li>
-				<li>DIPの場合は<a href="https://qiita.com/aikawa_YO/items/68b12689f30ecd67a754">こちら</a>の回路、または<a href="http://akizukidenshi.com/catalog/g/gK-05355/">キット</a>を使用、表面実装の場合は「J3」に直接pickitを接続。</li>
-				<img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/195542/e3a018ae-2315-0d9e-4f4b-674600e4cb9c.png">
-				<li>書き込みを実行</li>
-				<img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/195542/61fc508c-5cff-6cff-6868-38432416f67c.png">
-				<hr id="second_boader">
-				<h3>上手くいかない場合はusbケーブルを接続して電源供給するか下記のような手順を実行</h3>
-				<li>Production → Set Project Configration → Custamize...</li>
-				<li>Conf:[default] → Hadware Tool　から使用するライタを選択(pickit3など)</li>
-				<img src="https://lh3.googleusercontent.com/d/19O7kXjEhsFVKn32QJcrdqfxa6nT1-9hG">
-				<li>Apply</li>
-				<li>Conf:[default] → PICkit3など → Power でチェックを入れる。</li>
-				<img src="https://lh3.googleusercontent.com/d/1dLH9rFUTRP7n66P6U1vi6Ot83yG078tf">
-				<li>Apply → OK</li>
-			</ol>
-			<hr id="first_boader">
-			<h2>「MPLAB X IPE」を使用した手順</h2>
-			<ol>
-				<li>「MPLAB X IPE」を起動</li>
-				<li>項目の設定</li>
-				Family：32-bit MCUs (PIC32)<br>
-				Device：PIC32MX170F256B
-				<li>「Apply」ボタンを押下</li>
-				<li>PCとpickit3またはpickit4を接続<br></li>
-				しばらくすると「Tool」の項目がPICKIT3に切り替わる。
-				<li>「Setting」-> 「Advanced Mode」を選択。下のような画面が表示される。</li>
-				「Password」に[microchip]と入力し、「Log in」を押下<br>
-				<img src="https://user-images.githubusercontent.com/24926574/88021756-07bc3180-cb69-11ea-92f5-af5af76df934.png">
-				<li>画面が変わり左側に項目が表示される。</li>
-				「Power」を選択
-				<li>「Power target circuit from PICkit3」にチェックを入れる。</li>
-				「Operate」を選択し、元の画面へ戻る。
-				<li>「Connect」ボタンを押下</li>
-				<li>「Hex File」に「pic32_170.production.hex」のpathを指定</li>
-				<li>PICkit3へボードを接続</li>
-				<li>「Program」をクリックし書き込み開始</li>
-				<li>「Output」に「Programming complete」と表示されれば書き込み完了</li>
-			</ol>
-		</div>
+      mruby/cのファームウェアアップデートおよびファームウェアが破壊された場合に行う手順です。<br>
+      別途手順書もございます。<a href="https://drive.google.com/file/d/1O62rVQrN4xbb8cWmzLj_xok-11Rifnxv/view">https://drive.google.com/file/d/1O62rVQrN4xbb8cWmzLj_xok-11Rifnxv/view</a>
+      <h2>準備</h2>
+      <ul id="normal_li">
+        <li><a href="https://www.microchip.com/mplab/mplab-x-ide">MPLAB X(またはMPLAB X IPE)</a>をインストール</li>
+        <li><a href="https://www.microchip.com/mplab/compilers">XC32</a>をインストール(MPLAB Xを使用する場合)</li>
+        <li><a href="https://github.com/YoshihiroOgura/pic32mx170_mrubyc/releases">hexファイル</a>をダウンロード(MPLAB X IPEを使用する場合)</li>
+        　⇒最新のhexファイルは<a href="https://github.com/YoshihiroOgura/pic32mx170_mrubyc/releases">リリースページ</a>のmruby/c2.1対応、pic32mx170_mrubyc.production.hexです。<br>
+        <li><a href="https://www.digikey.jp/product-detail/ja/microchip-technology/PG164130/PG164130-ND/2171224">pickit3</a>、<a href="http://akizukidenshi.com/catalog/g/gM-13337/">pickit4</a>、<a href="https://akizukidenshi.com/catalog/g/gM-13854/">MPLAB Snap</a>のいずれかを購入</li>
+        　⇒<a href="https://www.amazon.co.jp/dp/B01K26W8FQ/">pickit3の互換機,Snap</a>を使用して書き込む場合はUSBケーブルから電源を供給してください。
+      </ul>
+      <hr id="first_boader">
+      <h2>「MPLAB X IDE」を使用した手順</h2>
+      <ol>
+        <li>MPLAB Xを起動</li>
+        <li>Team → git → clone</li>
+        <li>Repogitory URL:<span style="color:rgb(0, 38, 255)">https://github.com/YoshihiroOgura/-pic32mx170_mrubyc.git</span></li>
+        <li>DIPの場合は<a href="https://qiita.com/aikawa_YO/items/68b12689f30ecd67a754">こちら</a>の回路、または<a href="http://akizukidenshi.com/catalog/g/gK-05355/">キット</a>を使用、表面実装の場合は「J3」に直接pickitを接続。</li>
+        <img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/195542/e3a018ae-2315-0d9e-4f4b-674600e4cb9c.png">
+        <li>書き込みを実行</li>
+        <img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/195542/61fc508c-5cff-6cff-6868-38432416f67c.png">
+        <hr id="second_boader">
+        <h3>上手くいかない場合はusbケーブルを接続して電源供給するか下記のような手順を実行</h3>
+        <li>Production → Set Project Configration → Custamize...</li>
+        <li>Conf:[default] → Hadware Tool　から使用するライタを選択(pickit3など)</li>
+        <img src="https://lh3.googleusercontent.com/d/19O7kXjEhsFVKn32QJcrdqfxa6nT1-9hG">
+        <li>Apply</li>
+        <li>Conf:[default] → PICkit3など → Power でチェックを入れる。</li>
+        <img src="https://lh3.googleusercontent.com/d/1dLH9rFUTRP7n66P6U1vi6Ot83yG078tf">
+        <li>Apply → OK</li>
+      </ol>
+      <hr id="first_boader">
+      <h2>「MPLAB X IPE」を使用した手順</h2>
+      <ol>
+        <li>「MPLAB X IPE」を起動</li>
+        <li>項目の設定</li>
+        Family：32-bit MCUs (PIC32)<br>
+        Device：PIC32MX170F256B
+        <li>「Apply」ボタンを押下</li>
+        <li>PCとpickit3またはpickit4を接続<br></li>
+        しばらくすると「Tool」の項目がPICKIT3に切り替わる。
+        <li>「Setting」-> 「Advanced Mode」を選択。下のような画面が表示される。</li>
+        「Password」に[microchip]と入力し、「Log in」を押下<br>
+        <img src="https://user-images.githubusercontent.com/24926574/88021756-07bc3180-cb69-11ea-92f5-af5af76df934.png">
+        <li>画面が変わり左側に項目が表示される。</li>
+        「Power」を選択
+        <li>「Power target circuit from PICkit3」にチェックを入れる。</li>
+        「Operate」を選択し、元の画面へ戻る。
+        <li>「Connect」ボタンを押下</li>
+        <li>「Hex File」に「pic32_170.production.hex」のpathを指定</li>
+        <li>PICkit3へボードを接続</li>
+        <li>「Program」をクリックし書き込み開始</li>
+        <li>「Output」に「Programming complete」と表示されれば書き込み完了</li>
+      </ol>
+    </div>
 
     <div id="submenu">
       <div id="submenu_header">もくじ</div>
@@ -136,5 +136,5 @@
         </details></li>
       </ul>
     </div>
-	</body>
+  </body>
 </html>

@@ -50,7 +50,7 @@ GPIO.setmode( 1, GPIO::OUT )
 
 # B1(6)ピンを入力、内部プルアップに設定する。
 GPIO.setmode( "B1", GPIO::IN | GPIO::PULL_UP )
-			</code></pre>
+      </code></pre>
 
       <h4 id="GPIO_read_at">GPIO.read_at( pin ) -> Integer</h4>
       pin : 0~20 または "B1"や"A2"などの文字列<br>
@@ -726,52 +726,52 @@ uart1.clear_tx_buffer()
 uart1.send_break( 0.1 )
       </code></pre>
 
-			<hr id="first_boader">
-			<h2 id="ETC">その他</h2>
-			<h3 id="leds_write">leds_write(bit)</h3>
-			led制御<br>
-			bit : 整数<br>
-			<table border="1" class="table">
-				<thead class="thead-dark">
-					<tr>
-						<th>led</th>
-						<th>10進数</th>
-						<th>2進数</th>
-					</tr>
-				</thead>
-				<tr>
-					<td>1</td>
-					<td>1</td>
-					<td>0b0001</td>
-				</tr>
-				<tr>
-					<td>2</td>
-					<td>2</td>
-					<td>0b0010</td>
-				</tr>
-				<tr>
-					<td>3</td>
-					<td>4</td>
-					<td>0b0100</td>
-				</tr>
-				<tr>
-					<td>4</td>
-					<td>8</td>
-					<td>0b1000</td>
-				</tr>
-			</table>
+      <hr id="first_boader">
+      <h2 id="ETC">その他</h2>
+      <h3 id="leds_write">leds_write(bit)</h3>
+      led制御<br>
+      bit : 整数<br>
+      <table border="1" class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th>led</th>
+            <th>10進数</th>
+            <th>2進数</th>
+          </tr>
+        </thead>
+        <tr>
+          <td>1</td>
+          <td>1</td>
+          <td>0b0001</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>2</td>
+          <td>0b0010</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>4</td>
+          <td>0b0100</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>8</td>
+          <td>0b1000</td>
+        </tr>
+      </table>
 
-			<hr id="second_boader">
-			<h3 id="sw">sw()</h3>
-			スイッチの状態読み込み<br>
-			戻り値：0 or 1<br>
+      <hr id="second_boader">
+      <h3 id="sw">sw()</h3>
+      スイッチの状態読み込み<br>
+      戻り値：0 or 1<br>
 
-			<hr id="second_boader">
-			<h3 id="puts">puts(txt)</h3>
-			文字列出力<br>
-			ターミナルソフトの設定については<a href="./console.html">こちら</a>
-			txt：文字列
-		</div>
+      <hr id="second_boader">
+      <h3 id="puts">puts(txt)</h3>
+      文字列出力<br>
+      ターミナルソフトの設定については<a href="./console.html">こちら</a>
+      txt：文字列
+    </div>
 
     <div id="submenu">
       <div id="submenu_header">もくじ</div>
@@ -834,96 +834,96 @@ uart1.send_break( 0.1 )
           </ol>
         </details></li>
       </ul>
-			<div id="submenu_header">Class</div>
-			<div id="ruby_class">
-				<details>
-					<summary><a href="#Ruby">Ruby</a></summary>
+      <div id="submenu_header">Class</div>
+      <div id="ruby_class">
+        <details>
+          <summary><a href="#Ruby">Ruby</a></summary>
         </details>
         <details>
-					<summary><a href="#GPIO">GPIO</a></summary>
-					<ul id="class_ul">
+          <summary><a href="#GPIO">GPIO</a></summary>
+          <ul id="class_ul">
             <li><a href="#GPIO_setmode">GPIO.setmode</a></li>
             <li><a href="#GPIO_read_at">GPIO.read_at</a></li>
             <li><a href="#GPIO_high_at?">GPIO.high_at?</a></li>
             <li><a href="#GPIO_low_at?">GPIO.low_at</a></li>
             <li><a href="#GPIO_write_at">GPIO.write_at</a></li>
-						<li><a href="#GPIO_new">GPIO.new</a></li>
-						<li><a href="#GPIO_read">read</a></li>
-						<li><a href="#GPIO_high?">high?</a></li>
-						<li><a href="#GPIO_low?">low?</a></li>
-						<li><a href="#GPIO_write">write</a></li>
-						<li><a href="#GPIO_setmode_Instance">setmode</a></li>
-					</ul>
-				</details>
-				<details>
-					<summary><a href="#ADC">ADC</a></summary>
-					<ul id="class_ul">
-						<li><a href="#ADC_new">ADC.new</a></li>
-						<li><a href="#ADC_read_voltage">read_voltage</a></li>
-						<li><a href="#ADC_read">read</a></li>
-						<li><a href="#ADC_read_raw">read_raw</a></li>
-					</ul>
-				</details>
-				<details>
-					<summary><a href="#I2C">I2C</a></summary>
-					<ul id="class_ul">
-						<li><a href="#I2C_new">I2C.new</a></li>
-						<li><a href="#I2C_read">read</a></li>
-						<li><a href="#I2C_send_start">send_start</a></li>
-						<li><a href="#I2C_send_restart">send_restart</a></li>
-						<li><a href="#I2C_send_stop">send_stop</a></li>
-						<li><a href="#I2C_raw_read">raw_read</a></li>
-						<li><a href="#I2C_raw_write">raw_write</a></li>
-					</ul>
+            <li><a href="#GPIO_new">GPIO.new</a></li>
+            <li><a href="#GPIO_read">read</a></li>
+            <li><a href="#GPIO_high?">high?</a></li>
+            <li><a href="#GPIO_low?">low?</a></li>
+            <li><a href="#GPIO_write">write</a></li>
+            <li><a href="#GPIO_setmode_Instance">setmode</a></li>
+          </ul>
         </details>
         <details>
-					<summary><a href="#SPI">SPI</a></summary>
-					<ul id="class_ul">
-						<li><a href="#SPI_new">SPI.new</a></li>
-						<li><a href="#SPI_setmode">setmode</a></li>
-						<li><a href="#SPI_read">read</a></li>
-						<li><a href="#SPI_write">write</a></li>
-						<li><a href="#SPI_transfer">transfer</a></li>
-					</ul>
-				</details>
-				<details>
-					<summary><a href="#PWM">PWM</a></summary>
-					<ul id="class_ul">
-						<li><a href="#PWM_new">PWM.new</a></li>
-						<li><a href="#PWM_frequency">frequency</a></li>
-						<li><a href="#PWM_period_us">period_us</a></li>
-						<li><a href="#PWM_duty">duty</a></li>
-						<li><a href="#PWM_pulse_width_us">pulse_width_us</a></li>
-					</ul>
-				</details>
-				<details>
-					<summary><a href="#UART">UART</a></summary>
-					<ul id="class_ul">
-						<li><a href="#UART_new">new</a></li>
-						<li><a href="#UART_setmode">setmode</a></li>
-						<li><a href="#UART_read">read</a></li>
-						<li><a href="#UART_write">write</a></li>
-						<li><a href="#UART_gets">gets</a></li>
-						<li><a href="#UART_puts">puts</a></li>
-						<li><a href="#UART_bytes_available">bytes_available</a></li>
-						<li><a href="#UART_bytes_to_write">bytes_to_write</a></li>
-						<li><a href="#UART_can_read_line">can_read_line</a></li>
-						<li><a href="#UART_bytes_to_write">bytes_to_write</a></li>
-						<li><a href="#UART_flush">flush</a></li>
-						<li><a href="#UART_clear_rx_buffer">clear_rx_buffer</a></li>
-						<li><a href="#UART_clear_tx_buffer">clear_tx_buffer</a></li>
-						<li><a href="#UART_send_break">send_break</a></li>
-					</ul>
-				</details>
-				<details>
-					<summary><a href="#ETC">その他</a></summary>
-					<ul id="class_ul">
-						<li><a href="#leds_write">leds_write</a></li>
-						<li><a href="#sw">sw</a></li>
-						<li><a href="#puts">puts</a></li>
-					</ul>
-				</details>
-			</div>
+          <summary><a href="#ADC">ADC</a></summary>
+          <ul id="class_ul">
+            <li><a href="#ADC_new">ADC.new</a></li>
+            <li><a href="#ADC_read_voltage">read_voltage</a></li>
+            <li><a href="#ADC_read">read</a></li>
+            <li><a href="#ADC_read_raw">read_raw</a></li>
+          </ul>
+        </details>
+        <details>
+          <summary><a href="#I2C">I2C</a></summary>
+          <ul id="class_ul">
+            <li><a href="#I2C_new">I2C.new</a></li>
+            <li><a href="#I2C_read">read</a></li>
+            <li><a href="#I2C_send_start">send_start</a></li>
+            <li><a href="#I2C_send_restart">send_restart</a></li>
+            <li><a href="#I2C_send_stop">send_stop</a></li>
+            <li><a href="#I2C_raw_read">raw_read</a></li>
+            <li><a href="#I2C_raw_write">raw_write</a></li>
+          </ul>
+        </details>
+        <details>
+          <summary><a href="#SPI">SPI</a></summary>
+          <ul id="class_ul">
+            <li><a href="#SPI_new">SPI.new</a></li>
+            <li><a href="#SPI_setmode">setmode</a></li>
+            <li><a href="#SPI_read">read</a></li>
+            <li><a href="#SPI_write">write</a></li>
+            <li><a href="#SPI_transfer">transfer</a></li>
+          </ul>
+        </details>
+        <details>
+          <summary><a href="#PWM">PWM</a></summary>
+          <ul id="class_ul">
+            <li><a href="#PWM_new">PWM.new</a></li>
+            <li><a href="#PWM_frequency">frequency</a></li>
+            <li><a href="#PWM_period_us">period_us</a></li>
+            <li><a href="#PWM_duty">duty</a></li>
+            <li><a href="#PWM_pulse_width_us">pulse_width_us</a></li>
+          </ul>
+        </details>
+        <details>
+          <summary><a href="#UART">UART</a></summary>
+          <ul id="class_ul">
+            <li><a href="#UART_new">new</a></li>
+            <li><a href="#UART_setmode">setmode</a></li>
+            <li><a href="#UART_read">read</a></li>
+            <li><a href="#UART_write">write</a></li>
+            <li><a href="#UART_gets">gets</a></li>
+            <li><a href="#UART_puts">puts</a></li>
+            <li><a href="#UART_bytes_available">bytes_available</a></li>
+            <li><a href="#UART_bytes_to_write">bytes_to_write</a></li>
+            <li><a href="#UART_can_read_line">can_read_line</a></li>
+            <li><a href="#UART_bytes_to_write">bytes_to_write</a></li>
+            <li><a href="#UART_flush">flush</a></li>
+            <li><a href="#UART_clear_rx_buffer">clear_rx_buffer</a></li>
+            <li><a href="#UART_clear_tx_buffer">clear_tx_buffer</a></li>
+            <li><a href="#UART_send_break">send_break</a></li>
+          </ul>
+        </details>
+        <details>
+          <summary><a href="#ETC">その他</a></summary>
+          <ul id="class_ul">
+            <li><a href="#leds_write">leds_write</a></li>
+            <li><a href="#sw">sw</a></li>
+            <li><a href="#puts">puts</a></li>
+          </ul>
+        </details>
+      </div>
     </div>
-	</body>
+  </body>
 </html>

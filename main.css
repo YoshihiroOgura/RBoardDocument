@@ -2,251 +2,251 @@
 全般的なスタイル
 ============================================*/
 * {
-	margin:0; padding:0; 	/*全要素のマージン・パディングをリセット*/
-	line-height:1.5;	/*全要素の行の高さを1.5倍にする*/
-	color:#333333;		/*文字色*/
+  margin:0; padding:0; 	/*全要素のマージン・パディングをリセット*/
+  line-height:1.5;	/*全要素の行の高さを1.5倍にする*/
+  color:#333333;		/*文字色*/
 
 } 
 body {
-	text-align:center;
+  text-align:center;
 }
 div#pagebody {
-	width:796px; margin:0 auto;	/*内容全体をセンタリング*/
-	text-align:left;	/*テキストの配置を左揃えにする*/
-	background-color:#ffffff;		/*内容全体の背景色*/
+  width:796px; margin:0 auto;	/*内容全体をセンタリング*/
+  text-align:left;	/*テキストの配置を左揃えにする*/
+  background-color:#ffffff;		/*内容全体の背景色*/
 }
 h3 {
-	color: rgb(0, 7, 104);					/*カラムを左寄せにする*/
+  color: rgb(0, 7, 104);					/*カラムを左寄せにする*/
 }
 
 code {
-	max-height: 350px;
+  max-height: 350px;
 }
 
 i.fa-star{
-	color: rgb(255, 0, 0);
+  color: rgb(255, 0, 0);
 }
 
 /*============================================
 ヘッダ
 ============================================*/
 div#header {
-	height:77px;
-	width: 100%;
-	position: fixed;
-	background-color:#95e6ff;		/*ヘッダ部分の背景色*/
-	z-index: 2;
-	top: 0;
+  height:77px;
+  width: 100%;
+  position: fixed;
+  background-color:#95e6ff;		/*ヘッダ部分の背景色*/
+  z-index: 2;
+  top: 0;
 }
 h1 {
-	padding:20px 0px 0px 30px;		/*見出し内容の位置調整*/
-	font-family:Arial, Helvetica, sans-serif;	/*フォントの種類*/
+  padding:20px 0px 0px 30px;		/*見出し内容の位置調整*/
+  font-family:Arial, Helvetica, sans-serif;	/*フォントの種類*/
 }
 /*============================================
 サブメニュー
 ============================================*/
 div#submenu {
-	width: 25%;			/*幅の指定*/
-	height: auto;
-	max-height: 80%;
-	margin:10px 10px 10px 0px;
-	display:inline;
-	top:80px;
-	left:20px;
-	background-color:#caf3ff;
-	position: fixed;
-	overflow: auto;
+  width: 25%;			/*幅の指定*/
+  height: auto;
+  max-height: 80%;
+  margin:10px 10px 10px 0px;
+  display:inline;
+  top:80px;
+  left:20px;
+  background-color:#caf3ff;
+  position: fixed;
+  overflow: auto;
 }
 
 /*サブメニューのヘッダ部分（余白調整・背景画像・背景色・文字サイズなど）*/
 div#submenu_header {
-	color: cornsilk;
-	height:26px; padding:4px 0px 0px 0px;
-	background-repeat:no-repeat; background-position:top;
-	background-color:#0074aa;
-	font-size:90%; font-weight:bold; text-align:center;
+  color: cornsilk;
+  height:26px; padding:4px 0px 0px 0px;
+  background-repeat:no-repeat; background-position:top;
+  background-color:#0074aa;
+  font-size:90%; font-weight:bold; text-align:center;
 }
 
 /*サブメニューのボディ部分（余白調整・背景画像・背景色）*/
 ul#submenu_body,div#ruby_class {
-	padding-bottom:6px;
-	padding-left:25px;
-	background-repeat:no-repeat; background-position:bottom;
+  padding-bottom:6px;
+  padding-left:25px;
+  background-repeat:no-repeat; background-position:bottom;
 }
 ul#submenu_body li a:hover {
-	background-color:#ffffff;	/*リンクにマウスが乗ったら色を変える*/
+  background-color:#ffffff;	/*リンクにマウスが乗ったら色を変える*/
 }
 
 ul#submenu_body i {
-	color: darkblue;
+  color: darkblue;
 }
 
 ul#subuul, ul#class_ul, ol#subuol {
-	padding-left:25px;
+  padding-left:25px;
 }
 
 ul > li {
-	list-style-type: none!important;
+  list-style-type: none!important;
 }
 
 ul#subuul li:before {
-	font-family:"Font Awesome 5 Free";
-	content: '\f005';
-	color: #ff9e9e;
+  font-family:"Font Awesome 5 Free";
+  content: '\f005';
+  color: #ff9e9e;
 }
 ul#class_ul li:before {
-	font-family:"Font Awesome 5 Free";
-	content: '\f02e';
-	font-weight: 900;
-	color: #41b137;
+  font-family:"Font Awesome 5 Free";
+  content: '\f02e';
+  font-weight: 900;
+  color: #41b137;
 }
 
 ul#content li:before {
-	font-family:"Font Awesome 5 Free";
-	font-weight: 900;
-	content: '\f0a4';
-	color: #ff0000;
+  font-family:"Font Awesome 5 Free";
+  font-weight: 900;
+  content: '\f0a4';
+  color: #ff0000;
 }
 
 details summary {
-	list-style: none;
+  list-style: none;
 }
 
 details summary::-webkit-details-marker {
-	display: none;
+  display: none;
 }
 
 details summary::before {
-	font-family:"Font Awesome 5 Free";
-	font-weight: 900;
-	color: #ff006a;
-	content: '\f138';
+  font-family:"Font Awesome 5 Free";
+  font-weight: 900;
+  color: #ff006a;
+  content: '\f138';
 }
 
 details[open] summary::before {
-	font-family:"Font Awesome 5 Free";
-	font-weight: 900;
-	color: #ff006a;
-	content: '\f13a';
+  font-family:"Font Awesome 5 Free";
+  font-weight: 900;
+  color: #ff006a;
+  content: '\f13a';
 }
 
 div#ruby_class > details > summary::before {
-	font-family:"Font Awesome 5 Free";
-	font-weight: 900;
-	color: #0ea700;
-	content: '\f152';
+  font-family:"Font Awesome 5 Free";
+  font-weight: 900;
+  color: #0ea700;
+  content: '\f152';
 }
 
 div#ruby_class > details[open] summary::before {
-	font-family:"Font Awesome 5 Free";
-	font-weight: 900;
-	color: #0ea700;
-	content: '\f150';
+  font-family:"Font Awesome 5 Free";
+  font-weight: 900;
+  color: #0ea700;
+  content: '\f150';
 }
 
 /*============================================
 メイン（中央カラム）
 ============================================*/
 div#main {
-	position:absolute;
-	margin-top:100px;
-	padding:25px;
-	right: 70px;
-	width:60%; margin-right:5px; padding-top:10px;
-	left:30%;
+  position:absolute;
+  margin-top:100px;
+  padding:25px;
+  right: 70px;
+  width:60%; margin-right:5px; padding-top:10px;
+  left:30%;
 }
 
 div#main img.expansion{
-	width: 70%;
+  width: 70%;
 }
 
 div#main video{
-	width: 70%;
+  width: 70%;
 }
 
 div#main img.window_img{
-	width: 70%;
+  width: 70%;
 }
 
  hr#first_boader{
-	border-top: 3px double blue;
+  border-top: 3px double blue;
  }
  hr#second_boader{
-	border-top: 1px dashed rgb(176, 176, 253);
+  border-top: 1px dashed rgb(176, 176, 253);
  }
 
  #top_page{
-	width: 100%;
-	height: 230%;
-	display: block;
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
+  width: 100%;
+  height: 230%;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 ul#normal_li li:before {
-	font-family:"Font Awesome 5 Free";
-	font-weight: 900;
-	content: '\f111';
-	color: #2c2c2c;
+  font-family:"Font Awesome 5 Free";
+  font-weight: 900;
+  content: '\f111';
+  color: #2c2c2c;
 }
 
 .txt-border {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .txt-border:before,
 .txt-border:after {
-    content: "";
-    height: 5px;
-    flex-grow: 1;
+  content: "";
+  height: 5px;
+  flex-grow: 1;
 }
 
 .txt-border:before {
-	background: linear-gradient(-90deg, rgb(192, 41, 41), transparent);
-	margin-right: 1rem;
+  background: linear-gradient(-90deg, rgb(192, 41, 41), transparent);
+  margin-right: 1rem;
 }
 
 .txt-border:after {
-	background: linear-gradient(90deg, rgb(192, 41, 41), transparent);
-    margin-left: 1rem;
+  background: linear-gradient(90deg, rgb(192, 41, 41), transparent);
+  margin-left: 1rem;
 }
 
 .answer_box .answer_show {
-    height: 0;
-    padding: 0;
-    overflow: hidden;
-    opacity: 0;
-    transition: 0.8s;
+  height: 0;
+  padding: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: 0.8s;
 }
 
 /*クリックで中身表示*/
 .answer_box input:checked ~ .answer_show {
-    padding: 10px 0;
-    height: auto;
-    opacity: 1;
+  padding: 10px 0;
+  height: auto;
+  opacity: 1;
 }
 .answer_box label {
-    padding: 5px;
-    background: #ff8585;
-    border-radius: 5px;
+  padding: 5px;
+  background: #ff8585;
+  border-radius: 5px;
 }
 
 /*ボタンホバー時*/
 .answer_box label:hover {
-    background: rgb(255, 0, 0);
+  background: rgb(255, 0, 0);
 }
 
 /*チェックは見えなくする*/
 .answer_box input {
-    display: none;
+  display: none;
 }
 
 .link{
-	display: block;
-	margin-top:-100px;
-	padding-top:100px;
+  display: block;
+  margin-top:-100px;
+  padding-top:100px;
 }
 

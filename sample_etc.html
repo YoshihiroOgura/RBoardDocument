@@ -22,18 +22,18 @@
     <div id="header"><h1> その他サンプル </h1></div>
     <div id="main">
       mruby/c 3.3 <a href="./mrubyc_class.html">標準IOクラス</a>対応<br>
-			<h3>Lチカ(オンボードLED)</h3>
+      <h3>Lチカ(オンボードLED)</h3>
       RBoardオリジナルメソッド<br>
-			<pre><code  class="ruby">
+      <pre><code  class="ruby">
 while true
   leds_write(1)
   sleep(1)
   leds_write(0)
   sleep(1)
 end
-			</code></pre>
+      </code></pre>
       クラスメソッドを使用<br>
-			<pre><code  class="ruby">
+      <pre><code  class="ruby">
 GPIO.setmode( 0, GPIO::OUT )
 while true
   GPIO.write_at( 0, 1 )
@@ -43,7 +43,7 @@ while true
 end
       </code></pre>
       インスタンスメソッドを使用<br>
-			<pre><code  class="ruby">
+      <pre><code  class="ruby">
 led1 = GPIO.new( 0, GPIO::OUT )
 while true
   led1.write( 1 )
@@ -53,7 +53,7 @@ while true
 end
       </code></pre>
       PICが好きな人向けピン設定<br>
-			<pre><code  class="ruby">
+      <pre><code  class="ruby">
 led1 = GPIO.new( "A0", GPIO::OUT )
 while true
   led1.write( 1 )
@@ -63,15 +63,15 @@ while true
 end
       </code></pre>
       <hr id="first_boader">
-			<h3 class="link" id="etc_output">RBoard搭載スイッチ</h3>
-			<pre><code  class="ruby">
+      <h3 class="link" id="etc_output">RBoard搭載スイッチ</h3>
+      <pre><code  class="ruby">
 while true
   leds_write(sw())
 end
       </code></pre>
       <hr id="first_boader">
-			<h3 class="link" id="etc_output">Lチカ(外部LED)</h3>
-			<pre><code  class="ruby">
+      <h3 class="link" id="etc_output">Lチカ(外部LED)</h3>
+      <pre><code  class="ruby">
 led = GPIO.new( 20, GPIO::OUT )
 while true
   led.write( 1 )
@@ -81,18 +81,18 @@ while true
 end
       </code></pre>
       <hr id="first_boader">
-			<h3 class="link" id="etc_button">外部入力(DigitalGROVE)</h3>
-			http://wiki.seeedstudio.com/Grove-Button/
-			<pre><code  class="ruby">
+      <h3 class="link" id="etc_button">外部入力(DigitalGROVE)</h3>
+      http://wiki.seeedstudio.com/Grove-Button/
+      <pre><code  class="ruby">
 sensor = GPIO.new( 15, GPIO::IN )
 while true
   leds_write(sensor.read())
 end
       </code></pre>
       <hr id="first_boader">
-			<h3>7セグメントLED</h3>
-			74HC4511を使用するとleds_write(0,1,5,6pin)から簡単に出力できる。
-			<pre><code  class="ruby">
+      <h3>7セグメントLED</h3>
+      74HC4511を使用するとleds_write(0,1,5,6pin)から簡単に出力できる。
+      <pre><code  class="ruby">
 while true
   10.times do |j|
     leds_write(j)
@@ -176,5 +176,5 @@ end
         </details></li>
       </ul>
     </div>
-	</body>
+  </body>
 </html>

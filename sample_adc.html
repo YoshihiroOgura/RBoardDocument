@@ -22,7 +22,7 @@
     <div id="header"><h1> ADCサンプル </h1></div>
     <div id="main">
       mruby/c 3.3 <a href="./mrubyc_class.html">標準IOクラス</a>対応<br>
-			<h3 class="link" id="adc_temperature">サーミスタ温度センサ</h3>
+      <h3 class="link" id="adc_temperature">サーミスタ温度センサ</h3>
       温度センサ：<a href="http://wiki.seeedstudio.com/Grove-Temperature_Sensor_V1.2/">http://wiki.seeedstudio.com/Grove-Temperature_Sensor_V1.2/</a><br>
       <pre><code  class="ruby">
 sensor = ADC.new(19)
@@ -37,10 +37,10 @@ end
       </code></pre>
 
       <hr id="first_boader">
-			<h3 class="link" id="adc_potentiometer">ボリューム制御</h3>
-			ボリュームを使用したLEDの明るさ制御<br>
-			ボリューム：<a href="https://www.switch-science.com/catalog/805/">https://www.switch-science.com/catalog/805/</a><br>
-			<pre><code  class="ruby">
+      <h3 class="link" id="adc_potentiometer">ボリューム制御</h3>
+      ボリュームを使用したLEDの明るさ制御<br>
+      ボリューム：<a href="https://www.switch-science.com/catalog/805/">https://www.switch-science.com/catalog/805/</a><br>
+      <pre><code  class="ruby">
 volume = ADC.new(19)
 led1 = PWM.new(0)
 led1.frequency( 440 )
@@ -54,17 +54,17 @@ end
 
       <hr id="first_boader">
       <h3 class="link" id="adc_joystick">ジョイスティック</h3>
-			ジョイスティック:<a href="https://www.switch-science.com/catalog/884/">https://www.switch-science.com/catalog/884/</a><br>
-			<pre><code  class="ruby">
+      ジョイスティック:<a href="https://www.switch-science.com/catalog/884/">https://www.switch-science.com/catalog/884/</a><br>
+      <pre><code  class="ruby">
 x = ADC.new(19)
 y = ADC.new(20)
 while true
   puts("x:#{x.read} / y:#{y.read}")
   sleep_ms(300)
 end
-    </code></pre>
-		</div>
-		
+      </code></pre>
+    </div>
+    
     <div id="submenu">
       <div id="submenu_header">もくじ</div>
       <ul id="submenu_body">
@@ -127,5 +127,5 @@ end
         </details></li>
       </ul>
     </div>
-	</body>
+  </body>
 </html>

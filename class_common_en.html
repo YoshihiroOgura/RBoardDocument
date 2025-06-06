@@ -50,7 +50,7 @@ GPIO.setmode( 1, GPIO::OUT )
 
 # Set B1 pin to input, with internal pull-up.
 GPIO.setmode( "B1", GPIO::IN|GPIO::PULL_UP )
-			</code></pre>
+      </code></pre>
 
       <h3 id="GPIO_read_at">GPIO.read_at( pin ) -> Integer</h3>
       pin : 0~20 or Strings such as "B1", "A2"<br>
@@ -727,207 +727,207 @@ uart1.clear_tx_buffer()
 uart1.send_break( 0.1 )
       </code></pre>
 
-			<hr id="first_boader">
-			<h2 id="ETC">Unique Methods</h2>
-			<h3 id="leds_write">leds_write(bit)</h3>
-			on board LED control<br>
-			bit : Integer<br>
-			<table border="1" class="table">
-				<thead class="thead-dark">
-					<tr>
-						<th>led</th>
-						<th>Decimal</th>
-						<th>Binary number</th>
-					</tr>
-				</thead>
-				<tr>
-					<td>1</td>
-					<td>1</td>
-					<td>0b0001</td>
-				</tr>
-				<tr>
-					<td>2</td>
-					<td>2</td>
-					<td>0b0010</td>
-				</tr>
-				<tr>
-					<td>3</td>
-					<td>4</td>
-					<td>0b0100</td>
-				</tr>
-				<tr>
-					<td>4</td>
-					<td>8</td>
-					<td>0b1000</td>
-				</tr>
-			</table>
+      <hr id="first_boader">
+      <h2 id="ETC">Unique Methods</h2>
+      <h3 id="leds_write">leds_write(bit)</h3>
+      on board LED control<br>
+      bit : Integer<br>
+      <table border="1" class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th>led</th>
+            <th>Decimal</th>
+            <th>Binary number</th>
+          </tr>
+        </thead>
+        <tr>
+          <td>1</td>
+          <td>1</td>
+          <td>0b0001</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>2</td>
+          <td>0b0010</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>4</td>
+          <td>0b0100</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>8</td>
+          <td>0b1000</td>
+        </tr>
+      </table>
       <pre><code class="ruby">
 leds_write( 9 )    # LED1, LED4 ON
 leds_write( 0x06 ) # LED1, LED4 OFF / LED2, LED3 ON
       </code></pre>
 
-			<hr id="second_boader">
-			<h3 id="sw">sw()</h3>
-			Read switch status<br>
+      <hr id="second_boader">
+      <h3 id="sw">sw()</h3>
+      Read switch status<br>
       Default pullup.(When pressed, 0 is output.)<br>
-			return：0 or 1<br>
+      return：0 or 1<br>
 
       <pre><code class="ruby">
 switch_status = sw()
       </code></pre>
 
-			<hr id="second_boader">
-			<h3 id="puts">puts(txt)</h3>
-			Output string<br>
-			Click <a href="./console.html">here</a> for information on setting up the terminal software.<br>
-			txt：String<br>
+      <hr id="second_boader">
+      <h3 id="puts">puts(txt)</h3>
+      Output string<br>
+      Click <a href="./console.html">here</a> for information on setting up the terminal software.<br>
+      txt：String<br>
       <pre><code class="ruby">
 puts("Hello World")
       </code></pre>
-		</div>
+    </div>
 
-		<div id="submenu">
-			<div id="submenu_header">Menu</div>
+    <div id="submenu">
+      <div id="submenu_header">Menu</div>
       <ul id="submenu_body">
-				<i class="fas fa-home"></i><a href="./index.html">HOME</a>
-				<li><details>
-					<summary>program</summary>
-					<ul id="subuul">
-						<li><a href="./ide_install_en.html">mruby/c IDE setup</a></li>
-						<li><a href="./write_program_en.html">program writing</a></li>
-						<li><a href="./update.html">Firmware update</a></li>
-						<li><a href="./class.html">old board class(mruby/c1.4)</a></li>
-						<li><a href="./mrubyc_class_en.html">board class(mruby/c2.1)</a></li>
-						<li><a href="./class_common_en.html">board standard class(mruby/c3.3)</a></li>
-					</ul>
-				</details></li>
-				<li><details>
+        <i class="fas fa-home"></i><a href="./index.html">HOME</a>
+        <li><details>
+          <summary>program</summary>
+          <ul id="subuul">
+            <li><a href="./ide_install_en.html">mruby/c IDE setup</a></li>
+            <li><a href="./write_program_en.html">program writing</a></li>
+            <li><a href="./update.html">Firmware update</a></li>
+            <li><a href="./class.html">old board class(mruby/c1.4)</a></li>
+            <li><a href="./mrubyc_class_en.html">board class(mruby/c2.1)</a></li>
+            <li><a href="./class_common_en.html">board standard class(mruby/c3.3)</a></li>
+          </ul>
+        </details></li>
+        <li><details>
           <summary>board list</summary>
           <ul id="subuul">
           <li><a href="./board_list.html">board list</a></li>
           </ul>
-				</details></li>
-				<li><details>
-					<summary>sensor sample program</summary>
-					<ul id="subuul">
-						<li><a href="./sensor_module.html">Compatible sensor module</a></li>
-						<li><a href="./adc.html">ADC sample</a></li>
-						<li><a href="./i2c.html">I2C sample</a></li>
-						<li><a href="./pwm.html">PWM sample</a></li>
-						<li><a href="./uart.html">UART sample</a></li>
-						<li><a href="./etc.html">others sample</a></li>
-					</ul>
-				</details></li>
-				<li><details>
-					<summary>others</summary>
-					<ul id="subuul">
-						<li><a href="./console_en.html">Terminal software settings</a></li>
-					</ul>
-				</details></li>
-				<li><details>
+        </details></li>
+        <li><details>
+          <summary>sensor sample program</summary>
+          <ul id="subuul">
+            <li><a href="./sensor_module.html">Compatible sensor module</a></li>
+            <li><a href="./adc.html">ADC sample</a></li>
+            <li><a href="./i2c.html">I2C sample</a></li>
+            <li><a href="./pwm.html">PWM sample</a></li>
+            <li><a href="./uart.html">UART sample</a></li>
+            <li><a href="./etc.html">others sample</a></li>
+          </ul>
+        </details></li>
+        <li><details>
+          <summary>others</summary>
+          <ul id="subuul">
+            <li><a href="./console_en.html">Terminal software settings</a></li>
+          </ul>
+        </details></li>
+        <li><details>
           <summary>tutorial</summary>
           <ol id="subuol">
-						<li><a href="./tutorial_mrubyc.html">What is mruby/c?</a></li>
-						<li><a href="./tutorial_led.html">control the LED</a></li>
-						<li><a href="./tutorial_rgb_led.html">full color LED</a></li>
-						<li><a href="./tutorial_reed_switch.html">door open/close sensor</a></li>
-						<li><a href="./tutorial_buzzer.html">Piezo Transducer</a></li>
-						<li><a href="./tutorial_cds.html">light sensor</a></li>
-						<li><a href="./tutorial_temp.html">temperature sensor</a></li>
+            <li><a href="./tutorial_mrubyc.html">What is mruby/c?</a></li>
+            <li><a href="./tutorial_led.html">control the LED</a></li>
+            <li><a href="./tutorial_rgb_led.html">full color LED</a></li>
+            <li><a href="./tutorial_reed_switch.html">door open/close sensor</a></li>
+            <li><a href="./tutorial_buzzer.html">Piezo Transducer</a></li>
+            <li><a href="./tutorial_cds.html">light sensor</a></li>
+            <li><a href="./tutorial_temp.html">temperature sensor</a></li>
           </ol>
         </details></li>
       </ul>
 
-			<div id="submenu_header">Class</div>
-			<div id="ruby_class">
-				<details>
-					<summary><a href="#Ruby">Ruby</a></summary>
+      <div id="submenu_header">Class</div>
+      <div id="ruby_class">
+        <details>
+          <summary><a href="#Ruby">Ruby</a></summary>
         </details>
         <details>
-					<summary><a href="#GPIO">GPIO</a></summary>
-					<ul id="class_ul">
+          <summary><a href="#GPIO">GPIO</a></summary>
+          <ul id="class_ul">
             <li><a href="#GPIO_setmode">GPIO.setmode</a></li>
             <li><a href="#GPIO_read_at">GPIO.read_at</a></li>
             <li><a href="#GPIO_high_at?">GPIO.high_at?</a></li>
             <li><a href="#GPIO_low_at?">GPIO.low_at</a></li>
             <li><a href="#GPIO_write_at">GPIO.write_at</a></li>
-						<li><a href="#GPIO_new">GPIO.new</a></li>
-						<li><a href="#GPIO_read">read</a></li>
-						<li><a href="#GPIO_high?">high?</a></li>
-						<li><a href="#GPIO_low?">low?</a></li>
-						<li><a href="#GPIO_write">write</a></li>
-						<li><a href="#GPIO_setmode_Instance">setmode</a></li>
-					</ul>
-				</details>
-				<details>
-					<summary><a href="#ADC">ADC</a></summary>
-					<ul id="class_ul">
-						<li><a href="#ADC_new">ADC.new</a></li>
-						<li><a href="#ADC_read_voltage">read_voltage</a></li>
-						<li><a href="#ADC_read">read</a></li>
-						<li><a href="#ADC_read_raw">read_raw</a></li>
-					</ul>
-				</details>
-				<details>
-					<summary><a href="#I2C">I2C</a></summary>
-					<ul id="class_ul">
-						<li><a href="#I2C_new">I2C.new</a></li>
-						<li><a href="#I2C_read">read</a></li>
-						<li><a href="#I2C_send_start">send_start</a></li>
-						<li><a href="#I2C_send_restart">send_restart</a></li>
-						<li><a href="#I2C_send_stop">send_stop</a></li>
-						<li><a href="#I2C_raw_read">raw_read</a></li>
-						<li><a href="#I2C_raw_write">raw_write</a></li>
-					</ul>
+            <li><a href="#GPIO_new">GPIO.new</a></li>
+            <li><a href="#GPIO_read">read</a></li>
+            <li><a href="#GPIO_high?">high?</a></li>
+            <li><a href="#GPIO_low?">low?</a></li>
+            <li><a href="#GPIO_write">write</a></li>
+            <li><a href="#GPIO_setmode_Instance">setmode</a></li>
+          </ul>
         </details>
         <details>
-					<summary><a href="#SPI">SPI</a></summary>
-					<ul id="class_ul">
-						<li><a href="#SPI_new">SPI.new</a></li>
-						<li><a href="#SPI_setmode">setmode</a></li>
-						<li><a href="#SPI_read">read</a></li>
-						<li><a href="#SPI_write">write</a></li>
-						<li><a href="#SPI_transfer">transfer</a></li>
-					</ul>
-				</details>
-				<details>
-					<summary><a href="#PWM">PWM</a></summary>
-					<ul id="class_ul">
-						<li><a href="#PWM_new">PWM.new</a></li>
-						<li><a href="#PWM_frequency">frequency</a></li>
-						<li><a href="#PWM_period_us">period_us</a></li>
-						<li><a href="#PWM_duty">duty</a></li>
-						<li><a href="#PWM_pulse_width_us">pulse_width_us</a></li>
-					</ul>
-				</details>
-				<details>
-					<summary><a href="#UART">UART</a></summary>
-					<ul id="class_ul">
-						<li><a href="#UART_new">new</a></li>
-						<li><a href="#UART_setmode">setmode</a></li>
-						<li><a href="#UART_read">read</a></li>
-						<li><a href="#UART_write">write</a></li>
-						<li><a href="#UART_gets">gets</a></li>
-						<li><a href="#UART_puts">puts</a></li>
-						<li><a href="#UART_bytes_available">bytes_available</a></li>
-						<li><a href="#UART_bytes_to_write">bytes_to_write</a></li>
-						<li><a href="#UART_can_read_line">can_read_line</a></li>
-						<li><a href="#UART_bytes_to_write">bytes_to_write</a></li>
-						<li><a href="#UART_flush">flush</a></li>
-						<li><a href="#UART_clear_rx_buffer">clear_rx_buffer</a></li>
-						<li><a href="#UART_clear_tx_buffer">clear_tx_buffer</a></li>
-						<li><a href="#UART_send_break">send_break</a></li>
-					</ul>
-				</details>
-				<details>
-					<summary><a href="#ETC">Unique Methods</a></summary>
-					<ul id="class_ul">
-						<li><a href="#leds_write">leds_write</a></li>
-						<li><a href="#sw">sw</a></li>
-						<li><a href="#puts">puts</a></li>
-					</ul>
-				</details>
-			</div>
+          <summary><a href="#ADC">ADC</a></summary>
+          <ul id="class_ul">
+            <li><a href="#ADC_new">ADC.new</a></li>
+            <li><a href="#ADC_read_voltage">read_voltage</a></li>
+            <li><a href="#ADC_read">read</a></li>
+            <li><a href="#ADC_read_raw">read_raw</a></li>
+          </ul>
+        </details>
+        <details>
+          <summary><a href="#I2C">I2C</a></summary>
+          <ul id="class_ul">
+            <li><a href="#I2C_new">I2C.new</a></li>
+            <li><a href="#I2C_read">read</a></li>
+            <li><a href="#I2C_send_start">send_start</a></li>
+            <li><a href="#I2C_send_restart">send_restart</a></li>
+            <li><a href="#I2C_send_stop">send_stop</a></li>
+            <li><a href="#I2C_raw_read">raw_read</a></li>
+            <li><a href="#I2C_raw_write">raw_write</a></li>
+          </ul>
+        </details>
+        <details>
+          <summary><a href="#SPI">SPI</a></summary>
+          <ul id="class_ul">
+            <li><a href="#SPI_new">SPI.new</a></li>
+            <li><a href="#SPI_setmode">setmode</a></li>
+            <li><a href="#SPI_read">read</a></li>
+            <li><a href="#SPI_write">write</a></li>
+            <li><a href="#SPI_transfer">transfer</a></li>
+          </ul>
+        </details>
+        <details>
+          <summary><a href="#PWM">PWM</a></summary>
+          <ul id="class_ul">
+            <li><a href="#PWM_new">PWM.new</a></li>
+            <li><a href="#PWM_frequency">frequency</a></li>
+            <li><a href="#PWM_period_us">period_us</a></li>
+            <li><a href="#PWM_duty">duty</a></li>
+            <li><a href="#PWM_pulse_width_us">pulse_width_us</a></li>
+          </ul>
+        </details>
+        <details>
+          <summary><a href="#UART">UART</a></summary>
+          <ul id="class_ul">
+            <li><a href="#UART_new">new</a></li>
+            <li><a href="#UART_setmode">setmode</a></li>
+            <li><a href="#UART_read">read</a></li>
+            <li><a href="#UART_write">write</a></li>
+            <li><a href="#UART_gets">gets</a></li>
+            <li><a href="#UART_puts">puts</a></li>
+            <li><a href="#UART_bytes_available">bytes_available</a></li>
+            <li><a href="#UART_bytes_to_write">bytes_to_write</a></li>
+            <li><a href="#UART_can_read_line">can_read_line</a></li>
+            <li><a href="#UART_bytes_to_write">bytes_to_write</a></li>
+            <li><a href="#UART_flush">flush</a></li>
+            <li><a href="#UART_clear_rx_buffer">clear_rx_buffer</a></li>
+            <li><a href="#UART_clear_tx_buffer">clear_tx_buffer</a></li>
+            <li><a href="#UART_send_break">send_break</a></li>
+          </ul>
+        </details>
+        <details>
+          <summary><a href="#ETC">Unique Methods</a></summary>
+          <ul id="class_ul">
+            <li><a href="#leds_write">leds_write</a></li>
+            <li><a href="#sw">sw</a></li>
+            <li><a href="#puts">puts</a></li>
+          </ul>
+        </details>
+      </div>
     </div>
-	</body>
+  </body>
 </html>

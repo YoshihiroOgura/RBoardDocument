@@ -1,78 +1,78 @@
 <!DOCTYPE html>
 <html lang="ja">
   <head>
-		<title>UARTサンプル - RBoardDocument</title>
+    <title>UARTサンプル - RBoardDocument</title>
     <link rel="shortcut icon" href="./image/bug.ico">
-		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-176702602-1"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-176702602-1"></script>
     <script>
-			window.dataLayer = window.dataLayer || [];
-			function gtag(){dataLayer.push(arguments);}
-			gtag('js', new Date());
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-			gtag('config', 'UA-176702602-1');
+      gtag('config', 'UA-176702602-1');
     </script>
     <link rel="stylesheet" type="text/css" href="main.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/a11y-dark.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/highlight.min.js"></script>
-		<script type="text/javascript" src="./style.js"></script>
-		<link href="https://use.fontawesome.com/releases/v5.11.0/css/all.css" rel="stylesheet">
+    <script type="text/javascript" src="./style.js"></script>
+    <link href="https://use.fontawesome.com/releases/v5.11.0/css/all.css" rel="stylesheet">
   </head>
   <body>
     <div id="header"><h1> UARTサンプル </h1></div>
     <div id="main">
-			UARTのGROVEポートはtxピンとrxピンが逆であることが今更判明。<br>
-			UARTのGROVEモジュールを使用する際には<a href="https://www.switch-science.com/catalog/6245/">スイッチサイエンス</a>や<a href="https://www.marutsu.co.jp/pc/i/829489/">マルツ</a>にて販売しているジャンパ線を使用して、<br>
-			黒：GND、赤：3.3V、白：Pin14、黄：Pin13へ接続してください。<br><br>
-			<h3>im920s</h3>
-			http://akizukidenshi.com/catalog/g/gM-13566/
-			<h4>文字列送信</h4>
-			<pre><code  class="ruby">
+      UARTのGROVEポートはtxピンとrxピンが逆であることが今更判明。<br>
+      UARTのGROVEモジュールを使用する際には<a href="https://www.switch-science.com/catalog/6245/">スイッチサイエンス</a>や<a href="https://www.marutsu.co.jp/pc/i/829489/">マルツ</a>にて販売しているジャンパ線を使用して、<br>
+      黒：GND、赤：3.3V、白：Pin14、黄：Pin13へ接続してください。<br><br>
+      <h3>im920s</h3>
+      http://akizukidenshi.com/catalog/g/gM-13566/
+      <h4>文字列送信</h4>
+      <pre><code  class="ruby">
 UART.new(19200)
 while true
   UART.puts("TXDA " + (23).to_s + "\r\n")
   sleep(5)
 end
-			</code></pre>
-			<h4>文字列受信</h4>
-			<pre><code  class="ruby">
+      </code></pre>
+      <h4>文字列受信</h4>
+      <pre><code  class="ruby">
 UART.new(19200)
 while true
   puts(UART.gets())
   sleep(5)
 end
-			</code></pre>
-			<hr id="first_boader">
-			<h3>Bluetooth</h3>
-			https://www.switch-science.com/catalog/5794/<br>
-			Bluetooth5に対応したAndroidスマホを準備します。<br>
-			スマホアプリ「Serial Bluethooth Terminal」をインストール。<br>
-			モジュールの電源を入れる。（RBoardに接続するなど）<br>
-			スマホの設定→機器接続→新しい機器とペア設定する　からモジュールを登録。<br>
-			「Serial Bluethooth Terminal」を起動し、Devices→Bluetooth LE→モジュールの項目を長押しします。<br>
-			Edit→Custam→3つのUUIDをそれぞれ選択。<br>
-			右上の✓を押したら接続できるはずです。<br>
-			<pre><code  class="ruby">
+      </code></pre>
+      <hr id="first_boader">
+      <h3>Bluetooth</h3>
+      https://www.switch-science.com/catalog/5794/<br>
+      Bluetooth5に対応したAndroidスマホを準備します。<br>
+      スマホアプリ「Serial Bluethooth Terminal」をインストール。<br>
+      モジュールの電源を入れる。（RBoardに接続するなど）<br>
+      スマホの設定→機器接続→新しい機器とペア設定する　からモジュールを登録。<br>
+      「Serial Bluethooth Terminal」を起動し、Devices→Bluetooth LE→モジュールの項目を長押しします。<br>
+      Edit→Custam→3つのUUIDをそれぞれ選択。<br>
+      右上の✓を押したら接続できるはずです。<br>
+      <pre><code  class="ruby">
 UART.new(19200)
 while true
-	UART.puts("aaaa\r\n")
-	sleep(5)
+  UART.puts("aaaa\r\n")
+  sleep(5)
 end
-			</code></pre>
-			<h3>wifi</h3>
-			https://www.switch-science.com/catalog/5795/<br>
-			<pre><code  class="ruby">
+      </code></pre>
+      <h3>wifi</h3>
+      https://www.switch-science.com/catalog/5795/<br>
+      <pre><code  class="ruby">
 cmd = "hge https://script.google.com/macros/s/xxxxxxxxxxxxxxxxxxx/exec?data1="
 wifi = UART.new(19200)
 wifi.puts("\r\n")
 sleep(5)
 while true
-	wifi.puts(cmd + (1.to_s) + "\r\n")
-	sleep(10)
-	wifi.puts("stream_close 0\r\n")
-	sleep(10)
+  wifi.puts(cmd + (1.to_s) + "\r\n")
+  sleep(10)
+  wifi.puts("stream_close 0\r\n")
+  sleep(10)
 end
-			</code></pre>
+      </code></pre>
     </div>
         
     <div id="submenu">
@@ -137,5 +137,5 @@ end
         </details></li>
       </ul>
     </div>
-	</body>
+  </body>
 </html>

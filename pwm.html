@@ -21,8 +21,8 @@
   <body>
     <div id="header"><h1> PWMサンプル </h1></div>
     <div id="main">
-			<h3 class="link" id="pwm_out">PWM(外部LED)</h3>
-			<pre><code  class="ruby">
+      <h3 class="link" id="pwm_out">PWM(外部LED)</h3>
+      <pre><code  class="ruby">
 PWM.new()
 PWM.pin(16)
 PWM.start(2)
@@ -37,9 +37,9 @@ while true
 end
       </code></pre>
       <hr id="first_boader">
-			<h3 class="link" id="pwm_buzzer">圧電ブザー</h3>
-			http://wiki.seeedstudio.com/Grove-Buzzer/
-			<pre><code  class="ruby">
+      <h3 class="link" id="pwm_buzzer">圧電ブザー</h3>
+      http://wiki.seeedstudio.com/Grove-Buzzer/
+      <pre><code  class="ruby">
 PWM.new()
 PWM.pin(16)
 PWM.start(2)
@@ -59,9 +59,9 @@ while true
   PWM.cycle(0x4F3,4)
   sleep 1
 end
-			</code></pre>
-			<h4>簡易mml再生</h4>
-			<pre><code  class="ruby">
+      </code></pre>
+      <h4>簡易mml再生</h4>
+      <pre><code  class="ruby">
 TBL_FREQ = [0x95A, 0x84D, 0x76A, 0x6EF, 0x639, 0x58C, 0x4F3,
             0x4AB, 0x428, 0x3B4, 0x37F, 0x31D, 0x2BF, 0x278]
 TBL_LENGTH = {1=>2000, 2=>1000, 4=>500, 8=>250}
@@ -143,9 +143,9 @@ mml3 = "&lt;C8DE4&gt;C8DE4&lt;C8DE4&gt;C8DE4&lt;C8DE4&gt;C8DE4&lt;E8FG4EDC A8AAF
 play mml3
       </code></pre>
       <hr id="first_boader">
-			<h3>SG90(サーボモータ)</h3>
-			http://akizukidenshi.com/catalog/g/gM-08761/
-			<pre><code  class="ruby">
+      <h3>SG90(サーボモータ)</h3>
+      http://akizukidenshi.com/catalog/g/gM-08761/
+      <pre><code  class="ruby">
 PWM.new()
 PWM.pin(18)
 PWM.start(4)
@@ -158,7 +158,7 @@ while true
   PWM.rate(12,4)
   sleep 1
 end
-			</code></pre>
+      </code></pre>
       </div>
         
     <div id="submenu">
@@ -223,5 +223,5 @@ end
         </details></li>
       </ul>
     </div>
-	</body>
+  </body>
 </html>

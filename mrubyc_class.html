@@ -1,231 +1,231 @@
 <!DOCTYPE html>
 <html lang="ja">
   <head>
-		<title>各クラス - RBoardDocument</title>
+    <title>各クラス - RBoardDocument</title>
     <link rel="shortcut icon" href="./image/bug.ico">
-	  <!-- Global site tag (gtag.js) - Google Analytics -->
-		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-176702602-1"></script>
-		<script>
-			window.dataLayer = window.dataLayer || [];
-			function gtag(){dataLayer.push(arguments);}
-			gtag('js', new Date());
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-176702602-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-			gtag('config', 'UA-176702602-1');
-		</script>
-		<link rel="stylesheet" type="text/css" href="main.css" />
+      gtag('config', 'UA-176702602-1');
+    </script>
+    <link rel="stylesheet" type="text/css" href="main.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/a11y-dark.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/highlight.min.js"></script>
-		<script type="text/javascript" src="./style.js"></script>
-		<link href="https://use.fontawesome.com/releases/v5.11.0/css/all.css" rel="stylesheet">
+    <script type="text/javascript" src="./style.js"></script>
+    <link href="https://use.fontawesome.com/releases/v5.11.0/css/all.css" rel="stylesheet">
   </head>
   <body>
     <div id="header"><h1> Class </h1></div>
     <div id="main">
-			language：<a href="./mrubyc_class_en.html">English</a>/<a href="./mrubyc_class.html">日本語</a><br>
-			こちらの内容はプレリリース品(mruby/c2.1)のものです。<br>
-			- mruby/cIDE version:1.0<br>
-			- mrbwrite version:1.0<br>
-			- mrbc commpiler version:2.0<br>
-			対応するファームウェアは<a href="https://github.com/YoshihiroOgura/pic32mx170_mrubyc/releases/tag/v2.1.0.2">こちら</a>からダウンロードできます。<br>
-			<h2 id="Ruby">Ruby</h2>
-			mruby/cにて対応しているRubyのクラスについては下記公式URLをご参照ください。<br>
-			<a href="https://www.s-itoc.jp/activity/research/mrubyc/mrubyc_docs/library">
-			https://www.s-itoc.jp/activity/research/mrubyc/mrubyc_docs/library</a>
+      language：<a href="./mrubyc_class_en.html">English</a>/<a href="./mrubyc_class.html">日本語</a><br>
+      こちらの内容はプレリリース品(mruby/c2.1)のものです。<br>
+      - mruby/cIDE version:1.0<br>
+      - mrbwrite version:1.0<br>
+      - mrbc commpiler version:2.0<br>
+      対応するファームウェアは<a href="https://github.com/YoshihiroOgura/pic32mx170_mrubyc/releases/tag/v2.1.0.2">こちら</a>からダウンロードできます。<br>
+      <h2 id="Ruby">Ruby</h2>
+      mruby/cにて対応しているRubyのクラスについては下記公式URLをご参照ください。<br>
+      <a href="https://www.s-itoc.jp/activity/research/mrubyc/mrubyc_docs/library">
+      https://www.s-itoc.jp/activity/research/mrubyc/mrubyc_docs/library</a>
             
-			<hr id="first_boader">
-			
-			<h2 id="GPIO">GPIO</h2>
-			<h3 id="GPIO_new">new(pin)</h3>
-			コンストラクタ<br>
-			pin：0～20<br>
-			<hr id="second_boader">
-			<h3 id="GPIO_setmode">setmode(mode)</h3>
-			入出力方向設定<br>
-			mode：0(出力),1(入力)<br>
-			<hr id="second_boader">
-			<h3 id="GPIO_write">write(value)</h3>
-			出力<br>
-			value：0(OFF),1(ON)<br>
-			<hr id="second_boader">
-			<h3 id="GPIO_read">read()</h3>
-			入力<br>
-			戻り値：0(OFF),1(ON)<br>
-			<hr id="second_boader">
-			<h3 id="GPIO_pull">pull(mode)</h3>
-			内部抵抗選択<br>
-			mode：-1~1<br>
-			-1(pull down) , 0(pull無し) , 1(pull up)<br>
-			
-			<hr id="first_boader">
+      <hr id="first_boader">
+      
+      <h2 id="GPIO">GPIO</h2>
+      <h3 id="GPIO_new">new(pin)</h3>
+      コンストラクタ<br>
+      pin：0～20<br>
+      <hr id="second_boader">
+      <h3 id="GPIO_setmode">setmode(mode)</h3>
+      入出力方向設定<br>
+      mode：0(出力),1(入力)<br>
+      <hr id="second_boader">
+      <h3 id="GPIO_write">write(value)</h3>
+      出力<br>
+      value：0(OFF),1(ON)<br>
+      <hr id="second_boader">
+      <h3 id="GPIO_read">read()</h3>
+      入力<br>
+      戻り値：0(OFF),1(ON)<br>
+      <hr id="second_boader">
+      <h3 id="GPIO_pull">pull(mode)</h3>
+      内部抵抗選択<br>
+      mode：-1~1<br>
+      -1(pull down) , 0(pull無し) , 1(pull up)<br>
+      
+      <hr id="first_boader">
 
-			<h2 id="ADC">ADC</h2>
-			<h3 id="ADC_new">new(pin)</h3>
-			コンストラクタ<br>
-			pin：0～20<br>
-			<hr id="second_boader">
-			<h3 id="ADC_read">read</h3>
-			取得値電圧出力<br>
-			戻り値：0～3.3<br>
-			<hr id="second_boader">
-			<h3 id="ADC_read_v">read_v</h3>
-			<span style="color:rgb(255, 0, 0)">※readと同様</span><br>
-			取得値電圧出力<br>
-			戻り値：0～3.3<br>
+      <h2 id="ADC">ADC</h2>
+      <h3 id="ADC_new">new(pin)</h3>
+      コンストラクタ<br>
+      pin：0～20<br>
+      <hr id="second_boader">
+      <h3 id="ADC_read">read</h3>
+      取得値電圧出力<br>
+      戻り値：0～3.3<br>
+      <hr id="second_boader">
+      <h3 id="ADC_read_v">read_v</h3>
+      <span style="color:rgb(255, 0, 0)">※readと同様</span><br>
+      取得値電圧出力<br>
+      戻り値：0～3.3<br>
 
-			<hr id="first_boader">
-			<h2 id="I2C">I2C</h2>
-			<h3 id="I2C_new">new()</h3>
-			コンストラクタ<br>
-			<hr id="second_boader">
-			<h3 id="I2C_write">write(sl_addr, addr, data1, data2,,,,)</h3>
-			i2c書き込み<br>
-			sl_addr：スレーブのアドレス<br>
-			addr：書き込み対象のアドレス<br>
-			data：書き込むデータ<br>
-			<hr id="second_boader">
-			<h3 id="I2C_read">read(sl_addr, size, addr)</h3>
-			i2c読み込み<br>
-			sl_addr：スレーブのアドレス<br>
-			size：読み込むデータのサイズ<br>
-			addr：読み込み対象のアドレス<br>
+      <hr id="first_boader">
+      <h2 id="I2C">I2C</h2>
+      <h3 id="I2C_new">new()</h3>
+      コンストラクタ<br>
+      <hr id="second_boader">
+      <h3 id="I2C_write">write(sl_addr, addr, data1, data2,,,,)</h3>
+      i2c書き込み<br>
+      sl_addr：スレーブのアドレス<br>
+      addr：書き込み対象のアドレス<br>
+      data：書き込むデータ<br>
+      <hr id="second_boader">
+      <h3 id="I2C_read">read(sl_addr, size, addr)</h3>
+      i2c読み込み<br>
+      sl_addr：スレーブのアドレス<br>
+      size：読み込むデータのサイズ<br>
+      addr：読み込み対象のアドレス<br>
 
-			<hr id="first_boader">
-			<h2 id="SPI">SPI</h2>
-			<h3 id="SPI_new">new()</h3>
-			コンストラクタ<br>
-			<hr id="second_boader">
-			<h3 id="SPI_write">write(addr, data1, data2,,,,)</h3>
-			spi書き込み<br>
-			addr：書き込み対象のアドレス<br>
-			data：書き込むデータ<br>
-			<hr id="second_boader">
-			<h3 id="SPI_read">read(size)</h3>
-			spi読み込み<br>
-			size：読み込むデータのサイズ<br>
+      <hr id="first_boader">
+      <h2 id="SPI">SPI</h2>
+      <h3 id="SPI_new">new()</h3>
+      コンストラクタ<br>
+      <hr id="second_boader">
+      <h3 id="SPI_write">write(addr, data1, data2,,,,)</h3>
+      spi書き込み<br>
+      addr：書き込み対象のアドレス<br>
+      data：書き込むデータ<br>
+      <hr id="second_boader">
+      <h3 id="SPI_read">read(size)</h3>
+      spi読み込み<br>
+      size：読み込むデータのサイズ<br>
 
-			<hr id="first_boader">
-			<h2 id="PWM">PWM</h2>
-			<h3 id="PWM_new">new(pin)</h3>
-			コンストラクタ<br>
-			pin：0～20<br>
-			<hr id="second_boader">
-			<h3 id="PWM_frequency">frequency(n)</h3>
-			周波数設定。0を指定すると出力を停止します。<br>
-			n:整数(Hz)<br>
-			<hr id="second_boader">
-			<h3 id="PWM_duty">duty(n)</h3>
-			デューティー比を、0（全オフ）から1023（全オン）までで指定します。<br>
-			n:0~1023<br>
-			<hr id="second_boader">
-			<h3 id="PWM_period_us">period_us(us)</h3>
-			周期をマイクロ秒単位で指定します。<br>
-			us:整数(マイクロ秒)<br>
-			<hr id="second_boader">
-			<h3 id="PWM_duty_us">duty_us(n)</h3>
-			デューティー比を、マイクロ秒単位で指定します。<br>
-			us:整数(マイクロ秒)<br>
-			period_usが100usの場合duty_usが50usだとon.offが1:1となります。<br>
+      <hr id="first_boader">
+      <h2 id="PWM">PWM</h2>
+      <h3 id="PWM_new">new(pin)</h3>
+      コンストラクタ<br>
+      pin：0～20<br>
+      <hr id="second_boader">
+      <h3 id="PWM_frequency">frequency(n)</h3>
+      周波数設定。0を指定すると出力を停止します。<br>
+      n:整数(Hz)<br>
+      <hr id="second_boader">
+      <h3 id="PWM_duty">duty(n)</h3>
+      デューティー比を、0（全オフ）から1023（全オン）までで指定します。<br>
+      n:0~1023<br>
+      <hr id="second_boader">
+      <h3 id="PWM_period_us">period_us(us)</h3>
+      周期をマイクロ秒単位で指定します。<br>
+      us:整数(マイクロ秒)<br>
+      <hr id="second_boader">
+      <h3 id="PWM_duty_us">duty_us(n)</h3>
+      デューティー比を、マイクロ秒単位で指定します。<br>
+      us:整数(マイクロ秒)<br>
+      period_usが100usの場合duty_usが50usだとon.offが1:1となります。<br>
 
-			<hr id="first_boader">
-			<h2 id="UART">UART</h2>
-			<h3 id="UART_new">new( ch, baud )</h3>
-			ch  ：UARTチャンネル（1 or 2）<br>
-			　1=>USBにて使用しているチャンネル<br>
-			　2=>GROVEにて使用しているチャンネル<br>
-			baud：ボーレート値（例：19200）<br>
-			<hr id="second_boader">
-			<h3 id="UART_set_modem_params">set_modem_params("baud"=>baud,"parity"=>parity,"stop_bits"=>stop_bits,"txd"=>txd,"rxd"=>rxd)</h3>
-			baud：ボーレート値（例：19200）<br>
-			parity：パリティビット(0~2)<br>
-			stop_bits：ストップビット(1 or 2)<br>
-			txd：送信pin番号<br>
-			　チャンネル1->(0,8,9,12,20)<br>
-			　チャンネル2->(3,5,14,15,19)<br>
-			rxd：受信pin番号<br>
-			チャンネル1->(2,4,7,11,18)<br>
-			チャンネル2->(1,6,10,13,16)<br>
-			<hr id="second_boader">
-			<h3 id="UART_gets">gets</h3>
-				文字列受信、"\n" までのバイト列を返します。<br>
-			<hr id="second_boader">
-			<h3 id="UART_write">write(text)</h3>
-			文字列送信<br>
-			text：文字列
-			<hr id="second_boader">
-			<h3 id="UART_read">read(n)</h3>
-			文字列受信、指定した文字数を受信します。<br>
-			指定されたバイト数のデータが到着していない場合、nilを返します。<br>
-			n：文字数
-			<h3 id="UART_read_nonblock">read_nonblock((n)</h3>
-			文字列受信、指定した文字数を受信します。<br>
-			指定されたバイト数のデータが到着していない場合、到着している分のデータを返します。<br>
-			n：文字数
-			<hr id="second_boader">
-			<h3 id="UART_puts">puts(text)</h3>
-			文字列送信(writeと同様)<br>
-			text：文字列
-			<hr id="second_boader">
-			<h3 id="UART_clear_rx_buffer">clear_rx_buffer</h3>
-			受信文字列のバッファ初期化
-			<h3 id="UART_clear_tx_buffer">clear_tx_buffer</h3>
-			送信文字列のバッファ初期化
+      <hr id="first_boader">
+      <h2 id="UART">UART</h2>
+      <h3 id="UART_new">new( ch, baud )</h3>
+      ch  ：UARTチャンネル（1 or 2）<br>
+      　1=>USBにて使用しているチャンネル<br>
+      　2=>GROVEにて使用しているチャンネル<br>
+      baud：ボーレート値（例：19200）<br>
+      <hr id="second_boader">
+      <h3 id="UART_set_modem_params">set_modem_params("baud"=>baud,"parity"=>parity,"stop_bits"=>stop_bits,"txd"=>txd,"rxd"=>rxd)</h3>
+      baud：ボーレート値（例：19200）<br>
+      parity：パリティビット(0~2)<br>
+      stop_bits：ストップビット(1 or 2)<br>
+      txd：送信pin番号<br>
+      　チャンネル1->(0,8,9,12,20)<br>
+      　チャンネル2->(3,5,14,15,19)<br>
+      rxd：受信pin番号<br>
+      チャンネル1->(2,4,7,11,18)<br>
+      チャンネル2->(1,6,10,13,16)<br>
+      <hr id="second_boader">
+      <h3 id="UART_gets">gets</h3>
+        文字列受信、"\n" までのバイト列を返します。<br>
+      <hr id="second_boader">
+      <h3 id="UART_write">write(text)</h3>
+      文字列送信<br>
+      text：文字列
+      <hr id="second_boader">
+      <h3 id="UART_read">read(n)</h3>
+      文字列受信、指定した文字数を受信します。<br>
+      指定されたバイト数のデータが到着していない場合、nilを返します。<br>
+      n：文字数
+      <h3 id="UART_read_nonblock">read_nonblock((n)</h3>
+      文字列受信、指定した文字数を受信します。<br>
+      指定されたバイト数のデータが到着していない場合、到着している分のデータを返します。<br>
+      n：文字数
+      <hr id="second_boader">
+      <h3 id="UART_puts">puts(text)</h3>
+      文字列送信(writeと同様)<br>
+      text：文字列
+      <hr id="second_boader">
+      <h3 id="UART_clear_rx_buffer">clear_rx_buffer</h3>
+      受信文字列のバッファ初期化
+      <h3 id="UART_clear_tx_buffer">clear_tx_buffer</h3>
+      送信文字列のバッファ初期化
 
-			<hr id="first_boader">
-			<h2 id="Math">Math</h2>
-			<a href="https://github.com/YoshihiroOgura/pic32mx170_mrubyc/blob/a0542f4fb76b2f3e1ba6e5078c9e3fc3a7164865/src/c_math.c#L240">
-			https://github.com/YoshihiroOgura/pic32mx170_mrubyc/blob/a0542f4fb76b2f3e1ba6e5078c9e3fc3a7164865/src/c_math.c#L240</a>
+      <hr id="first_boader">
+      <h2 id="Math">Math</h2>
+      <a href="https://github.com/YoshihiroOgura/pic32mx170_mrubyc/blob/a0542f4fb76b2f3e1ba6e5078c9e3fc3a7164865/src/c_math.c#L240">
+      https://github.com/YoshihiroOgura/pic32mx170_mrubyc/blob/a0542f4fb76b2f3e1ba6e5078c9e3fc3a7164865/src/c_math.c#L240</a>
 
-			<hr id="first_boader">
-			<h2 id="ETC">その他</h2>
-			<h3 id="leds_write">leds_write(bit)</h3>
-			led制御<br>
-			bit : 整数<br>
-			<table border="1" class="table">
-				<thead class="thead-dark">
-					<tr>
-						<th>led</th>
-						<th>10進数</th>
-						<th>2進数</th>
-					</tr>
-				</thead>
-				<tr>
-					<td>1</td>
-					<td>1</td>
-					<td>0b0001</td>
-				</tr>
-				<tr>
-					<td>2</td>
-					<td>2</td>
-					<td>0b0010</td>
-				</tr>
-				<tr>
-					<td>3</td>
-					<td>4</td>
-					<td>0b0100</td>
-				</tr>
-				<tr>
-					<td>4</td>
-					<td>8</td>
-					<td>0b1000</td>
-				</tr>
-			</table>
+      <hr id="first_boader">
+      <h2 id="ETC">その他</h2>
+      <h3 id="leds_write">leds_write(bit)</h3>
+      led制御<br>
+      bit : 整数<br>
+      <table border="1" class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th>led</th>
+            <th>10進数</th>
+            <th>2進数</th>
+          </tr>
+        </thead>
+        <tr>
+          <td>1</td>
+          <td>1</td>
+          <td>0b0001</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>2</td>
+          <td>0b0010</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>4</td>
+          <td>0b0100</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>8</td>
+          <td>0b1000</td>
+        </tr>
+      </table>
 
-			<hr id="second_boader">
-			<h3 id="sw">sw()</h3>
-			スイッチの状態読み込み<br>
-			戻り値：0 or 1<br>
+      <hr id="second_boader">
+      <h3 id="sw">sw()</h3>
+      スイッチの状態読み込み<br>
+      戻り値：0 or 1<br>
 
-			<hr id="second_boader">
-			<h3 id="pinInit">pinInit</h3>
-			すべてのピン設定を初期状態へ戻す。
+      <hr id="second_boader">
+      <h3 id="pinInit">pinInit</h3>
+      すべてのピン設定を初期状態へ戻す。
 
-			<hr id="second_boader">
-			<h3 id="puts">puts(txt)</h3>
-			文字列出力<br>
-			ターミナルソフトの設定については<a href="./console.html">こちら</a>
-			txt：文字列
-		</div>
+      <hr id="second_boader">
+      <h3 id="puts">puts(txt)</h3>
+      文字列出力<br>
+      ターミナルソフトの設定については<a href="./console.html">こちら</a>
+      txt：文字列
+    </div>
 
     <div id="submenu">
       <div id="submenu_header">もくじ</div>
@@ -289,83 +289,83 @@
         </details></li>
       </ul>
 
-			<div id="submenu_header">Class</div>
-			<div id="ruby_class">
-				<details>
-					<summary><a href="#Ruby">Ruby</a></summary>
+      <div id="submenu_header">Class</div>
+      <div id="ruby_class">
+        <details>
+          <summary><a href="#Ruby">Ruby</a></summary>
         </details>
         <details>
-					<summary><a href="#GPIO">GPIO</a></summary>
-					<ul id="class_ul">
-						<li><a href="#GPIO_new">new</a></li>
-						<li><a href="#GPIO_setmode">setmode</a></li>
-						<li><a href="#GPIO_write">write</a></li>
-						<li><a href="#GPIO_read">read</a></li>
-						<li><a href="#GPIO_pull">pull</a></li>
-					</ul>
-				</details>
-				<details>
-					<summary><a href="#ADC">ADC</a></summary>
-					<ul id="class_ul">
-						<li><a href="#ADC_new">new</a></li>
-						<li><a href="#ADC_read">read</a></li>
-						<li><a href="#ADC_read_v">read_v</a></li>
-					</ul>
-				</details>
-				<details>
-					<summary><a href="#I2C">I2C</a></summary>
-					<ul id="class_ul">
-						<li><a href="#I2C_write">write</a></li>
-						<li><a href="#I2C_read">read</a></li>
-					</ul>
+          <summary><a href="#GPIO">GPIO</a></summary>
+          <ul id="class_ul">
+            <li><a href="#GPIO_new">new</a></li>
+            <li><a href="#GPIO_setmode">setmode</a></li>
+            <li><a href="#GPIO_write">write</a></li>
+            <li><a href="#GPIO_read">read</a></li>
+            <li><a href="#GPIO_pull">pull</a></li>
+          </ul>
         </details>
         <details>
-					<summary><a href="#SPI">SPI</a></summary>
-					<ul id="class_ul">
-						<li><a href="#SPI_write">write</a></li>
-						<li><a href="#SPI_read">read</a></li>
-					</ul>
-				</details>
-				<details>
-					<summary><a href="#PWM">PWM</a></summary>
-					<ul id="class_ul">
-						<li><a href="#PWM_new">new</a></li>
-						<li><a href="#PWM_frequency">frequency</a></li>
-						<li><a href="#PWM_duty">duty</a></li>
-						<li><a href="#PWM_period_us">period_us</a></li>
-						<li><a href="#PWM_duty_us">duty_us</a></li>
-					</ul>
-				</details>
-				<details>
-					<summary><a href="#UART">UART</a></summary>
-					<ul id="class_ul">
-						<li><a href="#UART_new">new</a></li>
-						<li><a href="#UART_set_modem_params">set_modem_params</a></li>
-						<li><a href="#UART_gets">gets</a></li>
-						<li><a href="#UART_write">write</a></li>
-						<li><a href="#UART_read">read</a></li>
-						<li><a href="#UART_read_nonblock">read_nonblock</a></li>
-						<li><a href="#UART_clear_tx_buffer">clear_tx_buffer</a></li>
-						<li><a href="#UART_clear_rx_buffer">clear_rx_buffer</a></li>
-					</ul>
-				</details>
-				<details>
-					<summary><a href="#Math">Math</a></summary>
-				</details>
-				<details>
-					<summary><a href="#ETC">その他</a></summary>
-					<ul id="class_ul">
-						<li><a href="#leds_write">leds_write</a></li>
-						<li><a href="#sw">sw</a></li>
-						<li><a href="#pinMode">pinMode</a></li>
-						<li><a href="#pinPull">pinPull</a></li>
-						<li><a href="#pinInit">pinInit</a></li>
-						<li><a href="#digitalWrite">digitalWrite</a></li>
-						<li><a href="#digitalRead">digitalRead</a></li>
-						<li><a href="#puts">puts</a></li>
-					</ul>
-				</details>
-			</div>
+          <summary><a href="#ADC">ADC</a></summary>
+          <ul id="class_ul">
+            <li><a href="#ADC_new">new</a></li>
+            <li><a href="#ADC_read">read</a></li>
+            <li><a href="#ADC_read_v">read_v</a></li>
+          </ul>
+        </details>
+        <details>
+          <summary><a href="#I2C">I2C</a></summary>
+          <ul id="class_ul">
+            <li><a href="#I2C_write">write</a></li>
+            <li><a href="#I2C_read">read</a></li>
+          </ul>
+        </details>
+        <details>
+          <summary><a href="#SPI">SPI</a></summary>
+          <ul id="class_ul">
+            <li><a href="#SPI_write">write</a></li>
+            <li><a href="#SPI_read">read</a></li>
+          </ul>
+        </details>
+        <details>
+          <summary><a href="#PWM">PWM</a></summary>
+          <ul id="class_ul">
+            <li><a href="#PWM_new">new</a></li>
+            <li><a href="#PWM_frequency">frequency</a></li>
+            <li><a href="#PWM_duty">duty</a></li>
+            <li><a href="#PWM_period_us">period_us</a></li>
+            <li><a href="#PWM_duty_us">duty_us</a></li>
+          </ul>
+        </details>
+        <details>
+          <summary><a href="#UART">UART</a></summary>
+          <ul id="class_ul">
+            <li><a href="#UART_new">new</a></li>
+            <li><a href="#UART_set_modem_params">set_modem_params</a></li>
+            <li><a href="#UART_gets">gets</a></li>
+            <li><a href="#UART_write">write</a></li>
+            <li><a href="#UART_read">read</a></li>
+            <li><a href="#UART_read_nonblock">read_nonblock</a></li>
+            <li><a href="#UART_clear_tx_buffer">clear_tx_buffer</a></li>
+            <li><a href="#UART_clear_rx_buffer">clear_rx_buffer</a></li>
+          </ul>
+        </details>
+        <details>
+          <summary><a href="#Math">Math</a></summary>
+        </details>
+        <details>
+          <summary><a href="#ETC">その他</a></summary>
+          <ul id="class_ul">
+            <li><a href="#leds_write">leds_write</a></li>
+            <li><a href="#sw">sw</a></li>
+            <li><a href="#pinMode">pinMode</a></li>
+            <li><a href="#pinPull">pinPull</a></li>
+            <li><a href="#pinInit">pinInit</a></li>
+            <li><a href="#digitalWrite">digitalWrite</a></li>
+            <li><a href="#digitalRead">digitalRead</a></li>
+            <li><a href="#puts">puts</a></li>
+          </ul>
+        </details>
+      </div>
     </div>
-	</body>
+  </body>
 </html>

@@ -1,4 +1,4 @@
 hljs.initHighlightingOnLoad();
 hljs.configure({
-	tabReplace: '  '
+  tabReplace: '  '
 })
