@@ -1,59 +1,41 @@
-<!DOCTYPE html>
-<html lang="ja">
-  <head>
-    <title>チュートリアル - RBoardDocument</title>
-    <link rel="shortcut icon" href="./image/bug.ico">
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-176702602-1"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+---
+title: チュートリアル - 光センサー
+layout: tutorial_default
+---
 
-      gtag('config', 'UA-176702602-1');
-    </script>
-    <link rel="stylesheet" type="text/css" href="main.css" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/a11y-dark.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/highlight.min.js"></script>
-    <script type="text/javascript" src="./style.js"></script>
-    <link href="https://use.fontawesome.com/releases/v5.11.0/css/all.css" rel="stylesheet">
-  </head>
-  <body>
-    <div id="header"><h1>チュートリアル - 光センサー</h1></div>
-    <div id="main">
-      <h3>必要部品一覧</h3>
-      <ul>
-        <li><a href="https://akizukidenshi.com/catalog/g/gI-00110/">CDSセル</a></li>
-        <li><a href="https://akizukidenshi.com/catalog/g/gR-25103/">10kΩ抵抗</a></li>
-      </ul>
-      <hr id="first_boader">
-      <h3>CDSセルについて</h3>
-      CdS（硫化カドミウム）<br>
-      光で抵抗値が変化する半導体です。<br>
-      明るいときに抵抗値が小さくなり、暗いときに抵抗値は上がります。<br>
-      光電効果。
-      <hr id="first_boader">
-      <h3>抵抗分圧回路</h3>
-      CdSセルは明るさによって抵抗値が変化するセンサーなので下記の様な回路は使用できません。<br>
-      理由としてマイコンは基本的に電圧のみ測定できるからです。
-      <img src="https://lh3.googleusercontent.com/d/1jvyuYUVInVQvcoEWrjTNBPg9AovHp86T" class="expansion"><br>
-      これを回避するためには抵抗値を電圧値へ変換する回路が必要となります。<br>
-      その際に使用する回路が抵抗分圧です。
-      <img src="https://lh3.googleusercontent.com/d/11EMYKIb4-Jyoq8WORIITm7qtovee--iX" class="expansion"><br>
-      R1をCdSと仮定します。右は明るくなった場合(CdSの抵抗値が下がった場合)<br>
-      V1 = R2 ÷ ( R1 + R2 ) × 3.3V = 10 ÷ ( 10 + 10 ) × 3.3 = 1.65V<br>
-      V2 = R2 ÷ ( R1 + R2 ) × 3.3V = 10 ÷ ( 5 + 10 ) × 3.3 = 2.2V<br> 
-      上記式のようにR1の抵抗値が減るとマイコンに対する出力電圧は増加します。
-      <hr id="first_boader">
-      <h3>電子回路</h3>
-      回路図<br>
-      <img src="https://lh3.googleusercontent.com/d/18coRIB7IASEVBWuxOVFRGUBrSeqMjkBi" class="expansion"><br>
-      ブレッドボード回路図<br>
-      <img src="https://lh3.googleusercontent.com/d/1ZxYqt0XuojuweduDiXZVRh8b5kMj67U-" class="expansion"><br>
-      <hr id="first_boader">
-      <h3>プログラム</h3>
-      暗くなった場合にLED1を点灯させる
-      <pre><code  class="ruby">
+<h3>必要部品一覧</h3>
+<ul>
+  <li><a href="https://akizukidenshi.com/catalog/g/gI-00110/">CDSセル</a></li>
+  <li><a href="https://akizukidenshi.com/catalog/g/gR-25103/">10kΩ抵抗</a></li>
+</ul>
+<hr id="first_boader">
+<h3>CDSセルについて</h3>
+CdS（硫化カドミウム）<br>
+光で抵抗値が変化する半導体です。<br>
+明るいときに抵抗値が小さくなり、暗いときに抵抗値は上がります。<br>
+光電効果。
+<hr id="first_boader">
+<h3>抵抗分圧回路</h3>
+CdSセルは明るさによって抵抗値が変化するセンサーなので下記の様な回路は使用できません。<br>
+理由としてマイコンは基本的に電圧のみ測定できるからです。
+<img src="https://lh3.googleusercontent.com/d/1jvyuYUVInVQvcoEWrjTNBPg9AovHp86T" class="expansion"><br>
+これを回避するためには抵抗値を電圧値へ変換する回路が必要となります。<br>
+その際に使用する回路が抵抗分圧です。
+<img src="https://lh3.googleusercontent.com/d/11EMYKIb4-Jyoq8WORIITm7qtovee--iX" class="expansion"><br>
+R1をCdSと仮定します。右は明るくなった場合(CdSの抵抗値が下がった場合)<br>
+V1 = R2 ÷ ( R1 + R2 ) × 3.3V = 10 ÷ ( 10 + 10 ) × 3.3 = 1.65V<br>
+V2 = R2 ÷ ( R1 + R2 ) × 3.3V = 10 ÷ ( 5 + 10 ) × 3.3 = 2.2V<br> 
+上記式のようにR1の抵抗値が減るとマイコンに対する出力電圧は増加します。
+<hr id="first_boader">
+<h3>電子回路</h3>
+回路図<br>
+<img src="https://lh3.googleusercontent.com/d/18coRIB7IASEVBWuxOVFRGUBrSeqMjkBi" class="expansion"><br>
+ブレッドボード回路図<br>
+<img src="https://lh3.googleusercontent.com/d/1ZxYqt0XuojuweduDiXZVRh8b5kMj67U-" class="expansion"><br>
+<hr id="first_boader">
+<h3>プログラム</h3>
+暗くなった場合にLED1を点灯させる
+<pre><code  class="ruby">
 LED1 = 0
 ADC1 = 7
 adc = ADC.new()
@@ -68,70 +50,4 @@ while true
     digitalWrite(LED1, 0)
   end
 end
-      </code></pre>
-    </div>
-        
-    <div id="submenu">
-      <div id="submenu_header">もくじ</div>
-      <ul id="submenu_body">
-        <i class="fas fa-home"></i><a href="./index.html">HOME</a>
-        <li><details>
-          <summary>プログラム書き込み</summary>
-          <ul id="subuul">
-            <li><a href="./ide_install.html">mruby/c IDEインストール</a></li>
-            <li><a href="./write_program.html">PG書き込み</a></li>
-          </ul>
-        </details></li>
-        <li><details>
-          <summary>ファームウェアアップデート</summary>
-          <ul id="subuul">
-            <li><a href="./update.html">アップデート手順</a></li>
-          </ul>
-        </details></li>
-        <li><details>
-          <summary>ボード一覧</summary>
-          <ul id="subuul">
-          <li><a href="./board_list.html">ボード一覧</a></li>
-          </ul>
-        </details></li>
-        <li><details>
-          <summary>RBoardにおける各クラス</summary>
-          <ul id="subuul">
-            <li><a href="./class.html">各クラス</a></li>
-            <li><a href="./mrubyc_class.html">mruby/c IO 各クラス</a></li>
-            <li><a href="./class_common.html">mruby/cIO標準化準拠クラス</a></li>
-          </ul>
-        </details></li>
-        <li><details>
-          <summary>サンプルプログラム</summary>
-          <ul id="subuul">
-            <li><a href="./adc.html">ADCサンプル</a> / <a href="./sample_adc.html">ver2</a></li>
-            <li><a href="./i2c.html">I2Cサンプル</a> / <a href="./sample_i2c.html">ver2</a></li>
-            <li><a href="./pwm.html">PWMサンプル</a> / <a href="./sample_pwm.html">ver2</a></li>
-            <li><a href="./uart.html">UARTサンプル</a> / <a href="./sample_uart.html">ver2</a></li>
-            <li><a href="./etc.html">その他サンプル</a> / <a href="./sample_etc.html">ver2</a></li>
-          </ul>
-        </details></li>
-        <li><details>
-          <summary>その他</summary>
-          <ul id="subuul">
-            <li><a href="./sensor_module.html">対応センサーモジュール</a></li>
-            <li><a href="./console.html">ターミナルソフトの設定</a></li>
-          </ul>
-        </details></li>
-        <li><details>
-          <summary>チュートリアル</summary>
-          <ol id="subuol">
-            <li><a href="./tutorial_mrubyc.html">mruby/cとは？</a></li>
-            <li><a href="./tutorial_led.html">LEDを制御する</a></li>
-            <li><a href="./tutorial_rgb_led.html">フルカラーLED</a></li>
-            <li><a href="./tutorial_reed_switch.html">ドア開閉センサ</a></li>
-            <li><a href="./tutorial_buzzer.html">圧電ブザー</a></li>
-            <li><a href="./tutorial_cds.html">光センサ</a></li>
-            <li><a href="./tutorial_temp.html">温度センサ</a></li>
-          </ol>
-        </details></li>
-      </ul>
-    </div>
-  </body>
-</html>
+</code></pre>

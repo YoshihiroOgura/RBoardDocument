@@ -1,62 +1,44 @@
-<!DOCTYPE html>
-<html lang="ja">
-  <head>
-    <title>チュートリアル - RBoardDocument</title>
-    <link rel="shortcut icon" href="./image/bug.ico">
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-176702602-1"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+---
+title: チュートリアル - リードスイッチ(ドアセンサ)
+layout: tutorial_default
+---
 
-      gtag('config', 'UA-176702602-1');
-    </script>
-    <link rel="stylesheet" type="text/css" href="main.css" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/a11y-dark.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/highlight.min.js"></script>
-    <script type="text/javascript" src="./style.js"></script>
-    <link href="https://use.fontawesome.com/releases/v5.11.0/css/all.css" rel="stylesheet">
-  </head>
-  <body>
-    <div id="header"><h1>チュートリアル - リードスイッチ(ドアセンサ)</h1></div>
-    <div id="main">
-      <h3>必要部品一覧</h3>
-      <ul>
-        <li><a href="https://akizukidenshi.com/catalog/g/gP-13371/">SPS-320</a>(リードスイッチ)</li>
-        <li><a href="https://akizukidenshi.com/catalog/g/gC-08916/">コネクタ付きコード</a></li>
-      </ul>
-      <hr id="first_boader">
-      <h3>リードスイッチについて</h3>
-      2枚の金属板が内部にあり、磁石を近づけることによりその2枚の板が重なり合い導通するという仕組み。
-      リードスイッチのリードとは木管楽器(クラリネットなど)で使用されているリードに金属板の形状が似ていることからそう呼ばれているらしい。
-      <hr id="first_boader">
-      <h3>プルアップ、プルダウン抵抗</h3>
-      スイッチを使用する際に小学生の時などは下記のようなスイッチ回路を使用したと思う。
-      <img src="https://lh3.googleusercontent.com/d/1AfQa0O8a8dTWAz0nq0F_zgsbIatCcl_L" class="expansion"><br>
-      この回路が実際に動かないわけではない。<br>
-      スイッチを押した場合にRBoardへ3.3Vが印加される。では、スイッチを押していない場合にはRBoardへどのような信号が印加されるのであろうか？
-      答えは不確定である。どこにも繋がっていない状態となるため何が印加されるのか実際に動かして計測してみなければわからない。<br>
-      その様な状態を避けるためプルアップ、プルダウン抵抗を使用する。<br>
-      <img src="https://lh3.googleusercontent.com/d/1OhsZHUMQy4zKQcjQ_9l4IupDZp3radlX" class="expansion"><br>
-      プルアップ・プルダウンを使用した場合、ボタンを押していない場合でも何かしらの信号がRBoardへ印加されるようになる。<br>
-      　⇒プルアップの場合3.3V、プルダウンの場合0V(GND)<br>
-      抵抗が無くてもつながっている状態になるのでは無いかと思うかもしれないが、抵抗を入れなければスイッチを押した際に3.3VとGNDでショートしてしまう。
-      また、プルアップとプルダウンではプルアップの方が使用される頻度が多い。理由の一つとしてプルダウンでは断線した場合に気ずきにくいという点がある。<br>
-      以下のように赤線の部分で断線した場合にははじめに記した回路と同じ状態となってしまうため。
-      <img src="https://lh3.googleusercontent.com/d/1W0OSe6lCRLr1A-jnXpXnhzdS1jco9Mmb" class="expansion"><br>
-      <br>
-      マイコンに内蔵されているプルアップ、プルダウン抵抗を使用することにより回路を省略することができます。
-      <img src="https://lh3.googleusercontent.com/d/1YndVwW8sRw-UxT_2mttZnT0r7IuuhhDA" class="expansion"><br>
-      <hr id="first_boader">
-      <h3>電子回路</h3>
-      内蔵プルアップ抵抗を使用したブレッドボード回路<br>
-      コネクタ付きコードを使用して接続してください。
-      <img src="https://lh3.googleusercontent.com/d/1sBv0g4CyLvj4GzzwLMJ-fQ2F6WzA-EZD" class="expansion"><br>
-      <hr id="first_boader">
-      <h3>プログラム</h3>
-      ドアが開いているときLEDを点灯させるプログラム
-        <pre><code  class="ruby">
+<h3>必要部品一覧</h3>
+<ul>
+  <li><a href="https://akizukidenshi.com/catalog/g/gP-13371/">SPS-320</a>(リードスイッチ)</li>
+  <li><a href="https://akizukidenshi.com/catalog/g/gC-08916/">コネクタ付きコード</a></li>
+</ul>
+<hr id="first_boader">
+<h3>リードスイッチについて</h3>
+2枚の金属板が内部にあり、磁石を近づけることによりその2枚の板が重なり合い導通するという仕組み。
+リードスイッチのリードとは木管楽器(クラリネットなど)で使用されているリードに金属板の形状が似ていることからそう呼ばれているらしい。
+<hr id="first_boader">
+<h3>プルアップ、プルダウン抵抗</h3>
+スイッチを使用する際に小学生の時などは下記のようなスイッチ回路を使用したと思う。
+<img src="https://lh3.googleusercontent.com/d/1AfQa0O8a8dTWAz0nq0F_zgsbIatCcl_L" class="expansion"><br>
+この回路が実際に動かないわけではない。<br>
+スイッチを押した場合にRBoardへ3.3Vが印加される。では、スイッチを押していない場合にはRBoardへどのような信号が印加されるのであろうか？
+答えは不確定である。どこにも繋がっていない状態となるため何が印加されるのか実際に動かして計測してみなければわからない。<br>
+その様な状態を避けるためプルアップ、プルダウン抵抗を使用する。<br>
+<img src="https://lh3.googleusercontent.com/d/1OhsZHUMQy4zKQcjQ_9l4IupDZp3radlX" class="expansion"><br>
+プルアップ・プルダウンを使用した場合、ボタンを押していない場合でも何かしらの信号がRBoardへ印加されるようになる。<br>
+　⇒プルアップの場合3.3V、プルダウンの場合0V(GND)<br>
+抵抗が無くてもつながっている状態になるのでは無いかと思うかもしれないが、抵抗を入れなければスイッチを押した際に3.3VとGNDでショートしてしまう。
+また、プルアップとプルダウンではプルアップの方が使用される頻度が多い。理由の一つとしてプルダウンでは断線した場合に気ずきにくいという点がある。<br>
+以下のように赤線の部分で断線した場合にははじめに記した回路と同じ状態となってしまうため。
+<img src="https://lh3.googleusercontent.com/d/1W0OSe6lCRLr1A-jnXpXnhzdS1jco9Mmb" class="expansion"><br>
+<br>
+マイコンに内蔵されているプルアップ、プルダウン抵抗を使用することにより回路を省略することができます。
+<img src="https://lh3.googleusercontent.com/d/1YndVwW8sRw-UxT_2mttZnT0r7IuuhhDA" class="expansion"><br>
+<hr id="first_boader">
+<h3>電子回路</h3>
+内蔵プルアップ抵抗を使用したブレッドボード回路<br>
+コネクタ付きコードを使用して接続してください。
+<img src="https://lh3.googleusercontent.com/d/1sBv0g4CyLvj4GzzwLMJ-fQ2F6WzA-EZD" class="expansion"><br>
+<hr id="first_boader">
+<h3>プログラム</h3>
+ドアが開いているときLEDを点灯させるプログラム
+<pre><code  class="ruby">
 REED_SW = 18
 pinMode(REED_SW, 1)
 pinPull(REED_SW, 1)
@@ -69,20 +51,20 @@ while  true
     digitalWrite(0, 0)
   end
 end
-        </code></pre>
-        ピンにてプルアップ・ダウン抵抗を使用する場合は<span style="background-color:rgb(206, 205, 205)">pinPull(ピン番号, 設定値)</span>を使用する。
-        設定値は0が通常の状態、1など自然数の場合にpullup、-1など負の数の場合にはpulldownが設定される。<br>
-        ピンの状態を取得するためは<span style="background-color:rgb(206, 205, 205)">digitalRead(ピン番号)</span>を使用する。
-      <hr id="first_boader">
-      <h3>例題：</h3>
-      <ul>
-        <li>一定時間ドアが空いていた場合にLEDを点灯する。</li>
-        閉じた場合はLEDを消灯。
-        <div class="answer_box">
-          <label for="led_ans1">answer ➡</label>
-          <input type="checkbox" id="led_ans1"/>
-          <div class="answer_show">  
-            <pre><code  class="ruby">
+</code></pre>
+ピンにてプルアップ・ダウン抵抗を使用する場合は<span style="background-color:rgb(206, 205, 205)">pinPull(ピン番号, 設定値)</span>を使用する。
+設定値は0が通常の状態、1など自然数の場合にpullup、-1など負の数の場合にはpulldownが設定される。<br>
+ピンの状態を取得するためは<span style="background-color:rgb(206, 205, 205)">digitalRead(ピン番号)</span>を使用する。
+<hr id="first_boader">
+<h3>例題：</h3>
+<ul>
+  <li>一定時間ドアが空いていた場合にLEDを点灯する。</li>
+  閉じた場合はLEDを消灯。
+  <div class="answer_box">
+    <label for="led_ans1">answer ➡</label>
+    <input type="checkbox" id="led_ans1"/>
+    <div class="answer_show">  
+      <pre><code  class="ruby">
 REED_SW = 18
 LED1 = 0
 pinMode(REED_SW, 1)
@@ -101,74 +83,7 @@ while  true
   end
   sleep(1)
 end
-            </code></pre>
-          </div>
-        </div>
-      </ul>
+      </code></pre>
     </div>
-    </div>
-        
-    <div id="submenu">
-      <div id="submenu_header">もくじ</div>
-      <ul id="submenu_body">
-        <i class="fas fa-home"></i><a href="./index.html">HOME</a>
-        <li><details>
-          <summary>プログラム書き込み</summary>
-          <ul id="subuul">
-            <li><a href="./ide_install.html">mruby/c IDEインストール</a></li>
-            <li><a href="./write_program.html">PG書き込み</a></li>
-          </ul>
-        </details></li>
-        <li><details>
-          <summary>ファームウェアアップデート</summary>
-          <ul id="subuul">
-            <li><a href="./update.html">アップデート手順</a></li>
-          </ul>
-        </details></li>
-        <li><details>
-          <summary>ボード一覧</summary>
-          <ul id="subuul">
-          <li><a href="./board_list.html">ボード一覧</a></li>
-          </ul>
-        </details></li>
-        <li><details>
-          <summary>RBoardにおける各クラス</summary>
-          <ul id="subuul">
-            <li><a href="./class.html">各クラス</a></li>
-            <li><a href="./mrubyc_class.html">mruby/c IO 各クラス</a></li>
-            <li><a href="./class_common.html">mruby/cIO標準化準拠クラス</a></li>
-          </ul>
-        </details></li>
-        <li><details>
-          <summary>サンプルプログラム</summary>
-          <ul id="subuul">
-            <li><a href="./adc.html">ADCサンプル</a> / <a href="./sample_adc.html">ver2</a></li>
-            <li><a href="./i2c.html">I2Cサンプル</a> / <a href="./sample_i2c.html">ver2</a></li>
-            <li><a href="./pwm.html">PWMサンプル</a> / <a href="./sample_pwm.html">ver2</a></li>
-            <li><a href="./uart.html">UARTサンプル</a> / <a href="./sample_uart.html">ver2</a></li>
-            <li><a href="./etc.html">その他サンプル</a> / <a href="./sample_etc.html">ver2</a></li>
-          </ul>
-        </details></li>
-        <li><details>
-          <summary>その他</summary>
-          <ul id="subuul">
-            <li><a href="./sensor_module.html">対応センサーモジュール</a></li>
-            <li><a href="./console.html">ターミナルソフトの設定</a></li>
-          </ul>
-        </details></li>
-        <li><details>
-          <summary>チュートリアル</summary>
-          <ol id="subuol">
-            <li><a href="./tutorial_mrubyc.html">mruby/cとは？</a></li>
-            <li><a href="./tutorial_led.html">LEDを制御する</a></li>
-            <li><a href="./tutorial_rgb_led.html">フルカラーLED</a></li>
-            <li><a href="./tutorial_reed_switch.html">ドア開閉センサ</a></li>
-            <li><a href="./tutorial_buzzer.html">圧電ブザー</a></li>
-            <li><a href="./tutorial_cds.html">光センサ</a></li>
-            <li><a href="./tutorial_temp.html">温度センサ</a></li>
-          </ol>
-        </details></li>
-      </ul>
-    </div>
-  </body>
-</html>
+  </div>
+</ul>
