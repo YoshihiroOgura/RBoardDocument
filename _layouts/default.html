@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <title>{{ page.title }}</title>
+    <link rel="shortcut icon" href="./image/bug.ico">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-176702602-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-176702602-1');
+    </script>
+    <link rel="stylesheet" type="text/css" href="main.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/a11y-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/highlight.min.js"></script>
+    <script type="text/javascript" src="./style.js"></script>
+    <link href="https://use.fontawesome.com/releases/v5.11.0/css/all.css" rel="stylesheet">
+  </head>
+  <body>
+    <div id="header"><h1> {{ page.title }} </h1></div>
+    <div id="main">
+      {{ content }}
+    </div>
+
+    <div id="submenu">
+      <div id="submenu_header">もくじ</div>
+      <ul id="submenu_body">
+        <i class="fas fa-home"></i><a href="./index.html">HOME</a>
+        <li><details>
+          <summary>プログラム書き込み</summary>
+          <ul id="subuul">
+            <li><a href="./ide_install.html">mruby/c IDEインストール</a></li>
+            <li><a href="./write_program.html">PG書き込み</a></li>
+          </ul>
+        </details></li>
+        <li><details>
+          <summary>ファームウェアアップデート</summary>
+          <ul id="subuul">
+            <li><a href="./update.html">アップデート手順</a></li>
+          </ul>
+        </details></li>
+        <li><details>
+          <summary>ボード一覧</summary>
+          <ul id="subuul">
+          <li><a href="./board_list.html">ボード一覧</a></li>
+          </ul>
+        </details></li>
+        <li><details>
+          <summary>RBoardにおける各クラス</summary>
+          <ul id="subuul">
+            <li><a href="./class.html">各クラス</a></li>
+            <li><a href="./mrubyc_class.html">mruby/c IO 各クラス</a></li>
+            <li><a href="./class_common.html">mruby/cIO標準化準拠クラス</a></li>
+          </ul>
+        </details></li>
+        <li><details>
+          <summary>サンプルプログラム</summary>
+          <ul id="subuul">
+            <li><a href="./adc.html">ADCサンプル</a> / <a href="./sample_adc.html">ver2</a></li>
+            <li><a href="./i2c.html">I2Cサンプル</a> / <a href="./sample_i2c.html">ver2</a></li>
+            <li><a href="./pwm.html">PWMサンプル</a> / <a href="./sample_pwm.html">ver2</a></li>
+            <li><a href="./uart.html">UARTサンプル</a> / <a href="./sample_uart.html">ver2</a></li>
+            <li><a href="./etc.html">その他サンプル</a> / <a href="./sample_etc.html">ver2</a></li>
+          </ul>
+        </details></li>
+        <li><details>
+          <summary>その他</summary>
+          <ul id="subuul">
+            <li><a href="./sensor_module.html">対応センサーモジュール</a></li>
+            <li><a href="./console.html">ターミナルソフトの設定</a></li>
+          </ul>
+        </details></li>
+        <li><details>
+          <summary>チュートリアル</summary>
+          <ol id="subuol">
+            <li><a href="./tutorial_mrubyc.html">mruby/cとは？</a></li>
+            <li><a href="./tutorial_led.html">LEDを制御する</a></li>
+            <li><a href="./tutorial_rgb_led.html">フルカラーLED</a></li>
+            <li><a href="./tutorial_reed_switch.html">ドア開閉センサ</a></li>
+            <li><a href="./tutorial_buzzer.html">圧電ブザー</a></li>
+            <li><a href="./tutorial_cds.html">光センサ</a></li>
+            <li><a href="./tutorial_temp.html">温度センサ</a></li>
+          </ol>
+        </details></li>
+      </ul>
+    </div>
+  </body>
+</html>
