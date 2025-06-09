@@ -1,30 +1,13 @@
-<!DOCTYPE html>
-<html lang="ja">
-  <head>
-    <title>I2Cサンプル - RBoardDocument</title>
-    <link rel="shortcut icon" href="./image/bug.ico">
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-176702602-1"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+---
+title: I2Cサンプル
+layout: sample_default
+---
 
-      gtag('config', 'UA-176702602-1');
-    </script>
-    <link rel="stylesheet" type="text/css" href="main.css" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/a11y-dark.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/highlight.min.js"></script>
-    <script type="text/javascript" src="./style.js"></script>
-    <link href="https://use.fontawesome.com/releases/v5.11.0/css/all.css" rel="stylesheet">
-  </head>
-  <body>
-    <div id="header"><h1> I2Cサンプル </h1></div>
-    <div id="main">
-      mruby/c 3.3 <a href="./mrubyc_class.html">標準IOクラス</a>対応<br>
-      <h3 class="link" id="i2c_mcp9808">温湿度センサ(MCP9808)</h3>
-      温度センサ：<a href="https://www.switch-science.com/catalog/3986/">https://www.switch-science.com/catalog/3986/</a>
-      <pre><code  class="ruby">
+mruby/c 3.3 <a href="./mrubyc_class.html">標準IOクラス</a>対応<br>
+<h3 class="link" id="i2c_mcp9808">温湿度センサ(MCP9808)</h3>
+温度センサ：<a href="https://www.switch-science.com/catalog/3986/">https://www.switch-science.com/catalog/3986/</a>
+
+<pre><code  class="ruby">
 $i2c = I2C.new()
 while true
   $i2c.write(0x18, 0x08, 0x03)
@@ -34,11 +17,13 @@ while true
   puts("ans:"+a.to_s+"\r\n")
   sleep(5)
 end
-      </code></pre>
-      <hr id="first_boader">
-      <h3 class="link" id="i2c_bmp280">温度気圧センサ(BME280, BMP280)</h3>
-      温度センサ：<a href="https://www.switch-science.com/catalog/3373/">https://www.switch-science.com/catalog/3373/</a>
-      <pre><code  class="ruby">
+</code></pre>
+
+<hr id="first_boader">
+<h3 class="link" id="i2c_bmp280">温度気圧センサ(BME280, BMP280)</h3>
+温度センサ：<a href="https://www.switch-science.com/catalog/3373/">https://www.switch-science.com/catalog/3373/</a>
+
+<pre><code  class="ruby">
 ADRS_BME280 = 0x77
 $i2c = I2C.new()
 ##
@@ -144,11 +129,13 @@ while true
   puts "ATM: #{$barometer.atm} hPa  TEMP: #{$barometer.temperature} deg"
   sleep(1)
 end
-      </code></pre>
-      <hr id="first_boader">
-      <h3 class="link" id="i2c_drv8830">モータードライバ(DRV8830)</h3>
-      https://www.switch-science.com/catalog/2510/
-      <pre><code class="ruby">
+</code></pre>
+
+<hr id="first_boader">
+<h3 class="link" id="i2c_drv8830">モータードライバ(DRV8830)</h3>
+https://www.switch-science.com/catalog/2510/
+
+<pre><code class="ruby">
 # MAX speed 0x3F(0d63)
 
 $i2c = I2C.new()
@@ -183,9 +170,11 @@ Moter.init()
 while true
   Moter.control(0x3F,DRIVE,BACK)
 end
-      </code></pre>
-      <h4>インスタンスがどうこう</h4>
-      <pre><code class="ruby">
+</code></pre>
+
+<h4>インスタンスがどうこう</h4>
+
+<pre><code class="ruby">
 $i2c = I2C.new()
 NEUTRAL = 0
 DRIVE = 1
@@ -214,12 +203,14 @@ while true
   lm.control(0x3F,DRIVE)
   rm.control(0x3F,DRIVE)
 end
-      </code></pre>
-      <hr id="first_boader">
-      <h3 class="link" id="i2c_pca9685">サーボモータードライバ(PCA9685)</h3>
-      通常品:<a href="https://www.amazon.co.jp/dp/B01D1D0CX2">https://www.amazon.co.jp/dp/B01D1D0CX2</a><br>
-      GROVE:<a href="https://item.rakuten.co.jp/robotshopjapan/rb-see-679/">https://item.rakuten.co.jp/robotshopjapan/rb-see-679/</a>
-      <pre><code class="ruby">
+</code></pre>
+
+<hr id="first_boader">
+<h3 class="link" id="i2c_pca9685">サーボモータードライバ(PCA9685)</h3>
+通常品:<a href="https://www.amazon.co.jp/dp/B01D1D0CX2">https://www.amazon.co.jp/dp/B01D1D0CX2</a><br>
+GROVE:<a href="https://item.rakuten.co.jp/robotshopjapan/rb-see-679/">https://item.rakuten.co.jp/robotshopjapan/rb-see-679/</a>
+
+<pre><code class="ruby">
 $moters = I2C.new()
 def module_init()
   $moters.write(0x40, 0xFA, 0x00)
@@ -270,13 +261,15 @@ while true
   m_move(11,45)
   sleep(2)
 end
-      </code></pre>
-      <hr id="first_boader">
-      <h3 class="link" id="i2c_oled">OLED</h3>
-      https://www.switch-science.com/catalog/829/<br>
-      ASCIIコード<br>
-      スペース(32)~Z(90)まで対応
-      <pre><code class="ruby">
+</code></pre>
+
+<hr id="first_boader">
+<h3 class="link" id="i2c_oled">OLED</h3>
+https://www.switch-science.com/catalog/829/<br>
+ASCIIコード<br>
+スペース(32)~Z(90)まで対応
+
+<pre><code class="ruby">
 class OLED
   $oled = 0
   def init()
@@ -380,9 +373,11 @@ oled.init()
 oled.send(0,"LETS!GO!MRUBY/C!")
 oled.send(1,"================")
 oled.send(2,"ALL HAPPY       ")
-      </code></pre>
-      <h4>2値画像表示</h4>
-      <pre><code class="ruby">
+</code></pre>
+
+<h4>2値画像表示</h4>
+
+<pre><code class="ruby">
 XSIZE = 16
 YSIZE = 8
 
@@ -439,11 +434,13 @@ oled = OLED.new
 oled.init()
 # oled.send(画像配列8×16×8)
 oled.send(picture)
-      </code></pre>
-      <hr id="first_boader">
-      <h3>LCD</h3>
-      LCD：<a href="https://www.switch-science.com/catalog/1629/">https://www.switch-science.com/catalog/1629/</a>
-      <pre><code class="ruby">
+</code></pre>
+
+<hr id="first_boader">
+<h3>LCD</h3>
+LCD：<a href="https://www.switch-science.com/catalog/1629/">https://www.switch-science.com/catalog/1629/</a>
+
+<pre><code class="ruby">
 $lcd = I2C.new
 sleep(1)
 def rgb(r,g,b)
@@ -471,12 +468,14 @@ def send_txt(txt)
 end
 rgb(255,255,255)
 send_txt("YoshihiroOgura")
-      </code></pre>
-      <hr id="first_boader">
-      <h3 class="link" id="i2c_axia">3軸加速度センサ</h3>
-      LIS3DHTRを搭載した三軸加速度センサ<br>
-      <a href="https://akizukidenshi.com/catalog/g/gM-16771/">https://akizukidenshi.com/catalog/g/gM-16771/</a>
-      <pre><code class="ruby">
+</code></pre>
+
+<hr id="first_boader">
+<h3 class="link" id="i2c_axia">3軸加速度センサ</h3>
+LIS3DHTRを搭載した三軸加速度センサ<br>
+<a href="https://akizukidenshi.com/catalog/g/gM-16771/">https://akizukidenshi.com/catalog/g/gM-16771/</a>
+
+<pre><code class="ruby">
 $i2c = I2C.new()
 
 # ====================================================
@@ -562,12 +561,14 @@ while true
   puts("x:#{data_raw[0]},y:#{data_raw[1]}z:#{data_raw[2]}")
   sleep_ms(50)
 end
-      </code></pre>
-      <hr id="first_boader">
-      <h3>RTC</h3>
-      PCF85063TP<br>
-      <a href="https://www.switch-science.com/products/3134">https://www.switch-science.com/products/3134</a>
-      <pre><code class="ruby">
+</code></pre>
+
+<hr id="first_boader">
+<h3>RTC</h3>
+PCF85063TP<br>
+<a href="https://www.switch-science.com/products/3134">https://www.switch-science.com/products/3134</a>
+
+<pre><code class="ruby">
 $i2c = I2C.new()
 
 RTC_ADDR = 0x51
@@ -625,27 +626,31 @@ while true
   puts("20#{days[5]}/#{days[4]}/#{days[3]} #{days[2]}:#{days[1]}:#{days[0]}")
   sleep(10)
 end
-      </code></pre>
-      <hr id="first_boader">
-      <h3>Qwiic</h3>
-      Qwiicとは<br>
-      SparkFunから販売されているI2Cにて制御するモジュール。<br>
-      <a href="https://www.sparkfun.com/qwiic">https://www.sparkfun.com/qwiic</a>
-      <h4>赤色LEDボタン</h4>
-      ボタンを押したときにLEDを点灯する。
-      <pre><code class="ruby">
+</code></pre>
+
+<hr id="first_boader">
+<h3>Qwiic</h3>
+Qwiicとは<br>
+SparkFunから販売されているI2Cにて制御するモジュール。<br>
+<a href="https://www.sparkfun.com/qwiic">https://www.sparkfun.com/qwiic</a>
+<h4>赤色LEDボタン</h4>
+ボタンを押したときにLEDを点灯する。
+
+<pre><code class="ruby">
 led = I2C.new
 while true
   l = led.read(0x6F,1,0x03)
   s = (l[0].ord&0x04)>>2
   led.write(0x6F,0x19,s * 0xFF)
 end
-      </code></pre>
-      <hr id="first_boader">
-      <h3 class="link" id="i2c_vl53l0x">ToF測距センサ</h3>
-      VL53L0Xを搭載したレーザーの距離センサー<br>
-      <a href="https://www.switch-science.com/catalog/5219/">https://www.switch-science.com/catalog/5219/</a>
-      <pre><code class="ruby">
+</code></pre>
+
+<hr id="first_boader">
+<h3 class="link" id="i2c_vl53l0x">ToF測距センサ</h3>
+VL53L0Xを搭載したレーザーの距離センサー<br>
+<a href="https://www.switch-science.com/catalog/5219/">https://www.switch-science.com/catalog/5219/</a>
+
+<pre><code class="ruby">
 # M5STACK-TOF-UNIT
 # SEEED-101020532
 # VL53L0X
@@ -671,13 +676,15 @@ end
 while true
   sleep_ms(300)
   puts u_read()
-end				
-      </code></pre>
-      <hr id="first_boader">
-      <h3 class="link" id="i2c_9620">超音波測距センサ</h3>
-      RCWL-9620を搭載した超音波の距離センサー<br>
-      <a href="https://www.switch-science.com/products/7632">https://www.switch-science.com/products/7632</a>
-      <pre><code class="ruby">
+end
+</code></pre>
+
+<hr id="first_boader">
+<h3 class="link" id="i2c_9620">超音波測距センサ</h3>
+RCWL-9620を搭載した超音波の距離センサー<br>
+<a href="https://www.switch-science.com/products/7632">https://www.switch-science.com/products/7632</a>
+
+<pre><code class="ruby">
 # M5STACK-U098
 # M5STACK-U098-B2
 
@@ -705,69 +712,4 @@ while true
   sleep_ms(300)
   puts u_read()
 end
-      </code></pre>
-    </div>
-    <div id="submenu">
-      <div id="submenu_header">もくじ</div>
-      <ul id="submenu_body">
-        <i class="fas fa-home"></i><a href="./index.html">HOME</a>
-        <li><details>
-          <summary>プログラム書き込み</summary>
-          <ul id="subuul">
-            <li><a href="./ide_install.html">mruby/c IDEインストール</a></li>
-            <li><a href="./write_program.html">PG書き込み</a></li>
-          </ul>
-        </details></li>
-        <li><details>
-          <summary>ファームウェアアップデート</summary>
-          <ul id="subuul">
-            <li><a href="./update.html">アップデート手順</a></li>
-          </ul>
-        </details></li>
-        <li><details>
-          <summary>ボード一覧</summary>
-          <ul id="subuul">
-          <li><a href="./board_list.html">ボード一覧</a></li>
-          </ul>
-        </details></li>
-        <li><details>
-          <summary>RBoardにおける各クラス</summary>
-          <ul id="subuul">
-            <li><a href="./class.html">各クラス</a></li>
-            <li><a href="./mrubyc_class.html">mruby/c IO 各クラス</a></li>
-            <li><a href="./class_common.html">mruby/cIO標準化準拠クラス</a></li>
-          </ul>
-        </details></li>
-        <li><details>
-          <summary>サンプルプログラム</summary>
-          <ul id="subuul">
-            <li><a href="./adc.html">ADCサンプル</a> / <a href="./sample_adc.html">ver2</a></li>
-            <li><a href="./i2c.html">I2Cサンプル</a> / <a href="./sample_i2c.html">ver2</a></li>
-            <li><a href="./pwm.html">PWMサンプル</a> / <a href="./sample_pwm.html">ver2</a></li>
-            <li><a href="./uart.html">UARTサンプル</a> / <a href="./sample_uart.html">ver2</a></li>
-            <li><a href="./etc.html">その他サンプル</a> / <a href="./sample_etc.html">ver2</a></li>
-          </ul>
-        </details></li>
-        <li><details>
-          <summary>その他</summary>
-          <ul id="subuul">
-            <li><a href="./sensor_module.html">対応センサーモジュール</a></li>
-            <li><a href="./console.html">ターミナルソフトの設定</a></li>
-          </ul>
-        </details></li>
-        <li><details>
-          <summary>チュートリアル</summary>
-          <ol id="subuol">
-            <li><a href="./tutorial_mrubyc.html">mruby/cとは？</a></li>
-            <li><a href="./tutorial_led.html">LEDを制御する</a></li>
-            <li><a href="./tutorial_rgb_led.html">フルカラーLED</a></li>
-            <li><a href="./tutorial_reed_switch.html">ドア開閉センサ</a></li>
-            <li><a href="./tutorial_buzzer.html">圧電ブザー</a></li>
-            <li><a href="./tutorial_cds.html">光センサ</a></li>
-            <li><a href="./tutorial_temp.html">温度センサ</a></li>
-          </ol>
-        </details></li>
-      </ul>
-    </div>
-  </body>
-</html>
+</code></pre>
