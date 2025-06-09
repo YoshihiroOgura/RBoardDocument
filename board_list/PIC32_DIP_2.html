@@ -1,3 +1,5 @@
+---
+---
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -16,11 +18,11 @@
     <link href="https://use.fontawesome.com/releases/v5.11.0/css/all.css" rel="stylesheet">
   </head>
   <body>
-	<div id="header"><h1> PIC32MX170F256B DIP Version2.0 </h1></div>
+  <div id="header"><h1> PIC32MX170F256B DIP Version2.0 </h1></div>
     <div id="main">
       language：<a href="./PIC32_DIP_2 en.html">English</a>/<a href="./PIC32_DIP_2.html">日本語</a><br>
-			<h2>PIC32MX170F256B DIP Version2.0</h2>
-			<img width="100%" src="../image/PIC32_DIP_3.png">
+      <h2>PIC32MX170F256B DIP Version2.0</h2>
+      <img width="100%" src="../image/PIC32_DIP_3.png">
       UARTは下記表の通り設定変更可能です<br>
       <img src="../image/UART_pins.png"><br>
       <span style="color:rgb(255, 0, 0)">※I2Cピンは基本的にその他の用途として使用できません(P7,P8)</span><br>
@@ -28,72 +30,13 @@
       基板データ：<a href="https://oshwlab.com/yoshihiroogura/RBoard_V2_DIP">URL</a><br>
       書き込み済みファームウェア：<a href="https://github.com/YoshihiroOgura/pic32mx170_mrubyc">github</a><br>
       <hr id="first_boader">
-			<h2>電気的仕様</h2>
-			入力電圧：3.3V~12V(USB)<br>
-			動作電圧：3.3V<br>
-		</div>
-		
-		<div id="submenu">
-			<div id="submenu_header">もくじ</div>
-      <ul id="submenu_body">
-        <i class="fas fa-home"></i><a href="../index.html">HOME</a>
-        <li><details>
-          <summary>プログラム書き込み</summary>
-          <ul id="subuul">
-            <li><a href="../ide_install.html">mruby/c IDEインストール</a></li>
-            <li><a href="../write_program.html">PG書き込み</a></li>
-          </ul>
-        </details></li>
-        <li><details>
-          <summary>ファームウェアアップデート</summary>
-          <ul id="subuul">
-            <li><a href="../update.html">アップデート手順</a></li>
-          </ul>
-        </details></li>
-        <li><details>
-          <summary>ボード一覧</summary>
-          <ul id="subuul">
-          <li><a href="../board_list.html">ボード一覧</a></li>
-          </ul>
-        </details></li>
-        <li><details>
-          <summary>RBoardにおける各クラス</summary>
-          <ul id="subuul">
-            <li><a href="../class.html">各クラス</a></li>
-            <li><a href="../mrubyc_class.html">mruby/c IO 各クラス</a></li>
-            <li><a href="./class_common.html">mruby/cIO標準化準拠クラス</a></li>
-          </ul>
-        </details></li>
-        <li><details>
-          <summary>サンプルプログラム</summary>
-          <ul id="subuul">
-            <li><a href="../adc.html">ADCサンプル</a></li>
-            <li><a href="../i2c.html">I2Cサンプル</a></li>
-            <li><a href="../pwm.html">PWMサンプル</a></li>
-            <li><a href="../uart.html">UARTサンプル</a></li>
-            <li><a href="../etc.html">その他サンプル</a></li>
-          </ul>
-        </details></li>
-        <li><details>
-          <summary>その他</summary>
-          <ul id="subuul">
-            <li><a href="../sensor_module.html">対応センサーモジュール</a></li>
-            <li><a href="../console.html">ターミナルソフトの設定</a></li>
-          </ul>
-        </details></li>
-        <li><details>
-          <summary>チュートリアル</summary>
-          <ol id="subuol">
-            <li><a href="../tutorial_mrubyc.html">mruby/cとは？</a></li>
-            <li><a href="../tutorial_led.html">LEDを制御する</a></li>
-            <li><a href="../tutorial_rgb_led.html">フルカラーLED</a></li>
-            <li><a href="../tutorial_reed_switch.html">ドア開閉センサ</a></li>
-            <li><a href="../tutorial_buzzer.html">圧電ブザー</a></li>
-            <li><a href="../tutorial_cds.html">光センサ</a></li>
-            <li><a href="../tutorial_temp.html">温度センサ</a></li>
-          </ol>
-        </details></li>
-      </ul>
+      <h2>電気的仕様</h2>
+      入力電圧：3.3V~12V(USB)<br>
+      動作電圧：3.3V<br>
+    </div>
+    
+    <div id="submenu">
+      {% include jp_contents.html %}
     </div>
   </body>
 </html>
