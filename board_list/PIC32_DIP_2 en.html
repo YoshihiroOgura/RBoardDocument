@@ -1,3 +1,5 @@
+---
+---
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -16,11 +18,11 @@
     <link href="https://use.fontawesome.com/releases/v5.11.0/css/all.css" rel="stylesheet">
   </head>
   <body>
-	<div id="header"><h1> PIC32MX170F256B DIP Version2.0 </h1></div>
+  <div id="header"><h1> PIC32MX170F256B DIP Version2.0 </h1></div>
     <div id="main">
       language：<a href="./PIC32_DIP_2 en.html">English</a>/<a href="./PIC32_DIP_2.html">日本語</a><br>
-			<h2>PIC32MX170F256B DIP Version2.0</h2>
-			<img width="100%" src="../image/PIC32_DIP_3.png">
+      <h2>PIC32MX170F256B DIP Version2.0</h2>
+      <img width="100%" src="../image/PIC32_DIP_3.png">
       The UART settings can be changed as shown in the table below.<br>
       <img src="../image/UART_pins.png"><br>
       <span style="color:rgb(255, 0, 0)">※The I2C pins cannot be used for any other purpose.(P7,P8)</span><br>
@@ -28,66 +30,17 @@
       CAD data：<a href="https://oshwlab.com/yoshihiroogura/RBoard_V2_DIP">URL</a><br>
       Firmware：<a href="https://github.com/YoshihiroOgura/pic32mx170_mrubyc">github</a><br>
       <hr id="first_boader">
-			<h2>Tech specs</h2>
+      <h2>Tech specs</h2>
       Microcontroller：PIC32MX170F256B<br>
-			Input Voltage：3.3V~12V(USB)<br>
-			Operating Voltage：3.3V<br>
+      Input Voltage：3.3V~12V(USB)<br>
+      Operating Voltage：3.3V<br>
       Digital I/O Pins：21(P0~P20)<br>
       Analog Input Pins：10(P0,P1,P5,P6,P7,P8,P17,P18,P19,P20)<br>
       Clock Speed：20MHz<br>
-		</div>
-		
-		<div id="submenu">
-			<div id="submenu_header">Index</div>
-      <ul id="submenu_body">
-				<i class="fas fa-home"></i><a href="../index.html">HOME</a>
-				<li><details>
-					<summary>program</summary>
-					<ul id="subuul">
-						<li><a href="../ide_install_en.html">mruby/c IDE setup</a></li>
-						<li><a href="../write_program_en.html">program writing</a></li>
-						<li><a href="../update.html">Firmware update</a></li>
-						<li><a href="../class.html">old board class</a></li>
-						<li><a href="../mrubyc_class_en.html">board class</a></li>
-						<li><a href="./class_common_en.html">board standard class(mruby/c3.3)</a></li>
-					</ul>
-				</details></li>
-				<li><details>
-          <summary>board list</summary>
-          <ul id="subuul">
-          <li><a href="../board_list.html">board list</a></li>
-          </ul>
-				</details></li>
-				<li><details>
-					<summary>sensor sample program</summary>
-					<ul id="subuul">
-						<li><a href="../sensor_module.html">Compatible sensor module</a></li>
-						<li><a href="../adc.html">ADC sample</a></li>
-						<li><a href="../i2c.html">I2C sample</a></li>
-						<li><a href="../pwm.html">PWM sample</a></li>
-						<li><a href="../uart.html">UART sample</a></li>
-						<li><a href="../etc.html">others sample</a></li>
-					</ul>
-				</details></li>
-				<li><details>
-					<summary>others</summary>
-					<ul id="subuul">
-						<li><a href="../console_en.html">Terminal software settings</a></li>
-					</ul>
-				</details></li>
-				<li><details>
-          <summary>tutorial</summary>
-          <ol id="subuol">
-						<li><a href="../tutorial_mrubyc.html">What is mruby/c?</a></li>
-						<li><a href="../tutorial_led.html">control the LED</a></li>
-						<li><a href="../tutorial_rgb_led.html">full color LED</a></li>
-						<li><a href="../tutorial_reed_switch.html">door open/close sensor</a></li>
-						<li><a href="../tutorial_buzzer.html">Piezo Transducer</a></li>
-						<li><a href="../tutorial_cds.html">light sensor</a></li>
-						<li><a href="../tutorial_temp.html">temperature sensor</a></li>
-          </ol>
-        </details></li>
-			</ul>
+    </div>
+    
+    <div id="submenu">
+      {% include en_contents.html %}
     </div>
   </body>
 </html>
