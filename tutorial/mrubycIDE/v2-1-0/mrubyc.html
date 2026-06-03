@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja">
   <head>
-    <title>ターミナルソフトウェア設定</title>
+    <title>チュートリアル mruby/cとは？</title>
     <link rel="shortcut icon" href="/assets/img/bug.ico">
     <link rel="stylesheet" href="/assets/css/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
@@ -27,23 +27,40 @@
 
       <div class="lang-switch" aria-label="language switch">
         <span>言語:</span>
-        <a href="/console.html" onclick="localStorage.setItem('preferred_lang', 'ja');">🇯🇵 日本語</a>
+        <a href="/tutorial/mrubycIDE/v2-1-0/mrubyc.html" onclick="localStorage.setItem('preferred_lang', 'ja');">🇯🇵 日本語</a>
         <span> / </span>
-        <a href="/en/console.html" onclick="localStorage.setItem('preferred_lang', 'en');">🇺🇸 English</a>
+        <a href="/en/tutorial/mrubycIDE/v2-1-0/mrubyc.html" onclick="localStorage.setItem('preferred_lang', 'en');">🇺🇸 English</a>
       </div>
     </div>
     <div id="main">
-        puts出力先のソフトウェアの設定(RBoardのcomポートがcom6である場合)<br>
-<img src="https://user-images.githubusercontent.com/24926574/87621425-bfada100-c75b-11ea-8cf6-70d842401cbe.png">
-<hr id="first_boader">
-<h2>RLogin</h2>
-<img src="https://user-images.githubusercontent.com/24926574/87620127-b8d15f00-c758-11ea-8e3b-9ca582642632.png"><br>
-<img src="https://user-images.githubusercontent.com/24926574/87620265-0fd73400-c759-11ea-9929-5ee8d03e83be.png">
-<hr id="first_boader">
-<h2>teraterm</h2>
-<img src="https://user-images.githubusercontent.com/24926574/87621190-2e3e2f00-c75b-11ea-9ce6-5f0cc92a5e92.png"><br>
-<img src="https://user-images.githubusercontent.com/24926574/87621247-529a0b80-c75b-11ea-8954-753fc54fd7c9.png"><br>
-<img src="https://user-images.githubusercontent.com/24926574/87621282-66457200-c75b-11ea-8e5b-07b99bb7a026.png">
+        <h3>前提として：Ruby</h3>
+言わずと知れたプログラミング言語なので特に説明はしません。
+<ul id="content">
+    <li>オブジェクト指向プログラミング言語</li>
+    <li>Web系アプリケーションで広く使われている</li>
+    <li>可読性が高く、開発しやすい</li>
+</ul>
+という特徴があります。
+<h3>mruby</h3>
+Rubyのメリットをそのままデバイス開発に適用するらしいです。(私はEV3で少し触った程度)
+<ul id="content">
+    <li>少ないメモリで動作する</li>
+    <li>Rubyのように開発しやすい</li>
+    <li>いろいろ動的</li>
+    <li>多くのライブラリが提供されていますmrbgems</li>
+</ul>
+およそ300個のライブラリ<br>
+<a href="http://mruby.org/libraries/">http://mruby.org/libraries/</a>
+<h3>mruby/c</h3>
+mrubyが苦手とする小型マイコンの開発もできるよう更に小型化されています。
+<ul id="content">
+    <li>mrubyよりも更に省メモリ</li>
+    <li>Rubyのように開発しやすい</li>
+    <li>移植しやすい</li>
+</ul>
+機能を選択・制限することでより小型化されます。
+<img src="/assets/img/%E5%90%84%E7%A8%AERuby.png" class="expansion">
+
     </div>
     <div id="submenu">
   
