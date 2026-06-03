@@ -1,9 +1,17 @@
 <!DOCTYPE html>
 <html lang="ja">
   <head>
-    <title>プログラム書き込み - RBoardDocument</title>
-    <link rel="shortcut icon" href="./image/bug.ico">
+    <title>プログラム書き込み</title>
+    <link rel="shortcut icon" href="/assets/img/bug.ico">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link href="https://use.fontawesome.com/releases/v5.11.0/css/all.css" rel="stylesheet">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-176702602-1"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/a11y-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/highlight.min.js"></script>
+    <script src="/assets/js/codeStyle.js"></script>
+    <script src="/assets/js/sidebar.js"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -11,156 +19,167 @@
 
       gtag('config', 'UA-176702602-1');
     </script>
-    <link rel="stylesheet" type="text/css" href="main.css" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link href="https://use.fontawesome.com/releases/v5.11.0/css/all.css" rel="stylesheet">
   </head>
-  <body>
-    <div id="header"><h1> PG書き込み </h1></div>
-    <div id="main">
-      language：<a href="./write_program_en.html">English</a>/<a href="./write_program.html">日本語</a><br>
-      事前準備として<a href="./ide_install.html">IDEインストール</a>を実施してください。<br>
-      <br>
-      <h2 class="txt-border"> Windows10 </h2>
-      <ol>
-        <li>「File -> New -> Project」をクリック</li>
-        <img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/195542/358d4af8-1d2d-bada-71ad-28cc6ab3d55f.png">
-        <li>プロジェクト名を入力し「OK」をクリック (ここでは『test』)</li>
-        <img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/195542/813921bc-d729-1fbe-c682-9168448dfc02.png">
-        <li>作成したプロジェクトのフォルダを右クリック後、「Add New...」をクリック</li>
-        <img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/195542/270d4fe4-45d0-41f9-dc4a-5eabf2b2d68d.png">
-        <li>追加するRubyファイル名を指定後、「OK」をクリック　(ここでは『test.rb』)</li>
-        <img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/195542/783d4f52-a727-9dec-7470-e21a309f8bb8.png">
-        <li>USBケーブルを使用し、ボードとPCを接続</li>
-        <img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/195542/fcee4b49-8d99-7b9e-3dc1-b0cfbe622210.png">
-        <li>適当なプログラムを記述後「Write」ボタンをクリック。（Start connection....）</li>
-        <li>ボード上のリセットスイッチを押す。(表面実装の場合「RS」,DIPの場合は「SW1」)</li>
-        <li>「<span style="color:LightSeaGreen">The process "Write" exited normally.</span>」と表示されれば完了。</li>
-        <img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/195542/82d04005-70db-d4ad-c640-e3d7bd92665d.png" width="700">
-      </ol>
-      ※プログラムの書き込みが実行されない場合、他でCOMポートを使用している。(ターミナルソフト等)<br>
-      USBを挿し直してみる。<br>
-      または書き込み先のCOMポートが異なる場合がある(「Build and Deploy -> Writer」のportを変更)。<br>
-      <img src="https://user-images.githubusercontent.com/24926574/79931711-96e07d00-8486-11ea-8413-b82b60aeccbd.png">
-      <h2 class="txt-border"> mac </h2>
-      <ol>
-        <li>IDEを起動します。</li>
-        <a data-lightbox="ide" href="./image/起動.png">
-          <img src="./image/起動.png" class="expansion">
-        </a>
-        <li>メニューバーの「File」＞「New」＞「Project」をクリックします。</li>
-        <a data-lightbox="ide" href="./image/メニューバー.png">
-          <img src="./image/メニューバー.png" class="expansion">
-        </a>
-        <li>プロジェクト名を入力してOKをクリックします。<br>
-          作成先のディレクトリはIDEと同じディレクトリを指定します</li>
-        <a data-lightbox="ide" href="./image/プロジェクト名.png">
-          <img src="./image/プロジェクト名.png" class="expansion">
-        </a><br>
-        例として、プロジェクト名を hanson とします。
-        <li>プロジェクトが作成されます。</li>
-        <a data-lightbox="ide" href="./image/プロジェクト.png">
-          <img src="./image/プロジェクト.png" class="expansion">
-        </a>
-        <li>コードを記述するファイルを追加します。<br>
-          プロジェクトを右クリックして「Add New」をクリックします。</li>
-        <a data-lightbox="ide" href="./image/add_new.png">
-          <img src="./image/add_new.png" class="expansion">
-        </a><br>
-        例として、ファイル名を sample.rb とします。<br>
-        作成先のディレクトリは、3.で作成したプロジェクトディレクトリを指定します<br>
-        <a data-lightbox="ide" href="./image/sample.png">
-          <img src="./image/sample.png" class="expansion">
-        </a>
-        <li>コードを記述するファイルが作成されます。</li>
-        <a data-lightbox="ide" href="./image/code.png">
-          <img src="./image/code.png" class="expansion">
-        </a><br>
-        記述したプログラムを保存する際は、保存ボタン（フロッピーディスクのアイコン）をクリックしてください。
-        <li>プログラムを書き込むためにRBoardをPCに接続します。<br>
-          環境設定にて書き込み用のポートが正しく選択されていることを確認ください。<br>
-          （設定方法は<a href="./ide_install.html">IDEインストール</a>の手順5を参照ください）</li>
-        <li>書き込みボタンをクリックします。<br>
-          ※の時に「開発元が検証できないため・・・」のメッセージが表示された場合は<a href="./ide_install.html">IDEインストール</a>の手順2に記載の方法で実行を許可してください。
-        </li>
-        <a data-lightbox="ide" href="./image/書き込み.png">
-          <img src="./image/書き込み.png" class="expansion">
-        </a><br>
-        書き込みボタンをクリックすると画面内に「Start connection」と表示されます。<br>
-        <a data-lightbox="ide" href="./image/connection.png">
-          <img src="./image/connection.png" class="expansion">
-        </a>
-        <li>続けて、RBoard上のRSボタン（リセットボタン）を押して離します。<br>
-          書き込みが完了すると以下のメッセージが表示されます。
-        </li>
-        <a data-lightbox="ide" href="./image/メッセージ.png">
-          <img src="./image/メッセージ.png" class="expansion">
-        </a><br>
-        書き込んだプログラムが正しく動作していることを確認しましょう。
-      </ol>
-    </div>
+  <body id="top_page">
+    <div id="header">
+      <h1> RBoard </h1>
+      
 
-    <div id="submenu">
-      <div id="submenu_header">もくじ</div>
-      <ul id="submenu_body">
-        <i class="fas fa-home"></i><a href="./index.html">HOME</a>
-        <li><details>
-          <summary>プログラム書き込み</summary>
-          <ul id="subuul">
-            <li><a href="./ide_install.html">mruby/c IDEインストール</a></li>
-            <li><a href="./write_program.html">PG書き込み</a></li>
-          </ul>
-        </details></li>
-        <li><details>
-          <summary>ファームウェアアップデート</summary>
-          <ul id="subuul">
-            <li><a href="./update.html">アップデート手順</a></li>
-          </ul>
-        </details></li>
-        <li><details>
-          <summary>ボード一覧</summary>
-          <ul id="subuul">
-          <li><a href="./board_list.html">ボード一覧</a></li>
-          </ul>
-        </details></li>
-        <li><details>
-          <summary>RBoardにおける各クラス</summary>
-          <ul id="subuul">
-            <li><a href="./farm_list/mrubyc1_4.html">RBoard_V1(mruby/c1.4)</a></li>
-            <li><a href="./farm_list/mrubyc2_1.html">RBoard_V1(mruby/c2.1)</a></li>
-            <li><a href="./farm_list/mrubyc3_4.html">RBoard_V2(mruby/c3.4)</a></li>
-          </ul>
-        </details></li>
-        <li><details>
-          <summary>サンプルプログラム</summary>
-          <ul id="subuul">
-            <li><a href="./adc.html">ADCサンプル</a> / <a href="./sample_adc.html">ver2</a></li>
-            <li><a href="./i2c.html">I2Cサンプル</a> / <a href="./sample_i2c.html">ver2</a></li>
-            <li><a href="./pwm.html">PWMサンプル</a> / <a href="./sample_pwm.html">ver2</a></li>
-            <li><a href="./uart.html">UARTサンプル</a> / <a href="./sample_uart.html">ver2</a></li>
-            <li><a href="./etc.html">その他サンプル</a> / <a href="./sample_etc.html">ver2</a></li>
-          </ul>
-        </details></li>
-        <li><details>
-          <summary>その他</summary>
-          <ul id="subuul">
-            <li><a href="./sensor_module.html">対応センサーモジュール</a></li>
-            <li><a href="./console.html">ターミナルソフトの設定</a></li>
-          </ul>
-        </details></li>
-        <li><details>
-          <summary>チュートリアル</summary>
-          <ol id="subuol">
-            <li><a href="./tutorial_mrubyc.html">mruby/cとは？</a></li>
-            <li><a href="./tutorial_led.html">LEDを制御する</a></li>
-            <li><a href="./tutorial_rgb_led.html">フルカラーLED</a></li>
-            <li><a href="./tutorial_reed_switch.html">ドア開閉センサ</a></li>
-            <li><a href="./tutorial_buzzer.html">圧電ブザー</a></li>
-            <li><a href="./tutorial_cds.html">光センサ</a></li>
-            <li><a href="./tutorial_temp.html">温度センサ</a></li>
-          </ol>
-        </details></li>
-      </ul>
+      <div class="lang-switch" aria-label="language switch">
+        <span>言語:</span>
+        <a href="/write_program.html" onclick="localStorage.setItem('preferred_lang', 'ja');">🇯🇵 日本語</a>
+        <span> / </span>
+        <a href="/en/write_program.html" onclick="localStorage.setItem('preferred_lang', 'en');">🇺🇸 English</a>
+      </div>
     </div>
+    <div id="main">
+        事前準備として<a href="/ide_install.html">IDEインストール</a>を実施してください。<br>
+<br>
+<h2 class="txt-border"> Windows10 </h2>
+<ol>
+  <li>「File -> New -> Project」をクリック</li>
+  <img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/195542/358d4af8-1d2d-bada-71ad-28cc6ab3d55f.png">
+  <li>プロジェクト名を入力し「OK」をクリック (ここでは『test』)</li>
+  <img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/195542/813921bc-d729-1fbe-c682-9168448dfc02.png">
+  <li>作成したプロジェクトのフォルダを右クリック後、「Add New...」をクリック</li>
+  <img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/195542/270d4fe4-45d0-41f9-dc4a-5eabf2b2d68d.png">
+  <li>追加するRubyファイル名を指定後、「OK」をクリック　(ここでは『test.rb』)</li>
+  <img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/195542/783d4f52-a727-9dec-7470-e21a309f8bb8.png">
+  <li>USBケーブルを使用し、ボードとPCを接続</li>
+  <img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/195542/fcee4b49-8d99-7b9e-3dc1-b0cfbe622210.png">
+  <li>適当なプログラムを記述後「Write」ボタンをクリック。（Start connection....）</li>
+  <li>ボード上のリセットスイッチを押す。(表面実装の場合「RS」,DIPの場合は「SW1」)</li>
+  <li>「<span style="color:LightSeaGreen">The process "Write" exited normally.</span>」と表示されれば完了。</li>
+  <img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/195542/82d04005-70db-d4ad-c640-e3d7bd92665d.png" width="700">
+</ol>
+※プログラムの書き込みが実行されない場合、他でCOMポートを使用している。(ターミナルソフト等)<br>
+USBを挿し直してみる。<br>
+または書き込み先のCOMポートが異なる場合がある(「Build and Deploy -> Writer」のportを変更)。<br>
+<img src="https://user-images.githubusercontent.com/24926574/79931711-96e07d00-8486-11ea-8413-b82b60aeccbd.png">
+<h2 class="txt-border"> mac </h2>
+<ol>
+  <li>IDEを起動します。</li>
+  <a data-lightbox="ide" href="/assets/img/ideProgram/%E8%B5%B7%E5%8B%95.png">
+    <img src="/assets/img/ideProgram/%E8%B5%B7%E5%8B%95.png" class="expansion">
+  </a>
+  <li>メニューバーの「File」＞「New」＞「Project」をクリックします。</li>
+  <a data-lightbox="ide" href="/assets/img/ideProgram/%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC%E3%83%90%E3%83%BC.png">
+    <img src="/assets/img/ideProgram/%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC%E3%83%90%E3%83%BC.png" class="expansion">
+  </a>
+  <li>プロジェクト名を入力してOKをクリックします。<br>
+    作成先のディレクトリはIDEと同じディレクトリを指定します</li>
+  <a data-lightbox="ide" href="/assets/img/ideProgram/%E3%83%97%E3%83%AD%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E5%90%8D.png">
+    <img src="/assets/img/ideProgram/%E3%83%97%E3%83%AD%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E5%90%8D.png" class="expansion">
+  </a><br>
+  例として、プロジェクト名を hanson とします。
+  <li>プロジェクトが作成されます。</li>
+  <a data-lightbox="ide" href="/assets/img/ideProgram/%E3%83%97%E3%83%AD%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88.png">
+    <img src="/assets/img/ideProgram/%E3%83%97%E3%83%AD%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88.png" class="expansion">
+  </a>
+  <li>コードを記述するファイルを追加します。<br>
+    プロジェクトを右クリックして「Add New」をクリックします。</li>
+  <a data-lightbox="ide" href="/assets/img/ideProgram/add_new.png">
+    <img src="/assets/img/ideProgram/add_new.png" class="expansion">
+  </a><br>
+  例として、ファイル名を sample.rb とします。<br>
+  作成先のディレクトリは、3.で作成したプロジェクトディレクトリを指定します<br>
+  <a data-lightbox="ide" href="/assets/img/ideProgram/sample.png">
+    <img src="/assets/img/ideProgram/sample.png" class="expansion">
+  </a>
+  <li>コードを記述するファイルが作成されます。</li>
+  <a data-lightbox="ide" href="/assets/img/ideProgram/code.png">
+    <img src="/assets/img/ideProgram/code.png" class="expansion">
+  </a><br>
+  記述したプログラムを保存する際は、保存ボタン（フロッピーディスクのアイコン）をクリックしてください。
+  <li>プログラムを書き込むためにRBoardをPCに接続します。<br>
+    環境設定にて書き込み用のポートが正しく選択されていることを確認ください。<br>
+    （設定方法は<a href="/ide_install.html">IDEインストール</a>の手順5を参照ください）</li>
+  <li>書き込みボタンをクリックします。<br>
+    ※の時に「開発元が検証できないため・・・」のメッセージが表示された場合は<a href="/ide_install.html">IDEインストール</a>の手順2に記載の方法で実行を許可してください。
+  </li>
+  <a data-lightbox="ide" href="/assets/img/ideProgram/%E6%9B%B8%E3%81%8D%E8%BE%BC%E3%81%BF.png">
+    <img src="/assets/img/ideProgram/%E6%9B%B8%E3%81%8D%E8%BE%BC%E3%81%BF.png" class="expansion">
+  </a><br>
+  書き込みボタンをクリックすると画面内に「Start connection」と表示されます。<br>
+  <a data-lightbox="ide" href="/assets/img/ideProgram/connection.png">
+    <img src="/assets/img/ideProgram/connection.png" class="expansion">
+  </a>
+  <li>続けて、RBoard上のRSボタン（リセットボタン）を押して離します。<br>
+    書き込みが完了すると以下のメッセージが表示されます。
+  </li>
+  <a data-lightbox="ide" href="/assets/img/ideProgram/%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8.png">
+    <img src="/assets/img/ideProgram/%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8.png" class="expansion">
+  </a><br>
+  書き込んだプログラムが正しく動作していることを確認しましょう。
+</ol>
+
+    </div>
+    <div id="submenu">
+  
+  <div id="submenu_header"></div>
+  <ul id="submenu_body">
+  <i class="fas fa-home"></i><a href="/">HOME</a>
+  <li><details>
+    <summary>プログラミング</summary>
+    <ul id="subuul">
+      <li><a href="/update.html">RBoardファームウェア更新</a></li>
+      
+        <li><a href="/ide_install.html">IDEのセットアップ</a></li>
+        <li><a href="/write_program.html">IDEでのプログラミング</a></li>
+      
+    </ul>
+  </details></li>
+  <li><details>
+    <summary>ボード一覧</summary>
+    <ul id="subuul">
+      <li><a href="/board_list.html">ボード一覧</a></li>
+      <li><a href="/boards/RBoard_PIC32_SMD_v2-1-0_1-0.html">RBoard_V1</a></li>
+      <li><a href="/boards/RBoard_PIC32_SMD_v3-4-0_2-0.html">RBoard_V2</a></li>
+    </ul>
+  </details></li>
+  <li><details>
+    <summary>クラス</summary>
+    <ul id="subuul">
+      <li><a href="/firmware/mrubyc1_4.html">RBoard_V1(mruby/c1.4)</a></li>
+      
+        <li><a href="/firmware/mrubyc2_1.html">RBoard_V1(mruby/c2.1)</a></li>
+        <li><a href="/firmware/mrubyc3_4.html">RBoard_V2(mruby/c3.4)</a></li>
+      
+    </ul>
+  </details></li>
+  <li><details>
+    <summary>サンプルプログラム</summary>
+    <ul id="subuul">
+    <li><a href="/sampleProgram/v2-1-0/adc.html">ADCサンプル</a> / <a href="/sampleProgram/v3-4-0/adc.html">V2</a></li>
+    <li><a href="/sampleProgram/v2-1-0/i2c.html">I2Cサンプル</a> / <a href="/sampleProgram/v3-4-0/i2c.html">V2</a></li>
+    <li><a href="/sampleProgram/v2-1-0/pwm.html">PWMサンプル</a> / <a href="/sampleProgram/v3-4-0/pwm.html">V2</a></li>
+    <li><a href="/sampleProgram/v2-1-0/uart.html">UARTサンプル</a> / <a href="/sampleProgram/v3-4-0/uart.html">V2</a></li>
+    <li><a href="/sampleProgram/v2-1-0/etc.html">その他サンプル</a> / <a href="/sampleProgram/v3-4-0/etc.html">V2</a></li>
+    </ul>
+  </details></li>
+  <li><details>
+    <summary>その他</summary>
+    <ul id="subuul">
+    <li><a href="/sampleProgram/module.html">対応センサーモジュール</a></li>
+    <li><a href="/console.html">ターミナルソフトの設定</a></li>
+    </ul>
+  </details></li>
+  <li><details id ="tutorial">
+    <summary>チュートリアル</summary>
+    <ol id="subuol">
+    <li><a href="/tutorial/mrubycIDE/v2-1-0/mrubyc.html#tutorial">mruby/cとは？</a></li>
+    <li><a href="/tutorial/mrubycIDE/v2-1-0/led.html#tutorial">LEDを制御する</a></li>
+    <li><a href="/tutorial/mrubycIDE/v2-1-0/rgb_led.html#tutorial">カラーLEDを制御する</a></li>
+    <li><a href="/tutorial/mrubycIDE/v2-1-0/reed_switch.html#tutorial">ドア開閉センサ</a></li>
+    <li><a href="/tutorial/mrubycIDE/v2-1-0/buzzer.html#tutorial">圧電ブザー</a></li>
+    <li><a href="/tutorial/mrubycIDE/v2-1-0/cds.html#tutorial">光センサ</a></li>
+    <li><a href="/tutorial/mrubycIDE/v2-1-0/temp.html#tutorial">温度センサ</a></li>
+    </ol>
+  </details></li>
+  </ul>
+
+  
+  
+</div>
   </body>
 </html>

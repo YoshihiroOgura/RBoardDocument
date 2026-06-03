@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html lang="ja">
   <head>
-    <title>RBoardDocument</title>
-    <link rel="shortcut icon" href="./image/bug.ico">
-    <link rel="stylesheet" type="text/css" href="main.css" />
+    <title>ホームページ</title>
+    <link rel="shortcut icon" href="/assets/img/bug.ico">
+    <link rel="stylesheet" href="/assets/css/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link href="https://use.fontawesome.com/releases/v5.11.0/css/all.css" rel="stylesheet">
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-176702602-1"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/a11y-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/highlight.min.js"></script>
+    <script src="/assets/js/codeStyle.js"></script>
+    <script src="/assets/js/sidebar.js"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -17,131 +21,145 @@
     </script>
   </head>
   <body id="top_page">
-    <div id="header"><h1> RBoard </h1></div>
-    <div id="main">
-      <h2> RBoard with PIC32 & mruby/c</h2>
-      <img class="window_img" src = "https://lh3.googleusercontent.com/d/1Lk95hgHNin8dEX_MBmEDh2B_POfmYwY5">
-      <hr id="first_boader">
-      <h2>はじめに</h2>
-      Welcome to the world of mruby/c<br>
-      mruby/cはCRubyやmrubyと比べ非常にコンパクトなマイコン向け言語です。<br>
-      <br>
-      RBoardはRuby(mruby/c)をマイコンで使ってみたい！という人のための入門ボードです。<br>
-      できる限り低レイヤー的実装をしており様々なセンサーに対応できます。<br>
-      <br>
-      mruby/cを標準で搭載しているためMPLABX等専用IDEを使用する必要なくmruby/cIDEによる開発が可能です。<br>
-      <br>
-      また、GROVEポートを搭載しているためはんだ付け無しでも様々なセンサ・アクチュエータを使用できます。<br>
-      <br>
-      各バージョンに関する情報はリリースページへ=>
-      <a href="https://github.com/YoshihiroOgura/pic32mx170_mrubyc/releases">リリースページ</a><br>
-      <br>
-      <i class="far fa-question-circle"></i>GROVEについては<a href="https://wiki.seeedstudio.com/Grove_System/">こちら</a><br>
-      <i class="far fa-question-circle"></i>mruby/cについては<a href="https://www.s-itoc.jp/activity/research/mrubyc/">こちら</a><br>
-      <br>
-      <hr id="first_boader">
-      <h2>ソースコード</h2>
-      <b>License</b>：BSD 3-Clause<br>
-      <b>Copyright</b>：Shimane Johoshori Center Inc.<br>
-      <a href="https://github.com/YoshihiroOgura/pic32mx170_mrubyc">https://github.com/YoshihiroOgura/pic32mx170_mrubyc</a><br>
+    <div id="header">
+      <h1> RBoard </h1>
       
-      <hr id="first_boader">
-      <h2>回路図等基板データ</h2>
-      <b>License</b>：CC-BY-NC-SA 3.0<br>
-      <b>Copyright</b>：Shimane Johoshori Center Inc. or YoshihiroOgura<br>
-      <a href="https://easyeda.com/YoshihiroOgura/rboard">https://easyeda.com/YoshihiroOgura/rboard</a><br>
-      <br>
 
-      <hr id="first_boader">
-      <h2>デモ動画</h2>
-      <i class="far fa-star"></i>温度データ無線送信　0:00~0:29<br>
-      <i class="far fa-star"></i>壁検知自立走行　0:30~0:50<br>
-      <i class="far fa-star"></i><a href="https://www.ottodiy.com/">otto</a>の制御　0:51~1:11<br>
-      <iframe src="https://drive.google.com/file/d/1ZPXNBMeIIfxDhHjEzN8hbyfAX-B2K3MK/preview" width="640" height="480" allow="autoplay"></iframe>
-      <hr id="first_boader">
-      <h2>購入先</h2>
-      <a href="https://www.chip1stop.com/view/dispDetail/DispDetail?partId=SMNE-0000001">株式会社チップワンストップ様</a><br>
-      <a href="https://www.hokusin-web.co.jp/company/office">株式会社ホクシン様</a>にて販売中です。
-
-      <hr id="first_boader">
-      <h2>RBoard購入に関する保証</h2>
-      初期不良のみ対応いたします。(購入後7日間)<br>
-      お問い合わせはメール(<a href="mailto:sjc@sjc-inc.co.jp">sjc@sjc-inc.co.jp</a>)より<br>
-      本品を使用したことによって発生した，いかなる損害においても一切の責任は負いません。<br>
-      <hr id="first_boader">
-      <h2>お問い合わせ</h2>
-      プログラムに関するご質問・ご要望はソースコードの<a href="https://github.com/YoshihiroOgura/pic32mx170_mrubyc/issues">issues</a>より<br>
-      基板に関するご要望は<a href="https://easyeda.com/YoshihiroOgura/rboard">EasyEDA</a>のコメント欄より<br>
-      その他お問い合わせはメール(<a href="mailto:sjc@sjc-inc.co.jp">sjc@sjc-inc.co.jp</a>)より<br>
-      お願いいたします。<br>
-      畏まった形式で無くともよろしい方は私のtwitterまでm(_ _"m)<a href="https://twitter.com/morisuteisyon?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-size="large" data-show-count="false">Follow @morisuteisyon</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script><br>
-      <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.js" integrity="sha256-icjghcPaibMf1jv4gQIGi5MeWNHem2SispcorCiCfSg=" crossorigin="anonymous"></script>
-      <script type="text/javascript" src="./setup.js"></script>
-      <hr id="first_boader">
-      このドキュメントは<a href="./LICENSE">BSD 3-Clauseライセンス</a>によって公開されています。
+      <div class="lang-switch" aria-label="language switch">
+        <span>言語:</span>
+        <a href="/" onclick="localStorage.setItem('preferred_lang', 'ja');">🇯🇵 日本語</a>
+        <span> / </span>
+        <a href="/en/" onclick="localStorage.setItem('preferred_lang', 'en');">🇺🇸 English</a>
+      </div>
     </div>
+    <div id="main">
+        <h2> RBoard with PIC32 & mruby/c</h2>
+<img class="window_img" src = "https://lh3.googleusercontent.com/d/1Lk95hgHNin8dEX_MBmEDh2B_POfmYwY5">
+<hr id="first_boader">
+<h2>はじめに</h2>
+Welcome to the world of mruby/c<br>
+mruby/cはCRubyやmrubyと比べ非常にコンパクトなマイコン向け言語です。<br>
+<br>
+RBoardはRuby(mruby/c)をマイコンで使ってみたい！という人のための入門ボードです。<br>
+できる限り低レイヤー的実装をしており様々なセンサーに対応できます。<br>
+<br>
+mruby/cを標準で搭載しているためMPLABX等専用IDEを使用する必要なくmruby/cIDEによる開発が可能です。<br>
+<br>
+また、GROVEポートを搭載しているためはんだ付け無しでも様々なセンサ・アクチュエータを使用できます。<br>
+<br>
+各バージョンに関する情報はリリースページへ=>
+<a href="https://github.com/YoshihiroOgura/pic32mx170_mrubyc/releases">リリースページ</a><br>
+<br>
+<i class="far fa-question-circle"></i>GROVEについては<a href="https://wiki.seeedstudio.com/Grove_System/">こちら</a><br>
+<i class="far fa-question-circle"></i>mruby/cについては<a href="https://www.s-itoc.jp/activity/research/mrubyc/">こちら</a><br>
+<br>
+<hr id="first_boader">
+<h2>ソースコード</h2>
+<b>License</b>：BSD 3-Clause<br>
+<b>Copyright</b>：Shimane Johoshori Center Inc.<br>
+<a href="https://github.com/YoshihiroOgura/pic32mx170_mrubyc">https://github.com/YoshihiroOgura/pic32mx170_mrubyc</a><br>
 
+<hr id="first_boader">
+<h2>回路図等基板データ</h2>
+<b>License</b>：CC-BY-NC-SA 3.0<br>
+<b>Copyright</b>：Shimane Johoshori Center Inc. or YoshihiroOgura<br>
+<a href="https://easyeda.com/YoshihiroOgura/rboard">https://easyeda.com/YoshihiroOgura/rboard</a><br>
+<br>
+
+<hr id="first_boader">
+<h2>デモ動画</h2>
+<i class="far fa-star"></i>温度データ無線送信　0:00~0:29<br>
+<i class="far fa-star"></i>壁検知自立走行　0:30~0:50<br>
+<i class="far fa-star"></i><a href="https://www.ottodiy.com/">otto</a>の制御　0:51~1:11<br>
+<iframe src="https://drive.google.com/file/d/1ZPXNBMeIIfxDhHjEzN8hbyfAX-B2K3MK/preview" width="640" height="480" allow="autoplay"></iframe>
+<hr id="first_boader">
+<h2>購入先</h2>
+<a href="https://www.chip1stop.com/view/dispDetail/DispDetail?partId=SMNE-0000001">株式会社チップワンストップ様</a><br>
+<a href="https://www.hokusin-web.co.jp/company/office">株式会社ホクシン様</a>にて販売中です。
+
+<hr id="first_boader">
+<h2>RBoard購入に関する保証</h2>
+初期不良のみ対応いたします。(購入後7日間)<br>
+お問い合わせはメール(<a href="mailto:sjc@sjc-inc.co.jp">sjc@sjc-inc.co.jp</a>)より<br>
+本品を使用したことによって発生した，いかなる損害においても一切の責任は負いません。<br>
+<hr id="first_boader">
+<h2>お問い合わせ</h2>
+プログラムに関するご質問・ご要望はソースコードの<a href="https://github.com/YoshihiroOgura/pic32mx170_mrubyc/issues">issues</a>より<br>
+基板に関するご要望は<a href="https://easyeda.com/YoshihiroOgura/rboard">EasyEDA</a>のコメント欄より<br>
+その他お問い合わせはメール(<a href="mailto:sjc@sjc-inc.co.jp">sjc@sjc-inc.co.jp</a>)より<br>
+お願いいたします。<br>
+畏まった形式で無くともよろしい方は私のtwitterまでm(_ _"m)<a href="https://twitter.com/morisuteisyon?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-size="large" data-show-count="false">Follow @morisuteisyon</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script><br>
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.js" integrity="sha256-icjghcPaibMf1jv4gQIGi5MeWNHem2SispcorCiCfSg=" crossorigin="anonymous"></script>
+<script src="/assets/js/setupParticles.js"></script>
+<hr id="first_boader">
+このドキュメントは<a href="./LICENSE">BSD 3-Clauseライセンス</a>によって公開されています。
+    </div>
     <div id="submenu">
-      <div id="submenu_header">もくじ</div>
-      <ul id="submenu_body">
-        <i class="fas fa-home"></i><a href="./index.html">HOME</a>
-        <li><details>
-          <summary>プログラム書き込み</summary>
-          <ul id="subuul">
-            <li><a href="./ide_install.html">mruby/c IDEインストール</a></li>
-            <li><a href="./write_program.html">PG書き込み</a></li>
-          </ul>
-        </details></li>
-        <li><details>
-          <summary>ファームウェアアップデート</summary>
-          <ul id="subuul">
-            <li><a href="./update.html">アップデート手順</a></li>
-          </ul>
-        </details></li>
-        <li><details>
-          <summary>ボード一覧</summary>
-          <ul id="subuul">
-          <li><a href="./board_list.html">ボード一覧</a></li>
-          </ul>
-        </details></li>
-        <li><details>
-          <summary>RBoardにおける各クラス</summary>
-          <ul id="subuul">
-            <li><a href="./farm_list/mrubyc1_4.html">RBoard_V1(mruby/c1.4)</a></li>
-            <li><a href="./farm_list/mrubyc2_1.html">RBoard_V1(mruby/c2.1)</a></li>
-            <li><a href="./farm_list/mrubyc3_4.html">RBoard_V2(mruby/c3.4)</a></li>
-          </ul>
-        </details></li>
-        <li><details>
-          <summary>サンプルプログラム</summary>
-          <ul id="subuul">
-            <li><a href="./adc.html">ADCサンプル</a> / <a href="./sample_adc.html">ver2</a></li>
-            <li><a href="./i2c.html">I2Cサンプル</a> / <a href="./sample_i2c.html">ver2</a></li>
-            <li><a href="./pwm.html">PWMサンプル</a> / <a href="./sample_pwm.html">ver2</a></li>
-            <li><a href="./uart.html">UARTサンプル</a> / <a href="./sample_uart.html">ver2</a></li>
-            <li><a href="./etc.html">その他サンプル</a> / <a href="./sample_etc.html">ver2</a></li>
-          </ul>
-        </details></li>
-        <li><details>
-          <summary>その他</summary>
-          <ul id="subuul">
-            <li><a href="./sensor_module.html">対応センサーモジュール</a></li>
-            <li><a href="./console.html">ターミナルソフトの設定</a></li>
-          </ul>
-        </details></li>
-        <li><details>
-          <summary>チュートリアル</summary>
-          <ol id="subuol">
-            <li><a href="./tutorial_mrubyc.html">mruby/cとは？</a></li>
-            <li><a href="./tutorial_led.html">LEDを制御する</a></li>
-            <li><a href="./tutorial_rgb_led.html">フルカラーLED</a></li>
-            <li><a href="./tutorial_reed_switch.html">ドア開閉センサ</a></li>
-            <li><a href="./tutorial_buzzer.html">圧電ブザー</a></li>
-            <li><a href="./tutorial_cds.html">光センサ</a></li>
-            <li><a href="./tutorial_temp.html">温度センサ</a></li>
-          </ol>
-        </details></li>
-      </ul>
-    </div>
+  
+  <div id="submenu_header"></div>
+  <ul id="submenu_body">
+  <i class="fas fa-home"></i><a href="/">HOME</a>
+  <li><details>
+    <summary>プログラミング</summary>
+    <ul id="subuul">
+      <li><a href="/update.html">RBoardファームウェア更新</a></li>
+      
+        <li><a href="/ide_install.html">IDEのセットアップ</a></li>
+        <li><a href="/write_program.html">IDEでのプログラミング</a></li>
+      
+    </ul>
+  </details></li>
+  <li><details>
+    <summary>ボード一覧</summary>
+    <ul id="subuul">
+      <li><a href="/board_list.html">ボード一覧</a></li>
+      <li><a href="/boards/RBoard_PIC32_SMD_v2-1-0_1-0.html">RBoard_V1</a></li>
+      <li><a href="/boards/RBoard_PIC32_SMD_v3-4-0_2-0.html">RBoard_V2</a></li>
+    </ul>
+  </details></li>
+  <li><details>
+    <summary>クラス</summary>
+    <ul id="subuul">
+      <li><a href="/firmware/mrubyc1_4.html">RBoard_V1(mruby/c1.4)</a></li>
+      
+        <li><a href="/firmware/mrubyc2_1.html">RBoard_V1(mruby/c2.1)</a></li>
+        <li><a href="/firmware/mrubyc3_4.html">RBoard_V2(mruby/c3.4)</a></li>
+      
+    </ul>
+  </details></li>
+  <li><details>
+    <summary>サンプルプログラム</summary>
+    <ul id="subuul">
+    <li><a href="/sampleProgram/v2-1-0/adc.html">ADCサンプル</a> / <a href="/sampleProgram/v3-4-0/adc.html">V2</a></li>
+    <li><a href="/sampleProgram/v2-1-0/i2c.html">I2Cサンプル</a> / <a href="/sampleProgram/v3-4-0/i2c.html">V2</a></li>
+    <li><a href="/sampleProgram/v2-1-0/pwm.html">PWMサンプル</a> / <a href="/sampleProgram/v3-4-0/pwm.html">V2</a></li>
+    <li><a href="/sampleProgram/v2-1-0/uart.html">UARTサンプル</a> / <a href="/sampleProgram/v3-4-0/uart.html">V2</a></li>
+    <li><a href="/sampleProgram/v2-1-0/etc.html">その他サンプル</a> / <a href="/sampleProgram/v3-4-0/etc.html">V2</a></li>
+    </ul>
+  </details></li>
+  <li><details>
+    <summary>その他</summary>
+    <ul id="subuul">
+    <li><a href="/sampleProgram/module.html">対応センサーモジュール</a></li>
+    <li><a href="/console.html">ターミナルソフトの設定</a></li>
+    </ul>
+  </details></li>
+  <li><details id ="tutorial">
+    <summary>チュートリアル</summary>
+    <ol id="subuol">
+    <li><a href="/tutorial/mrubycIDE/v2-1-0/mrubyc.html#tutorial">mruby/cとは？</a></li>
+    <li><a href="/tutorial/mrubycIDE/v2-1-0/led.html#tutorial">LEDを制御する</a></li>
+    <li><a href="/tutorial/mrubycIDE/v2-1-0/rgb_led.html#tutorial">カラーLEDを制御する</a></li>
+    <li><a href="/tutorial/mrubycIDE/v2-1-0/reed_switch.html#tutorial">ドア開閉センサ</a></li>
+    <li><a href="/tutorial/mrubycIDE/v2-1-0/buzzer.html#tutorial">圧電ブザー</a></li>
+    <li><a href="/tutorial/mrubycIDE/v2-1-0/cds.html#tutorial">光センサ</a></li>
+    <li><a href="/tutorial/mrubycIDE/v2-1-0/temp.html#tutorial">温度センサ</a></li>
+    </ol>
+  </details></li>
+  </ul>
+
+  
+  
+</div>
   </body>
 </html>

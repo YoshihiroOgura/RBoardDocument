@@ -1,10 +1,17 @@
 <!DOCTYPE html>
 <html lang="ja">
   <head>
-    <title>mruby/cIDEインストール - RBoardDocument</title>
-    <link rel="shortcut icon" href="./image/bug.ico">
-      <!-- Global site tag (gtag.js) - Google Analytics -->
+    <title>mruby/c IDEインストール</title>
+    <link rel="shortcut icon" href="/assets/img/bug.ico">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link href="https://use.fontawesome.com/releases/v5.11.0/css/all.css" rel="stylesheet">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-176702602-1"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/a11y-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/highlight.min.js"></script>
+    <script src="/assets/js/codeStyle.js"></script>
+    <script src="/assets/js/sidebar.js"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -12,139 +19,146 @@
 
       gtag('config', 'UA-176702602-1');
     </script>
-    <link rel="stylesheet" type="text/css" href="main.css" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link href="https://use.fontawesome.com/releases/v5.11.0/css/all.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js" type="text/javascript"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js" type="text/javascript"></script>
   </head>
-  <body>
-    <div id="header"><h1> IDEインストール </h1></div>
+  <body id="top_page">
+    <div id="header">
+      <h1> RBoard </h1>
+      
+
+      <div class="lang-switch" aria-label="language switch">
+        <span>言語:</span>
+        <a href="/ide_install.html" onclick="localStorage.setItem('preferred_lang', 'ja');">🇯🇵 日本語</a>
+        <span> / </span>
+        <a href="/en/ide_install.html" onclick="localStorage.setItem('preferred_lang', 'en');">🇺🇸 English</a>
+      </div>
+    </div>
     <div id="main">
-      language：<a href="./ide_install_en.html">English</a>/<a href="./ide_install.html">日本語</a><br>
-      <h2 class="txt-border"> Windows10 </h2>
-      <ol>
-        <li><a href="https://www.s-itoc.jp/activity/research/mrubyc/mrubyc_download/">mruby/c IDE</a>をダウンロード後、解凍</li>
-        <li>mruby/c IDEの解凍したフォルダのmrubyc_ide.exeを起動</li>
-        <li>上部タブの「File -> Settings...」をクリック</li>
-        <a data-lightbox="ide" href="./image/ide1.png">
-          <img src="./image/ide1.png" class="expansion">
-        </a>
-        <li>「Build and Deploy -> Cmpiler」の「mrbc」項目に解凍したフォルダ内にある「mrbc.exe」のpathを指定</li>
-        <a data-lightbox="ide" href="./image/ide2.png">
-          <img src="./image/ide2.png" class="expansion">
-        </a>
-        <li>「Build and Deploy -> Writer」の「mrbwrite」項目に解凍したフォルダ内にある「mrbwrite.exe」のpathを指定</li>
-        <li>「Build and Deploy -> Writer」の「Options」項目に「-s 19200」と書き込み、「Apply」、「OK」をクリック</li>
-        <a data-lightbox="ide" href="./image/ide3.png">
-          <img src="./image/ide3.png" class="expansion">
-        </a>
-      </ol>
-      <h3 class="txt-border"> インストール動画 </h3>
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/rL1jSJoQMNo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      <br><br><br>
-      <h2 class="txt-border"> MAC </h2>
-      <ol>
-        <li><a href="https://www.s-itoc.jp/activity/research/mrubyc/mrubyc_download/">mruby/c IDE</a>をダウンロード後、解凍</li>
-        <li>展開したディレクトリ内の「mrubyc_ide」をダブルクリックしてIDEを起動します。</li>
-        <small>その際に以下のメッセージが表示される場合があります。この場合は「キャンセル」をクリックして、メッセージを閉じます。</small><br>
-        <a data-lightbox="ide" href="./image/不明な提供元.png">
-          <img src="./image/不明な提供元.png" class="expansion">
-        </a><br>
-        <small>続けて「システム環境設定」を起動し「セキュリティとプライバシー」を開きます。</small><br>
-        <a data-lightbox="ide" href="./image/セキュリティとプライバシー.png">
-          <img src="./image/セキュリティとプライバシー.png" class="expansion">
-        </a><br>
-        <small>「このまま開く」をクリックします。</small><br>
-        <small>以下のメッセージが表示された場合は「開く」をクリックしてIDEを起動します。</small><br>
-        <a data-lightbox="ide" href="./image/開発元.png">
-          <img src="./image/開発元.png" class="expansion">
-        </a><br>
-        <li>メニューバーの「mrubyc_ide」＞「Preferences（環境設定）」をクリックします。</li>
-        <a data-lightbox="ide" href="./image/Preferences.png">
-          <img src="./image/Preferences.png" class="expansion">
-        </a>
-        <li>設定画面の左側「Build and Deploy」を選択して「Compiler」画面に切り替えます。Local Compilerにチェックを入れた状態で「mrbc」欄にIDEと同じディレクトリ内のmrbcファイルを指定します。</li>
-        <a data-lightbox="ide" href="./image/compiler.png">
-          <img src="./image/compiler.png" class="expansion">
-        </a><br>
-        指定した後に画面左下の「Apply」をクリックします。
-        <li>続いて、画面上部の「Writer」タブを選択して「Writer」画面に切り替えます。「mrbwrite」欄　IDEと同じディレクトリ内のmrbwriteファイルを指定します。「Options」欄　 -s 19200　と入力します。</li>
-        <a data-lightbox="ide" href="./image/mrbwrite.png">
-          <img src="./image/mrbwrite.png" class="expansion">
-        </a><br>
-        指定した後に画面左下の「Apply」をクリックします。最後はOKをクリックします。<br>
-        <small>Port欄はRBoardを接続した状態で設定します。RBoardを接続して「Update」をクリックし、リスト内の「USB-I2C/UART」と記載のいずれかのポートを選択します。</small><br>
-        <a data-lightbox="ide" href="./image/port.png">
-          <img src="./image/port.png" class="expansion">
-        </a><br>
-        <small>指定した後に画面左下の「Apply」をクリックします。最後はOKをクリックします。</small>
-      </ol>
+        <h2 class="txt-border"> Windows10 </h2>
+<ol>
+  <li><a href="https://www.s-itoc.jp/activity/research/mrubyc/mrubyc_download/">mruby/c IDE</a>をダウンロード後、解凍</li>
+  <li>mruby/c IDEの解凍したフォルダのmrubyc_ide.exeを起動</li>
+  <li>上部タブの「File -> Settings...」をクリック</li>
+  <a data-lightbox="ide" href="/assets/img/ideInstall/ide1.png">
+    <img src="/assets/img/ideInstall/ide1.png" class="expansion">
+  </a>
+  <li>「Build and Deploy -> Cmpiler」の「mrbc」項目に解凍したフォルダ内にある「mrbc.exe」のpathを指定</li>
+  <a data-lightbox="ide" href="/assets/img/ideInstall/ide2.png">
+    <img src="/assets/img/ideInstall/ide2.png" class="expansion">
+  </a>
+  <li>「Build and Deploy -> Writer」の「mrbwrite」項目に解凍したフォルダ内にある「mrbwrite.exe」のpathを指定</li>
+  <li>「Build and Deploy -> Writer」の「Options」項目に「-s 19200」と書き込み、「Apply」、「OK」をクリック</li>
+  <a data-lightbox="ide" href="/assets/img/ideInstall/ide3.png">
+    <img src="/assets/img/ideInstall/ide3.png" class="expansion">
+  </a>
+</ol>
+<h3 class="txt-border"> インストール動画 </h3>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/rL1jSJoQMNo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<br><br><br>
+<h2 class="txt-border"> MAC </h2>
+<ol>
+  <li><a href="https://www.s-itoc.jp/activity/research/mrubyc/mrubyc_download/">mruby/c IDE</a>をダウンロード後、解凍</li>
+  <li>展開したディレクトリ内の「mrubyc_ide」をダブルクリックしてIDEを起動します。</li>
+  <small>その際に以下のメッセージが表示される場合があります。この場合は「キャンセル」をクリックして、メッセージを閉じます。</small><br>
+  <a data-lightbox="ide" href="/assets/img/ideInstall/%E4%B8%8D%E6%98%8E%E3%81%AA%E6%8F%90%E4%BE%9B%E5%85%83.png">
+    <img src="/assets/img/ideInstall/%E4%B8%8D%E6%98%8E%E3%81%AA%E6%8F%90%E4%BE%9B%E5%85%83.png" class="expansion">
+  </a><br>
+  <small>続けて「システム環境設定」を起動し「セキュリティとプライバシー」を開きます。</small><br>
+  <a data-lightbox="ide" href="/assets/img/ideInstall/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%E3%81%A8%E3%83%97%E3%83%A9%E3%82%A4%E3%83%90%E3%82%B7%E3%83%BC.png">
+    <img src="/assets/img/ideInstall/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%E3%81%A8%E3%83%97%E3%83%A9%E3%82%A4%E3%83%90%E3%82%B7%E3%83%BC.png" class="expansion">
+  </a><br>
+  <small>「このまま開く」をクリックします。</small><br>
+  <small>以下のメッセージが表示された場合は「開く」をクリックしてIDEを起動します。</small><br>
+  <a data-lightbox="ide" href="/assets/img/ideInstall/%E9%96%8B%E7%99%BA%E5%85%83.png">
+    <img src="/assets/img/ideInstall/%E9%96%8B%E7%99%BA%E5%85%83.png" class="expansion">
+  </a><br>
+  <li>メニューバーの「mrubyc_ide」＞「Preferences（環境設定）」をクリックします。</li>
+  <a data-lightbox="ide" href="/assets/img/ideInstall/Preferences.png">
+    <img src="/assets/img/ideInstall/Preferences.png" class="expansion">
+  </a>
+  <li>設定画面の左側「Build and Deploy」を選択して「Compiler」画面に切り替えます。Local Compilerにチェックを入れた状態で「mrbc」欄にIDEと同じディレクトリ内のmrbcファイルを指定します。</li>
+  <a data-lightbox="ide" href="/assets/img/ideInstall/compiler.png">
+    <img src="/assets/img/ideInstall/compiler.png" class="expansion">
+  </a><br>
+  指定した後に画面左下の「Apply」をクリックします。
+  <li>続いて、画面上部の「Writer」タブを選択して「Writer」画面に切り替えます。「mrbwrite」欄　IDEと同じディレクトリ内のmrbwriteファイルを指定します。「Options」欄　 -s 19200　と入力します。</li>
+  <a data-lightbox="ide" href="/assets/img/ideInstall/mrbwrite.png">
+    <img src="/assets/img/ideInstall/mrbwrite.png" class="expansion">
+  </a><br>
+  指定した後に画面左下の「Apply」をクリックします。最後はOKをクリックします。<br>
+  <small>Port欄はRBoardを接続した状態で設定します。RBoardを接続して「Update」をクリックし、リスト内の「USB-I2C/UART」と記載のいずれかのポートを選択します。</small><br>
+  <a data-lightbox="ide" href="/assets/img/ideInstall/port.png">
+    <img src="/assets/img/ideInstall/port.png" class="expansion">
+  </a><br>
+  <small>指定した後に画面左下の「Apply」をクリックします。最後はOKをクリックします。</small>
+</ol>
+
     </div>
-
-
     <div id="submenu">
-      <div id="submenu_header">もくじ</div>
-      <ul id="submenu_body">
-        <i class="fas fa-home"></i><a href="./index.html">HOME</a>
-        <li><details>
-          <summary>プログラム書き込み</summary>
-          <ul id="subuul">
-            <li><a href="./ide_install.html">mruby/c IDEインストール</a></li>
-            <li><a href="./write_program.html">PG書き込み</a></li>
-          </ul>
-        </details></li>
-        <li><details>
-          <summary>ファームウェアアップデート</summary>
-          <ul id="subuul">
-            <li><a href="./update.html">アップデート手順</a></li>
-          </ul>
-        </details></li>
-        <li><details>
-          <summary>ボード一覧</summary>
-          <ul id="subuul">
-          <li><a href="./board_list.html">ボード一覧</a></li>
-          </ul>
-        </details></li>
-        <li><details>
-          <summary>RBoardにおける各クラス</summary>
-          <ul id="subuul">
-            <li><a href="./farm_list/mrubyc1_4.html">RBoard_V1(mruby/c1.4)</a></li>
-            <li><a href="./farm_list/mrubyc2_1.html">RBoard_V1(mruby/c2.1)</a></li>
-            <li><a href="./farm_list/mrubyc3_4.html">RBoard_V2(mruby/c3.4)</a></li>
-          </ul>
-        </details></li>
-        <li><details>
-          <summary>サンプルプログラム</summary>
-          <ul id="subuul">
-            <li><a href="./adc.html">ADCサンプル</a> / <a href="./sample_adc.html">ver2</a></li>
-            <li><a href="./i2c.html">I2Cサンプル</a> / <a href="./sample_i2c.html">ver2</a></li>
-            <li><a href="./pwm.html">PWMサンプル</a> / <a href="./sample_pwm.html">ver2</a></li>
-            <li><a href="./uart.html">UARTサンプル</a> / <a href="./sample_uart.html">ver2</a></li>
-            <li><a href="./etc.html">その他サンプル</a> / <a href="./sample_etc.html">ver2</a></li>
-          </ul>
-        </details></li>
-        <li><details>
-          <summary>その他</summary>
-          <ul id="subuul">
-            <li><a href="./sensor_module.html">対応センサーモジュール</a></li>
-            <li><a href="./console.html">ターミナルソフトの設定</a></li>
-          </ul>
-        </details></li>
-        <li><details>
-          <summary>チュートリアル</summary>
-          <ol id="subuol">
-            <li><a href="./tutorial_mrubyc.html">mruby/cとは？</a></li>
-            <li><a href="./tutorial_led.html">LEDを制御する</a></li>
-            <li><a href="./tutorial_rgb_led.html">フルカラーLED</a></li>
-            <li><a href="./tutorial_reed_switch.html">ドア開閉センサ</a></li>
-            <li><a href="./tutorial_buzzer.html">圧電ブザー</a></li>
-            <li><a href="./tutorial_cds.html">光センサ</a></li>
-            <li><a href="./tutorial_temp.html">温度センサ</a></li>
-          </ol>
-        </details></li>
-      </ul>
-    </div>
+  
+  <div id="submenu_header"></div>
+  <ul id="submenu_body">
+  <i class="fas fa-home"></i><a href="/">HOME</a>
+  <li><details>
+    <summary>プログラミング</summary>
+    <ul id="subuul">
+      <li><a href="/update.html">RBoardファームウェア更新</a></li>
+      
+        <li><a href="/ide_install.html">IDEのセットアップ</a></li>
+        <li><a href="/write_program.html">IDEでのプログラミング</a></li>
+      
+    </ul>
+  </details></li>
+  <li><details>
+    <summary>ボード一覧</summary>
+    <ul id="subuul">
+      <li><a href="/board_list.html">ボード一覧</a></li>
+      <li><a href="/boards/RBoard_PIC32_SMD_v2-1-0_1-0.html">RBoard_V1</a></li>
+      <li><a href="/boards/RBoard_PIC32_SMD_v3-4-0_2-0.html">RBoard_V2</a></li>
+    </ul>
+  </details></li>
+  <li><details>
+    <summary>クラス</summary>
+    <ul id="subuul">
+      <li><a href="/firmware/mrubyc1_4.html">RBoard_V1(mruby/c1.4)</a></li>
+      
+        <li><a href="/firmware/mrubyc2_1.html">RBoard_V1(mruby/c2.1)</a></li>
+        <li><a href="/firmware/mrubyc3_4.html">RBoard_V2(mruby/c3.4)</a></li>
+      
+    </ul>
+  </details></li>
+  <li><details>
+    <summary>サンプルプログラム</summary>
+    <ul id="subuul">
+    <li><a href="/sampleProgram/v2-1-0/adc.html">ADCサンプル</a> / <a href="/sampleProgram/v3-4-0/adc.html">V2</a></li>
+    <li><a href="/sampleProgram/v2-1-0/i2c.html">I2Cサンプル</a> / <a href="/sampleProgram/v3-4-0/i2c.html">V2</a></li>
+    <li><a href="/sampleProgram/v2-1-0/pwm.html">PWMサンプル</a> / <a href="/sampleProgram/v3-4-0/pwm.html">V2</a></li>
+    <li><a href="/sampleProgram/v2-1-0/uart.html">UARTサンプル</a> / <a href="/sampleProgram/v3-4-0/uart.html">V2</a></li>
+    <li><a href="/sampleProgram/v2-1-0/etc.html">その他サンプル</a> / <a href="/sampleProgram/v3-4-0/etc.html">V2</a></li>
+    </ul>
+  </details></li>
+  <li><details>
+    <summary>その他</summary>
+    <ul id="subuul">
+    <li><a href="/sampleProgram/module.html">対応センサーモジュール</a></li>
+    <li><a href="/console.html">ターミナルソフトの設定</a></li>
+    </ul>
+  </details></li>
+  <li><details id ="tutorial">
+    <summary>チュートリアル</summary>
+    <ol id="subuol">
+    <li><a href="/tutorial/mrubycIDE/v2-1-0/mrubyc.html#tutorial">mruby/cとは？</a></li>
+    <li><a href="/tutorial/mrubycIDE/v2-1-0/led.html#tutorial">LEDを制御する</a></li>
+    <li><a href="/tutorial/mrubycIDE/v2-1-0/rgb_led.html#tutorial">カラーLEDを制御する</a></li>
+    <li><a href="/tutorial/mrubycIDE/v2-1-0/reed_switch.html#tutorial">ドア開閉センサ</a></li>
+    <li><a href="/tutorial/mrubycIDE/v2-1-0/buzzer.html#tutorial">圧電ブザー</a></li>
+    <li><a href="/tutorial/mrubycIDE/v2-1-0/cds.html#tutorial">光センサ</a></li>
+    <li><a href="/tutorial/mrubycIDE/v2-1-0/temp.html#tutorial">温度センサ</a></li>
+    </ol>
+  </details></li>
+  </ul>
+
+  
+  
+</div>
   </body>
 </html>

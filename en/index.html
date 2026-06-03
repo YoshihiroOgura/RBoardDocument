@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>home</title>
+    <link rel="shortcut icon" href="/assets/img/bug.ico">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link href="https://use.fontawesome.com/releases/v5.11.0/css/all.css" rel="stylesheet">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-176702602-1"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/a11y-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/highlight.min.js"></script>
+    <script src="/assets/js/codeStyle.js"></script>
+    <script src="/assets/js/sidebar.js"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-176702602-1');
+    </script>
+  </head>
+  <body id="top_page">
+    <div id="header">
+      <h1> RBoard </h1>
+      
+
+      <div class="lang-switch" aria-label="language switch">
+        <span>言語:</span>
+        <a href="/" onclick="localStorage.setItem('preferred_lang', 'ja');">🇯🇵 日本語</a>
+        <span> / </span>
+        <a href="/en/" onclick="localStorage.setItem('preferred_lang', 'en');">🇺🇸 English</a>
+      </div>
+    </div>
+    <div id="main">
+        <h2> RBoard with PIC32 & mruby/c</h2>
+<img class="window_img" src = "https://lh3.googleusercontent.com/d/1Lk95hgHNin8dEX_MBmEDh2B_POfmYwY5">
+<hr id="first_boader">
+<h2>Introduction</h2>
+Welcome to the world of mruby/c<br>
+mruby/c is a very compact language for microcontrollers compared to CRuby and mruby.<br>
+<br>
+RBoard is an introductory board for those who want to use Ruby (mruby/c) on microcontrollers.<br>
+It is implemented as low-level as possible and can support various sensors.<br>
+<br>
+Since mruby/c is installed as standard, development using mruby/cIDE is possible without using a dedicated IDE such as MPLABX.<br>
+<br>
+In addition, since it is equipped with a GROVE port, various sensors and actuators can be used without soldering.<br>
+<br>
+Information about each version can be found on the release page=>
+<a href="https://github.com/YoshihiroOgura/pic32mx170_mrubyc/releases">Release Page</a><br>
+<br>
+<i class="far fa-question-circle"></i>For more information about GROVE, please visit <a href="https://wiki.seeedstudio.com/Grove_System/">this page</a><br>
+<i class="far fa-question-circle"></i>For more information about mruby/c, please visit <a href="https://www.s-itoc.jp/activity/research/mrubyc/">this page</a><br>
+<br>
+<hr id="first_boader">
+<h2>Source Code</h2>
+<b>License</b>：BSD 3-Clause<br>
+<b>Copyright</b>：Shimane Johoshori Center Inc.<br>
+<a href="https://github.com/YoshihiroOgura/pic32mx170_mrubyc">https://github.com/YoshihiroOgura/pic32mx170_mrubyc</a><br>
+
+<hr id="first_boader">
+<h2>Schematic and PCB Data</h2>
+<b>License</b>：CC-BY-NC-SA 3.0<br>
+<b>Copyright</b>：Shimane Johoshori Center Inc. or YoshihiroOgura<br>
+<a href="https://easyeda.com/YoshihiroOgura/rboard">https://easyeda.com/YoshihiroOgura/rboard</a><br>
+<br>
+
+<hr id="first_boader">
+<h2>Demo Video</h2>
+<i class="far fa-star"></i>Temperature Data Wireless Transmission 0:00~0:29<br>
+<i class="far fa-star"></i>Wall Detection Autonomous Driving 0:30~0:50<br>
+<i class="far fa-star"></i><a href="https://www.ottodiy.com/">otto</a> Control 0:51~1:11<br>
+<iframe src="https://drive.google.com/file/d/1ZPXNBMeIIfxDhHjEzN8hbyfAX-B2K3MK/preview" width="640" height="480" allow="autoplay"></iframe>
+<hr id="first_boader">
+<h2>Where to Buy</h2>
+<a href="https://www.chip1stop.com/view/dispDetail/DispDetail?partId=SMNE-0000001">Chip One Stop</a><br>
+<a href="https://www.hokusin-web.co.jp/company/office">Hokusin Web</a> is also selling it.
+
+<hr id="first_boader">
+<h2>Warranty Information</h2>
+We only cover initial defects.(Within 7 days of purchase)<br>
+For inquiries, please email us at (<a href="mailto:sjc@sjc-inc.co.jp">sjc@sjc-inc.co.jp</a>)<br>
+We are not responsible for any damages that may occur as a result of using this product.<br>
+<hr id="first_boader">
+<h2>Contact Us</h2>
+For questions or requests regarding the program, please use the <a href="https://github.com/YoshihiroOgura/pic32mx170_mrubyc/issues">issues</a> on the source code.<br>
+For requests regarding the PCB, please use the comment section on <a href="https://easyeda.com/YoshihiroOgura/rboard">EasyEDA</a>.<br>
+For other inquiries, please email us at (<a href="mailto:sjc@sjc-inc.co.jp">sjc@sjc-inc.co.jp</a>).<br>
+We appreciate your feedback!<br>
+If you have any questions or comments, feel free to reach out to me on Twitter m(_ _"m)<a href="https://twitter.com/morisuteisyon?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-size="large" data-show-count="false">Follow @morisuteisyon</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script><br>
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.js" integrity="sha256-icjghcPaibMf1jv4gQIGi5MeWNHem2SispcorCiCfSg=" crossorigin="anonymous"></script>
+<script src="/assets/js/setupParticles.js"></script>
+<hr id="first_boader">
+This document is published under the <a href="./LICENSE">BSD 3-Clause License</a>.
+    </div>
+    <div id="submenu">
+  
+  <div id="submenu_header"></div>
+  <ul id="submenu_body">
+  <i class="fas fa-home"></i><a href="/">HOME</a>
+  <li><details>
+    <summary>Programming</summary>
+    <ul id="subuul">
+      <li><a href="/update.html">RBoard Firmware Update</a></li>
+      
+        <li><a href="/en/ide_install.html">IDE Setup</a></li>
+        <li><a href="/en/write_program.html">Programming with IDE</a></li>
+      
+    </ul>
+  </details></li>
+  <li><details>
+    <summary>Board List</summary>
+    <ul id="subuul">
+      <li><a href="/board_list.html">Board List</a></li>
+      <li><a href="/boards/RBoard_PIC32_SMD_v2-1-0_1-0.html">RBoard_V1</a></li>
+      <li><a href="/boards/RBoard_PIC32_SMD_v3-4-0_2-0.html">RBoard_V2</a></li>
+    </ul>
+  </details></li>
+  <li><details>
+    <summary>Classes</summary>
+    <ul id="subuul">
+      <li><a href="/firmware/mrubyc1_4.html">RBoard_V1(mruby/c1.4)</a></li>
+      
+        <li><a href="/en/firmware/mrubyc2_1.html">RBoard_V1(mruby/c2.1)</a></li>
+        <li><a href="/en/firmware/mrubyc3_4.html">RBoard_V2(mruby/c3.4)</a></li>
+      
+    </ul>
+  </details></li>
+  <li><details>
+    <summary>Sample Programs</summary>
+    <ul id="subuul">
+    <li><a href="/sampleProgram/v2-1-0/adc.html">ADC Sample</a> / <a href="/sampleProgram/v3-4-0/adc.html">V2</a></li>
+    <li><a href="/sampleProgram/v2-1-0/i2c.html">I2C Sample</a> / <a href="/sampleProgram/v3-4-0/i2c.html">V2</a></li>
+    <li><a href="/sampleProgram/v2-1-0/pwm.html">PWM Sample</a> / <a href="/sampleProgram/v3-4-0/pwm.html">V2</a></li>
+    <li><a href="/sampleProgram/v2-1-0/uart.html">UART Sample</a> / <a href="/sampleProgram/v3-4-0/uart.html">V2</a></li>
+    <li><a href="/sampleProgram/v2-1-0/etc.html">Other Samples</a> / <a href="/sampleProgram/v3-4-0/etc.html">V2</a></li>
+    </ul>
+  </details></li>
+  <li><details>
+    <summary>Others</summary>
+    <ul id="subuul">
+    <li><a href="/sampleProgram/module.html">Supported Sensor Modules</a></li>
+    <li><a href="/console.html">Terminal Software Configuration</a></li>
+    </ul>
+  </details></li>
+  <li><details id ="tutorial">
+    <summary>Tutorials</summary>
+    <ol id="subuol">
+    <li><a href="/tutorial/mrubycIDE/v2-1-0/mrubyc.html#tutorial">What is mruby/c?</a></li>
+    <li><a href="/tutorial/mrubycIDE/v2-1-0/led.html#tutorial">Controlling an LED</a></li>
+    <li><a href="/tutorial/mrubycIDE/v2-1-0/rgb_led.html#tutorial">Controlling a Color LED</a></li>
+    <li><a href="/tutorial/mrubycIDE/v2-1-0/reed_switch.html#tutorial">Door Sensor</a></li>
+    <li><a href="/tutorial/mrubycIDE/v2-1-0/buzzer.html#tutorial">Piezo Buzzer</a></li>
+    <li><a href="/tutorial/mrubycIDE/v2-1-0/cds.html#tutorial">Light Sensor</a></li>
+    <li><a href="/tutorial/mrubycIDE/v2-1-0/temp.html#tutorial">Temperature Sensor</a></li>
+    </ol>
+  </details></li>
+  </ul>
+
+  
+  
+</div>
+  </body>
+</html>
