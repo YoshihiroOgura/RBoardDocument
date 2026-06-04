@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>PIC32_DIP_v2.1.0_1.0</title>
+    <title>Tutorial - What is mruby/c?</title>
     <link rel="shortcut icon" href="/RBoardDocument/assets/img/bug.ico">
     <link rel="stylesheet" href="/RBoardDocument/assets/css/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
@@ -27,33 +27,39 @@
 
       <div class="lang-switch" aria-label="language switch">
         <span>言語:</span>
-        <a href="/RBoardDocument/boards/RBoard_PIC32_DIP_v2-1-0_1-0.html" onclick="localStorage.setItem('preferred_lang', 'ja');">🇯🇵 日本語</a>
+        <a href="/RBoardDocument/tutorial/mrubycIDE/v2-1-0/mrubyc.html" onclick="localStorage.setItem('preferred_lang', 'ja');">🇯🇵 日本語</a>
         <span> / </span>
-        <a href="/RBoardDocument/en/boards/RBoard_PIC32_DIP_v2-1-0_1-0.html" onclick="localStorage.setItem('preferred_lang', 'en');">🇺🇸 English</a>
+        <a href="/RBoardDocument/en/tutorial/mrubycIDE/v2-1-0/mrubyc.html" onclick="localStorage.setItem('preferred_lang', 'en');">🇺🇸 English</a>
       </div>
     </div>
     <div id="main">
-        <h2>PIC32_DIP_v2.1.0_1.0</h2>
-<img width="100%" src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/195542/18e36ce0-0160-a78c-4440-7ecdf699063e.png">
-PWM：pin2、pin12、pin16、pin18<br>
-The GROVE module, which uses digital signals, can also be used with ADC and UART ports.<br>
-<span style="color:rgb(255, 0, 0)">※The UART on GROVE cannot be used as is (it can be used as a digital GROVE).</span>See the <a href="./uart.html">UART sample</a> for details.<br>
-<span style="color:rgb(255, 0, 0)">※I2C pins cannot be used as DigitalIO (pins 7 and 8).</span><br>
-Pinout confirmation sticker data (A4 size)：<a href="https://drive.google.com/file/d/14RqoCmJ6SMTae6Wt1eQ4h4W8mfWR998x/view?usp=sharing">download</a><br>
-Red：3.3V<br>
-Black：GND<br>
-White：NC<br>
-Sky Blue：Pin<br>
-Orange：ADC<br>
-Brown：PWM<br>
-Blue：UART<br>
-Green：I2C<br>
-Grey：オンボードLED<br>
-Pink：オンボードスイッチ<br>
-<hr id="first_boader">
-<h2>Electrical specifications</h2>
-Input voltage：3.3V~12V(USB)<br>
-Operating voltage：3.3V<br>
+        <h3>Prerequisite: Ruby</h3>
+Since it's a well-known programming language, no special explanation is needed.
+<ul id="content">
+    <li>Object-oriented programming language</li>
+    <li>Widely used in web applications</li>
+    <li>High readability and easy to develop</li>
+</ul>
+These are the characteristics of Ruby.
+<h3>mruby</h3>
+It seems to apply the merits of Ruby directly to device development.
+<ul id="content">
+    <li>Works with little memory</li>
+    <li>Easy to develop like Ruby</li>
+    <li>Very dynamic</li>
+    <li>Many libraries are provided as mrbgems</li>
+</ul>
+Approximately 300 libraries<br>
+<a href="http://mruby.org/libraries/">http://mruby.org/libraries/</a>
+<h3>mruby/c</h3>
+It has been further miniaturized to enable development on small microcontrollers, which is a challenge for mruby.
+<ul id="content">
+    <li>Even more memory-efficient than mruby</li>
+    <li>Easy to develop like Ruby</li>
+    <li>Easy to port</li>
+</ul>
+Function selection and limitation make it even smaller.<br>
+<img src="/RBoardDocument/assets/img/%E5%90%84%E7%A8%AERuby.png" class="expansion">
 
     </div>
     <div id="submenu">

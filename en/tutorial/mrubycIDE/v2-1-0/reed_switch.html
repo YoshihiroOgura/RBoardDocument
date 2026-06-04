@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>PIC32_DIP_v2.1.0_1.0</title>
+    <title>Tutorial - Reed Switch</title>
     <link rel="shortcut icon" href="/RBoardDocument/assets/img/bug.ico">
     <link rel="stylesheet" href="/RBoardDocument/assets/css/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
@@ -27,33 +27,95 @@
 
       <div class="lang-switch" aria-label="language switch">
         <span>言語:</span>
-        <a href="/RBoardDocument/boards/RBoard_PIC32_DIP_v2-1-0_1-0.html" onclick="localStorage.setItem('preferred_lang', 'ja');">🇯🇵 日本語</a>
+        <a href="/RBoardDocument/tutorial/mrubycIDE/v2-1-0/reed_switch.html" onclick="localStorage.setItem('preferred_lang', 'ja');">🇯🇵 日本語</a>
         <span> / </span>
-        <a href="/RBoardDocument/en/boards/RBoard_PIC32_DIP_v2-1-0_1-0.html" onclick="localStorage.setItem('preferred_lang', 'en');">🇺🇸 English</a>
+        <a href="/RBoardDocument/en/tutorial/mrubycIDE/v2-1-0/reed_switch.html" onclick="localStorage.setItem('preferred_lang', 'en');">🇺🇸 English</a>
       </div>
     </div>
     <div id="main">
-        <h2>PIC32_DIP_v2.1.0_1.0</h2>
-<img width="100%" src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/195542/18e36ce0-0160-a78c-4440-7ecdf699063e.png">
-PWM：pin2、pin12、pin16、pin18<br>
-The GROVE module, which uses digital signals, can also be used with ADC and UART ports.<br>
-<span style="color:rgb(255, 0, 0)">※The UART on GROVE cannot be used as is (it can be used as a digital GROVE).</span>See the <a href="./uart.html">UART sample</a> for details.<br>
-<span style="color:rgb(255, 0, 0)">※I2C pins cannot be used as DigitalIO (pins 7 and 8).</span><br>
-Pinout confirmation sticker data (A4 size)：<a href="https://drive.google.com/file/d/14RqoCmJ6SMTae6Wt1eQ4h4W8mfWR998x/view?usp=sharing">download</a><br>
-Red：3.3V<br>
-Black：GND<br>
-White：NC<br>
-Sky Blue：Pin<br>
-Orange：ADC<br>
-Brown：PWM<br>
-Blue：UART<br>
-Green：I2C<br>
-Grey：オンボードLED<br>
-Pink：オンボードスイッチ<br>
+        <h3>Required Components</h3>
+<ul>
+  <li><a href="https://www.digikey.jp/short/8jbz9t0b">SPS-320</a>(Reed Switch)</li>
+  <li><a href="https://www.digikey.jp/short/qrr98jn0">Connector Cable</a></li>
+</ul>
 <hr id="first_boader">
-<h2>Electrical specifications</h2>
-Input voltage：3.3V~12V(USB)<br>
-Operating voltage：3.3V<br>
+<h3>About Reed Switches</h3>
+There are two metal plates inside, and when a magnet is brought close, they overlap and conduct electricity. The term "reed" in a reed switch comes from the fact that the shape of the metal plate is similar to the reed used in woodwind instruments (such as clarinets).
+<hr id="first_boader">
+<h3>Pull-up and Pull-down Resistors</h3>
+When using a switch, you might have used a circuit like the one below when you were a student.
+<img src="https://lh3.googleusercontent.com/d/1AfQa0O8a8dTWAz0nq0F_zgsbIatCcl_L" class="expansion"><br>
+This circuit doesn't actually not work.<br>
+When the switch is pressed, 3.3V is applied to the RBoard. So, what signal is applied to the RBoard when the switch is not pressed?
+The answer is uncertain. Since it's not connected to anything, we can't know what signal will be applied without actually testing it.
+To avoid this situation, pull-up and pull-down resistors are used.
+<img src="https://lh3.googleusercontent.com/d/1OhsZHUMQy4zKQcjQ_9l4IupDZp3radlX" class="expansion"><br>
+When using pull-up and pull-down resistors, even when the button is not pressed, some signal will be applied to the RBoard.
+　⇒ In the case of pull-up, 3.3V; in the case of pull-down, 0V (GND)
+You might think that even without the resistor, it would be connected, but if you don't put a resistor, pressing the switch will cause a short circuit between 3.3V and GND.
+Also, among pull-up and pull-down, pull-up is used more frequently. One reason is that with pull-down, it's difficult to notice when a wire breaks.
+If a wire breaks as shown below, it will be in the same state as the circuit described earlier.
+<img src="https://lh3.googleusercontent.com/d/1W0OSe6lCRLr1A-jnXpXnhzdS1jco9Mmb" class="expansion"><br>
+<br>
+By using the pull-up and pull-down resistors built into the microcontroller, the circuit can be simplified.
+<img src="https://lh3.googleusercontent.com/d/1YndVwW8sRw-UxT_2mttZnT0r7IuuhhDA" class="expansion"><br>
+<hr id="first_boader">
+<h3>Electronic Circuit</h3>
+Breadboard circuit using built-in pull-up resistors<br>
+Please connect using the connector cable.<br>
+<img src="https://lh3.googleusercontent.com/d/1sBv0g4CyLvj4GzzwLMJ-fQ2F6WzA-EZD" class="expansion"><br>
+<hr id="first_boader">
+<h3>Program</h3>
+A program that turns on an LED when the door is open.<br>
+<pre><code  class="ruby">
+REED_SW = 18
+pinMode(REED_SW, 1)
+pinPull(REED_SW, 1)
+while  true
+  status = digitalRead(REED_SW)
+  # Because it's pulled up, the status will be 0 when the door is closed.
+  if(status == 1)
+    digitalWrite(0, 1)
+  else
+    digitalWrite(0, 0)
+  end
+end
+</code></pre>
+When using pull-up and pull-down resistors, use <span style="background-color:rgb(206, 205, 205)">pinPull(pin number, setting value)</span>.
+The setting value is 0 for the normal state, 1 or other positive integers for pull-up, and -1 or other negative integers for pull-down.<br>
+To get the pin status, use <span style="background-color:rgb(206, 205, 205)">digitalRead(pin number)</span>.<br>
+<hr id="first_boader">
+<h3>Task:</h3>
+<ul>
+  <li>The LED lights up if the door has been open for a certain period of time.</li>
+  <li>When the door is closed, the LED turns off.</li>
+  <div class="answer_box">
+    <label for="led_ans1">answer ➡</label>
+    <input type="checkbox" id="led_ans1"/>
+    <div class="answer_show">  
+      <pre><code  class="ruby">
+REED_SW = 18
+LED1 = 0
+pinMode(REED_SW, 1)
+pinPull(REED_SW, 1)
+cnt = 0
+while  true
+  status = digitalRead(REED_SW)
+  if(status == 1)
+    if(cnt > 5)
+      digitalWrite(LED1, 1)
+    end
+    cnt += 1
+  else
+    digitalWrite(LED1, 0)
+    cnt = 0
+  end
+  sleep(1)
+end
+      </code></pre>
+    </div>
+  </div>
+</ul>
 
     </div>
     <div id="submenu">

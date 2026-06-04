@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>PIC32_DIP_v2.1.0_1.0</title>
+    <title>Tutorial - RGB LED</title>
     <link rel="shortcut icon" href="/RBoardDocument/assets/img/bug.ico">
     <link rel="stylesheet" href="/RBoardDocument/assets/css/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
@@ -27,33 +27,133 @@
 
       <div class="lang-switch" aria-label="language switch">
         <span>言語:</span>
-        <a href="/RBoardDocument/boards/RBoard_PIC32_DIP_v2-1-0_1-0.html" onclick="localStorage.setItem('preferred_lang', 'ja');">🇯🇵 日本語</a>
+        <a href="/RBoardDocument/tutorial/mrubycIDE/v2-1-0/rgb_led.html" onclick="localStorage.setItem('preferred_lang', 'ja');">🇯🇵 日本語</a>
         <span> / </span>
-        <a href="/RBoardDocument/en/boards/RBoard_PIC32_DIP_v2-1-0_1-0.html" onclick="localStorage.setItem('preferred_lang', 'en');">🇺🇸 English</a>
+        <a href="/RBoardDocument/en/tutorial/mrubycIDE/v2-1-0/rgb_led.html" onclick="localStorage.setItem('preferred_lang', 'en');">🇺🇸 English</a>
       </div>
     </div>
     <div id="main">
-        <h2>PIC32_DIP_v2.1.0_1.0</h2>
-<img width="100%" src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/195542/18e36ce0-0160-a78c-4440-7ecdf699063e.png">
-PWM：pin2、pin12、pin16、pin18<br>
-The GROVE module, which uses digital signals, can also be used with ADC and UART ports.<br>
-<span style="color:rgb(255, 0, 0)">※The UART on GROVE cannot be used as is (it can be used as a digital GROVE).</span>See the <a href="./uart.html">UART sample</a> for details.<br>
-<span style="color:rgb(255, 0, 0)">※I2C pins cannot be used as DigitalIO (pins 7 and 8).</span><br>
-Pinout confirmation sticker data (A4 size)：<a href="https://drive.google.com/file/d/14RqoCmJ6SMTae6Wt1eQ4h4W8mfWR998x/view?usp=sharing">download</a><br>
-Red：3.3V<br>
-Black：GND<br>
-White：NC<br>
-Sky Blue：Pin<br>
-Orange：ADC<br>
-Brown：PWM<br>
-Blue：UART<br>
-Green：I2C<br>
-Grey：オンボードLED<br>
-Pink：オンボードスイッチ<br>
+        <h3>Required Components</h3>
+<ul>
+  <li><a href="https://www.digikey.jp/short/t9987m27">Breadboard</a></li>
+  <li><a href="https://www.digikey.jp/short/7hhn38vh">Jumper Wire</a></li>
+  <li><a href="https://www.digikey.jp/short/dhf4n2nz">RGBLED</a>(Common Cathode)</li>
+  <li><a href="https://www.digikey.jp/short/9zmvb4w9">Resistor</a>(56Ω)</li>
+</ul>
 <hr id="first_boader">
-<h2>Electrical specifications</h2>
-Input voltage：3.3V~12V(USB)<br>
-Operating voltage：3.3V<br>
+<h3>About RGBLED</h3>
+<ul id="content">
+  It is an LED that combines red, green, and blue LEDs into one.<br>
+  There are two types: Common Anode and Common Cathode, and we will use Common Cathode in this tutorial.
+  Common Cathode is a component where the cathodes (-) of three LEDs are combined into one terminal.<br>
+  <img src="https://lh3.googleusercontent.com/d/1g9tjcfzNxL0wycUSKQ2bnrcoThjuqw_g" class="expansion"><br>
+  It can express various colors from the three colors of RGB.<br>「<strong>Primary Colors of Light</strong>」<br>
+  <img src="https://lh3.googleusercontent.com/d/1Mww_I-7mGhegY3gnoI6Ju5SNvdilGQ_E" class="expansion"><br>
+</ul>
+<hr id="first_boader">
+<h3>RGBLED Electronic Circuit</h3>
+When checking the datasheet, the VF values of G and B are 3.6V, while the VF value of R is only 2V.
+When no resistor is used, the current values of G and B are 10mA, and R is 27mA.
+To set the current value to 10mA, according to Ohm's law:<br>
+<strong>R = V / I = (3.3 - 2) / 0.01 = 130Ω</strong><br>
+Although this results in 130Ω, in practice there is a range in VF values, and the datasheet also indicates that when IF is 20mA, VF is between 2~2.5V, so the resistor value can be around this range without any issues.
+Despite the various considerations, we will use 56Ω in this tutorial.<br>
+Circuit Diagram<br>
+<img src="https://lh3.googleusercontent.com/d/1ERIwAxl8M5ur_9ZP8TThI83vbEuG06DW" class="expansion"><br>
+Breadboard Circuit<br>
+<img src="https://lh3.googleusercontent.com/d/1jDaetC3eXgLhARSV5cl1Vr0K-epI4FJX" class="expansion"><br>
+<hr id="first_boader">
+<h3>Program</h3>
+A program that cycles through red⇒magenta⇒blue at 1-second intervals
+<pre><code  class="ruby">
+LEDR = 15
+LEDG = 16
+LEDB = 17
+pinMode(LEDR, 0)
+pinMode(LEDG, 0)
+pinMode(LEDB, 0)
+while  true
+  digitalWrite(LEDR, 1)
+  sleep(1)
+  digitalWrite(LEDB, 1)
+  sleep(1)
+  digitalWrite(LEDR, 0)
+  sleep(1)
+  digitalWrite(LEDB, 0)
+end
+</code></pre>
+To set the pin behavior, use <span style="background-color:rgb(206, 205, 205)">pinMode(pin number, setting value)</span>.
+The setting value is 0 for output mode (LED, etc.), and 1 for input mode (switch, etc.).<br>
+<hr id="first_boader">
+<h3>Task:</h3>
+<ul>
+  <li>Light them up in the order of [green → yellow → red].</li>
+  <div class="answer_box">
+    <label for="led_ans1">answer ➡</label>
+    <input type="checkbox" id="led_ans1"/>
+    <div class="answer_show">  
+      <pre><code  class="ruby">
+LEDR = 15
+LEDG = 16
+LEDB = 17
+pinMode(LEDR, 0)
+pinMode(LEDG, 0)
+pinMode(LEDB, 0)
+while  true
+  digitalWrite(LEDG, 1)
+  sleep(1)
+  digitalWrite(LEDR, 1)
+  sleep(1)
+  digitalWrite(LEDG, 0)
+  sleep(1)
+  digitalWrite(LEDR, 0)
+end
+      </code></pre>
+    </div>
+  </div>
+  <li>Dim the LED brightness</li>
+  <div class="answer_box">
+    <label for="led_ans2">answer ➡</label>
+    <input type="checkbox" id="led_ans2"/>
+    <div class="answer_show">  
+      <pre><code  class="ruby">
+LEDR = 15
+LEDG = 16
+LEDB = 17
+pinMode(LEDR, 0)
+pinMode(LEDG, 0)
+pinMode(LEDB, 0)
+while  true
+  digitalWrite(LEDR, 1)
+  sleep(0.001)
+  digitalWrite(LEDR, 0)
+  sleep(0.001)
+end
+      </code></pre>
+    </div>
+  </div>
+  <li>Dim the LED brightness (PWM)</li>
+  <div class="answer_box">
+    <label for="led_ans3">answer ➡</label>
+    <input type="checkbox" id="led_ans3"/>
+    <div class="answer_show">  
+      <pre><code  class="ruby">
+LEDG = 16
+pinMode(LEDG, 0)
+PWM.new()
+PWM.pin(LEDG)
+PWM.start(2)
+PWM.cycle(0x95A,4)
+while true
+  for i in 0..100 do
+    PWM.rate(i,2)
+    sleep(0.03)
+  end
+end
+      </code></pre>
+    </div>
+  </div>
+</ul>
 
     </div>
     <div id="submenu">

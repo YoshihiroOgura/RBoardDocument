@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>PIC32_DIP_v2.1.0_1.0</title>
+    <title>tutorial - Temperature Sensor</title>
     <link rel="shortcut icon" href="/RBoardDocument/assets/img/bug.ico">
     <link rel="stylesheet" href="/RBoardDocument/assets/css/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
@@ -27,33 +27,54 @@
 
       <div class="lang-switch" aria-label="language switch">
         <span>言語:</span>
-        <a href="/RBoardDocument/boards/RBoard_PIC32_DIP_v2-1-0_1-0.html" onclick="localStorage.setItem('preferred_lang', 'ja');">🇯🇵 日本語</a>
+        <a href="/RBoardDocument/tutorial/mrubycIDE/v2-1-0/temp.html" onclick="localStorage.setItem('preferred_lang', 'ja');">🇯🇵 日本語</a>
         <span> / </span>
-        <a href="/RBoardDocument/en/boards/RBoard_PIC32_DIP_v2-1-0_1-0.html" onclick="localStorage.setItem('preferred_lang', 'en');">🇺🇸 English</a>
+        <a href="/RBoardDocument/en/tutorial/mrubycIDE/v2-1-0/temp.html" onclick="localStorage.setItem('preferred_lang', 'en');">🇺🇸 English</a>
       </div>
     </div>
     <div id="main">
-        <h2>PIC32_DIP_v2.1.0_1.0</h2>
-<img width="100%" src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/195542/18e36ce0-0160-a78c-4440-7ecdf699063e.png">
-PWM：pin2、pin12、pin16、pin18<br>
-The GROVE module, which uses digital signals, can also be used with ADC and UART ports.<br>
-<span style="color:rgb(255, 0, 0)">※The UART on GROVE cannot be used as is (it can be used as a digital GROVE).</span>See the <a href="./uart.html">UART sample</a> for details.<br>
-<span style="color:rgb(255, 0, 0)">※I2C pins cannot be used as DigitalIO (pins 7 and 8).</span><br>
-Pinout confirmation sticker data (A4 size)：<a href="https://drive.google.com/file/d/14RqoCmJ6SMTae6Wt1eQ4h4W8mfWR998x/view?usp=sharing">download</a><br>
-Red：3.3V<br>
-Black：GND<br>
-White：NC<br>
-Sky Blue：Pin<br>
-Orange：ADC<br>
-Brown：PWM<br>
-Blue：UART<br>
-Green：I2C<br>
-Grey：オンボードLED<br>
-Pink：オンボードスイッチ<br>
+        <h3>Required Components</h3>
+<ul>
+  <li><a href="https://www.digikey.jp/short/8qpd0mb7">Temperature Sensor (LM61CIZ)</a></li>
+</ul>
 <hr id="first_boader">
-<h2>Electrical specifications</h2>
-Input voltage：3.3V~12V(USB)<br>
-Operating voltage：3.3V<br>
+<h3>About the Temperature Sensor</h3>
+Sometimes, a <a href="https://www.digikey.jp/short/dwv7t0jb">thermistor</a> is used as a temperature sensor.<br>
+While thermistors are inexpensive and easy to obtain, their conversion formula is complex.<br>
+In this tutorial, we will use a more expensive but simpler IC (LM61CIZ) with a straightforward calculation formula.<br>
+The LM61CIZ outputs 600mV when the temperature is 0°C. <br>
+This is to prevent the output voltage from becoming negative even when the temperature is negative.<br>
+The LM61CIZ has a change of 10mV per degree Celsius.<br>
+For +25°C: 600 + 250 = 850mV<br>
+For -25°C: 600 - 250 = 350mV<br>
+
+Also, this sensor can be used without using a voltage divider resistor, and can be used by simply connecting the power supply.<br>
+The power supply also supports a wide range of 2.7～10V, and the output voltage remains at 600mV at 0°C regardless of the power supply voltage.<br>
+
+<hr id="first_boader">
+<h3>Electronic Circuit</h3>
+Circuit Diagram<br>
+<img src="https://lh3.googleusercontent.com/d/1y_4sdLnZq4lrD_ynT7dBOmcX2O5sWeYj" class="expansion"><br>
+Breadboard Circuit<br>
+<img src="https://lh3.googleusercontent.com/d/1nI4adAyFA5ZppZnnji6QIuwcGbgSK3nQ" class="expansion"><br>
+<hr id="first_boader">
+<h3>Program</h3>
+Program to measure temperature
+<pre><code  class="ruby">
+TEMP_ADC = 6
+adc = ADC.new()
+adc.ch(TEMP_ADC)
+temp = 0
+while true
+  adc.start
+  v = adc.read_v
+  adc.stop
+  temp = (v-0.6)*1000/10
+  puts("temp:" + temp.to_s)
+end
+</code></pre>
+<hr id="first_boader">
+<h3>Task:</h3>
 
     </div>
     <div id="submenu">
