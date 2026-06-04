@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>RBoard_V1(mruby/c2.1)</title>
+    <title>RBoard_V1(mruby/c1.4)</title>
     <link rel="shortcut icon" href="/RBoardDocument/assets/img/bug.ico">
     <link rel="stylesheet" href="/RBoardDocument/assets/css/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
@@ -27,150 +27,226 @@
 
       <div class="lang-switch" aria-label="language switch">
         <span>言語:</span>
-        <a href="/RBoardDocument/firmware/mrubyc2_1.html" onclick="localStorage.setItem('preferred_lang', 'ja');">🇯🇵 日本語</a>
+        <a href="/RBoardDocument/firmware/mrubyc1_4.html" onclick="localStorage.setItem('preferred_lang', 'ja');">🇯🇵 日本語</a>
         <span> / </span>
-        <a href="/RBoardDocument/en/firmware/mrubyc2_1.html" onclick="localStorage.setItem('preferred_lang', 'en');">🇺🇸 English</a>
+        <a href="/RBoardDocument/en/firmware/mrubyc1_4.html" onclick="localStorage.setItem('preferred_lang', 'en');">🇺🇸 English</a>
       </div>
     </div>
     <div id="main">
-        This content is for a pre-release item (mruby/c2.1).<br>
+        This content is for the initial lot (mruby/c1.4).<br>
 - mruby/cIDE version:1.0<br>
 - mrbwrite version:1.0<br>
-- mrbc commpiler version:2.0<br>
-The compatible firmware can be downloaded <a href="https://github.com/YoshihiroOgura/pic32mx170_mrubyc/releases/tag/v2.1.0.2">here</a>.<br>
+- mrbc compiler version:2.0<br>
+The corresponding firmware can be downloaded from <a href="https://github.com/YoshihiroOgura/pic32mx170_mrubyc/releases/tag/v1.0">here</a>.<br>
 <h2 id="Ruby">Ruby</h2>
-For Ruby classes supported by mruby/c, see the official URL below.<br>
+For the Ruby classes supported by mruby/c, please refer to the official URL below.<br>
 <a href="https://www.s-itoc.jp/activity/research/mrubyc/mrubyc_docs/library">
 https://www.s-itoc.jp/activity/research/mrubyc/mrubyc_docs/library</a>
-      
 <hr id="first_boader">
-
-<h2 id="GPIO">GPIO</h2>
-<h3 id="GPIO_new">new(pin)</h3>
-pin：0～20<br>
-<hr id="second_boader">
-<h3 id="GPIO_setmode">setmode(mode)</h3>
-Configure pins to act as inputs or outputs. <br>
-mode：0(output),1(input)<br>
-<hr id="second_boader">
-<h3 id="GPIO_write">write(value)</h3>
-Write a 1 or a 0 value to a pin.<br>
-3.3V for 1, 0V (ground) for 0.<br>
-value：0(OFF),1(ON)<br>
-<hr id="second_boader">
-<h3 id="GPIO_read">read()</h3>
-Reads the value from a specified pin, either 1 or 0.<br>
-return value：0(OFF),1(ON)<br>
-<hr id="second_boader">
-<h3 id="GPIO_pull">pull(mode)</h3>
-Internal resistance selection.<br>
-mode：-1~1<br>
--1(pull down) , 0(not pull) , 1(pull up)<br>
-
-<hr id="first_boader">
-
 <h2 id="ADC">ADC</h2>
-<h3 id="ADC_new">new(pin)</h3>
-pin：0～20<br>
+<h3 id="ADC_start">start</h3>
+ADC Start<br>
+<hr id="second_boader">
+<h3 id="ADC_stop">stop</h3>
+ADC Stop<br>
 <hr id="second_boader">
 <h3 id="ADC_read">read</h3>
-Reads the value from the specified analog pin.<br>
-It is output as a voltage value.(0V~3.3V)<br>
-return value：0～3.3<br>
+Output the acquired value as an integer.<br>
+Return value: 0～1023(0~3.3V)<br>
 <hr id="second_boader">
 <h3 id="ADC_read_v">read_v</h3>
-<span style="color:rgb(255, 0, 0)">※same as [read]</span><br>
-Reads the value from the specified analog pin.<br>
-It is output as a voltage value.(0V~3.3V)<br>
-return value：0～3.3<br>
+Output the acquired value as a voltage.<br>
+Return value: 0～3.3<br>
+<hr id="second_boader">
+<h3 id="ADC_ch">ch(channel)</h3>
+Specify the port to use<br>
+channel：0～7<br>
 
 <hr id="first_boader">
 <h2 id="I2C">I2C</h2>
-<h3 id="I2C_new">new()</h3>
-<hr id="second_boader">
 <h3 id="I2C_write">write(sl_addr, addr, data1, data2,,,,)</h3>
-Write data to the slave device using I2C communication.<br>
+i2c write<br>
 sl_addr：slave address<br>
-addr：data address<br>
-data：data<br>
+addr：address to write to<br>
+data：data to write<br>
 <hr id="second_boader">
-<h3 id="I2C_read">read(sl_addr, size, addr)</h3>
-Read data from slave device using I2C communication.<br>
+<h3 id="I2C_read">read(sl_addr, addr, size)</h3>
+i2c read<br>
 sl_addr：slave address<br>
-size：read size<br>
-addr：data address<br>
+addr：address to read from<br>
+size：size of data to read<br>
 
 <hr id="first_boader">
 <h2 id="PWM">PWM</h2>
-<h3 id="PWM_new">new(pin)</h3>
-pin：0～20<br>
+<h3 id="PWM_new">new</h3>
 <hr id="second_boader">
-<h3 id="PWM_frequency">frequency(n)</h3>
-frequency setting. Specify 0 to stop output.<br>
-n:integer(Hz)<br>
+<h3 id="PWM_cycle">cycle(time,double)</h3>
+Cycle setting<br>
+time：1～65535‬(1=0.1us)<br>
+<form oninput="opt1.value = Math.round(1 / Number(a1.value) * 10000000)">
+1(s)÷
+<input type="number" name="a1" value="0"size="10"placeholder="Frequency">
+(Hz)×10000000=
+<output name="opt1">0</output>
+</form>
+double：magnification(0～7)<br>
+<table border="1" class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">integer</th>
+      <th scope="col">magnification</th>
+    </tr>
+  </thead>
+  <tr>
+    <td>0</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>2</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>4</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>8</td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>16</td>
+  </tr>
+  <tr>
+    <td>5</td>
+    <td>32</td>
+  </tr>
+  <tr>
+    <td>6</td>
+    <td>64</td>
+  </tr>
+  <tr>
+    <td>7</td>
+    <td>256</td>
+  </tr>
+</table>
 <hr id="second_boader">
-<h3 id="PWM_duty">duty(n)</h3>
-Specify the duty ratio from 0 (all off) to 1023 (all on).<br>
-n:0~1023<br>
+<h3 id="PWM_rate">rate(p,ch)</h3>
+p：percentage<br>
+ch：used channel(1～5)<br>
 <hr id="second_boader">
-<h3 id="PWM_period_us">period_us(us)</h3>
-Specifies the cycle in microseconds.<br>
-us:integer[microsecond]<br>
+<h3 id="PWM_start">start(ch)</h3>
+PWM start<br>
+ch：used channel(1～5)<br>
 <hr id="second_boader">
-<h3 id="PWM_duty_us">duty_us(us)</h3>
-Specifies the duty cycle in microseconds.<br>
-us:integer[microsecond]<br>
-If (period_us) is 100 microseconds and (duty_us) is 50 microseconds, on:off will be 1:1.<br>
+<h3 id="PWM_stop">stop(ch)</h3>
+PWM stop<br>
+ch：used channel(1～5)<br>
+<hr id="second_boader">
+<h3 id="PWM_pin">pin(pin)</h3>
+Specify the PWM pin to use<br>
+pin(2,12,16,18)<br>
+<table border="1" class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th>ch</th>
+      <th>pin</th>
+    </tr>
+  </thead>
+  <tr>
+    <td>1</td>
+    <td>12</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>16</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>18</td>
+  </tr>
+  <tr>
+    <td>5</td>
+    <td>2</td>
+  </tr>
+</table>
+
+<hr id="first_boader">
+<h2 id="Timer">Timer</h2>
+<h3 id="Timer_start">start</h3>
+<hr id="second_boader">
+<h3 id="Timer_stop">stop</h3>
+<hr id="second_boader">
+<h3 id="Timer_set">set(time,double)</h3>
+time：1～65535‬(1=0.1us)<br>
+double：integer(magnification)<br>
+<table border="1" class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th>integer</th>
+      <th>magnification</th>
+    </tr>
+  </thead>
+  <tr>
+    <td>0</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>2</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>4</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>8</td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>16</td>
+  </tr>
+  <tr>
+    <td>5</td>
+    <td>32</td>
+  </tr>
+  <tr>
+    <td>6</td>
+    <td>64</td>
+  </tr>
+  <tr>
+    <td>7</td>
+    <td>256</td>
+  </tr>
+</table>
+
+<hr id="second_boader">
+<h3 id="Timer_count_clear">count_clear</h3>
+<hr id="second_boader">
+<h3 id="Timer_count_get">count_get</h3>
+Return value: 0～255
 
 <hr id="first_boader">
 <h2 id="UART">UART</h2>
-<h3 id="UART_new">new( ch, baud )</h3>
-ch  ：UART Channel（1 or 2）<br>
-　1=>Channel used by USB<br>
-　2=>Channel used by GROVE<br>
-baud：baud rate value（sample value：19200）<br>
-<hr id="second_boader">
-<h3 id="UART_set_modem_params">set_modem_params("baud"=>baud,"parity"=>parity,"stop_bits"=>stop_bits,"txd"=>txd,"rxd"=>rxd)</h3>
-baud：baud rate value（sample value：19200）<br>
-parity：parity bit(0~2)<br>
-stop_bits：stop bit(1 or 2)<br>
-txd：TX pin number<br>
-　Channel 1->(0,8,9,12,20)<br>
-　Channel 2->(3,5,14,15,19)<br>
-rxd：RX pin number<br>
-Channel 1->(2,4,7,11,18)<br>
-Channel 2->(1,6,10,13,16)<br>
+<h3 id="UART_new">new(baud)</h3>
+Since the baseline is 19200, setting a value higher than this will result in significant data loss.<br>
+baud：baud rate value (e.g., 19200)<br>
 <hr id="second_boader">
 <h3 id="UART_gets">gets</h3>
-Receives a string. Returns bytes up to "\n".<br>
-return value：String<br>
-<hr id="second_boader">
-<h3 id="UART_write">write(text)</h3>
-Send a string.<br>
-text：String<br>
-<hr id="second_boader">
-<h3 id="UART_read">read(n)</h3>
-Receives a string. Receives only the specified number of characters.<br>
-Returns nil if the specified number of bytes of data has not arrived.<br>
-n：integer(word count)<br>
-return value：String or nil<br>
-<hr id="second_boader">
-<h3 id="UART_read_nonblock">read_nonblock(n)</h3>
-Receives a string. Receives only the specified number of characters.<br>
-If the specified number of bytes of data has not arrived, it returns the data that has arrived.<br>
-n：integer(word count)<br>
-return value：String<br>
+String reception<br>
 <hr id="second_boader">
 <h3 id="UART_puts">puts(text)</h3>
-Send a string.<br>
-<span style="color:rgb(255, 0, 0)">※same as [write]</span><br>
-text：String<br>
+String transmission<br>
+text：string
+
 <hr id="second_boader">
-<h3 id="UART_clear_rx_buffer">clear_rx_buffer</h3>
-Initialize received string buffer
-<hr id="second_boader">
-<h3 id="UART_clear_tx_buffer">clear_tx_buffer</h3>
-Initialize transmission string buffer
+<h3 id="UART_clear_buffer">clear_buffer</h3>
+Initialize the receive buffer (mruby/c2.0)
 
 <hr id="first_boader">
 <h2 id="Math">Math</h2>
@@ -178,16 +254,16 @@ Initialize transmission string buffer
 https://github.com/YoshihiroOgura/pic32mx170_mrubyc/blob/a0542f4fb76b2f3e1ba6e5078c9e3fc3a7164865/src/c_math.c#L240</a>
 
 <hr id="first_boader">
-<h2 id="ETC">Additional features of RBoard</h2>
-<h3 id="leds_write">leds_write(byte)</h3>
-onboard led control.<br>
-byte：integer<br>
+<h2 id="ETC">Others</h2>
+<h3 id="leds_write">leds_write(bit)</h3>
+LED control<br>
+bit : integer<br>
 <table border="1" class="table">
   <thead class="thead-dark">
     <tr>
       <th>led</th>
-      <th>Decimal Number</th>
-      <th>binary</th>
+      <th>Decimal</th>
+      <th>Binary</th>
     </tr>
   </thead>
   <tr>
@@ -214,19 +290,42 @@ byte：integer<br>
 
 <hr id="second_boader">
 <h3 id="sw">sw()</h3>
-Read state of onboard switch<br>
-Switch with pull-up resistor<br>
-return value：0(switch on) or 1(switch off)<br>
+Switch state reading<br>
+Return value: 0 or 1<br>
+
+<hr id="second_boader">
+<h3 id="pinMode">pinMode(pin,mode)</h3>
+pin：0～20<br>
+mode：0(OUTPUT) or 1(INPUT)<br>
+
+<hr id="second_boader">
+<h3 id="pinPull">pinPull(pin,mode)</h3>
+Internal resistance selection(mruby/c2.0)<br>
+pin：0～20<br>
+mode：-1(pull down) or 0(no pull) or 1(pull up)<br>
 
 <hr id="second_boader">
 <h3 id="pinInit">pinInit</h3>
-Reset all pin settings to default.
+Reset all pin settings to their default state.
+
+<hr id="second_boader">
+<h3 id="digitalWrite">digitalWrite(pin,mode)</h3>
+pin：0～20<br>
+mode：0(OFF) or 1(ON)<br>
+
+<hr id="second_boader">
+<h3 id="digitalRead">digitalRead(pin)</h3>
+Specify the pin to read the state<br>
+pin：0～20<br>
+Return value: 0(OFF) or 1(ON)<br>
 
 <hr id="second_boader">
 <h3 id="puts">puts(txt)</h3>
-string output<br>
-Terminal software settings:<a href="../console_en.html">link</a><br>
-txt：string<br>
+String output<br>
+For terminal software settings, please refer to <a href="../console.html">here</a>
+txt：string
+</div>
+
     </div>
     <div id="submenu">
   
@@ -302,22 +401,15 @@ txt：string<br>
       <summary><a href="#Ruby">Ruby</a></summary>
     </details>
     <details>
-      <summary><a href="#GPIO">GPIO</a></summary>
-      <ul id="class_ul">
-        <li><a href="#GPIO_new">new</a></li>
-        <li><a href="#GPIO_setmode">setmode</a></li>
-        <li><a href="#GPIO_write">write</a></li>
-        <li><a href="#GPIO_read">read</a></li>
-        <li><a href="#GPIO_pull">pull</a></li>
-      </ul>
-    </details>
-    <details>
       <summary><a href="#ADC">ADC</a></summary>
       <ul id="class_ul">
-        <li><a href="#ADC_new">new</a></li>
+        <li><a href="#ADC_start">start</a></li>
+        <li><a href="#ADC_stop">stop</a></li>
         <li><a href="#ADC_read">read</a></li>
         <li><a href="#ADC_read_v">read_v</a></li>
+        <li><a href="#ADC_ch">ch</a></li>
       </ul>
+    </details>
     </details>
     <details>
       <summary><a href="#I2C">I2C</a></summary>
@@ -327,40 +419,40 @@ txt：string<br>
       </ul>
     </details>
     <details>
-      <summary><a href="#SPI">SPI</a></summary>
-      <ul id="class_ul">
-        <li><a href="#SPI_write">write</a></li>
-        <li><a href="#SPI_read">read</a></li>
-      </ul>
-    </details>
-    <details>
       <summary><a href="#PWM">PWM</a></summary>
       <ul id="class_ul">
         <li><a href="#PWM_new">new</a></li>
-        <li><a href="#PWM_frequency">frequency</a></li>
-        <li><a href="#PWM_duty">duty</a></li>
-        <li><a href="#PWM_period_us">period_us</a></li>
-        <li><a href="#PWM_duty_us">duty_us</a></li>
+        <li><a href="#PWM_cycle">cycle</a></li>
+        <li><a href="#PWM_rate">rate</a></li>
+        <li><a href="#PWM_start">start</a></li>
+        <li><a href="#PWM_stop">stop</a></li>
+        <li><a href="#PWM_pin">pin</a></li>
+      </ul>
+    </details>
+    <details>
+      <summary><a href="#Timer">Timer</a></summary>
+      <ul id="class_ul">
+        <li><a href="#Timer_start">start</a></li>
+        <li><a href="#Timer_stop">stop</a></li>
+        <li><a href="#Timer_set">set</a></li>
+        <li><a href="#Timer_count_clear">count_clear</a></li>
+        <li><a href="#Timer_count_get">count_get</a></li>
       </ul>
     </details>
     <details>
       <summary><a href="#UART">UART</a></summary>
       <ul id="class_ul">
         <li><a href="#UART_new">new</a></li>
-        <li><a href="#UART_set_modem_params">set_modem_params</a></li>
         <li><a href="#UART_gets">gets</a></li>
-        <li><a href="#UART_write">write</a></li>
-        <li><a href="#UART_read">read</a></li>
-        <li><a href="#UART_read_nonblock">read_nonblock</a></li>
-        <li><a href="#UART_clear_tx_buffer">clear_tx_buffer</a></li>
-        <li><a href="#UART_clear_rx_buffer">clear_rx_buffer</a></li>
+        <li><a href="#UART_puts">puts</a></li>
+        <li><a href="#UART_clear_buffer">clear_buffer</a></li>
       </ul>
     </details>
     <details>
       <summary><a href="#Math">Math</a></summary>
     </details>
     <details>
-      <summary><a href="#ETC">RBoard Class</a></summary>
+      <summary><a href="#ETC">その他</a></summary>
       <ul id="class_ul">
         <li><a href="#leds_write">leds_write</a></li>
         <li><a href="#sw">sw</a></li>

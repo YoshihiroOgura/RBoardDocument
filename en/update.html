@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Board List</title>
+    <title>RBoard Firmware Update</title>
     <link rel="shortcut icon" href="/RBoardDocument/assets/img/bug.ico">
     <link rel="stylesheet" href="/RBoardDocument/assets/css/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
@@ -27,94 +27,68 @@
 
       <div class="lang-switch" aria-label="language switch">
         <span>言語:</span>
-        <a href="/RBoardDocument/board_list.html" onclick="localStorage.setItem('preferred_lang', 'ja');">🇯🇵 日本語</a>
+        <a href="/RBoardDocument/update.html" onclick="localStorage.setItem('preferred_lang', 'ja');">🇯🇵 日本語</a>
         <span> / </span>
-        <a href="/RBoardDocument/en/board_list.html" onclick="localStorage.setItem('preferred_lang', 'en');">🇺🇸 English</a>
+        <a href="/RBoardDocument/en/update.html" onclick="localStorage.setItem('preferred_lang', 'en');">🇺🇸 English</a>
       </div>
     </div>
     <div id="main">
-        <link rel="stylesheet" href="/RBoardDocument/assets/css/listView.css">
-
-
-<h2>Product</h2>
-<ul class="grid">
-  <li class="grid-item">
-    <a href="/RBoardDocument/en/boards/RBoard_PIC32_SMD_v3-4-0_2-0.html">
-      <figure>
-        <img src="https://dummyimage.com/400x200/3b3b3b/ffffff&text=image">
-      </figure>
-      <p>RBoard_PIC32_SMD_v3.4.0_2.0</p>
-    </a>
-  </li>
-  <li class="grid-item">
-    <a href="/RBoardDocument/en/boards/RBoard_PIC32_SMD_v2-1-0_1-0.html">
-      <figure>
-        <img src="/RBoardDocument/assets/img/boards/PIC32_SMD_v2-1-0_1-0.jpg">
-      </figure>
-      <p>RBoard_PIC32_SMD_v2.1.0_1.0</p>
-    </a>
-  </li>
+        This document outlines the procedure for updating the mruby/c firmware and what to do if the firmware becomes corrupted.<br>
+An additional procedure document is available.<a href="https://drive.google.com/file/d/1O62rVQrN4xbb8cWmzLj_xok-11Rifnxv/view">https://drive.google.com/file/d/1O62rVQrN4xbb8cWmzLj_xok-11Rifnxv/view</a>
+<h2>Preparation</h2>
+<ul id="normal_li">
+  <li>Install <a href="https://www.microchip.com/mplab/mplab-x-ide">MPLAB X(or MPLAB X IPE)</a></li>
+  <li>Install <a href="https://www.microchip.com/mplab/compilers">XC32</a> (When using MPLAB X)</li>
+  <li>Download the <a href="https://github.com/YoshihiroOgura/pic32mx170_mrubyc/releases">hex file</a> (when using MPLAB X IPE)</li>
+  　⇒The latest hex file is <a href="https://github.com/YoshihiroOgura/pic32mx170_mrubyc/releases">the release page</a>'s mruby/c2.1 compatible, pic32mx170_mrubyc.production.hex.<br>
+  <li>Purchase one of the following: <a href="https://www.digikey.jp/product-detail/ja/microchip-technology/PG164130/PG164130-ND/2171224">pickit3</a>, <a href="http://akizukidenshi.com/catalog/g/gM-13337/">pickit4</a>, or <a href="https://akizukidenshi.com/catalog/g/gM-13854/">MPLAB Snap</a></li>
+  　⇒If you use a <a href="https://www.amazon.co.jp/dp/B01K26W8FQ/">compatible pickit3</a> or Snap for writing, please supply power from the USB cable.
 </ul>
 <hr id="first_boader">
-<h2>Open Source Hardware</h2>
-<ul class="grid">
-  <li class="grid-item">
-    <a href="/RBoardDocument/en/boards/RBoard_PIC32_DIP_v3-1-0_1-5.html">
-      <figure>
-        <img src="/RBoardDocument/assets/img/boards/PIC32_DIP_v3-1-0_1-5.png">
-      </figure>
-      <p>RBoard_PIC32_DIP_v3.1.0_1.5</p>
-    </a>
-  </li>
-  <li class="grid-item">
-    <a href="/RBoardDocument/en/boards/RBoard_PIC32_DIP_v2-1-0_1-0.html">
-      <figure>
-        <img src="/RBoardDocument/assets/img/boards/PIC32_DIP_v2-1-0_1-0.jpg">
-      </figure>
-      <p>RBoard_PIC32_DIP_v2.1.0_1.0</p>
-    </a>
-  </li>
-  <li class="grid-item">
-    <a href="/RBoardDocument/en/boards/RBoard_PIC32_SMD_v1-4-0_1-0.html">
-      <figure>
-        <img src="https://dummyimage.com/400x200/3b3b3b/ffffff&text=image">
-      </figure>
-      <p>RBoard_PIC32_SMD_v1.4.0_0.1</p>
-    </a>
-  </li>
-  <li class="grid-item">
-    <a href="#">
-      <figure>
-        <img src="https://dummyimage.com/400x200/3b3b3b/ffffff&text=image">
-      </figure>
-      <p>RBoard_PIC32_LOW_v3.1.0_1.0</p>
-    </a>
-  </li>
-  <li class="grid-item">
-    <a href="https://github.com/YoshihiroOgura/sjc_mrubyc_boad">
-      <figure>
-        <img src="https://dummyimage.com/400x200/3b3b3b/ffffff&text=image">
-      </figure>
-      <p>RBoard_PSOC5_SMD_v1.4.0_0.1</p>
-    </a>
-  </li>
-  <li class="grid-item">
-    <a href="https://github.com/YoshihiroOgura/sjc_mrubyc_boad">
-      <figure>
-        <img src="https://dummyimage.com/400x200/3b3b3b/ffffff&text=image">
-      </figure>
-      <p>RBoard_PSOC5_SMD_v1.4.0_1.0</p>
-    </a>
-  </li>
-  <li class="grid-item">
-    <a href="https://github.com/YoshihiroOgura/samd21_mrubyc">
-      <figure>
-        <img src="https://dummyimage.com/400x200/3b3b3b/ffffff&text=image">
-      </figure>
-      <p>RBoard_SAMD21_SMD_v3.1.0_0.1</p>
-    </a>
-  </li>
-</ul>
+<h2>Procedure using "MPLAB X IDE"</h2>
+<ol>
+  <li>Launch MPLAB X</li>
+  <li>Team → git → clone</li>
+  <li>Repogitory URL:<span style="color:rgb(0, 38, 255)">https://github.com/YoshihiroOgura/-pic32mx170_mrubyc.git</span></li>
+  <li>For DIP packages, use <a href="https://qiita.com/aikawa_YO/items/68b12689f30ecd67a754">this circuit</a> or <a href="http://akizukidenshi.com/catalog/g/gK-05355/">kit</a>; for surface-mount packages, connect the pickit directly to "J3".
+</li>
+  <img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/195542/e3a018ae-2315-0d9e-4f4b-674600e4cb9c.png">
+  <li>Execute write</li>
+  <img src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/195542/61fc508c-5cff-6cff-6868-38432416f67c.png">
+  <hr id="second_boader">
+  <h3>If it doesn't work, connect the USB cable to supply power or follow the steps below.</h3>
+  <li>Production → Set Project Configration → Custamize...</li>
+  <li>Conf:[default] → Select the programmer to use from Hardware Tools (e.g., Pickit3).</li>
+  <img src="https://lh3.googleusercontent.com/d/19O7kXjEhsFVKn32QJcrdqfxa6nT1-9hG">
+  <li>Apply</li>
+  <li>Conf:[default] → PICkit3, etc. → Check the Power option.</li>
+  <img src="https://lh3.googleusercontent.com/d/1dLH9rFUTRP7n66P6U1vi6Ot83yG078tf">
+  <li>Apply → OK</li>
+</ol>
+<hr id="first_boader">
+<h2>Procedure using "MPLAB X IPE"</h2>
+<ol>
+  <li>Launch MPLAB X IPE</li>
+  <li>Set the project configuration</li>
+  Family：32-bit MCUs (PIC32)<br>
+  Device：PIC32MX170F256B
+  <li>Press the "Apply" button.</li>
+  <li>Connect the PC to the pickit3 or pickit4<br></li>
+  After a while, the "Tool" item will switch to PICKIT3.
+  <li>Select "Setting" -> "Advanced Mode". A screen like the following will be displayed.</li>
+  Enter [microchip] in the "Password" field and click "Log in"<br>
+  <img src="https://user-images.githubusercontent.com/24926574/88021756-07bc3180-cb69-11ea-92f5-af5af76df934.png">
+  <li>The screen changes and items are displayed on the left side.</li>
+  Access "Power"
+  <li>Check the box for "Power target circuit from PICkit3".</li>
+  Select "Operate" and return to the previous screen.
+  <li>Press the "Connect" button.</li>
+  <li>Specify the path to "pic32_170.production.hex" in the "Hex File" field.</li>
+  <li>Connect the board to the PICkit3.</li>
+  <li>Click "Program" to start writing.</li>
+  <li>If "Programming complete" is displayed in the "Output" field, the writing is complete.</li>
+</ol>
+
     </div>
     <div id="submenu">
   
