@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>home</title>
+    <title>PWM Sample Program</title>
     <link rel="shortcut icon" href="/RBoardDocument/assets/img/bug.ico">
     <link rel="stylesheet" href="/RBoardDocument/assets/css/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
@@ -27,72 +27,154 @@
 
       <div class="lang-switch" aria-label="language switch">
         <span>言語:</span>
-        <a href="/RBoardDocument/" onclick="localStorage.setItem('preferred_lang', 'ja');">🇯🇵 日本語</a>
+        <a href="/RBoardDocument/sampleProgram/v2-1-0/pwm.html" onclick="localStorage.setItem('preferred_lang', 'ja');">🇯🇵 日本語</a>
         <span> / </span>
-        <a href="/RBoardDocument/en/" onclick="localStorage.setItem('preferred_lang', 'en');">🇺🇸 English</a>
+        <a href="/RBoardDocument/en/sampleProgram/v2-1-0/pwm.html" onclick="localStorage.setItem('preferred_lang', 'en');">🇺🇸 English</a>
       </div>
     </div>
     <div id="main">
-        <h2> RBoard with PIC32 & mruby/c</h2>
-<img class="window_img" src = "https://lh3.googleusercontent.com/d/1Lk95hgHNin8dEX_MBmEDh2B_POfmYwY5">
-<hr id="first_boader">
-<h2>Introduction</h2>
-Welcome to the world of mruby/c<br>
-mruby/c is a very compact language for microcontrollers compared to CRuby and mruby.<br>
-<br>
-RBoard is an introductory board for those who want to use Ruby (mruby/c) on microcontrollers.<br>
-It is implemented as low-level as possible and can support various sensors.<br>
-<br>
-Since mruby/c is installed as standard, development using mruby/cIDE is possible without using a dedicated IDE such as MPLABX.<br>
-<br>
-In addition, since it is equipped with a GROVE port, various sensors and actuators can be used without soldering.<br>
-<br>
-Information about each version can be found on the release page=>
-<a href="https://github.com/YoshihiroOgura/pic32mx170_mrubyc/releases">Release Page</a><br>
-<br>
-<i class="far fa-question-circle"></i>For more information about GROVE, please visit <a href="https://wiki.seeedstudio.com/Grove_System/">this page</a><br>
-<i class="far fa-question-circle"></i>For more information about mruby/c, please visit <a href="https://www.s-itoc.jp/activity/research/mrubyc/">this page</a><br>
-<br>
-<hr id="first_boader">
-<h2>Source Code</h2>
-<b>License</b>：BSD 3-Clause<br>
-<b>Copyright</b>：Shimane Johoshori Center Inc.<br>
-<a href="https://github.com/YoshihiroOgura/pic32mx170_mrubyc">https://github.com/YoshihiroOgura/pic32mx170_mrubyc</a><br>
+        <h3 class="link" id="pwm_out">PWM(External LED)</h3>
+<pre><code  class="ruby">
+PWM.new()
+PWM.pin(16)
+PWM.start(2)
+PWM.cycle(0x95A,4)
+while true
+  PWM.rate(80,2)
+  sleep 1
+  PWM.rate(40,2)
+  sleep 1
+  PWM.rate(20,2)
+  sleep 1
+end
+</code></pre>
 
 <hr id="first_boader">
-<h2>Schematic and PCB Data</h2>
-<b>License</b>：CC-BY-NC-SA 3.0<br>
-<b>Copyright</b>：Shimane Johoshori Center Inc. or YoshihiroOgura<br>
-<a href="https://easyeda.com/YoshihiroOgura/rboard">https://easyeda.com/YoshihiroOgura/rboard</a><br>
-<br>
+
+<h3 class="link" id="pwm_buzzer">Piezo Buzzer</h3>
+http://wiki.seeedstudio.com/Grove-Buzzer/
+<pre><code  class="ruby">
+PWM.new()
+PWM.pin(16)
+PWM.start(2)
+while true
+  PWM.cycle(0x95A,4)
+  sleep 1
+  PWM.cycle(0x84D,4)
+  sleep 1
+  PWM.cycle(0x76A,4)
+  sleep 1
+  PWM.cycle(0x6EF,4)
+  sleep 1
+  PWM.cycle(0x639,4)
+  sleep 1
+  PWM.cycle(0x58C,4)
+  sleep 1
+  PWM.cycle(0x4F3,4)
+  sleep 1
+end
+</code></pre>
+
+<h4>Simple MML Playback</h4>
+<pre><code  class="ruby">
+TBL_FREQ = [0x95A, 0x84D, 0x76A, 0x6EF, 0x639, 0x58C, 0x4F3,
+            0x4AB, 0x428, 0x3B4, 0x37F, 0x31D, 0x2BF, 0x278]
+TBL_LENGTH = {1=>2000, 2=>1000, 4=>500, 8=>250}
+
+PWM.new()
+PWM.pin(16)
+PWM.start(2)
+
+def tone( freq )
+  if freq == 0
+    PWM.cycle(0,4)
+    return
+  end
+
+  PWM.cycle(freq ,4)
+end
+
+
+def play( mml )
+  mnote = nil
+  mlength = 4
+  octabe = 0
+
+  mml.each_char {|ch|
+    # 音階指示か？
+    if "CDEFGABR".index(ch)
+      play_sub( mnote, octabe, mlength )
+      mnote = ch
+      next
+    end
+
+    # 音長か？
+    if TBL_LENGTH[ch.to_i]
+      mlength = ch.to_i
+      next
+    end
+
+    # オクターブ上下か？
+    if ch == "<" || ch == ">"
+      play_sub( mnote, octabe, mlength )
+      if ch == "<"
+        octabe += 1
+      else
+        octabe -= 1
+      end
+      mnote = nil
+      next
+    end
+  }
+  play_sub( mnote, octabe, mlength )
+end
+
+
+def play_sub( mnote, octabe, mlength )
+  if !mnote
+    return
+  end
+  if mnote == "R"
+    sleep_ms( TBL_LENGTH[mlength] || 1 )
+    return
+  end
+
+  idx = "CDEFGAB".index(mnote)
+  if idx
+    idx = octabe * 7 + idx
+    if TBL_FREQ[idx]
+      tone( TBL_FREQ[idx] )
+      #display( idx )
+      sleep_ms( TBL_LENGTH[mlength] || 1 )
+      tone( 0 )
+    end
+    return
+  end
+
+end
+
+mml3 = "&lt;C8DE4&gt;C8DE4&lt;C8DE4&gt;C8DE4&lt;C8DE4&gt;C8DE4&lt;E8FG4EDC A8AAFDDEFGGGEC4R8 EF4&gt;A&lt;C8&gt;BAB&lt;C2"
+
+play mml3
+</code></pre>
 
 <hr id="first_boader">
-<h2>Demo Video</h2>
-<i class="far fa-star"></i>Temperature Data Wireless Transmission 0:00~0:29<br>
-<i class="far fa-star"></i>Wall Detection Autonomous Driving 0:30~0:50<br>
-<i class="far fa-star"></i><a href="https://www.ottodiy.com/">otto</a> Control 0:51~1:11<br>
-<iframe src="https://drive.google.com/file/d/1ZPXNBMeIIfxDhHjEzN8hbyfAX-B2K3MK/preview" width="640" height="480" allow="autoplay"></iframe>
-<hr id="first_boader">
-<h2>Where to Buy</h2>
-<a href="https://www.chip1stop.com/view/dispDetail/DispDetail?partId=SMNE-0000001">Chip One Stop</a><br>
-<a href="https://www.hokusin-web.co.jp/company/office">Hokusin Web</a> is also selling it.
 
-<hr id="first_boader">
-<h2>Warranty Information</h2>
-We only cover initial defects.(Within 7 days of purchase)<br>
-For inquiries, please email us at (<a href="mailto:sjc@sjc-inc.co.jp">sjc@sjc-inc.co.jp</a>)<br>
-We are not responsible for any damages that may occur as a result of using this product.<br>
-<hr id="first_boader">
-<h2>Contact Us</h2>
-For questions or requests regarding the program, please use the <a href="https://github.com/YoshihiroOgura/pic32mx170_mrubyc/issues">issues</a> on the source code.<br>
-For requests regarding the PCB, please use the comment section on <a href="https://easyeda.com/YoshihiroOgura/rboard">EasyEDA</a>.<br>
-For other inquiries, please email us at (<a href="mailto:sjc@sjc-inc.co.jp">sjc@sjc-inc.co.jp</a>).<br>
-We appreciate your feedback!<br>
-If you have any questions or comments, feel free to reach out to me on Twitter m(_ _"m)<a href="https://twitter.com/morisuteisyon?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-size="large" data-show-count="false">Follow @morisuteisyon</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script><br>
-<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.js" integrity="sha256-icjghcPaibMf1jv4gQIGi5MeWNHem2SispcorCiCfSg=" crossorigin="anonymous"></script>
-<script src="/RBoardDocument/assets/js/setupParticles.js"></script>
-<hr id="first_boader">
-This document is published under the <a href="./LICENSE">BSD 3-Clause License</a>.
+<h3>SG90(Servo Motor)</h3>
+<pre><code  class="ruby">
+PWM.new()
+PWM.pin(18)
+PWM.start(4)
+PWM.cycle(0xC35,6)
+while true
+  PWM.rate(3,4)
+  sleep 1
+  PWM.rate(6,4)
+  sleep 1
+  PWM.rate(12,4)
+  sleep 1
+end
+</code></pre>
     </div>
     <div id="submenu">
   

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
   <head>
-    <title>I2Cサンプルコード</title>
+    <title>I2C Sample Code</title>
     <link rel="shortcut icon" href="/RBoardDocument/assets/img/bug.ico">
     <link rel="stylesheet" href="/RBoardDocument/assets/css/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
@@ -33,11 +33,11 @@
       </div>
     </div>
     <div id="main">
-        I2Cが上手く動作しない場合はファームウェアをアップデートしてください。
-<a href="https://github.com/YoshihiroOgura/pic32mx170_mrubyc/blob/master/dist/default/production/pic32mx170_mrubyc_21.production.hex">こちらのhexファイル</a>
+        If I2C is not working properly, please update the firmware.
+<a href="https://github.com/YoshihiroOgura/pic32mx170_mrubyc/blob/master/dist/default/production/pic32mx170_mrubyc_21.production.hex">Click here for the hex file</a>
 
-<h3 class="link" id="i2c_mcp9808">温湿度センサ(MCP9808)</h3>
-温度センサ：<a href="https://www.switch-science.com/catalog/3986/">https://www.switch-science.com/catalog/3986/</a>
+<h3 class="link" id="i2c_mcp9808">Temperature and Humidity Sensor (MCP9808)</h3>
+Temperature Sensor: <a href="https://www.switch-science.com/catalog/3986/">https://www.switch-science.com/catalog/3986/</a>
 <pre><code  class="ruby">
 while true
   I2C.write(0x18, 0x08, 0x03)
@@ -51,13 +51,13 @@ end
 
 <hr id="first_boader">
 
-<h3 class="link" id="i2c_bmp280">温度気圧センサ(BME280, BMP280)</h3>
-温度センサ：<a href="https://www.switch-science.com/catalog/3373/">https://www.switch-science.com/catalog/3373/</a>
+<h3 class="link" id="i2c_bmp280">Temperature and Pressure Sensor (BME280, BMP280)</h3>
+Temperature Sensor: <a href="https://www.switch-science.com/catalog/3373/">https://www.switch-science.com/catalog/3373/</a>
 <pre><code  class="ruby">
 ADRS_BME280 = 0x77
 $i2c = I2C.new()
 ##
-# 気圧計クラス(BME280, BMP280)
+# Barometer class (BME280, BMP280)
 #
 class Barometer
   attr_reader :atm
@@ -76,7 +76,7 @@ class Barometer
   attr_reader :dig_P9
 
   ##
-  # 初期化
+  # Initialization
   #
   def init()
     $i2c.write( ADRS_BME280, 0xf5, 0xA0 )
@@ -112,7 +112,7 @@ class Barometer
 
 
   ##
-  # 測定開始トリガー
+  # Measurement Start Trigger
   #
   def trigger()
     $i2c.write( ADRS_BME280, 0xf4, 0x25 )
@@ -120,7 +120,7 @@ class Barometer
 
 
   ##
-  # データ読み込み
+  # Data Read
   #
   def read()
     # read pressure and temperature.
@@ -167,7 +167,7 @@ end
 
 <hr id="first_boader">
 
-<h3 class="link" id="i2c_drv8830">モータードライバ(DRV8830)</h3>
+<h3 class="link" id="i2c_drv8830">Motor Driver (DRV8830)</h3>
 https://www.switch-science.com/catalog/2510/
 <pre><code class="ruby">
 class Moter
@@ -191,7 +191,7 @@ class Moter
 end
 </code></pre>
 
-<h4>インスタンスがどうこう</h4>
+<h4>Instance Creation</h4>
 <pre><code class="ruby">
 class Moter
 def initialize(n)
@@ -207,9 +207,9 @@ end
 
 <hr id="first_boader">
 
-<h3 class="link" id="i2c_pca9685">サーボモータードライバ(PCA9685)</h3>
-通常品:<a href="https://www.amazon.co.jp/dp/B01D1D0CX2">https://www.amazon.co.jp/dp/B01D1D0CX2</a><br>
-GROVE:<a href="https://item.rakuten.co.jp/robotshopjapan/rb-see-679/">https://item.rakuten.co.jp/robotshopjapan/rb-see-679/</a>
+<h3 class="link" id="i2c_pca9685">Servo Motor Driver (PCA9685)</h3>
+Standard Product: <a href="https://www.amazon.co.jp/dp/B01D1D0CX2">https://www.amazon.co.jp/dp/B01D1D0CX2</a><br>
+GROVE: <a href="https://item.rakuten.co.jp/robotshopjapan/rb-see-679/">https://item.rakuten.co.jp/robotshopjapan/rb-see-679/</a>
 <pre><code class="ruby">
 $moters = I2C.new()
 def module_init()
@@ -267,8 +267,8 @@ end
 
 <h3 class="link" id="i2c_oled">OLED</h3>
 https://www.switch-science.com/catalog/829/<br>
-ASCIIコード<br>
-スペース(32)~Z(90)まで対応
+ASCII Codes<br>
+Supports characters from space (32) to Z (90)
 <pre><code class="ruby">
 class OLED
 $oled = 0
@@ -369,13 +369,13 @@ end
 oled = OLED.new
 # 初期化
 oled.init()
-# oled.send(行,表示文字列16文字)
+# oled.send(row,16 characters for display text)
 oled.send(0,"LETS!GO!MRUBY/C!")
 oled.send(1,"================")
 oled.send(2,"ALL HAPPY       ")
 </code></pre>
 
-<h4>2値画像表示</h4>
+<h4>Binary Image Display</h4>
 <pre><code class="ruby">
 class OLED
   $oled = 0
@@ -432,9 +432,9 @@ picture=[
 [0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00]]
 ]
 oled = OLED.new
-# 初期化
+# Initialize
 oled.init()
-# oled.send(画像配列8×16×8)
+# oled.send(Image array 8×16×8)
 oled.send(picture)
 </code></pre>
 
@@ -474,18 +474,18 @@ send_txt("YoshihiroOgura")
 
 <hr id="first_boader">
 
-<h3 class="link" id="i2c_axia">3軸加速度センサ</h3>
-LIS3DHTRを搭載した三軸加速度センサ<br>
+<h3 class="link" id="i2c_axia">3-axis Acceleration Sensor</h3>
+Three-axis accelerometer equipped with LIS3DHTR<br>
 <a href="https://www.seeedstudio.com/Grove-3-Axis-Digital-Accelerometer-LIS3DHTR-p-4533.html?srsltid=AfmBOooey4RrwO81v3VUaLR5d4wou8GLZmhqSYpgMFSH25GVS6MBC40E">Grove - 3-Axis Digital Accelerometer</a>
 <pre><code class="ruby">
 $i2c = I2C.new()
 
 # ====================================================
-# @brief  符号付2バイトの数値の絶対値を出力
+# @brief  Output the absolute value of a signed 2-byte number.
 #
-# @param param 数値(2バイト)
+# @param param Numerical (2 bytes)
 #
-# @return  絶対値（整数値）
+# @return  Absolute (integer)
 # ====================================================
 def absolute(param)
   if(param >= 0x8000)
@@ -499,25 +499,25 @@ class Lis3dhtr
   attr_reader :addr
 
   # ====================================================
-  # @brief  LIS3DHTRの初期設定
+  # @brief  Initialize LIS3DHTR
   #
-  # @param slave_addr 使用しているLIS3DHTRのアドレス
+  # @param slave_addr The address of the LIS3DHTR in use
   # ====================================================
   def init(slave_addr)
     @addr = slave_addr
-    # データレート:400Hz(0xF0-0x00)
-    # x,y,zのデータを取得(0x07-0x00)
+    # data rate:400Hz(0xF0-0x00)
+    # Retrieve x,y,z(0x07-0x00)
     $i2c.write(@addr,0x20,0x77)
 
-    # 継続的に値を更新(0x80-0x00)
-    # フルスケール±2g(0x06-0x00)
+    # Continuously update the value(0x80-0x00)
+    # full scale ±2g(0x06-0x00)
     $i2c.write(@addr,0x23,0x00)
   end
 
   # ====================================================
-  # @brief  LIS3DHTRからX,Y,Zの加速度データを取得
+  # @brief Acquire X, Y, and Z acceleration data from LIS3DHTR.
   #
-  # @return  x,y,zの加速度データ(配列[x,y,z])
+  # @return  x, y, z acceleration data (array [x, y, z])
   # ====================================================
   def read_data()
     # output status
@@ -556,7 +556,7 @@ class Lis3dhtr
 end
 
 
-# メインプログラム
+# main
 
 sensor = Lis3dhtr.new
 sensor.init(0x19)
@@ -573,12 +573,12 @@ end
 <hr id="first_boader">
 
 <h3>Qwiic</h3>
-Qwiicとは<br>
-SparkFunから販売されているI2Cにて制御するモジュール。<br>
+What is Qwiic?<br>
+A module controlled via I2C, sold by SparkFun.<br>
 <a href="https://www.sparkfun.com/qwiic">https://www.sparkfun.com/qwiic</a>
 
-<h4>赤色LEDボタン</h4>
-ボタンを押したときにLEDを点灯する。
+<h4>Red LED button</h4>
+Press the button to turn on the LED.
 <pre><code class="ruby">
 led = I2C.new
 while true
@@ -588,8 +588,8 @@ while true
 end
 </code></pre>
 
-<h3 class="link" id="i2c_vl53l0x">ToF測距センサ</h3>
-VL53L0Xを搭載したレーザーの距離センサー<br>
+<h3 class="link" id="i2c_vl53l0x">ToF distance measuring sensor</h3>
+Laser distance sensor equipped with VL53L0X<br>
 <a href="https://www.switch-science.com/catalog/5219/">https://www.switch-science.com/catalog/5219/</a>
 <pre><code class="ruby">
 while true
@@ -611,64 +611,64 @@ end
   <ul id="submenu_body">
   <i class="fas fa-home"></i><a href="/RBoardDocument/">HOME</a>
   <li><details>
-    <summary>プログラミング</summary>
+    <summary>Programming</summary>
     <ul id="subuul">
       
-        <li><a href="/RBoardDocument/update.html">RBoardファームウェア更新</a></li>
-        <li><a href="/RBoardDocument/ide_install.html">IDEのセットアップ</a></li>
-        <li><a href="/RBoardDocument/write_program.html">IDEでのプログラミング</a></li>
+        <li><a href="/RBoardDocument/en/update.html">RBoard Firmware Update</a></li>
+        <li><a href="/RBoardDocument/en/ide_install.html">IDE Setup</a></li>
+        <li><a href="/RBoardDocument/en/write_program.html">Programming with IDE</a></li>
       
     </ul>
   </details></li>
   <li><details>
-    <summary>ボード一覧</summary>
+    <summary>Board List</summary>
     <ul id="subuul">
       
-        <li><a href="/RBoardDocument/board_list.html">ボード一覧</a></li>
-        <li><a href="/RBoardDocument/boards/RBoard_PIC32_SMD_v2-1-0_1-0.html">RBoard_V1</a></li>
-        <li><a href="/RBoardDocument/boards/RBoard_PIC32_SMD_v3-4-0_2-0.html">RBoard_V2</a></li>
+        <li><a href="/RBoardDocument/en/board_list.html">Board List</a></li>
+        <li><a href="/RBoardDocument/en/boards/RBoard_PIC32_SMD_v2-1-0_1-0.html">RBoard_V1</a></li>
+        <li><a href="/RBoardDocument/en/boards/RBoard_PIC32_SMD_v3-4-0_2-0.html">RBoard_V2</a></li>
       
     </ul>
   </details></li>
   <li><details>
-    <summary>クラス</summary>
+    <summary>Classes</summary>
     <ul id="subuul">
       
-        <li><a href="/RBoardDocument/firmware/mrubyc1_4.html">RBoard_V1(mruby/c1.4)</a></li>
-        <li><a href="/RBoardDocument/firmware/mrubyc2_1.html">RBoard_V1(mruby/c2.1)</a></li>
-        <li><a href="/RBoardDocument/firmware/mrubyc3_4.html">RBoard_V2(mruby/c3.4)</a></li>
+        <li><a href="/RBoardDocument/en/firmware/mrubyc1_4.html">RBoard_V1(mruby/c1.4)</a></li>
+        <li><a href="/RBoardDocument/en/firmware/mrubyc2_1.html">RBoard_V1(mruby/c2.1)</a></li>
+        <li><a href="/RBoardDocument/en/firmware/mrubyc3_4.html">RBoard_V2(mruby/c3.4)</a></li>
       
     </ul>
   </details></li>
   <li><details>
-    <summary>サンプルプログラム</summary>
+    <summary>Sample Programs</summary>
     <ul id="subuul">
       
-        <li><a href="/RBoardDocument/sampleProgram/v2-1-0/adc.html">ADCサンプル</a> / <a href="/RBoardDocument/sampleProgram/v3-4-0/adc.html">V2</a></li>
-        <li><a href="/RBoardDocument/sampleProgram/v2-1-0/i2c.html">I2Cサンプル</a> / <a href="/RBoardDocument/sampleProgram/v3-4-0/i2c.html">V2</a></li>
-        <li><a href="/RBoardDocument/sampleProgram/v2-1-0/pwm.html">PWMサンプル</a> / <a href="/RBoardDocument/sampleProgram/v3-4-0/pwm.html">V2</a></li>
-        <li><a href="/RBoardDocument/sampleProgram/v2-1-0/uart.html">UARTサンプル</a> / <a href="/RBoardDocument/sampleProgram/v3-4-0/uart.html">V2</a></li>
-        <li><a href="/RBoardDocument/sampleProgram/v2-1-0/etc.html">その他サンプル</a> / <a href="/RBoardDocument/sampleProgram/v3-4-0/etc.html">V2</a></li>
+        <li><a href="/RBoardDocument/en/sampleProgram/v2-1-0/adc.html">ADC Sample</a> / <a href="/RBoardDocument/en/sampleProgram/v3-4-0/adc.html">V2</a></li>
+        <li><a href="/RBoardDocument/en/sampleProgram/v2-1-0/i2c.html">I2C Sample</a> / <a href="/RBoardDocument/en/sampleProgram/v3-4-0/i2c.html">V2</a></li>
+        <li><a href="/RBoardDocument/en/sampleProgram/v2-1-0/pwm.html">PWM Sample</a> / <a href="/RBoardDocument/en/sampleProgram/v3-4-0/pwm.html">V2</a></li>
+        <li><a href="/RBoardDocument/en/sampleProgram/v2-1-0/uart.html">UART Sample</a> / <a href="/RBoardDocument/en/sampleProgram/v3-4-0/uart.html">V2</a></li>
+        <li><a href="/RBoardDocument/en/sampleProgram/v2-1-0/etc.html">Other Samples</a> / <a href="/RBoardDocument/en/sampleProgram/v3-4-0/etc.html">V2</a></li>
       
     </ul>
   </details></li>
   <li><details>
-    <summary>その他</summary>
+    <summary>Others</summary>
     <ul id="subuul">
-    <li><a href="/RBoardDocument/sampleProgram/module.html">対応センサーモジュール</a></li>
-    <li><a href="/RBoardDocument/console.html">ターミナルソフトの設定</a></li>
+    <li><a href="/RBoardDocument/sampleProgram/module.html">Supported Sensor Modules</a></li>
+    <li><a href="/RBoardDocument/console.html">Terminal Software Configuration</a></li>
     </ul>
   </details></li>
   <li><details id ="tutorial">
-    <summary>チュートリアル</summary>
+    <summary>Tutorials</summary>
     <ol id="subuol">
-    <li><a href="/RBoardDocument/tutorial/mrubycIDE/v2-1-0/mrubyc.html#tutorial">mruby/cとは？</a></li>
-    <li><a href="/RBoardDocument/tutorial/mrubycIDE/v2-1-0/led.html#tutorial">LEDを制御する</a></li>
-    <li><a href="/RBoardDocument/tutorial/mrubycIDE/v2-1-0/rgb_led.html#tutorial">カラーLEDを制御する</a></li>
-    <li><a href="/RBoardDocument/tutorial/mrubycIDE/v2-1-0/reed_switch.html#tutorial">ドア開閉センサ</a></li>
-    <li><a href="/RBoardDocument/tutorial/mrubycIDE/v2-1-0/buzzer.html#tutorial">圧電ブザー</a></li>
-    <li><a href="/RBoardDocument/tutorial/mrubycIDE/v2-1-0/cds.html#tutorial">光センサ</a></li>
-    <li><a href="/RBoardDocument/tutorial/mrubycIDE/v2-1-0/temp.html#tutorial">温度センサ</a></li>
+    <li><a href="/RBoardDocument/tutorial/mrubycIDE/v2-1-0/mrubyc.html#tutorial">What is mruby/c?</a></li>
+    <li><a href="/RBoardDocument/tutorial/mrubycIDE/v2-1-0/led.html#tutorial">Controlling an LED</a></li>
+    <li><a href="/RBoardDocument/tutorial/mrubycIDE/v2-1-0/rgb_led.html#tutorial">Controlling a Color LED</a></li>
+    <li><a href="/RBoardDocument/tutorial/mrubycIDE/v2-1-0/reed_switch.html#tutorial">Door Sensor</a></li>
+    <li><a href="/RBoardDocument/tutorial/mrubycIDE/v2-1-0/buzzer.html#tutorial">Piezo Buzzer</a></li>
+    <li><a href="/RBoardDocument/tutorial/mrubycIDE/v2-1-0/cds.html#tutorial">Light Sensor</a></li>
+    <li><a href="/RBoardDocument/tutorial/mrubycIDE/v2-1-0/temp.html#tutorial">Temperature Sensor</a></li>
     </ol>
   </details></li>
   </ul>

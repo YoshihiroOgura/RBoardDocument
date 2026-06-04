@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>home</title>
+    <title>UART Sample Program</title>
     <link rel="shortcut icon" href="/RBoardDocument/assets/img/bug.ico">
     <link rel="stylesheet" href="/RBoardDocument/assets/css/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
@@ -27,72 +27,96 @@
 
       <div class="lang-switch" aria-label="language switch">
         <span>言語:</span>
-        <a href="/RBoardDocument/" onclick="localStorage.setItem('preferred_lang', 'ja');">🇯🇵 日本語</a>
+        <a href="/RBoardDocument/sampleProgram/v3-4-0/uart.html" onclick="localStorage.setItem('preferred_lang', 'ja');">🇯🇵 日本語</a>
         <span> / </span>
-        <a href="/RBoardDocument/en/" onclick="localStorage.setItem('preferred_lang', 'en');">🇺🇸 English</a>
+        <a href="/RBoardDocument/en/sampleProgram/v3-4-0/uart.html" onclick="localStorage.setItem('preferred_lang', 'en');">🇺🇸 English</a>
       </div>
     </div>
     <div id="main">
-        <h2> RBoard with PIC32 & mruby/c</h2>
-<img class="window_img" src = "https://lh3.googleusercontent.com/d/1Lk95hgHNin8dEX_MBmEDh2B_POfmYwY5">
-<hr id="first_boader">
-<h2>Introduction</h2>
-Welcome to the world of mruby/c<br>
-mruby/c is a very compact language for microcontrollers compared to CRuby and mruby.<br>
-<br>
-RBoard is an introductory board for those who want to use Ruby (mruby/c) on microcontrollers.<br>
-It is implemented as low-level as possible and can support various sensors.<br>
-<br>
-Since mruby/c is installed as standard, development using mruby/cIDE is possible without using a dedicated IDE such as MPLABX.<br>
-<br>
-In addition, since it is equipped with a GROVE port, various sensors and actuators can be used without soldering.<br>
-<br>
-Information about each version can be found on the release page=>
-<a href="https://github.com/YoshihiroOgura/pic32mx170_mrubyc/releases">Release Page</a><br>
-<br>
-<i class="far fa-question-circle"></i>For more information about GROVE, please visit <a href="https://wiki.seeedstudio.com/Grove_System/">this page</a><br>
-<i class="far fa-question-circle"></i>For more information about mruby/c, please visit <a href="https://www.s-itoc.jp/activity/research/mrubyc/">this page</a><br>
-<br>
-<hr id="first_boader">
-<h2>Source Code</h2>
-<b>License</b>：BSD 3-Clause<br>
-<b>Copyright</b>：Shimane Johoshori Center Inc.<br>
-<a href="https://github.com/YoshihiroOgura/pic32mx170_mrubyc">https://github.com/YoshihiroOgura/pic32mx170_mrubyc</a><br>
+        mruby/c 3.3 <a href="./mrubyc_class.html">Standard I/O Class</a> Support<br>
+
+<h3>Module Initialization</h3>
+This is the RBoard program used to initialize the module via the serial console (PC->RBoard->Module).<br>
+For `dev`, specify the module's default value for `baud`.<br>
+Example: AMW037, BGX13P etc. are 115200<br>
+<pre><code  class="ruby">
+usb = UART.new( 1, baud:19200 )
+dev = UART.new( 2, baud:19200 )
+while true
+  # PC -> RBoard -> Module
+  if(usb.can_read_line())
+    dev.write(usb.gets())
+  end
+
+  # Module -> RBoard -> PC
+  if(dev.can_read_line())
+    usb.write(dev.gets())
+    # usb.write("> ")
+  end
+end
+</code></pre>
+
+<h3>im920s</h3>
+https://www.interplan.co.jp/solution/wireless/im920s/im920s.php
+
+<h4>String Transmission</h4>
+<pre><code  class="ruby">
+im = UART.new(19200)
+while true
+  im.puts("TXDA " + (23).to_s + "\r\n")
+  sleep(5)
+end
+</code></pre>
+
+<h4>String Reception</h4>
+<pre><code  class="ruby">
+im = UART.new(19200)
+while true
+  puts(im.gets())
+  sleep(5)
+end
+</code></pre>
 
 <hr id="first_boader">
-<h2>Schematic and PCB Data</h2>
-<b>License</b>：CC-BY-NC-SA 3.0<br>
-<b>Copyright</b>：Shimane Johoshori Center Inc. or YoshihiroOgura<br>
-<a href="https://easyeda.com/YoshihiroOgura/rboard">https://easyeda.com/YoshihiroOgura/rboard</a><br>
-<br>
 
-<hr id="first_boader">
-<h2>Demo Video</h2>
-<i class="far fa-star"></i>Temperature Data Wireless Transmission 0:00~0:29<br>
-<i class="far fa-star"></i>Wall Detection Autonomous Driving 0:30~0:50<br>
-<i class="far fa-star"></i><a href="https://www.ottodiy.com/">otto</a> Control 0:51~1:11<br>
-<iframe src="https://drive.google.com/file/d/1ZPXNBMeIIfxDhHjEzN8hbyfAX-B2K3MK/preview" width="640" height="480" allow="autoplay"></iframe>
-<hr id="first_boader">
-<h2>Where to Buy</h2>
-<a href="https://www.chip1stop.com/view/dispDetail/DispDetail?partId=SMNE-0000001">Chip One Stop</a><br>
-<a href="https://www.hokusin-web.co.jp/company/office">Hokusin Web</a> is also selling it.
+<h3>Bluetooth</h3>
+https://www.switch-science.com/catalog/5794/<br>
 
-<hr id="first_boader">
-<h2>Warranty Information</h2>
-We only cover initial defects.(Within 7 days of purchase)<br>
-For inquiries, please email us at (<a href="mailto:sjc@sjc-inc.co.jp">sjc@sjc-inc.co.jp</a>)<br>
-We are not responsible for any damages that may occur as a result of using this product.<br>
-<hr id="first_boader">
-<h2>Contact Us</h2>
-For questions or requests regarding the program, please use the <a href="https://github.com/YoshihiroOgura/pic32mx170_mrubyc/issues">issues</a> on the source code.<br>
-For requests regarding the PCB, please use the comment section on <a href="https://easyeda.com/YoshihiroOgura/rboard">EasyEDA</a>.<br>
-For other inquiries, please email us at (<a href="mailto:sjc@sjc-inc.co.jp">sjc@sjc-inc.co.jp</a>).<br>
-We appreciate your feedback!<br>
-If you have any questions or comments, feel free to reach out to me on Twitter m(_ _"m)<a href="https://twitter.com/morisuteisyon?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-size="large" data-show-count="false">Follow @morisuteisyon</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script><br>
-<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.js" integrity="sha256-icjghcPaibMf1jv4gQIGi5MeWNHem2SispcorCiCfSg=" crossorigin="anonymous"></script>
-<script src="/RBoardDocument/assets/js/setupParticles.js"></script>
-<hr id="first_boader">
-This document is published under the <a href="./LICENSE">BSD 3-Clause License</a>.
+set command can be used to set values and get command can be used to check the set values.<br>
+Commands: https://docs.silabs.com/gecko-os/1/bgx/latest/commands<br>
+Parameters: https://docs.silabs.com/gecko-os/1/bgx/latest/variables<br>
+Example: Baud rate setting command<br>
+set ua b 19200<br>
+
+Prepare an Android smartphone that supports Bluetooth 5.<br>
+Install the app "Serial Bluetooth Terminal".<br>
+Turn on the module's power (connect to RBoard, etc.).<br>
+In the smartphone's settings → Device connection → Pair new device, register the module.<br>
+Launch "Serial Bluetooth Terminal" and long-press the module's entry under Devices→Bluetooth LE.
+Edit → Custom → Select each of the three UUIDs.<br>
+You should be able to connect by pressing the "✓" in the upper right corner.<br>
+<pre><code  class="ruby">
+bluetooth = UART.new(19200)
+while true
+  bluetooth.puts("aaaa\r\n")
+  sleep(5)
+end
+</code></pre>
+
+<h3>wifi</h3>
+https://www.switch-science.com/catalog/5795/<br>
+<pre><code  class="ruby">
+cmd = "hge https://script.google.com/macros/s/xxxxxxxxxxxxxxxxxxx/exec?data1="
+wifi = UART.new(19200)
+wifi.puts("\r\n")
+sleep(5)
+while true
+  wifi.puts(cmd + (1.to_s) + "\r\n")
+  sleep(10)
+  wifi.puts("stream_close 0\r\n")
+  sleep(10)
+end
+</code></pre>
     </div>
     <div id="submenu">
   
