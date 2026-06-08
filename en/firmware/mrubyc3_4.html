@@ -156,7 +156,7 @@ gpio1.write( 1 )
 </code></pre>
 
 <h4 id="GPIO_setmode_Instance">setmode( param ) -> nil</h4>
-params : GPIO::IN GPIO::OUTなど<br>
+params : GPIO::IN GPIO::OUT etc.<br>
 Change the GPIO mode at any timing.<br>
 When IN, OUT, or HIGH_Z is specified while PULL_UP or other settings have already been set, the previous settings will be invalidated.<br>
 <pre><code class="ruby">
@@ -307,7 +307,7 @@ i2c.send_start
 
 <h3 id="I2C_send_restart">send_restart()</h3>
 <span style="color: red;">Low level method.</span><br>
-Outputs a Restart (RepeatedStart) Condition to the I2C bus.。<br>
+Outputs a Restart (RepeatedStart) Condition to the I2C bus.<br>
 
 <pre><code class="ruby">
 i2c.send_restart
@@ -430,10 +430,10 @@ mode parameter<br>
 </table>
 
 <pre><code class="ruby">
-# デフォルトの設定で、spiオブジェクトを生成する。
+# Create an SPI object with the default settings.
 spi = SPI.new()
 
-# ユニット1 の SPI デバイスを、周波数 10MHz で使う。
+# Use the SPI device of Unit 1 at a frequency of 10MHz.
 spi = SPI.new( unit:1, frequency:10_000_000 )
 </code></pre>
 

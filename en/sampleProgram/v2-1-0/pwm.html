@@ -101,20 +101,20 @@ def play( mml )
   octabe = 0
 
   mml.each_char {|ch|
-    # 音階指示か？
+    # Musical scale instruction?
     if "CDEFGABR".index(ch)
       play_sub( mnote, octabe, mlength )
       mnote = ch
       next
     end
 
-    # 音長か？
+    # Note length?
     if TBL_LENGTH[ch.to_i]
       mlength = ch.to_i
       next
     end
 
-    # オクターブ上下か？
+    # Octave up/down?
     if ch == "<" || ch == ">"
       play_sub( mnote, octabe, mlength )
       if ch == "<"
