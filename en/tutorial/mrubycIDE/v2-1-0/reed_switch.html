@@ -43,21 +43,21 @@
 There are two metal plates inside, and when a magnet is brought close, they overlap and conduct electricity. The term "reed" in a reed switch comes from the fact that the shape of the metal plate is similar to the reed used in woodwind instruments (such as clarinets).
 <hr id="first_boader">
 <h3>Pull-up and Pull-down Resistors</h3>
-When using a switch, you might have used a circuit like the one below when you were a student.
+When using a switch, you might have used a circuit like the one below when you were a student.<br>
 <img src="https://lh3.googleusercontent.com/d/1AfQa0O8a8dTWAz0nq0F_zgsbIatCcl_L" class="expansion"><br>
 This circuit doesn't actually not work.<br>
 When the switch is pressed, 3.3V is applied to the RBoard. So, what signal is applied to the RBoard when the switch is not pressed?
 The answer is uncertain. Since it's not connected to anything, we can't know what signal will be applied without actually testing it.
-To avoid this situation, pull-up and pull-down resistors are used.
+To avoid this situation, pull-up and pull-down resistors are used.<br>
 <img src="https://lh3.googleusercontent.com/d/1OhsZHUMQy4zKQcjQ_9l4IupDZp3radlX" class="expansion"><br>
 When using pull-up and pull-down resistors, even when the button is not pressed, some signal will be applied to the RBoard.
 　⇒ In the case of pull-up, 3.3V; in the case of pull-down, 0V (GND)
 You might think that even without the resistor, it would be connected, but if you don't put a resistor, pressing the switch will cause a short circuit between 3.3V and GND.
 Also, among pull-up and pull-down, pull-up is used more frequently. One reason is that with pull-down, it's difficult to notice when a wire breaks.
-If a wire breaks as shown below, it will be in the same state as the circuit described earlier.
+If a wire breaks as shown below, it will be in the same state as the circuit described earlier.<br>
 <img src="https://lh3.googleusercontent.com/d/1W0OSe6lCRLr1A-jnXpXnhzdS1jco9Mmb" class="expansion"><br>
 <br>
-By using the pull-up and pull-down resistors built into the microcontroller, the circuit can be simplified.
+By using the pull-up and pull-down resistors built into the microcontroller, the circuit can be simplified.<br>
 <img src="https://lh3.googleusercontent.com/d/1YndVwW8sRw-UxT_2mttZnT0r7IuuhhDA" class="expansion"><br>
 <hr id="first_boader">
 <h3>Electronic Circuit</h3>
