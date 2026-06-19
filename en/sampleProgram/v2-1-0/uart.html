@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>UART Sample Program</title>
+    <link rel="shortcut icon" href="/RBoardDocument/assets/img/bug.ico">
+    <link rel="stylesheet" href="/RBoardDocument/assets/css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link href="https://use.fontawesome.com/releases/v5.11.0/css/all.css" rel="stylesheet">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-176702602-1"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/a11y-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/highlight.min.js"></script>
+    <script src="/RBoardDocument/assets/js/codeStyle.js"></script>
+    <script src="/RBoardDocument/assets/js/sidebar.js"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-176702602-1');
+    </script>
+  </head>
+  <body id="top_page">
+    <div id="header">
+      <h1> RBoard </h1>
+      
+
+      <div class="lang-switch" aria-label="language switch">
+        <span>言語:</span>
+        <a href="/RBoardDocument/sampleProgram/v2-1-0/uart.html" onclick="localStorage.setItem('preferred_lang', 'ja');">🇯🇵 日本語</a>
+        <span> / </span>
+        <a href="/RBoardDocument/en/sampleProgram/v2-1-0/uart.html" onclick="localStorage.setItem('preferred_lang', 'en');">🇺🇸 English</a>
+      </div>
+    </div>
+    <div id="main">
+        I just now realized that the tx and rx pins on the UART's GROVE port are reversed.<br>
+When using the UART's GROVE module, please use a jumper wire sold by <a href="https://www.seeedstudio.com/Grove-4-pin-Male-Jumper-to-Grove-4-pin-Conversion-Cable-5-PCs-per-Pack.html">Seeed Studio</a> to connect:<br>
+Black: GND, Red: 3.3V, White: Pin14, Yellow: Pin13.<br><br>
+
+<h3>im920s</h3>
+https://www.interplan.co.jp/solution/wireless/im920s/im920s.php<br>
+
+<h4>Sending a string</h4>
+<pre><code  class="ruby">
+UART.new(19200)
+while true
+  UART.puts("TXDA " + (23).to_s + "\r\n")
+  sleep(5)
+end
+</code></pre>
+
+<h4>Receiving a string</h4>
+<pre><code  class="ruby">
+UART.new(19200)
+while true
+  puts(UART.gets())
+  sleep(5)
+end
+</code></pre>
+
+<hr id="first_boader">
+
+<h3>Bluetooth</h3>
+https://www.switch-science.com/catalog/5794/<br>
+Prepare an Android smartphone that supports Bluetooth 5.<br>
+Install the smartphone app "Serial Bluetooth Terminal".<br>
+Turn on the module's power. (Connect to RBoard, etc.)<br>
+In the smartphone's settings → Device Connection → Pair New Device, register the module.<br>
+Launch "Serial Bluetooth Terminal" and long-press the module's entry under Devices → Bluetooth LE.<br>
+Edit → Custom → Select the three UUIDs respectively.<br>
+Right upper ✓ button, when pressed, should allow connection.<br>
+<pre><code  class="ruby">
+UART.new(19200)
+while true
+  UART.puts("aaaa\r\n")
+  sleep(5)
+end
+</code></pre>
+
+<h3>wifi</h3>
+https://www.switch-science.com/catalog/5795/<br>
+<pre><code  class="ruby">
+cmd = "hge https://script.google.com/macros/s/xxxxxxxxxxxxxxxxxxx/exec?data1="
+wifi = UART.new(19200)
+wifi.puts("\r\n")
+sleep(5)
+while true
+  wifi.puts(cmd + (1.to_s) + "\r\n")
+  sleep(10)
+  wifi.puts("stream_close 0\r\n")
+  sleep(10)
+end
+</code></pre>
+    </div>
+    <div id="submenu">
+  
+  <div id="submenu_header"></div>
+  <ul id="submenu_body">
+    
+      <i class="fas fa-home"></i><a href="/RBoardDocument/en">HOME</a>
+    
+  <li><details>
+    <summary>Programming</summary>
+    <ul id="subuul">
+      
+        <li><a href="/RBoardDocument/en/update.html">RBoard Firmware Update</a></li>
+        <li><a href="/RBoardDocument/en/ide_install.html">IDE Setup</a></li>
+        <li><a href="/RBoardDocument/en/write_program.html">Programming with IDE</a></li>
+      
+    </ul>
+  </details></li>
+  <li><details>
+    <summary>Board List</summary>
+    <ul id="subuul">
+      
+        <li><a href="/RBoardDocument/en/board_list.html">Board List</a></li>
+        <li><a href="/RBoardDocument/en/boards/RBoard_PIC32_SMD_v2-1-0_1-0.html">RBoard_V1</a></li>
+        <li><a href="/RBoardDocument/en/boards/RBoard_PIC32_SMD_v3-4-0_2-0.html">RBoard_V2</a></li>
+      
+    </ul>
+  </details></li>
+  <li><details>
+    <summary>Classes</summary>
+    <ul id="subuul">
+      
+        <li><a href="/RBoardDocument/en/firmware/mrubyc1_4.html">RBoard_V1(mruby/c1.4)</a></li>
+        <li><a href="/RBoardDocument/en/firmware/mrubyc2_1.html">RBoard_V1(mruby/c2.1)</a></li>
+        <li><a href="/RBoardDocument/en/firmware/mrubyc3_4.html">RBoard_V2(mruby/c3.4)</a></li>
+      
+    </ul>
+  </details></li>
+  <li><details>
+    <summary>Sample Programs</summary>
+    <ul id="subuul">
+      
+        <li><a href="/RBoardDocument/en/sampleProgram/v2-1-0/adc.html">ADC Sample</a> / <a href="/RBoardDocument/en/sampleProgram/v3-4-0/adc.html">V2</a></li>
+        <li><a href="/RBoardDocument/en/sampleProgram/v2-1-0/i2c.html">I2C Sample</a> / <a href="/RBoardDocument/en/sampleProgram/v3-4-0/i2c.html">V2</a></li>
+        <li><a href="/RBoardDocument/en/sampleProgram/v2-1-0/pwm.html">PWM Sample</a> / <a href="/RBoardDocument/en/sampleProgram/v3-4-0/pwm.html">V2</a></li>
+        <li><a href="/RBoardDocument/en/sampleProgram/v2-1-0/uart.html">UART Sample</a> / <a href="/RBoardDocument/en/sampleProgram/v3-4-0/uart.html">V2</a></li>
+        <li><a href="/RBoardDocument/en/sampleProgram/v2-1-0/etc.html">Other Samples</a> / <a href="/RBoardDocument/en/sampleProgram/v3-4-0/etc.html">V2</a></li>
+      
+    </ul>
+  </details></li>
+  <li><details>
+    <summary>Others</summary>
+    <ul id="subuul">
+    <li><a href="/RBoardDocument/sampleProgram/module.html">Supported Sensor Modules</a></li>
+    <li><a href="/RBoardDocument/console.html">Terminal Software Configuration</a></li>
+    </ul>
+  </details></li>
+  <li><details id ="tutorial">
+    <summary>Tutorials</summary>
+    <ol id="subuol">
+      
+        <li><a href="/RBoardDocument/en/tutorial/mrubycIDE/v2-1-0/mrubyc.html#tutorial">What is mruby/c?</a></li>
+        <li><a href="/RBoardDocument/en/tutorial/mrubycIDE/v2-1-0/led.html#tutorial">Controlling an LED</a></li>
+        <li><a href="/RBoardDocument/en/tutorial/mrubycIDE/v2-1-0/rgb_led.html#tutorial">Controlling a Color LED</a></li>
+        <li><a href="/RBoardDocument/en/tutorial/mrubycIDE/v2-1-0/reed_switch.html#tutorial">Door Sensor</a></li>
+        <li><a href="/RBoardDocument/en/tutorial/mrubycIDE/v2-1-0/buzzer.html#tutorial">Piezo Buzzer</a></li>
+        <li><a href="/RBoardDocument/en/tutorial/mrubycIDE/v2-1-0/cds.html#tutorial">Light Sensor</a></li>
+        <li><a href="/RBoardDocument/en/tutorial/mrubycIDE/v2-1-0/temp.html#tutorial">Temperature Sensor</a></li>
+      
+    </ol>
+  </details></li>
+  </ul>
+
+  
+  
+</div>
+  </body>
+</html>

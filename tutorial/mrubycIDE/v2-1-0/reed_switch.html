@@ -34,9 +34,10 @@
     </div>
     <div id="main">
         <h3>必要部品一覧</h3>
+<a href="https://akizukidenshi.com/">秋月電子の通販サイト</a>で購入できる部品を例示しています。<br>
 <ul>
-  <li><a href="https://akizukidenshi.com/catalog/g/gP-13371/">SPS-320</a>(リードスイッチ)</li>
-  <li><a href="https://akizukidenshi.com/catalog/g/gC-08916/">コネクタ付きコード</a></li>
+  <li>SPS-320(リードスイッチ)、通販コード：113371</li>
+  <li>コネクタ付きコード、通販コード：108916</li>
 </ul>
 <hr id="first_boader">
 <h3>リードスイッチについて</h3>
@@ -44,7 +45,7 @@
 リードスイッチのリードとは木管楽器(クラリネットなど)で使用されているリードに金属板の形状が似ていることからそう呼ばれているらしい。
 <hr id="first_boader">
 <h3>プルアップ、プルダウン抵抗</h3>
-スイッチを使用する際に小学生の時などは下記のようなスイッチ回路を使用したと思う。
+スイッチを使用する際に小学生の時などは下記のようなスイッチ回路を使用したと思う。<br>
 <img src="https://lh3.googleusercontent.com/d/1AfQa0O8a8dTWAz0nq0F_zgsbIatCcl_L" class="expansion"><br>
 この回路が実際に動かないわけではない。<br>
 スイッチを押した場合にRBoardへ3.3Vが印加される。では、スイッチを押していない場合にはRBoardへどのような信号が印加されるのであろうか？
@@ -55,15 +56,15 @@
 　⇒プルアップの場合3.3V、プルダウンの場合0V(GND)<br>
 抵抗が無くてもつながっている状態になるのでは無いかと思うかもしれないが、抵抗を入れなければスイッチを押した際に3.3VとGNDでショートしてしまう。
 また、プルアップとプルダウンではプルアップの方が使用される頻度が多い。理由の一つとしてプルダウンでは断線した場合に気ずきにくいという点がある。<br>
-以下のように赤線の部分で断線した場合にははじめに記した回路と同じ状態となってしまうため。
+以下のように赤線の部分で断線した場合にははじめに記した回路と同じ状態となってしまうため。<br>
 <img src="https://lh3.googleusercontent.com/d/1W0OSe6lCRLr1A-jnXpXnhzdS1jco9Mmb" class="expansion"><br>
 <br>
-マイコンに内蔵されているプルアップ、プルダウン抵抗を使用することにより回路を省略することができます。
+マイコンに内蔵されているプルアップ、プルダウン抵抗を使用することにより回路を省略することができます。<br>
 <img src="https://lh3.googleusercontent.com/d/1YndVwW8sRw-UxT_2mttZnT0r7IuuhhDA" class="expansion"><br>
 <hr id="first_boader">
 <h3>電子回路</h3>
 内蔵プルアップ抵抗を使用したブレッドボード回路<br>
-コネクタ付きコードを使用して接続してください。
+コネクタ付きコードを使用して接続してください。<br>
 <img src="https://lh3.googleusercontent.com/d/1sBv0g4CyLvj4GzzwLMJ-fQ2F6WzA-EZD" class="expansion"><br>
 <hr id="first_boader">
 <h3>プログラム</h3>
@@ -123,12 +124,14 @@ end
   
   <div id="submenu_header"></div>
   <ul id="submenu_body">
-  <i class="fas fa-home"></i><a href="/RBoardDocument/">HOME</a>
+    
+      <i class="fas fa-home"></i><a href="/RBoardDocument/">HOME</a>
+    
   <li><details>
     <summary>プログラミング</summary>
     <ul id="subuul">
-      <li><a href="/RBoardDocument/update.html">RBoardファームウェア更新</a></li>
       
+        <li><a href="/RBoardDocument/update.html">RBoardファームウェア更新</a></li>
         <li><a href="/RBoardDocument/ide_install.html">IDEのセットアップ</a></li>
         <li><a href="/RBoardDocument/write_program.html">IDEでのプログラミング</a></li>
       
@@ -137,16 +140,18 @@ end
   <li><details>
     <summary>ボード一覧</summary>
     <ul id="subuul">
-      <li><a href="/RBoardDocument/board_list.html">ボード一覧</a></li>
-      <li><a href="/RBoardDocument/boards/RBoard_PIC32_SMD_v2-1-0_1-0.html">RBoard_V1</a></li>
-      <li><a href="/RBoardDocument/boards/RBoard_PIC32_SMD_v3-4-0_2-0.html">RBoard_V2</a></li>
+      
+        <li><a href="/RBoardDocument/board_list.html">ボード一覧</a></li>
+        <li><a href="/RBoardDocument/boards/RBoard_PIC32_SMD_v2-1-0_1-0.html">RBoard_V1</a></li>
+        <li><a href="/RBoardDocument/boards/RBoard_PIC32_SMD_v3-4-0_2-0.html">RBoard_V2</a></li>
+      
     </ul>
   </details></li>
   <li><details>
     <summary>クラス</summary>
     <ul id="subuul">
-      <li><a href="/RBoardDocument/firmware/mrubyc1_4.html">RBoard_V1(mruby/c1.4)</a></li>
       
+        <li><a href="/RBoardDocument/firmware/mrubyc1_4.html">RBoard_V1(mruby/c1.4)</a></li>
         <li><a href="/RBoardDocument/firmware/mrubyc2_1.html">RBoard_V1(mruby/c2.1)</a></li>
         <li><a href="/RBoardDocument/firmware/mrubyc3_4.html">RBoard_V2(mruby/c3.4)</a></li>
       
@@ -155,11 +160,13 @@ end
   <li><details>
     <summary>サンプルプログラム</summary>
     <ul id="subuul">
-    <li><a href="/RBoardDocument/sampleProgram/v2-1-0/adc.html">ADCサンプル</a> / <a href="/RBoardDocument/sampleProgram/v3-4-0/adc.html">V2</a></li>
-    <li><a href="/RBoardDocument/sampleProgram/v2-1-0/i2c.html">I2Cサンプル</a> / <a href="/RBoardDocument/sampleProgram/v3-4-0/i2c.html">V2</a></li>
-    <li><a href="/RBoardDocument/sampleProgram/v2-1-0/pwm.html">PWMサンプル</a> / <a href="/RBoardDocument/sampleProgram/v3-4-0/pwm.html">V2</a></li>
-    <li><a href="/RBoardDocument/sampleProgram/v2-1-0/uart.html">UARTサンプル</a> / <a href="/RBoardDocument/sampleProgram/v3-4-0/uart.html">V2</a></li>
-    <li><a href="/RBoardDocument/sampleProgram/v2-1-0/etc.html">その他サンプル</a> / <a href="/RBoardDocument/sampleProgram/v3-4-0/etc.html">V2</a></li>
+      
+        <li><a href="/RBoardDocument/sampleProgram/v2-1-0/adc.html">ADCサンプル</a> / <a href="/RBoardDocument/sampleProgram/v3-4-0/adc.html">V2</a></li>
+        <li><a href="/RBoardDocument/sampleProgram/v2-1-0/i2c.html">I2Cサンプル</a> / <a href="/RBoardDocument/sampleProgram/v3-4-0/i2c.html">V2</a></li>
+        <li><a href="/RBoardDocument/sampleProgram/v2-1-0/pwm.html">PWMサンプル</a> / <a href="/RBoardDocument/sampleProgram/v3-4-0/pwm.html">V2</a></li>
+        <li><a href="/RBoardDocument/sampleProgram/v2-1-0/uart.html">UARTサンプル</a> / <a href="/RBoardDocument/sampleProgram/v3-4-0/uart.html">V2</a></li>
+        <li><a href="/RBoardDocument/sampleProgram/v2-1-0/etc.html">その他サンプル</a> / <a href="/RBoardDocument/sampleProgram/v3-4-0/etc.html">V2</a></li>
+      
     </ul>
   </details></li>
   <li><details>
@@ -172,13 +179,15 @@ end
   <li><details id ="tutorial">
     <summary>チュートリアル</summary>
     <ol id="subuol">
-    <li><a href="/RBoardDocument/tutorial/mrubycIDE/v2-1-0/mrubyc.html#tutorial">mruby/cとは？</a></li>
-    <li><a href="/RBoardDocument/tutorial/mrubycIDE/v2-1-0/led.html#tutorial">LEDを制御する</a></li>
-    <li><a href="/RBoardDocument/tutorial/mrubycIDE/v2-1-0/rgb_led.html#tutorial">カラーLEDを制御する</a></li>
-    <li><a href="/RBoardDocument/tutorial/mrubycIDE/v2-1-0/reed_switch.html#tutorial">ドア開閉センサ</a></li>
-    <li><a href="/RBoardDocument/tutorial/mrubycIDE/v2-1-0/buzzer.html#tutorial">圧電ブザー</a></li>
-    <li><a href="/RBoardDocument/tutorial/mrubycIDE/v2-1-0/cds.html#tutorial">光センサ</a></li>
-    <li><a href="/RBoardDocument/tutorial/mrubycIDE/v2-1-0/temp.html#tutorial">温度センサ</a></li>
+      
+        <li><a href="/RBoardDocument/tutorial/mrubycIDE/v2-1-0/mrubyc.html#tutorial">mruby/cとは？</a></li>
+        <li><a href="/RBoardDocument/tutorial/mrubycIDE/v2-1-0/led.html#tutorial">LEDを制御する</a></li>
+        <li><a href="/RBoardDocument/tutorial/mrubycIDE/v2-1-0/rgb_led.html#tutorial">カラーLEDを制御する</a></li>
+        <li><a href="/RBoardDocument/tutorial/mrubycIDE/v2-1-0/reed_switch.html#tutorial">ドア開閉センサ</a></li>
+        <li><a href="/RBoardDocument/tutorial/mrubycIDE/v2-1-0/buzzer.html#tutorial">圧電ブザー</a></li>
+        <li><a href="/RBoardDocument/tutorial/mrubycIDE/v2-1-0/cds.html#tutorial">光センサ</a></li>
+        <li><a href="/RBoardDocument/tutorial/mrubycIDE/v2-1-0/temp.html#tutorial">温度センサ</a></li>
+      
     </ol>
   </details></li>
   </ul>

@@ -156,7 +156,7 @@ gpio1.write( 1 )
 </code></pre>
 
 <h4 id="GPIO_setmode_Instance">setmode( param ) -> nil</h4>
-params : GPIO::IN GPIO::OUTなど<br>
+params : GPIO::IN GPIO::OUT etc.<br>
 Change the GPIO mode at any timing.<br>
 When IN, OUT, or HIGH_Z is specified while PULL_UP or other settings have already been set, the previous settings will be invalidated.<br>
 <pre><code class="ruby">
@@ -307,7 +307,7 @@ i2c.send_start
 
 <h3 id="I2C_send_restart">send_restart()</h3>
 <span style="color: red;">Low level method.</span><br>
-Outputs a Restart (RepeatedStart) Condition to the I2C bus.。<br>
+Outputs a Restart (RepeatedStart) Condition to the I2C bus.<br>
 
 <pre><code class="ruby">
 i2c.send_restart
@@ -430,10 +430,10 @@ mode parameter<br>
 </table>
 
 <pre><code class="ruby">
-# デフォルトの設定で、spiオブジェクトを生成する。
+# Create an SPI object with the default settings.
 spi = SPI.new()
 
-# ユニット1 の SPI デバイスを、周波数 10MHz で使う。
+# Use the SPI device of Unit 1 at a frequency of 10MHz.
 spi = SPI.new( unit:1, frequency:10_000_000 )
 </code></pre>
 
@@ -799,12 +799,14 @@ puts("Hello World")
   
   <div id="submenu_header"></div>
   <ul id="submenu_body">
-  <i class="fas fa-home"></i><a href="/RBoardDocument/">HOME</a>
+    
+      <i class="fas fa-home"></i><a href="/RBoardDocument/en">HOME</a>
+    
   <li><details>
     <summary>Programming</summary>
     <ul id="subuul">
-      <li><a href="/RBoardDocument/update.html">RBoard Firmware Update</a></li>
       
+        <li><a href="/RBoardDocument/en/update.html">RBoard Firmware Update</a></li>
         <li><a href="/RBoardDocument/en/ide_install.html">IDE Setup</a></li>
         <li><a href="/RBoardDocument/en/write_program.html">Programming with IDE</a></li>
       
@@ -813,16 +815,18 @@ puts("Hello World")
   <li><details>
     <summary>Board List</summary>
     <ul id="subuul">
-      <li><a href="/RBoardDocument/board_list.html">Board List</a></li>
-      <li><a href="/RBoardDocument/boards/RBoard_PIC32_SMD_v2-1-0_1-0.html">RBoard_V1</a></li>
-      <li><a href="/RBoardDocument/boards/RBoard_PIC32_SMD_v3-4-0_2-0.html">RBoard_V2</a></li>
+      
+        <li><a href="/RBoardDocument/en/board_list.html">Board List</a></li>
+        <li><a href="/RBoardDocument/en/boards/RBoard_PIC32_SMD_v2-1-0_1-0.html">RBoard_V1</a></li>
+        <li><a href="/RBoardDocument/en/boards/RBoard_PIC32_SMD_v3-4-0_2-0.html">RBoard_V2</a></li>
+      
     </ul>
   </details></li>
   <li><details>
     <summary>Classes</summary>
     <ul id="subuul">
-      <li><a href="/RBoardDocument/firmware/mrubyc1_4.html">RBoard_V1(mruby/c1.4)</a></li>
       
+        <li><a href="/RBoardDocument/en/firmware/mrubyc1_4.html">RBoard_V1(mruby/c1.4)</a></li>
         <li><a href="/RBoardDocument/en/firmware/mrubyc2_1.html">RBoard_V1(mruby/c2.1)</a></li>
         <li><a href="/RBoardDocument/en/firmware/mrubyc3_4.html">RBoard_V2(mruby/c3.4)</a></li>
       
@@ -831,11 +835,13 @@ puts("Hello World")
   <li><details>
     <summary>Sample Programs</summary>
     <ul id="subuul">
-    <li><a href="/RBoardDocument/sampleProgram/v2-1-0/adc.html">ADC Sample</a> / <a href="/RBoardDocument/sampleProgram/v3-4-0/adc.html">V2</a></li>
-    <li><a href="/RBoardDocument/sampleProgram/v2-1-0/i2c.html">I2C Sample</a> / <a href="/RBoardDocument/sampleProgram/v3-4-0/i2c.html">V2</a></li>
-    <li><a href="/RBoardDocument/sampleProgram/v2-1-0/pwm.html">PWM Sample</a> / <a href="/RBoardDocument/sampleProgram/v3-4-0/pwm.html">V2</a></li>
-    <li><a href="/RBoardDocument/sampleProgram/v2-1-0/uart.html">UART Sample</a> / <a href="/RBoardDocument/sampleProgram/v3-4-0/uart.html">V2</a></li>
-    <li><a href="/RBoardDocument/sampleProgram/v2-1-0/etc.html">Other Samples</a> / <a href="/RBoardDocument/sampleProgram/v3-4-0/etc.html">V2</a></li>
+      
+        <li><a href="/RBoardDocument/en/sampleProgram/v2-1-0/adc.html">ADC Sample</a> / <a href="/RBoardDocument/en/sampleProgram/v3-4-0/adc.html">V2</a></li>
+        <li><a href="/RBoardDocument/en/sampleProgram/v2-1-0/i2c.html">I2C Sample</a> / <a href="/RBoardDocument/en/sampleProgram/v3-4-0/i2c.html">V2</a></li>
+        <li><a href="/RBoardDocument/en/sampleProgram/v2-1-0/pwm.html">PWM Sample</a> / <a href="/RBoardDocument/en/sampleProgram/v3-4-0/pwm.html">V2</a></li>
+        <li><a href="/RBoardDocument/en/sampleProgram/v2-1-0/uart.html">UART Sample</a> / <a href="/RBoardDocument/en/sampleProgram/v3-4-0/uart.html">V2</a></li>
+        <li><a href="/RBoardDocument/en/sampleProgram/v2-1-0/etc.html">Other Samples</a> / <a href="/RBoardDocument/en/sampleProgram/v3-4-0/etc.html">V2</a></li>
+      
     </ul>
   </details></li>
   <li><details>
@@ -848,13 +854,15 @@ puts("Hello World")
   <li><details id ="tutorial">
     <summary>Tutorials</summary>
     <ol id="subuol">
-    <li><a href="/RBoardDocument/tutorial/mrubycIDE/v2-1-0/mrubyc.html#tutorial">What is mruby/c?</a></li>
-    <li><a href="/RBoardDocument/tutorial/mrubycIDE/v2-1-0/led.html#tutorial">Controlling an LED</a></li>
-    <li><a href="/RBoardDocument/tutorial/mrubycIDE/v2-1-0/rgb_led.html#tutorial">Controlling a Color LED</a></li>
-    <li><a href="/RBoardDocument/tutorial/mrubycIDE/v2-1-0/reed_switch.html#tutorial">Door Sensor</a></li>
-    <li><a href="/RBoardDocument/tutorial/mrubycIDE/v2-1-0/buzzer.html#tutorial">Piezo Buzzer</a></li>
-    <li><a href="/RBoardDocument/tutorial/mrubycIDE/v2-1-0/cds.html#tutorial">Light Sensor</a></li>
-    <li><a href="/RBoardDocument/tutorial/mrubycIDE/v2-1-0/temp.html#tutorial">Temperature Sensor</a></li>
+      
+        <li><a href="/RBoardDocument/en/tutorial/mrubycIDE/v2-1-0/mrubyc.html#tutorial">What is mruby/c?</a></li>
+        <li><a href="/RBoardDocument/en/tutorial/mrubycIDE/v2-1-0/led.html#tutorial">Controlling an LED</a></li>
+        <li><a href="/RBoardDocument/en/tutorial/mrubycIDE/v2-1-0/rgb_led.html#tutorial">Controlling a Color LED</a></li>
+        <li><a href="/RBoardDocument/en/tutorial/mrubycIDE/v2-1-0/reed_switch.html#tutorial">Door Sensor</a></li>
+        <li><a href="/RBoardDocument/en/tutorial/mrubycIDE/v2-1-0/buzzer.html#tutorial">Piezo Buzzer</a></li>
+        <li><a href="/RBoardDocument/en/tutorial/mrubycIDE/v2-1-0/cds.html#tutorial">Light Sensor</a></li>
+        <li><a href="/RBoardDocument/en/tutorial/mrubycIDE/v2-1-0/temp.html#tutorial">Temperature Sensor</a></li>
+      
     </ol>
   </details></li>
   </ul>

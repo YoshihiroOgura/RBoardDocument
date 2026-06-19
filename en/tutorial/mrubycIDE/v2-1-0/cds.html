@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Tutorial - Light Sensor</title>
+    <link rel="shortcut icon" href="/RBoardDocument/assets/img/bug.ico">
+    <link rel="stylesheet" href="/RBoardDocument/assets/css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link href="https://use.fontawesome.com/releases/v5.11.0/css/all.css" rel="stylesheet">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-176702602-1"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/a11y-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/highlight.min.js"></script>
+    <script src="/RBoardDocument/assets/js/codeStyle.js"></script>
+    <script src="/RBoardDocument/assets/js/sidebar.js"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-176702602-1');
+    </script>
+  </head>
+  <body id="top_page">
+    <div id="header">
+      <h1> RBoard </h1>
+      
+
+      <div class="lang-switch" aria-label="language switch">
+        <span>言語:</span>
+        <a href="/RBoardDocument/tutorial/mrubycIDE/v2-1-0/cds.html" onclick="localStorage.setItem('preferred_lang', 'ja');">🇯🇵 日本語</a>
+        <span> / </span>
+        <a href="/RBoardDocument/en/tutorial/mrubycIDE/v2-1-0/cds.html" onclick="localStorage.setItem('preferred_lang', 'en');">🇺🇸 English</a>
+      </div>
+    </div>
+    <div id="main">
+        <h3>Required Components</h3>
+<ul>
+  <li><a href="https://www.digikey.jp/short/4j7wt8rp">CDS Cell</a></li>
+  <li><a href="https://www.digikey.jp/short/qvr57mtw">10kΩ Resistor</a></li>
+</ul>
+<hr id="first_boader">
+<h3>About the CDS Cell</h3>
+CdS (Cadmium Sulfide)<br>
+A semiconductor that changes its resistance based on light intensity.<br>
+The resistance decreases in bright light and increases in darkness.<br>
+Photoelectric effect.<br>
+<hr id="first_boader">
+<h3>Resistance Divider Circuit</h3>
+Since the CDS cell is a sensor whose resistance changes based on light intensity, the following circuit cannot be used.<br>
+The reason is that the microcontroller can only measure voltage.<br>
+<img src="https://lh3.googleusercontent.com/d/1jvyuYUVInVQvcoEWrjTNBPg9AovHp86T" class="expansion"><br>
+To avoid this, a circuit that converts resistance values to voltage values is needed.<br>
+The circuit used for this purpose is the resistance divider.<br>
+<img src="https://lh3.googleusercontent.com/d/11EMYKIb4-Jyoq8WORIITm7qtovee--iX" class="expansion"><br>
+Assuming R1 is the CDS cell, when it gets brighter (the resistance of the CDS cell decreases)<br>
+V1 = R2 ÷ ( R1 + R2 ) × 3.3V = 10 ÷ ( 10 + 10 ) × 3.3 = 1.65V<br>
+V2 = R2 ÷ ( R1 + R2 ) × 3.3V = 10 ÷ ( 5 + 10 ) × 3.3 = 2.2V<br> 
+As shown in the above formula, when the resistance of R1 decreases, the output voltage for the microcontroller increases.
+<hr id="first_boader">
+<h3>Electronic Circuit</h3>
+Circuit Diagram<br>
+<img src="https://lh3.googleusercontent.com/d/18coRIB7IASEVBWuxOVFRGUBrSeqMjkBi" class="expansion"><br>
+Breadboard Circuit Diagram<br>
+<img src="https://lh3.googleusercontent.com/d/1ZxYqt0XuojuweduDiXZVRh8b5kMj67U-" class="expansion"><br>
+<hr id="first_boader">
+<h3>Program</h3>
+Make LED1 light up when it gets dark
+<pre><code  class="ruby">
+LED1 = 0
+ADC1 = 7
+adc = ADC.new()
+adc.ch(ADC1)
+while true
+  adc.start
+  v = adc.read_v
+  adc.stop
+  if(v < 1.7)
+    digitalWrite(LED1, 1)
+  else
+    digitalWrite(LED1, 0)
+  end
+end
+</code></pre>
+    </div>
+    <div id="submenu">
+  
+  <div id="submenu_header"></div>
+  <ul id="submenu_body">
+    
+      <i class="fas fa-home"></i><a href="/RBoardDocument/en">HOME</a>
+    
+  <li><details>
+    <summary>Programming</summary>
+    <ul id="subuul">
+      
+        <li><a href="/RBoardDocument/en/update.html">RBoard Firmware Update</a></li>
+        <li><a href="/RBoardDocument/en/ide_install.html">IDE Setup</a></li>
+        <li><a href="/RBoardDocument/en/write_program.html">Programming with IDE</a></li>
+      
+    </ul>
+  </details></li>
+  <li><details>
+    <summary>Board List</summary>
+    <ul id="subuul">
+      
+        <li><a href="/RBoardDocument/en/board_list.html">Board List</a></li>
+        <li><a href="/RBoardDocument/en/boards/RBoard_PIC32_SMD_v2-1-0_1-0.html">RBoard_V1</a></li>
+        <li><a href="/RBoardDocument/en/boards/RBoard_PIC32_SMD_v3-4-0_2-0.html">RBoard_V2</a></li>
+      
+    </ul>
+  </details></li>
+  <li><details>
+    <summary>Classes</summary>
+    <ul id="subuul">
+      
+        <li><a href="/RBoardDocument/en/firmware/mrubyc1_4.html">RBoard_V1(mruby/c1.4)</a></li>
+        <li><a href="/RBoardDocument/en/firmware/mrubyc2_1.html">RBoard_V1(mruby/c2.1)</a></li>
+        <li><a href="/RBoardDocument/en/firmware/mrubyc3_4.html">RBoard_V2(mruby/c3.4)</a></li>
+      
+    </ul>
+  </details></li>
+  <li><details>
+    <summary>Sample Programs</summary>
+    <ul id="subuul">
+      
+        <li><a href="/RBoardDocument/en/sampleProgram/v2-1-0/adc.html">ADC Sample</a> / <a href="/RBoardDocument/en/sampleProgram/v3-4-0/adc.html">V2</a></li>
+        <li><a href="/RBoardDocument/en/sampleProgram/v2-1-0/i2c.html">I2C Sample</a> / <a href="/RBoardDocument/en/sampleProgram/v3-4-0/i2c.html">V2</a></li>
+        <li><a href="/RBoardDocument/en/sampleProgram/v2-1-0/pwm.html">PWM Sample</a> / <a href="/RBoardDocument/en/sampleProgram/v3-4-0/pwm.html">V2</a></li>
+        <li><a href="/RBoardDocument/en/sampleProgram/v2-1-0/uart.html">UART Sample</a> / <a href="/RBoardDocument/en/sampleProgram/v3-4-0/uart.html">V2</a></li>
+        <li><a href="/RBoardDocument/en/sampleProgram/v2-1-0/etc.html">Other Samples</a> / <a href="/RBoardDocument/en/sampleProgram/v3-4-0/etc.html">V2</a></li>
+      
+    </ul>
+  </details></li>
+  <li><details>
+    <summary>Others</summary>
+    <ul id="subuul">
+    <li><a href="/RBoardDocument/sampleProgram/module.html">Supported Sensor Modules</a></li>
+    <li><a href="/RBoardDocument/console.html">Terminal Software Configuration</a></li>
+    </ul>
+  </details></li>
+  <li><details id ="tutorial">
+    <summary>Tutorials</summary>
+    <ol id="subuol">
+      
+        <li><a href="/RBoardDocument/en/tutorial/mrubycIDE/v2-1-0/mrubyc.html#tutorial">What is mruby/c?</a></li>
+        <li><a href="/RBoardDocument/en/tutorial/mrubycIDE/v2-1-0/led.html#tutorial">Controlling an LED</a></li>
+        <li><a href="/RBoardDocument/en/tutorial/mrubycIDE/v2-1-0/rgb_led.html#tutorial">Controlling a Color LED</a></li>
+        <li><a href="/RBoardDocument/en/tutorial/mrubycIDE/v2-1-0/reed_switch.html#tutorial">Door Sensor</a></li>
+        <li><a href="/RBoardDocument/en/tutorial/mrubycIDE/v2-1-0/buzzer.html#tutorial">Piezo Buzzer</a></li>
+        <li><a href="/RBoardDocument/en/tutorial/mrubycIDE/v2-1-0/cds.html#tutorial">Light Sensor</a></li>
+        <li><a href="/RBoardDocument/en/tutorial/mrubycIDE/v2-1-0/temp.html#tutorial">Temperature Sensor</a></li>
+      
+    </ol>
+  </details></li>
+  </ul>
+
+  
+  
+</div>
+  </body>
+</html>

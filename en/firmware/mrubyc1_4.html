@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>RBoard_V1(mruby/c1.4)</title>
+    <link rel="shortcut icon" href="/RBoardDocument/assets/img/bug.ico">
+    <link rel="stylesheet" href="/RBoardDocument/assets/css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link href="https://use.fontawesome.com/releases/v5.11.0/css/all.css" rel="stylesheet">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-176702602-1"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/a11y-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/highlight.min.js"></script>
+    <script src="/RBoardDocument/assets/js/codeStyle.js"></script>
+    <script src="/RBoardDocument/assets/js/sidebar.js"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-176702602-1');
+    </script>
+  </head>
+  <body id="top_page">
+    <div id="header">
+      <h1> RBoard </h1>
+      
+
+      <div class="lang-switch" aria-label="language switch">
+        <span>言語:</span>
+        <a href="/RBoardDocument/firmware/mrubyc1_4.html" onclick="localStorage.setItem('preferred_lang', 'ja');">🇯🇵 日本語</a>
+        <span> / </span>
+        <a href="/RBoardDocument/en/firmware/mrubyc1_4.html" onclick="localStorage.setItem('preferred_lang', 'en');">🇺🇸 English</a>
+      </div>
+    </div>
+    <div id="main">
+        This content is for the initial lot (mruby/c1.4).<br>
+- mruby/cIDE version:1.0<br>
+- mrbwrite version:1.0<br>
+- mrbc compiler version:2.0<br>
+The corresponding firmware can be downloaded from <a href="https://github.com/YoshihiroOgura/pic32mx170_mrubyc/releases/tag/v1.0">here</a>.<br>
+<h2 id="Ruby">Ruby</h2>
+For the Ruby classes supported by mruby/c, please refer to the official URL below.<br>
+<a href="https://www.s-itoc.jp/activity/research/mrubyc/mrubyc_docs/library">
+https://www.s-itoc.jp/activity/research/mrubyc/mrubyc_docs/library</a>
+<hr id="first_boader">
+<h2 id="ADC">ADC</h2>
+<h3 id="ADC_start">start</h3>
+ADC Start<br>
+<hr id="second_boader">
+<h3 id="ADC_stop">stop</h3>
+ADC Stop<br>
+<hr id="second_boader">
+<h3 id="ADC_read">read</h3>
+Output the acquired value as an integer.<br>
+Return value: 0～1023(0~3.3V)<br>
+<hr id="second_boader">
+<h3 id="ADC_read_v">read_v</h3>
+Output the acquired value as a voltage.<br>
+Return value: 0～3.3<br>
+<hr id="second_boader">
+<h3 id="ADC_ch">ch(channel)</h3>
+Specify the port to use<br>
+channel：0～7<br>
+
+<hr id="first_boader">
+<h2 id="I2C">I2C</h2>
+<h3 id="I2C_write">write(sl_addr, addr, data1, data2,,,,)</h3>
+i2c write<br>
+sl_addr：slave address<br>
+addr：address to write to<br>
+data：data to write<br>
+<hr id="second_boader">
+<h3 id="I2C_read">read(sl_addr, addr, size)</h3>
+i2c read<br>
+sl_addr：slave address<br>
+addr：address to read from<br>
+size：size of data to read<br>
+
+<hr id="first_boader">
+<h2 id="PWM">PWM</h2>
+<h3 id="PWM_new">new</h3>
+<hr id="second_boader">
+<h3 id="PWM_cycle">cycle(time,double)</h3>
+Cycle setting<br>
+time：1～65535‬(1=0.1us)<br>
+<form oninput="opt1.value = Math.round(1 / Number(a1.value) * 10000000)">
+1(s)÷
+<input type="number" name="a1" value="0"size="10"placeholder="Frequency">
+(Hz)×10000000=
+<output name="opt1">0</output>
+</form>
+double：magnification(0～7)<br>
+<table border="1" class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">integer</th>
+      <th scope="col">magnification</th>
+    </tr>
+  </thead>
+  <tr>
+    <td>0</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>2</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>4</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>8</td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>16</td>
+  </tr>
+  <tr>
+    <td>5</td>
+    <td>32</td>
+  </tr>
+  <tr>
+    <td>6</td>
+    <td>64</td>
+  </tr>
+  <tr>
+    <td>7</td>
+    <td>256</td>
+  </tr>
+</table>
+<hr id="second_boader">
+<h3 id="PWM_rate">rate(p,ch)</h3>
+p：percentage<br>
+ch：used channel(1～5)<br>
+<hr id="second_boader">
+<h3 id="PWM_start">start(ch)</h3>
+PWM start<br>
+ch：used channel(1～5)<br>
+<hr id="second_boader">
+<h3 id="PWM_stop">stop(ch)</h3>
+PWM stop<br>
+ch：used channel(1～5)<br>
+<hr id="second_boader">
+<h3 id="PWM_pin">pin(pin)</h3>
+Specify the PWM pin to use<br>
+pin(2,12,16,18)<br>
+<table border="1" class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th>ch</th>
+      <th>pin</th>
+    </tr>
+  </thead>
+  <tr>
+    <td>1</td>
+    <td>12</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>16</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>18</td>
+  </tr>
+  <tr>
+    <td>5</td>
+    <td>2</td>
+  </tr>
+</table>
+
+<hr id="first_boader">
+<h2 id="Timer">Timer</h2>
+<h3 id="Timer_start">start</h3>
+<hr id="second_boader">
+<h3 id="Timer_stop">stop</h3>
+<hr id="second_boader">
+<h3 id="Timer_set">set(time,double)</h3>
+time：1～65535‬(1=0.1us)<br>
+double：integer(magnification)<br>
+<table border="1" class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th>integer</th>
+      <th>magnification</th>
+    </tr>
+  </thead>
+  <tr>
+    <td>0</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>2</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>4</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>8</td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>16</td>
+  </tr>
+  <tr>
+    <td>5</td>
+    <td>32</td>
+  </tr>
+  <tr>
+    <td>6</td>
+    <td>64</td>
+  </tr>
+  <tr>
+    <td>7</td>
+    <td>256</td>
+  </tr>
+</table>
+
+<hr id="second_boader">
+<h3 id="Timer_count_clear">count_clear</h3>
+<hr id="second_boader">
+<h3 id="Timer_count_get">count_get</h3>
+Return value: 0～255
+
+<hr id="first_boader">
+<h2 id="UART">UART</h2>
+<h3 id="UART_new">new(baud)</h3>
+Since the baseline is 19200, setting a value higher than this will result in significant data loss.<br>
+baud：baud rate value (e.g., 19200)<br>
+<hr id="second_boader">
+<h3 id="UART_gets">gets</h3>
+String reception<br>
+<hr id="second_boader">
+<h3 id="UART_puts">puts(text)</h3>
+String transmission<br>
+text：string
+
+<hr id="second_boader">
+<h3 id="UART_clear_buffer">clear_buffer</h3>
+Initialize the receive buffer (mruby/c2.0)
+
+<hr id="first_boader">
+<h2 id="Math">Math</h2>
+<a href="https://github.com/YoshihiroOgura/pic32mx170_mrubyc/blob/a0542f4fb76b2f3e1ba6e5078c9e3fc3a7164865/src/c_math.c#L240">
+https://github.com/YoshihiroOgura/pic32mx170_mrubyc/blob/a0542f4fb76b2f3e1ba6e5078c9e3fc3a7164865/src/c_math.c#L240</a>
+
+<hr id="first_boader">
+<h2 id="ETC">Others</h2>
+<h3 id="leds_write">leds_write(bit)</h3>
+LED control<br>
+bit : integer<br>
+<table border="1" class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th>led</th>
+      <th>Decimal</th>
+      <th>Binary</th>
+    </tr>
+  </thead>
+  <tr>
+    <td>1</td>
+    <td>1</td>
+    <td>0b0001</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>2</td>
+    <td>0b0010</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>4</td>
+    <td>0b0100</td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>8</td>
+    <td>0b1000</td>
+  </tr>
+</table>
+
+<hr id="second_boader">
+<h3 id="sw">sw()</h3>
+Switch state reading<br>
+Return value: 0 or 1<br>
+
+<hr id="second_boader">
+<h3 id="pinMode">pinMode(pin,mode)</h3>
+pin：0～20<br>
+mode：0(OUTPUT) or 1(INPUT)<br>
+
+<hr id="second_boader">
+<h3 id="pinPull">pinPull(pin,mode)</h3>
+Internal resistance selection(mruby/c2.0)<br>
+pin：0～20<br>
+mode：-1(pull down) or 0(no pull) or 1(pull up)<br>
+
+<hr id="second_boader">
+<h3 id="pinInit">pinInit</h3>
+Reset all pin settings to their default state.
+
+<hr id="second_boader">
+<h3 id="digitalWrite">digitalWrite(pin,mode)</h3>
+pin：0～20<br>
+mode：0(OFF) or 1(ON)<br>
+
+<hr id="second_boader">
+<h3 id="digitalRead">digitalRead(pin)</h3>
+Specify the pin to read the state<br>
+pin：0～20<br>
+Return value: 0(OFF) or 1(ON)<br>
+
+<hr id="second_boader">
+<h3 id="puts">puts(txt)</h3>
+String output<br>
+For terminal software settings, please refer to <a href="../console.html">here</a>
+txt：string
+</div>
+
+    </div>
+    <div id="submenu">
+  
+  <div id="submenu_header"></div>
+  <ul id="submenu_body">
+    
+      <i class="fas fa-home"></i><a href="/RBoardDocument/en">HOME</a>
+    
+  <li><details>
+    <summary>Programming</summary>
+    <ul id="subuul">
+      
+        <li><a href="/RBoardDocument/en/update.html">RBoard Firmware Update</a></li>
+        <li><a href="/RBoardDocument/en/ide_install.html">IDE Setup</a></li>
+        <li><a href="/RBoardDocument/en/write_program.html">Programming with IDE</a></li>
+      
+    </ul>
+  </details></li>
+  <li><details>
+    <summary>Board List</summary>
+    <ul id="subuul">
+      
+        <li><a href="/RBoardDocument/en/board_list.html">Board List</a></li>
+        <li><a href="/RBoardDocument/en/boards/RBoard_PIC32_SMD_v2-1-0_1-0.html">RBoard_V1</a></li>
+        <li><a href="/RBoardDocument/en/boards/RBoard_PIC32_SMD_v3-4-0_2-0.html">RBoard_V2</a></li>
+      
+    </ul>
+  </details></li>
+  <li><details>
+    <summary>Classes</summary>
+    <ul id="subuul">
+      
+        <li><a href="/RBoardDocument/en/firmware/mrubyc1_4.html">RBoard_V1(mruby/c1.4)</a></li>
+        <li><a href="/RBoardDocument/en/firmware/mrubyc2_1.html">RBoard_V1(mruby/c2.1)</a></li>
+        <li><a href="/RBoardDocument/en/firmware/mrubyc3_4.html">RBoard_V2(mruby/c3.4)</a></li>
+      
+    </ul>
+  </details></li>
+  <li><details>
+    <summary>Sample Programs</summary>
+    <ul id="subuul">
+      
+        <li><a href="/RBoardDocument/en/sampleProgram/v2-1-0/adc.html">ADC Sample</a> / <a href="/RBoardDocument/en/sampleProgram/v3-4-0/adc.html">V2</a></li>
+        <li><a href="/RBoardDocument/en/sampleProgram/v2-1-0/i2c.html">I2C Sample</a> / <a href="/RBoardDocument/en/sampleProgram/v3-4-0/i2c.html">V2</a></li>
+        <li><a href="/RBoardDocument/en/sampleProgram/v2-1-0/pwm.html">PWM Sample</a> / <a href="/RBoardDocument/en/sampleProgram/v3-4-0/pwm.html">V2</a></li>
+        <li><a href="/RBoardDocument/en/sampleProgram/v2-1-0/uart.html">UART Sample</a> / <a href="/RBoardDocument/en/sampleProgram/v3-4-0/uart.html">V2</a></li>
+        <li><a href="/RBoardDocument/en/sampleProgram/v2-1-0/etc.html">Other Samples</a> / <a href="/RBoardDocument/en/sampleProgram/v3-4-0/etc.html">V2</a></li>
+      
+    </ul>
+  </details></li>
+  <li><details>
+    <summary>Others</summary>
+    <ul id="subuul">
+    <li><a href="/RBoardDocument/sampleProgram/module.html">Supported Sensor Modules</a></li>
+    <li><a href="/RBoardDocument/console.html">Terminal Software Configuration</a></li>
+    </ul>
+  </details></li>
+  <li><details id ="tutorial">
+    <summary>Tutorials</summary>
+    <ol id="subuol">
+      
+        <li><a href="/RBoardDocument/en/tutorial/mrubycIDE/v2-1-0/mrubyc.html#tutorial">What is mruby/c?</a></li>
+        <li><a href="/RBoardDocument/en/tutorial/mrubycIDE/v2-1-0/led.html#tutorial">Controlling an LED</a></li>
+        <li><a href="/RBoardDocument/en/tutorial/mrubycIDE/v2-1-0/rgb_led.html#tutorial">Controlling a Color LED</a></li>
+        <li><a href="/RBoardDocument/en/tutorial/mrubycIDE/v2-1-0/reed_switch.html#tutorial">Door Sensor</a></li>
+        <li><a href="/RBoardDocument/en/tutorial/mrubycIDE/v2-1-0/buzzer.html#tutorial">Piezo Buzzer</a></li>
+        <li><a href="/RBoardDocument/en/tutorial/mrubycIDE/v2-1-0/cds.html#tutorial">Light Sensor</a></li>
+        <li><a href="/RBoardDocument/en/tutorial/mrubycIDE/v2-1-0/temp.html#tutorial">Temperature Sensor</a></li>
+      
+    </ol>
+  </details></li>
+  </ul>
+
+  
+  
+  <div id="submenu_header">Class</div>
+  <div id="ruby_class">
+    <details>
+      <summary><a href="#Ruby">Ruby</a></summary>
+    </details>
+    <details>
+      <summary><a href="#ADC">ADC</a></summary>
+      <ul id="class_ul">
+        <li><a href="#ADC_start">start</a></li>
+        <li><a href="#ADC_stop">stop</a></li>
+        <li><a href="#ADC_read">read</a></li>
+        <li><a href="#ADC_read_v">read_v</a></li>
+        <li><a href="#ADC_ch">ch</a></li>
+      </ul>
+    </details>
+    </details>
+    <details>
+      <summary><a href="#I2C">I2C</a></summary>
+      <ul id="class_ul">
+        <li><a href="#I2C_write">write</a></li>
+        <li><a href="#I2C_read">read</a></li>
+      </ul>
+    </details>
+    <details>
+      <summary><a href="#PWM">PWM</a></summary>
+      <ul id="class_ul">
+        <li><a href="#PWM_new">new</a></li>
+        <li><a href="#PWM_cycle">cycle</a></li>
+        <li><a href="#PWM_rate">rate</a></li>
+        <li><a href="#PWM_start">start</a></li>
+        <li><a href="#PWM_stop">stop</a></li>
+        <li><a href="#PWM_pin">pin</a></li>
+      </ul>
+    </details>
+    <details>
+      <summary><a href="#Timer">Timer</a></summary>
+      <ul id="class_ul">
+        <li><a href="#Timer_start">start</a></li>
+        <li><a href="#Timer_stop">stop</a></li>
+        <li><a href="#Timer_set">set</a></li>
+        <li><a href="#Timer_count_clear">count_clear</a></li>
+        <li><a href="#Timer_count_get">count_get</a></li>
+      </ul>
+    </details>
+    <details>
+      <summary><a href="#UART">UART</a></summary>
+      <ul id="class_ul">
+        <li><a href="#UART_new">new</a></li>
+        <li><a href="#UART_gets">gets</a></li>
+        <li><a href="#UART_puts">puts</a></li>
+        <li><a href="#UART_clear_buffer">clear_buffer</a></li>
+      </ul>
+    </details>
+    <details>
+      <summary><a href="#Math">Math</a></summary>
+    </details>
+    <details>
+      <summary><a href="#ETC">その他</a></summary>
+      <ul id="class_ul">
+        <li><a href="#leds_write">leds_write</a></li>
+        <li><a href="#sw">sw</a></li>
+        <li><a href="#pinMode">pinMode</a></li>
+        <li><a href="#pinPull">pinPull</a></li>
+        <li><a href="#pinInit">pinInit</a></li>
+        <li><a href="#digitalWrite">digitalWrite</a></li>
+        <li><a href="#digitalRead">digitalRead</a></li>
+        <li><a href="#puts">puts</a></li>
+      </ul>
+    </details>
+  </div>
+  
+</div>
+  </body>
+</html>

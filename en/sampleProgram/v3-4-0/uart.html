@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>UART Sample Program</title>
+    <link rel="shortcut icon" href="/RBoardDocument/assets/img/bug.ico">
+    <link rel="stylesheet" href="/RBoardDocument/assets/css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link href="https://use.fontawesome.com/releases/v5.11.0/css/all.css" rel="stylesheet">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-176702602-1"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/styles/a11y-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/highlight.min.js"></script>
+    <script src="/RBoardDocument/assets/js/codeStyle.js"></script>
+    <script src="/RBoardDocument/assets/js/sidebar.js"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-176702602-1');
+    </script>
+  </head>
+  <body id="top_page">
+    <div id="header">
+      <h1> RBoard </h1>
+      
+
+      <div class="lang-switch" aria-label="language switch">
+        <span>言語:</span>
+        <a href="/RBoardDocument/sampleProgram/v3-4-0/uart.html" onclick="localStorage.setItem('preferred_lang', 'ja');">🇯🇵 日本語</a>
+        <span> / </span>
+        <a href="/RBoardDocument/en/sampleProgram/v3-4-0/uart.html" onclick="localStorage.setItem('preferred_lang', 'en');">🇺🇸 English</a>
+      </div>
+    </div>
+    <div id="main">
+        mruby/c 3.3 <a href="./mrubyc_class.html">Standard I/O Class</a> Support<br>
+
+<h3>Module Initialization</h3>
+This is the RBoard program used to initialize the module via the serial console (PC->RBoard->Module).<br>
+For `dev`, specify the module's default value for `baud`.<br>
+Example: AMW037, BGX13P etc. are 115200<br>
+<pre><code  class="ruby">
+usb = UART.new( 1, baud:19200 )
+dev = UART.new( 2, baud:19200 )
+while true
+  # PC -> RBoard -> Module
+  if(usb.can_read_line())
+    dev.write(usb.gets())
+  end
+
+  # Module -> RBoard -> PC
+  if(dev.can_read_line())
+    usb.write(dev.gets())
+    # usb.write("> ")
+  end
+end
+</code></pre>
+
+<h3>im920s</h3>
+https://www.interplan.co.jp/solution/wireless/im920s/im920s.php
+
+<h4>String Transmission</h4>
+<pre><code  class="ruby">
+im = UART.new(19200)
+while true
+  im.puts("TXDA " + (23).to_s + "\r\n")
+  sleep(5)
+end
+</code></pre>
+
+<h4>String Reception</h4>
+<pre><code  class="ruby">
+im = UART.new(19200)
+while true
+  puts(im.gets())
+  sleep(5)
+end
+</code></pre>
+
+<hr id="first_boader">
+
+<h3>Bluetooth</h3>
+https://www.switch-science.com/catalog/5794/<br>
+
+set command can be used to set values and get command can be used to check the set values.<br>
+Commands: https://docs.silabs.com/gecko-os/1/bgx/latest/commands<br>
+Parameters: https://docs.silabs.com/gecko-os/1/bgx/latest/variables<br>
+Example: Baud rate setting command<br>
+set ua b 19200<br>
+
+Prepare an Android smartphone that supports Bluetooth 5.<br>
+Install the app "Serial Bluetooth Terminal".<br>
+Turn on the module's power (connect to RBoard, etc.).<br>
+In the smartphone's settings → Device connection → Pair new device, register the module.<br>
+Launch "Serial Bluetooth Terminal" and long-press the module's entry under Devices→Bluetooth LE.
+Edit → Custom → Select each of the three UUIDs.<br>
+You should be able to connect by pressing the "✓" in the upper right corner.<br>
+<pre><code  class="ruby">
+bluetooth = UART.new(19200)
+while true
+  bluetooth.puts("aaaa\r\n")
+  sleep(5)
+end
+</code></pre>
+
+<h3>wifi</h3>
+https://www.switch-science.com/catalog/5795/<br>
+<pre><code  class="ruby">
+cmd = "hge https://script.google.com/macros/s/xxxxxxxxxxxxxxxxxxx/exec?data1="
+wifi = UART.new(19200)
+wifi.puts("\r\n")
+sleep(5)
+while true
+  wifi.puts(cmd + (1.to_s) + "\r\n")
+  sleep(10)
+  wifi.puts("stream_close 0\r\n")
+  sleep(10)
+end
+</code></pre>
+    </div>
+    <div id="submenu">
+  
+  <div id="submenu_header"></div>
+  <ul id="submenu_body">
+    
+      <i class="fas fa-home"></i><a href="/RBoardDocument/en">HOME</a>
+    
+  <li><details>
+    <summary>Programming</summary>
+    <ul id="subuul">
+      
+        <li><a href="/RBoardDocument/en/update.html">RBoard Firmware Update</a></li>
+        <li><a href="/RBoardDocument/en/ide_install.html">IDE Setup</a></li>
+        <li><a href="/RBoardDocument/en/write_program.html">Programming with IDE</a></li>
+      
+    </ul>
+  </details></li>
+  <li><details>
+    <summary>Board List</summary>
+    <ul id="subuul">
+      
+        <li><a href="/RBoardDocument/en/board_list.html">Board List</a></li>
+        <li><a href="/RBoardDocument/en/boards/RBoard_PIC32_SMD_v2-1-0_1-0.html">RBoard_V1</a></li>
+        <li><a href="/RBoardDocument/en/boards/RBoard_PIC32_SMD_v3-4-0_2-0.html">RBoard_V2</a></li>
+      
+    </ul>
+  </details></li>
+  <li><details>
+    <summary>Classes</summary>
+    <ul id="subuul">
+      
+        <li><a href="/RBoardDocument/en/firmware/mrubyc1_4.html">RBoard_V1(mruby/c1.4)</a></li>
+        <li><a href="/RBoardDocument/en/firmware/mrubyc2_1.html">RBoard_V1(mruby/c2.1)</a></li>
+        <li><a href="/RBoardDocument/en/firmware/mrubyc3_4.html">RBoard_V2(mruby/c3.4)</a></li>
+      
+    </ul>
+  </details></li>
+  <li><details>
+    <summary>Sample Programs</summary>
+    <ul id="subuul">
+      
+        <li><a href="/RBoardDocument/en/sampleProgram/v2-1-0/adc.html">ADC Sample</a> / <a href="/RBoardDocument/en/sampleProgram/v3-4-0/adc.html">V2</a></li>
+        <li><a href="/RBoardDocument/en/sampleProgram/v2-1-0/i2c.html">I2C Sample</a> / <a href="/RBoardDocument/en/sampleProgram/v3-4-0/i2c.html">V2</a></li>
+        <li><a href="/RBoardDocument/en/sampleProgram/v2-1-0/pwm.html">PWM Sample</a> / <a href="/RBoardDocument/en/sampleProgram/v3-4-0/pwm.html">V2</a></li>
+        <li><a href="/RBoardDocument/en/sampleProgram/v2-1-0/uart.html">UART Sample</a> / <a href="/RBoardDocument/en/sampleProgram/v3-4-0/uart.html">V2</a></li>
+        <li><a href="/RBoardDocument/en/sampleProgram/v2-1-0/etc.html">Other Samples</a> / <a href="/RBoardDocument/en/sampleProgram/v3-4-0/etc.html">V2</a></li>
+      
+    </ul>
+  </details></li>
+  <li><details>
+    <summary>Others</summary>
+    <ul id="subuul">
+    <li><a href="/RBoardDocument/sampleProgram/module.html">Supported Sensor Modules</a></li>
+    <li><a href="/RBoardDocument/console.html">Terminal Software Configuration</a></li>
+    </ul>
+  </details></li>
+  <li><details id ="tutorial">
+    <summary>Tutorials</summary>
+    <ol id="subuol">
+      
+        <li><a href="/RBoardDocument/en/tutorial/mrubycIDE/v2-1-0/mrubyc.html#tutorial">What is mruby/c?</a></li>
+        <li><a href="/RBoardDocument/en/tutorial/mrubycIDE/v2-1-0/led.html#tutorial">Controlling an LED</a></li>
+        <li><a href="/RBoardDocument/en/tutorial/mrubycIDE/v2-1-0/rgb_led.html#tutorial">Controlling a Color LED</a></li>
+        <li><a href="/RBoardDocument/en/tutorial/mrubycIDE/v2-1-0/reed_switch.html#tutorial">Door Sensor</a></li>
+        <li><a href="/RBoardDocument/en/tutorial/mrubycIDE/v2-1-0/buzzer.html#tutorial">Piezo Buzzer</a></li>
+        <li><a href="/RBoardDocument/en/tutorial/mrubycIDE/v2-1-0/cds.html#tutorial">Light Sensor</a></li>
+        <li><a href="/RBoardDocument/en/tutorial/mrubycIDE/v2-1-0/temp.html#tutorial">Temperature Sensor</a></li>
+      
+    </ol>
+  </details></li>
+  </ul>
+
+  
+  
+</div>
+  </body>
+</html>
